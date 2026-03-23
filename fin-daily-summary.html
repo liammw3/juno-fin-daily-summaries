@@ -1,673 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="favicon.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fin AI Daily Summary — March 21, 2026</title>
+  <title>Fin AI Agent Daily Summary – March 21, 2026</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #F8F9FA;
       color: #1E1E1E;
-      padding: 32px 24px 64px;
       line-height: 1.6;
-    }
-
-    .page-wrapper {
-      max-width: 960px;
-      margin: 0 auto;
     }
 
     /* ── Header ── */
     .header {
       background: #013A2F;
-      border-radius: 12px;
-      padding: 32px 36px;
-      color: #F8F9FA;
-      margin-bottom: 28px;
-    }
-    .header-top {
+      padding: 40px 48px 32px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
     }
-    .header h1 {
-      font-size: 24px;
+    .header-left h1 {
+      font-size: 28px;
       font-weight: 700;
-      letter-spacing: -0.3px;
       color: #1CE49B;
+      letter-spacing: -0.5px;
     }
-    .header h1 span {
-      color: #F8F9FA;
-    }
-    .header .subtitle {
-      margin-top: 4px;
-      font-size: 13px;
+    .header-left p {
       color: #B4F7CA;
+      font-size: 14px;
+      margin-top: 6px;
       opacity: 0.85;
     }
-    .header .date-badge {
-      background: rgba(28, 228, 155, 0.15);
-      border: 1px solid rgba(28, 228, 155, 0.35);
-      color: #1CE49B;
-      border-radius: 6px;
-      padding: 6px 14px;
+    .date-badge {
+      background: #1CE49B;
+      color: #013A2F;
+      font-weight: 700;
       font-size: 13px;
-      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
       white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 4px;
     }
 
-    /* ── Alert Banner ── */
+    /* ── Container ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 32px 60px;
+    }
+
+    /* ── Bug Alert Banner ── */
     .alert-banner {
       background: #fff3cd;
-      border-left: 4px solid #e6a817;
+      border: 1.5px solid #e6a817;
+      border-left: 5px solid #e6a817;
       border-radius: 8px;
-      padding: 14px 18px;
-      margin-bottom: 28px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    .alert-banner .alert-icon {
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
     }
     .alert-banner .alert-title {
       font-weight: 700;
+      font-size: 15px;
+      color: #7d4e00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .alert-banner p {
       font-size: 14px;
-      color: #7d4e08;
-      margin-bottom: 4px;
+      color: #7d4e00;
+      line-height: 1.5;
     }
-    .alert-banner .alert-body {
-      font-size: 13px;
-      color: #5c3c08;
+    .alert-banner ul {
+      margin-top: 8px;
+      padding-left: 20px;
+      font-size: 14px;
+      color: #7d4e00;
     }
+    .alert-banner ul li { margin-bottom: 4px; }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #013A2F;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #B4F7CA;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-wrap { margin-bottom: 40px; }
 
     /* ── KPI Cards ── */
-    .kpi-grid {
+    .kpi-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 40px;
     }
     .kpi-card {
       background: #fff;
       border-radius: 10px;
       padding: 20px 18px;
-      border: 1px solid #e4e7eb;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border-top: 3px solid #1CE49B;
+      text-align: center;
     }
     .kpi-card .kpi-value {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 800;
-      color: #1CE49B;
+      color: #013A2F;
       line-height: 1;
     }
-    .kpi-card .kpi-value.accent {
-      color: #013A2F;
-    }
-    .kpi-card .kpi-value.warn {
-      color: #e6a817;
-    }
     .kpi-card .kpi-label {
-      margin-top: 6px;
       font-size: 12px;
-      color: #6b7280;
-      font-weight: 500;
+      color: #555;
+      margin-top: 6px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-weight: 600;
     }
-    .kpi-card .kpi-sub {
-      margin-top: 4px;
-      font-size: 11px;
-      color: #9ca3af;
-    }
+    .kpi-card.warn { border-top-color: #e6a817; }
+    .kpi-card.warn .kpi-value { color: #c47c00; }
+    .kpi-card.neutral { border-top-color: #cce4e0; }
+    .kpi-card.neutral .kpi-value { color: #4a7a6e; }
 
-    /* ── Section Cards ── */
-    .section-card {
+    /* ── Executive Summary ── */
+    .exec-summary {
       background: #fff;
       border-radius: 10px;
-      padding: 24px 28px;
-      border: 1px solid #e4e7eb;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-      margin-bottom: 20px;
+      padding: 28px 30px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      margin-bottom: 40px;
     }
-    .section-card h2 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #013A2F;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #B4F7CA;
-    }
-    .section-card h2 .section-icon {
-      margin-right: 7px;
-    }
+    .exec-summary p { font-size: 14.5px; color: #2e2e2e; margin-bottom: 14px; line-height: 1.7; }
+    .exec-summary p:last-child { margin-bottom: 0; }
 
-    /* ── Narrative ── */
-    .narrative {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.75;
-    }
-    .narrative p + p {
-      margin-top: 10px;
-    }
-    .narrative strong {
-      color: #013A2F;
-    }
+    /* ── Resolution Breakdown ── */
+    .resolution-bars { background: #fff; border-radius: 10px; padding: 24px 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .bar-row { margin-bottom: 18px; }
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-label { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .bar-track { background: #e8f5f0; border-radius: 6px; height: 22px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; transition: width 0.6s ease; }
+    .bar-green { background: #1CE49B; color: #013A2F; }
+    .bar-orange { background: #e6a817; }
+    .bar-blue { background: #4a90d9; }
+    .bar-grey { background: #aaa; }
 
-    /* ── Topic Table ── */
-    .topic-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-    }
-    .topic-table thead tr {
+    /* ── Table ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .data-table th {
       background: #013A2F;
       color: #B4F7CA;
-      text-align: left;
-    }
-    .topic-table thead th {
-      padding: 10px 14px;
       font-weight: 600;
+      text-align: left;
+      padding: 11px 14px;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .topic-table tbody tr:nth-child(even) {
-      background: #B4F7CA22;
-    }
-    .topic-table tbody tr:hover {
-      background: #f0fdf4;
-    }
-    .topic-table td {
-      padding: 10px 14px;
-      border-bottom: 1px solid #e4e7eb;
-      vertical-align: top;
-    }
-    .topic-table td:first-child {
-      font-weight: 600;
-      color: #013A2F;
-    }
-    .count-pill {
+    .data-table td { padding: 11px 14px; border-bottom: 1px solid #eef2f0; vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f5fbf8; }
+    .table-wrap { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+
+    .pill {
       display: inline-block;
-      background: #1CE49B22;
-      color: #013A2F;
-      border-radius: 20px;
-      padding: 2px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1px solid #1CE49B55;
-    }
-    .count-pill.hot {
-      background: #fef3c7;
-      color: #92400e;
-      border-color: #fbbf24;
-    }
-
-    /* ── Resolution Bar ── */
-    .resolution-bar-wrap {
-      margin-bottom: 12px;
-    }
-    .resolution-bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      margin-bottom: 5px;
-    }
-    .resolution-bar-label span:first-child { font-weight: 600; color: #374151; }
-    .resolution-bar-label span:last-child { font-weight: 700; color: #013A2F; }
-    .bar-track {
-      height: 10px;
-      border-radius: 6px;
-      background: #e4e7eb;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 6px;
       background: #1CE49B;
-      transition: width 0.4s ease;
-    }
-    .bar-fill.human {
-      background: #6366f1;
-    }
-    .bar-fill.email {
-      background: #94a3b8;
-    }
-
-    /* ── Flag List ── */
-    .flag-list {
-      list-style: none;
-    }
-    .flag-list li {
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #f3f4f6;
-      font-size: 13.5px;
-      color: #374151;
-      line-height: 1.55;
-    }
-    .flag-list li:last-child {
-      border-bottom: none;
-    }
-    .flag-icon {
-      font-size: 17px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .flag-list li strong {
       color: #013A2F;
       font-weight: 700;
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 12px;
     }
+    .pill-warn { background: #fff3cd; color: #7d4e00; }
+    .pill-blue { background: #dbeeff; color: #1a4f8a; }
 
-    /* ── Conversation Detail ── */
-    .conv-detail {
-      font-size: 13px;
+    /* ── Flags ── */
+    .flags-list { list-style: none; padding: 0; }
+    .flag-item {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      font-size: 14px;
+      line-height: 1.6;
+      border-left: 4px solid transparent;
     }
-    .conv-detail .conv-row {
-      display: flex;
-      gap: 10px;
-      padding: 11px 0;
-      border-bottom: 1px solid #f3f4f6;
-      align-items: flex-start;
+    .flag-critical { border-left-color: #e53e3e; }
+    .flag-warning  { border-left-color: #e6a817; }
+    .flag-positive { border-left-color: #1CE49B; }
+    .flag-item strong { display: block; font-size: 14.5px; margin-bottom: 4px; }
+    .flag-item .flag-detail { font-size: 13px; color: #555; margin-top: 4px; }
+
+    /* ── Repeated Questions Table ── */
+    .quality-pill {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 2px 9px;
+      font-size: 12px;
+      font-weight: 600;
     }
-    .conv-detail .conv-row:last-child {
-      border-bottom: none;
+    .q-na { background: #f0f0f0; color: #666; }
+    .q-gap { background: #ffe5e5; color: #a00; }
+
+    /* ── Notable Conversation Cards ── */
+    .conv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+    .conv-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border-top: 3px solid #cce4e0;
     }
+    .conv-card.bug { border-top-color: #e53e3e; }
+    .conv-card.email { border-top-color: #4a90d9; }
     .conv-tag {
       display: inline-block;
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      flex-shrink: 0;
+      letter-spacing: 0.4px;
     }
-    .conv-tag.resolved { background: #d1fae5; color: #065f46; }
-    .conv-tag.handoff  { background: #e0e7ff; color: #3730a3; }
-    .conv-tag.email    { background: #f1f5f9; color: #475569; }
-    .conv-tag.bug      { background: #fef3c7; color: #92400e; }
-    .conv-detail .conv-text { flex: 1; }
-    .conv-detail .conv-user { color: #6b7280; font-size: 11.5px; margin-top: 2px; }
+    .tag-bug { background: #ffe5e5; color: #a00; }
+    .tag-email { background: #dbeeff; color: #1a4f8a; }
+    .conv-card h3 { font-size: 14px; font-weight: 700; color: #013A2F; margin-bottom: 8px; line-height: 1.4; }
+    .conv-card p { font-size: 13px; color: #444; line-height: 1.55; margin-bottom: 8px; }
+    .conv-card .conv-user { font-size: 12px; color: #777; display: flex; align-items: center; gap: 6px; }
+    .conv-card .conv-user span { color: #013A2F; font-weight: 600; }
+    .conv-card .conv-id { font-size: 11px; color: #aaa; margin-top: 6px; }
 
     /* ── Footer ── */
     .footer {
+      background: #013A2F;
+      color: #B4F7CA;
       text-align: center;
-      margin-top: 40px;
+      padding: 20px 32px;
       font-size: 12px;
-      color: #9ca3af;
+      opacity: 0.85;
+      line-height: 1.7;
     }
-    .footer span {
-      color: #1CE49B;
-      font-weight: 600;
-    }
+    .footer strong { color: #1CE49B; }
   </style>
 </head>
 <body>
-<div class="page-wrapper">
 
-  <!-- ── Header ── -->
-  <div class="header">
-    <div class="header-top">
-      <div>
-        <h1><span>Fin AI Agent</span> Daily Summary</h1>
-        <div class="subtitle">Intercom support conversations · Automated daily report</div>
-      </div>
-      <div class="date-badge">March 21, 2026</div>
-    </div>
+<!-- ════════════════ HEADER ════════════════ -->
+<div class="header">
+  <div class="header-left">
+    <h1>Fin AI Agent Daily Summary</h1>
+    <p>Intercom support conversations · Automated daily report</p>
   </div>
+  <div class="date-badge">March 21, 2026</div>
+</div>
 
-  <!-- ── Incident Alert ── -->
+<div class="container">
+
+  <!-- ════════════════ ACTIVE BUG ALERT ════════════════ -->
   <div class="alert-banner">
-    <div class="alert-icon">⚠️</div>
-    <div>
-      <div class="alert-title">Active Bug Alert — TP/Spouse Field Corruption After Recent Update</div>
-      <div class="alert-body">
-        4 separate customers reported via email that a recent product update is appending "TP" or "Spouse" to employer/payer name fields, breaking Lacerte and W-2/1099 exports. Affected users include Matt Canty, Lori Holland, Jing Chen, and Stephanie Corbaley. This appears to be a systemic regression introduced in today's update — escalate to engineering immediately if not already tracked.
-      </div>
-    </div>
-  </div>
-
-  <!-- ── KPI Row ── -->
-  <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-value">27</div>
-      <div class="kpi-label">Total Conversations</div>
-      <div class="kpi-sub">Last 24 hours</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value">19</div>
-      <div class="kpi-label">Fin AI Conversations</div>
-      <div class="kpi-sub">In-app chat channel</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value accent">~79%</div>
-      <div class="kpi-label">Assumed Resolution</div>
-      <div class="kpi-sub">Fin-handled chats</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value warn">4</div>
-      <div class="kpi-label">Bug Reports</div>
-      <div class="kpi-sub">TP/Spouse regression</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value">~11 min</div>
-      <div class="kpi-label">Avg. Fin Close Time</div>
-      <div class="kpi-sub">Assumed-resolution chats</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value accent">2</div>
-      <div class="kpi-label">Human Handoffs</div>
-      <div class="kpi-sub">User-requested live chat</div>
-    </div>
-  </div>
-
-  <!-- ── Narrative ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">📋</span>Executive Summary</h2>
-    <div class="narrative">
-      <p>
-        The past 24 hours saw <strong>27 conversations</strong> across Juno's Intercom support channel.
-        Of these, <strong>19 were in-app chat conversations</strong> fully routed through the <strong>Fin AI agent</strong>,
-        while 8 arrived as email threads handled by the human support team. Fin participated in all in-app chats,
-        providing AI-generated answers sourced from the Juno help center.
-      </p>
-      <p>
-        Fin's <strong>assumed resolution rate was ~79%</strong> — conversations where the user stopped responding
-        after Fin's answer and the session timed out. <strong>2 conversations were explicitly handed off to a live agent</strong>
-        after users requested human support.
-      </p>
-      <p>
-        The dominant theme today was <strong>tax software export and integration issues</strong>, accounting for roughly
-        one-third of all conversations. This spans Drake export failures, Lacerte connection problems, and
-        a confirmed multi-user regression bug introduced by today's update. A secondary cluster of
-        <strong>document classification and supported-form questions</strong> remains a consistent recurring topic.
-      </p>
-      <p>
-        One escalation concern: a Drake export that completely failed for user Vijaya Kripanandan received
-        the same Fin troubleshooting steps 5+ times without resolution. The user expressed clear frustration
-        (<em>"You can keep saying the same thing 100 times and it still does not work"</em>), yet the conversation
-        closed via assumed resolution rather than human escalation — a gap worth reviewing in Fin's escalation guidance.
-      </p>
-    </div>
-  </div>
-
-  <!-- ── Resolution Breakdown ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">📊</span>Resolution Breakdown</h2>
-
-    <div class="resolution-bar-wrap">
-      <div class="resolution-bar-label">
-        <span>Fin Assumed Resolution (user went idle after AI answer)</span>
-        <span>15 of 19</span>
-      </div>
-      <div class="bar-track"><div class="bar-fill" style="width:79%"></div></div>
-    </div>
-
-    <div class="resolution-bar-wrap">
-      <div class="resolution-bar-label">
-        <span>Routed to Human Agent (user requested live chat)</span>
-        <span>2 of 19</span>
-      </div>
-      <div class="bar-track"><div class="bar-fill human" style="width:10%"></div></div>
-    </div>
-
-    <div class="resolution-bar-wrap">
-      <div class="resolution-bar-label">
-        <span>Email Thread (human team, no Fin involvement)</span>
-        <span>8 of 27</span>
-      </div>
-      <div class="bar-track"><div class="bar-fill email" style="width:30%"></div></div>
-    </div>
-
-    <p style="margin-top:14px; font-size:12.5px; color:#6b7280;">
-      <strong>Note on "Assumed Resolution":</strong> Intercom records these when users stop responding after a Fin answer.
-      This does not confirm the user's issue was actually solved — it means Fin provided a response and no follow-up was sent.
-      True resolution rate may be lower, particularly for complex export/integration issues.
-    </p>
-  </div>
-
-  <!-- ── Topic Breakdown ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">🗂️</span>Topic Categories (All 27 Conversations)</h2>
-    <table class="topic-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Count</th>
-          <th>Channel</th>
-          <th>Examples / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Export to Tax Software (Drake / Lacerte)</td>
-          <td><span class="count-pill">9</span></td>
-          <td>Chat + Email</td>
-          <td>Drake full-export failure, Lacerte SDK connection, "not connected to Lacerte" path issue, Lacerte exporting same data to multiple fields</td>
-        </tr>
-        <tr>
-          <td>TP/Spouse Import Bug (update regression)</td>
-          <td><span class="count-pill hot">4</span></td>
-          <td>Email only</td>
-          <td>Payer/employer name fields appending "TP" or "Spouse" after today's update — Matt Canty, Lori Holland, Jing Chen, Stephanie Corbaley</td>
-        </tr>
-        <tr>
-          <td>Document Classification / Processing</td>
-          <td><span class="count-pill">4</span></td>
-          <td>Chat + Email</td>
-          <td>1099 misclassified as 1098, large 1099 Composite (130 pages), "document not supported" question, reviewer inaccuracy report</td>
-        </tr>
-        <tr>
-          <td>Supported Documents / Product Capabilities</td>
-          <td><span class="count-pill">3</span></td>
-          <td>Chat</td>
-          <td>Supported 1040 documents list (asked twice by same user back-to-back), property taxes from 1098, K-1 state source amounts</td>
-        </tr>
-        <tr>
-          <td>Account &amp; Login Issues</td>
-          <td><span class="count-pill">3</span></td>
-          <td>Chat</td>
-          <td>Same user (Linda Weathers) opened 2 separate conversations about the same login failure — Fin handled both independently without connecting them</td>
-        </tr>
-        <tr>
-          <td>Client Management</td>
-          <td><span class="count-pill">2</span></td>
-          <td>Chat</td>
-          <td>Duplicate client created during TaxDome import, joint return name format question</td>
-        </tr>
-        <tr>
-          <td>Integration App / UI Issues</td>
-          <td><span class="count-pill">2</span></td>
-          <td>Email + Chat</td>
-          <td>Integration app rendering extra small on screen, "not connected" Lacerte error with path troubleshooting</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── Flags & Escalations ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">🚩</span>Flags &amp; Escalation Signals</h2>
-    <ul class="flag-list">
-      <li>
-        <div class="flag-icon">🔴</div>
-        <div>
-          <strong>TP/Spouse Regression Bug (4 users, email):</strong> Multiple users across different firms are reporting that today's update broke payer name fields by appending "TP" or "Spouse." This is not surfacing in chat (Fin can't detect it) but flooded the email queue. If not already in engineering's queue, this warrants an immediate hotfix and a proactive outreach message to the user base.
-        </div>
-      </li>
-      <li>
-        <div class="flag-icon">🟠</div>
-        <div>
-          <strong>Fin loop failure on Drake export (Vijaya Kripanandan):</strong> Fin repeated identical troubleshooting steps 5+ times. The user explicitly said the bot was unhelpful and the conversation closed via assumed resolution rather than human handoff. Fin's escalation trigger should catch "user has stated Fin's answer did not work" patterns and route to a human agent. This conversation is a good candidate for improving Fin's escalation guidance.
-        </div>
-      </li>
-      <li>
-        <div class="flag-icon">🟡</div>
-        <div>
-          <strong>Duplicate conversations for same issue (Linda Weathers):</strong> Linda opened two separate conversations about the same login failure (<em>"The system says I don't have an account"</em> and <em>"Can't log in"</em>). Fin resolved both independently with assumed resolution, but the underlying issue (possibly a locked or missing account) was never confirmed as fixed. Suggested: check if Linda's account is fully functional.
-        </div>
-      </li>
-      <li>
-        <div class="flag-icon">🟡</div>
-        <div>
-          <strong>Same user asked the same question twice (Blend S, demo account):</strong> Blend S (blend+demo@juno.tax) asked about supported and unsupported 1040 documents in two back-to-back conversations. The second conversation was routed to a live agent (Josh Hunter). This may indicate Fin's first answer was insufficient or the demo environment has specific edge cases. Worth reviewing whether the Supported Documents article needs clearer formatting.
-        </div>
-      </li>
-      <li>
-        <div class="flag-icon">🟢</div>
-        <div>
-          <strong>5-star CSAT received:</strong> Kat Ackerman (bhacpaco.com) gave a 5-star rating with the comment <em>"Sabrina and Kendyll were patient and extremely informative answering all the little detailed questions."</em> Fin successfully answered her initial Lacerte export question before she was routed to human support for a Zoom session.
-        </div>
-      </li>
+    <div class="alert-title">⚠️ Active Bug Alert — Export Data Issues (3 reports, same user, same client)</div>
+    <p>Maria Tran (mtran@thllp.com) at Tagawa &amp; Ho, LLP submitted 3 separate export-related bug reports today for client <strong>Daniel and Gail Muleady</strong>. All three indicate potential data-accuracy regressions in Juno's export pipeline affecting different tax forms.</p>
+    <ul>
+      <li><strong>Form 1095-A:</strong> Coverage Start &amp; Termination Dates exporting as <code>[0]</code> instead of actual dates</li>
+      <li><strong>1099 Brokerage (MJS/MFJ):</strong> Taxpayer/Joint designation incorrect — exported as "Taxpayer" instead of "Joint"</li>
+      <li><strong>Review Plan:</strong> Standard Deduction for seniors (65+) displayed incorrectly in review comments</li>
     </ul>
   </div>
 
-  <!-- ── Repeated Questions / Doc Gaps ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">📝</span>Repeated Questions &amp; Documentation Gaps</h2>
-    <div class="narrative">
-      <p>
-        The following questions appeared multiple times across the 24-hour window, suggesting gaps in product clarity,
-        onboarding documentation, or in-app guidance:
-      </p>
+  <!-- ════════════════ KPI CARDS ════════════════ -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">Total Conversations</div>
     </div>
-    <br>
-    <table class="topic-table">
-      <thead>
-        <tr>
-          <th>Repeated Question</th>
-          <th>Freq.</th>
-          <th>Suggested Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>How do I export to Drake / why is the export failing?</td>
-          <td><span class="count-pill">5+</span></td>
-          <td>Consider adding an in-app checklist before export; Drake checklist article exists but users still struggle</td>
-        </tr>
-        <tr>
-          <td>Why is Juno not connected to Lacerte / how do I fix the path?</td>
-          <td><span class="count-pill">3</span></td>
-          <td>Add a prominent "Lacerte not connecting?" link in the integration app error state</td>
-        </tr>
-        <tr>
-          <td>What documents does Juno support for a 1040?</td>
-          <td><span class="count-pill">2</span></td>
-          <td>Surface supported document list directly in the upload screen; Fin answered correctly but users keep asking</td>
-        </tr>
-        <tr>
-          <td>Can't log in / account doesn't exist</td>
-          <td><span class="count-pill">2</span></td>
-          <td>Login error message should include direct support contact; Fin deflects to email but no confirmation of resolution</td>
-        </tr>
-        <tr>
-          <td>Taxpayer vs. Spouse vs. Jointly — when to use each?</td>
-          <td><span class="count-pill">2</span></td>
-          <td>Add a tooltip or contextual help next to the filing-type selector in Preparer</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── Notable Conversations ── -->
-  <div class="section-card">
-    <h2><span class="section-icon">💬</span>Notable Conversations</h2>
-    <div class="conv-detail">
-
-      <div class="conv-row">
-        <span class="conv-tag resolved">✓ Resolved</span>
-        <div class="conv-text">
-          <strong>"1099 misclassified as 1098 — how to correct?"</strong><br>
-          Fin correctly explained the Human-in-the-Loop review screen for correcting form types, sourced from the relevant help article. User went idle after the answer.
-          <div class="conv-user">Brett Efimov · help@tinleycpa.com</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag resolved">✓ Resolved</span>
-        <div class="conv-text">
-          <strong>"Can Juno process a 130-page 1099 Composite?"</strong><br>
-          Fin confirmed the 250-page hard limit and advised on best practices for large composites. User then followed up asking about Taxpayer/Spouse/Jointly — Fin answered both correctly.
-          <div class="conv-user">Erica Garcia Junco · erica@nccorp.biz</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag resolved">✓ Resolved</span>
-        <div class="conv-text">
-          <strong>"Property taxes from a 1098 — are they supported?"</strong><br>
-          Fin gave a nuanced, accurate answer: property taxes are supported only when included on a 1098 (not from a standalone statement), citing the Schedule A Support Details article.
-          <div class="conv-user">Sabrina-Lacerte Chavez · sabrina@juno.tax (internal test)</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag handoff">→ Handoff</span>
-        <div class="conv-text">
-          <strong>"How do I get my docs into Lacerte?"</strong><br>
-          Fin provided a complete step-by-step answer with screenshots. User nonetheless requested live chat. A human agent (Josh Hunter) took over; user was on a Zoom call with Sabrina concurrently. Closed with 5-star CSAT.
-          <div class="conv-user">Kat Ackerman · katjunonl@bhacpaco.com</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag handoff">→ Handoff</span>
-        <div class="conv-text">
-          <strong>"What documents can't Juno support on a 1040?"</strong><br>
-          Fin answered correctly, but user immediately requested live chat. This was the second of two consecutive conversations by this user (demo account) on the same topic — suggesting the first Fin answer was insufficient.
-          <div class="conv-user">Blend S · blend+demo@juno.tax</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag bug">⚠ Bug</span>
-        <div class="conv-text">
-          <strong>Drake export completely failing — Fin loop with no escalation</strong><br>
-          All documents failed to export (W-2, 1099-R, 1099-DIV, etc.). Fin gave the same standard troubleshooting steps 5 times. User: <em>"You can keep saying the same thing 100 times and it still does not work."</em> Session closed via assumed resolution without human handoff — a missed escalation.
-          <div class="conv-user">Vijaya Kripanandan · vg@vrglobaltax.com</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag email">✉ Email</span>
-        <div class="conv-text">
-          <strong>[BUG] Employer/Payer name fields adding "TP" or "Spouse" after update</strong><br>
-          <em>"All of a sudden the employer name field and payer name field is adding either TP or Spouse to end of the name"</em> — one of 4 email reports today about the same regression.
-          <div class="conv-user">Matt Canty · matt@2409sacramento.com</div>
-        </div>
-      </div>
-
-      <div class="conv-row">
-        <span class="conv-tag email">✉ Email</span>
-        <div class="conv-text">
-          <strong>[BUG] "Everything was working great until some update" — imports broken</strong><br>
-          <em>"Everything was working great until some update that is trying to put TP and Spouse into the description and now everything is completely boggled."</em>
-          <div class="conv-user">Lori Holland · lholland@ascendcpa.tax</div>
-        </div>
-      </div>
-
+    <div class="kpi-card neutral">
+      <div class="kpi-value">0</div>
+      <div class="kpi-label">Fin AI Conversations</div>
+    </div>
+    <div class="kpi-card neutral">
+      <div class="kpi-value">—</div>
+      <div class="kpi-label">Assumed Resolution %</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">Bug Reports</div>
+    </div>
+    <div class="kpi-card neutral">
+      <div class="kpi-value">N/A</div>
+      <div class="kpi-label">Avg Fin Close Time</div>
+    </div>
+    <div class="kpi-card neutral">
+      <div class="kpi-value">0</div>
+      <div class="kpi-label">Human Handoffs</div>
     </div>
   </div>
 
-  <!-- ── Footer ── -->
-  <div class="footer">
-    Generated automatically by <span>Fin AI Daily Summary</span> · Juno Tax Support · March 21, 2026<br>
-    Data sourced from Intercom — conversations created between Mar 20, 2026 00:00 UTC and Mar 21, 2026 00:00 UTC
+  <!-- ════════════════ EXECUTIVE SUMMARY ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">📋 Executive Summary</div>
+    <div class="exec-summary">
+      <p>On March 21, 2026 (00:00–23:59 UTC), Juno's Intercom inbox received <strong>3 conversations</strong> — all via email, all submitted by Maria Tran of Tagawa &amp; Ho, LLP (Culver City, CA). Fin AI did not participate in any conversations today, as email is currently outside Fin's in-app chat scope and all three tickets were routed directly to human agents by the Juno bot workflow.</p>
+      <p>The day's support activity is dominated by a cluster of <strong>export data-accuracy bug reports</strong> for a single client (Daniel and Gail Muleady). The issues span three distinct tax forms: Form 1095-A (coverage dates rendering as <code>[0]</code>), the Brokerage Form 1099 (Taxpayer/Joint ownership misclassification), and the Review Plan (incorrect standard deduction shown for senior taxpayers aged 65+). All three tickets were submitted within approximately 90 minutes of each other, suggesting Maria Tran discovered these issues during a single review session.</p>
+      <p>The <strong>1099 Taxpayer/Joint misclassification</strong> is particularly consequential: Maria explicitly notes it impacts MFJ vs. MFS filing scenarios, which can have significant tax liability implications. The <strong>Form 1095-A date export issue</strong> (<code>[0]</code> output) represents a data integrity failure that, if widespread, could affect any client with ACA marketplace coverage. The <strong>senior standard deduction</strong> issue in the Review Plan export may affect a narrower population (taxpayers 65+) but is a compliance risk if not caught before filing.</p>
+      <p>No CSAT scores, Fin loops, or multi-user bug reports were observed. All tickets were assigned to individual human agents and remain open as of report generation. Immediate investigation of Juno's export pipeline is recommended, with priority on the 1099 ownership classification and 1095-A date fields.</p>
+    </div>
   </div>
 
+  <!-- ════════════════ RESOLUTION BREAKDOWN ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">📊 Resolution Breakdown</div>
+    <div class="resolution-bars">
+      <div class="bar-row">
+        <div class="bar-label">
+          <span>Fin AI – Assumed Resolution</span>
+          <span>0% (0 of 0 Fin conversations)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-green" style="width: 0%;">—</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">
+          <span>Fin AI – Human Handoff</span>
+          <span>0% (no Fin conversations)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-orange" style="width: 0%;">—</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">
+          <span>Email (all conversations)</span>
+          <span>100% (3 of 3)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-blue" style="width: 100%;">100%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">
+          <span>Open / Awaiting Response</span>
+          <span>100% (all 3 open, no admin reply yet)</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill bar-grey" style="width: 100%;">100%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ TOPIC CATEGORIES ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">🗂️ Topic Categories</div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Count</th>
+            <th>Channel</th>
+            <th>Key Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Export / Data Accuracy Bugs</strong></td>
+            <td><span class="pill">3</span></td>
+            <td><span class="pill-blue pill">Email</span></td>
+            <td>1095-A date exports as [0]; 1099 Taxpayer vs. Joint misclassification; Senior standard deduction wrong in Review Plan export</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════ FLAGS & ESCALATION SIGNALS ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">🚩 Flags &amp; Escalation Signals</div>
+    <ul class="flags-list">
+
+      <li class="flag-item flag-critical">
+        <strong>🔥 Form 1095-A: Coverage Dates Exporting as [0]</strong>
+        <span class="flag-detail">Maria Tran reported that Form 1095-A Coverage Start Date and Coverage Termination Date are both exporting as <code>[0]</code> when pushed to Lacerte. This is a data integrity failure — the actual coverage dates are not being passed through the export pipeline. If this affects all clients with ACA marketplace coverage (1095-A), the scope could be wide. Immediate engineering investigation required. Ticket #215473580488260.</span>
+      </li>
+
+      <li class="flag-item flag-critical">
+        <strong>🔥 1099 Brokerage: Taxpayer/Joint Ownership Misclassification</strong>
+        <span class="flag-detail">For client Daniel and Gail Muleady, the Brokerage Form 1099 export (covering 1099-INT, 1099-DIV, 1099-B) is tagging the account as "Taxpayer" when the Morgan Stanley account is a joint account and should be tagged "Joint." Maria notes this directly impacts MFJ vs. MFS filing decisions and has potential tax liability ramifications. The root cause appears to be the export using the Legal Name Reported to IRS rather than Account Owner designation. Ticket #215473580578849.</span>
+      </li>
+
+      <li class="flag-item flag-warning">
+        <strong>🟡 Review Plan: Incorrect Standard Deduction for Senior Taxpayers</strong>
+        <span class="flag-detail">Both Daniel and Gail Muleady are 65 or older. The Review Plan export is showing an incorrect standard deduction amount in review comments for seniors. This likely affects any MFJ client where both spouses are 65+, representing a non-trivial cohort during tax season. Could be a calculation or display bug in the Review Plan generation logic. Ticket #215473580896930.</span>
+      </li>
+
+      <li class="flag-item flag-warning">
+        <strong>🟡 Same User, 3 Tickets in One Day (Same Client)</strong>
+        <span class="flag-detail">All three bug reports were submitted by Maria Tran (mtran@thllp.com) at Tagawa &amp; Ho, LLP for a single client (Daniel and Gail Muleady). This suggests the bugs were discovered during an active work session, not separate incidents. It's possible additional clients at this firm have the same issues — proactively reaching out to Maria Tran post-fix would be good service recovery.</span>
+      </li>
+
+      <li class="flag-item flag-positive">
+        <strong>🟢 All Tickets Properly Routed &amp; Assigned</strong>
+        <span class="flag-detail">Juno's bot workflow successfully created support tickets, sent automated acknowledgment emails, and assigned each conversation to a human agent within seconds (≤9 seconds from creation to assignment). No routing failures observed.</span>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- ════════════════ REPEATED QUESTIONS / DOC GAPS ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">📚 Repeated Questions / Documentation Gaps</div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Repeated Question / Issue</th>
+            <th>Freq</th>
+            <th>Fin Answer Quality</th>
+            <th>Suggested Doc Improvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Export form data showing [0] or incorrect values</strong></td>
+            <td><span class="pill">3</span></td>
+            <td><span class="quality-pill q-na">N/A – Email only</span></td>
+            <td>Create a known-issues / troubleshooting article for export data anomalies. Include steps to verify export output, how to report issues, and expected field values for common forms (1095-A, 1099). Link from the export workflow help article.</td>
+          </tr>
+          <tr>
+            <td><strong>Taxpayer / Spouse / Joint classification in 1099 export</strong></td>
+            <td><span class="pill">1</span></td>
+            <td><span class="quality-pill q-na">N/A – Email only</span></td>
+            <td>Add a section to the Brokerage 1099 export help article explaining how Juno determines Taxpayer/Spouse/Joint designation, including known limitations regarding joint accounts and Legal Name vs. Account Owner logic.</td>
+          </tr>
+          <tr>
+            <td><strong>Senior standard deduction in Review Plan</strong></td>
+            <td><span class="pill">1</span></td>
+            <td><span class="quality-pill q-na">N/A – Email only</span></td>
+            <td>Document how Juno handles the additional standard deduction for taxpayers 65+. Clarify if the Review Plan reflects the enhanced deduction and how to verify the correct amount is applied for senior clients.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════════════════ NOTABLE CONVERSATIONS ════════════════ -->
+  <div class="section-wrap">
+    <div class="section-title">💬 Notable Conversations</div>
+    <div class="conv-grid">
+
+      <div class="conv-card bug">
+        <div class="conv-tag tag-bug">⚠️ Bug Report</div>
+        <h3>Form 1095-A: Export Date</h3>
+        <p>Coverage Start Date and Coverage Termination Date for client Daniel and Gail Muleady are both exporting as <strong>[0]</strong> to Lacerte instead of actual dates. User cleared the field before screenshotting but captured the blank output. Potentially affects all clients with ACA marketplace coverage.</p>
+        <div class="conv-user">✉️ <span>mtran@thllp.com</span> · Tagawa &amp; Ho, LLP</div>
+        <div class="conv-id">ID: 215473580488260 · Created: ~9:13 AM UTC · <a href="https://app.intercom.com/a/inbox/_/inbox/conversation/215473580488260" target="_blank" rel="noopener">View in Intercom ↗</a></div>
+      </div>
+
+      <div class="conv-card bug">
+        <div class="conv-tag tag-bug">⚠️ Bug Report</div>
+        <h3>Brokerage Form 1099: Taxpayer, Spouse, or Joint Misclassification</h3>
+        <p>For client Daniel and Gail Muleady, the Brokerage 1099 export (1099-INT, 1099-DIV, 1099-B via Morgan Stanley) tagged the account as <strong>"Taxpayer"</strong> instead of <strong>"Joint."</strong> Root cause appears to be export using IRS Legal Name rather than Account Owner. Flags MFJ vs. MFS ramification.</p>
+        <div class="conv-user">✉️ <span>mtran@thllp.com</span> · Tagawa &amp; Ho, LLP</div>
+        <div class="conv-id">ID: 215473580578849 · Created: ~10:19 AM UTC · <a href="https://app.intercom.com/a/inbox/_/inbox/conversation/215473580578849" target="_blank" rel="noopener">View in Intercom ↗</a></div>
+      </div>
+
+      <div class="conv-card bug">
+        <div class="conv-tag tag-bug">⚠️ Bug Report</div>
+        <h3>Review Plan: Incorrect Standard Deduction for Seniors</h3>
+        <p>For client Daniel and Gail Muleady (both 65+), the Review Plan export is showing an incorrect standard deduction in review comments. The enhanced deduction for taxpayers aged 65 or older does not appear to be correctly reflected in the generated Review Plan output.</p>
+        <div class="conv-user">✉️ <span>mtran@thllp.com</span> · Tagawa &amp; Ho, LLP</div>
+        <div class="conv-id">ID: 215473580896930 · Created: ~11:22 AM UTC · <a href="https://app.intercom.com/a/inbox/_/inbox/conversation/215473580896930" target="_blank" rel="noopener">View in Intercom ↗</a></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<div class="footer">
+  <strong>Generated automatically by Fin AI Daily Summary · Juno Tax Support · March 22, 2026</strong><br>
+  Data sourced from Intercom — conversations created between <strong>2026-03-21 00:00 UTC</strong> and <strong>2026-03-22 00:00 UTC</strong>
 </div>
+
 </body>
 </html>
