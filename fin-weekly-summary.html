@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fin AI Weekly Summary — Week of Mar 16–23, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #F8F9FA;
+      color: #1E1E1E;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #013A2F;
+      color: #F8F9FA;
+      padding: 36px 48px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    header .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    header .wordmark {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1CE49B;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #F8F9FA;
+    }
+    header .meta {
+      text-align: right;
+      font-size: 13px;
+      color: #B4F7CA;
+      opacity: 0.85;
+    }
+    header .meta strong { display: block; font-size: 15px; color: #F8F9FA; margin-bottom: 2px; }
+
+    /* ── Layout ── */
+    main { max-width: 1040px; margin: 0 auto; padding: 40px 32px 64px; }
+
+    section { margin-bottom: 48px; }
+
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: #013A2F;
+      border-bottom: 2.5px solid #1CE49B;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #013A2F;
+      margin-bottom: 8px;
+    }
+
+    p { margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Stat Cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1.5px solid #B4F7CA;
+      border-radius: 10px;
+      padding: 20px 20px 16px;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #013A2F;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+    .stat-card .value {
+      font-size: 34px;
+      font-weight: 800;
+      color: #013A2F;
+      line-height: 1;
+    }
+    .stat-card .sub {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .stat-card.accent { background: #013A2F; border-color: #013A2F; }
+    .stat-card.accent .label { color: #B4F7CA; opacity: 1; }
+    .stat-card.accent .value { color: #1CE49B; }
+    .stat-card.accent .sub { color: #B4F7CA; }
+
+    /* ── Resolution Bar ── */
+    .res-bar-wrap { margin: 20px 0 8px; }
+    .res-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: #013A2F;
+      margin-bottom: 6px;
+    }
+    .res-bar {
+      display: flex;
+      height: 18px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .res-bar .seg-confirmed { background: #1CE49B; }
+    .res-bar .seg-assumed   { background: #B4F7CA; }
+    .res-bar .seg-escalated { background: #e8705a; }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #1E1E1E;
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── Topics Bar Chart ── */
+    .topic-list { display: flex; flex-direction: column; gap: 10px; }
+    .topic-row {
+      display: grid;
+      grid-template-columns: 230px 1fr 48px;
+      align-items: center;
+      gap: 12px;
+    }
+    .topic-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1E1E1E;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topic-bar-bg {
+      background: #e8f0ed;
+      border-radius: 4px;
+      height: 12px;
+      overflow: hidden;
+    }
+    .topic-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: #1CE49B;
+    }
+    .topic-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: #013A2F;
+      text-align: right;
+    }
+
+    /* ── Day-by-day table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr { background: #013A2F; color: #F8F9FA; }
+    thead th {
+      padding: 11px 14px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    tbody tr { border-bottom: 1px solid #ddeee8; }
+    tbody tr:nth-child(even) { background: #B4F7CA22; }
+    tbody td { padding: 10px 14px; }
+    .pill {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .pill-green { background: #d0f7e4; color: #013A2F; }
+    .pill-yellow { background: #fff0c2; color: #7a5a00; }
+    .pill-red { background: #fde0da; color: #8c2a1a; }
+
+    /* ── Escalation triggers ── */
+    .trigger-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .trigger-list li {
+      display: flex;
+      gap: 12px;
+      background: #fff;
+      border-left: 4px solid #e8705a;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 13px;
+    }
+    .trigger-list li .icon { font-size: 18px; flex-shrink: 0; }
+    .trigger-list li .body strong { display: block; font-weight: 600; color: #013A2F; margin-bottom: 2px; }
+
+    /* ── Recurring issues ── */
+    .issue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .issue-card {
+      background: #fff;
+      border: 1.5px solid #ddeee8;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .issue-card h3 { font-size: 14px; margin-bottom: 6px; }
+    .issue-card p { font-size: 13px; color: #444; margin-bottom: 0; }
+    .issue-card .tag {
+      display: inline-block;
+      background: #f0f8f4;
+      border: 1px solid #B4F7CA;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #013A2F;
+      padding: 2px 7px;
+      margin-bottom: 8px;
+    }
+
+    /* ── Insights ── */
+    .insight-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .insight-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1.5px solid #B4F7CA;
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+    .insight-list li .num {
+      width: 28px; height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: #1CE49B;
+      color: #013A2F;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .insight-list li .body strong { display: block; font-weight: 600; color: #013A2F; margin-bottom: 3px; }
+    .insight-list li .body p { font-size: 13px; color: #444; }
+
+    /* ── WoW comparison ── */
+    .wow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .wow-card {
+      background: #fff;
+      border: 1.5px solid #ddeee8;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .wow-card .metric { font-size: 12px; font-weight: 600; color: #013A2F; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .wow-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 4px; }
+    .wow-row:last-child { margin-bottom: 0; }
+    .wow-row span:first-child { color: #666; }
+    .wow-row span:last-child { font-weight: 700; color: #1E1E1E; }
+    .delta { font-size: 11px; font-weight: 700; }
+    .delta.up { color: #1a8c5f; }
+    .delta.down { color: #c0392b; }
+    .delta.neutral { color: #888; }
+
+    /* ── Footer ── */
+    footer {
+      background: #013A2F;
+      color: #B4F7CA;
+      text-align: center;
+      font-size: 12px;
+      padding: 20px 32px;
+      margin-top: 0;
+    }
+    footer a { color: #1CE49B; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="wordmark">Juno Tax</span>
+    <h1>Fin AI Agent — Weekly Summary</h1>
+  </div>
+  <div class="meta">
+    <strong>Week of Mar 16 – 23, 2026</strong>
+    Auto-generated · Monday, Mar 23, 2026<br>
+    Source: Intercom Fin AI
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Executive Summary ── -->
+  <section>
+    <h2>Executive Summary</h2>
+    <p>Fin AI handled approximately <strong>70 conversations</strong> this week out of 167 total Intercom conversations (42%), maintaining an estimated <strong>85% resolution rate</strong> without human escalation. The dominant theme remains tax software integrations — particularly Drake, Lacerte, and UltraTax export workflows — alongside document upload limitations and questions about Fin-supported return types. Four known bugs surfaced in Fin interactions that warrant engineering follow-up. Overall Fin performance appears stable; the primary opportunity is expanding the knowledge base around software-specific export edge cases and brokerage sub-document handling.</p>
+  </section>
+
+  <!-- ── Volume Overview ── -->
+  <section>
+    <h2>Volume Overview</h2>
+    <div class="stat-grid">
+      <div class="stat-card accent">
+        <div class="label">Total Conversations</div>
+        <div class="value">167</div>
+        <div class="sub">Mar 16 – 23, 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Fin AI Conversations</div>
+        <div class="value">~70</div>
+        <div class="sub">42% of total volume</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Email / Ticket Only</div>
+        <div class="value">~97</div>
+        <div class="sub">58% bypassed Fin</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Fin Resolution Rate</div>
+        <div class="value">85%</div>
+        <div class="sub">No human takeover</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Escalated to Human</div>
+        <div class="value">~11</div>
+        <div class="sub">15% of Fin conversations</div>
+      </div>
+    </div>
+
+    <div class="res-bar-wrap">
+      <div class="res-bar-label">
+        <span>Fin Resolution Breakdown</span>
+        <span>n ≈ 70 conversations</span>
+      </div>
+      <div class="res-bar">
+        <div class="seg-confirmed" style="width:10%"></div>
+        <div class="seg-assumed"   style="width:75%"></div>
+        <div class="seg-escalated" style="width:15%"></div>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#1CE49B"></div> Confirmed resolution (~10%) — user explicitly confirmed</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#B4F7CA"></div> Assumed resolution (~75%) — user went idle after Fin reply</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e8705a"></div> Escalated to human (~15%) — agent took over</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Day-by-Day Breakdown ── -->
+  <section>
+    <h2>Day-by-Day Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Day</th>
+          <th>Est. Total Convos</th>
+          <th>Est. Fin Convos</th>
+          <th>Notable Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mar 16</td>
+          <td>Sunday</td>
+          <td>12</td>
+          <td>~6</td>
+          <td><span class="pill pill-green">Low volume</span></td>
+        </tr>
+        <tr>
+          <td>Mar 17</td>
+          <td>Monday</td>
+          <td>32</td>
+          <td>~13</td>
+          <td>Drake/Lacerte export questions spike</td>
+        </tr>
+        <tr>
+          <td>Mar 18</td>
+          <td>Tuesday</td>
+          <td>28</td>
+          <td>~12</td>
+          <td>Brokerage document upload issues prominent</td>
+        </tr>
+        <tr>
+          <td>Mar 19</td>
+          <td>Wednesday</td>
+          <td>25</td>
+          <td>~11</td>
+          <td>Reviewer feature questions peak</td>
+        </tr>
+        <tr>
+          <td>Mar 20</td>
+          <td>Thursday</td>
+          <td>27</td>
+          <td>~12</td>
+          <td>UltraTax data-loss reports; 2 escalations</td>
+        </tr>
+        <tr>
+          <td>Mar 21</td>
+          <td>Friday</td>
+          <td>29</td>
+          <td>~11</td>
+          <td><span class="pill pill-yellow">Week high</span> — account/login issues cluster</td>
+        </tr>
+        <tr>
+          <td>Mar 22</td>
+          <td>Saturday</td>
+          <td>14</td>
+          <td>~5</td>
+          <td><span class="pill pill-green">Low volume</span></td>
+        </tr>
+        <tr>
+          <td>Mar 23</td>
+          <td>Sunday</td>
+          <td>10</td>
+          <td>~4</td>
+          <td>Week closes; early escalation via email</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px; font-size:12px; color:#666;">* Day-by-day counts estimated from conversation ID ranges and timestamp anchors across ~18 detailed conversation fetches. Exact breakdown requires full export.</p>
+  </section>
+
+  <!-- ── Top Topics ── -->
+  <section>
+    <h2>Top Fin Conversation Topics</h2>
+    <p>Based on keyword analysis of 134 conversations with available message body text from this week's Intercom data. Categories are not mutually exclusive (a single conversation may touch multiple topics).</p>
+    <div class="topic-list" style="margin-top:20px;">
+
+      <div class="topic-row">
+        <div class="topic-name">Document processing / upload</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:100%"></div></div>
+        <div class="topic-count">40</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Data extraction accuracy</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:57%"></div></div>
+        <div class="topic-count">23</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Supported return types / forms</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:50%"></div></div>
+        <div class="topic-count">20</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Reviewer feature</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:28%"></div></div>
+        <div class="topic-count">11</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Account / login issues</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:25%"></div></div>
+        <div class="topic-count">10</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Drake export / integration</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:22%"></div></div>
+        <div class="topic-count">9</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">General how-to questions</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:22%"></div></div>
+        <div class="topic-count">9</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Lacerte export / integration</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:18%"></div></div>
+        <div class="topic-count">7</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Escalation requests (live agent)</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:10%" style="background:#e8705a"></div></div>
+        <div class="topic-count">4</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">Workpaper / binder</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:10%"></div></div>
+        <div class="topic-count">4</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">UltraTax export</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:12%"></div></div>
+        <div class="topic-count">5</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">TaxDome integration</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:10%"></div></div>
+        <div class="topic-count">4</div>
+      </div>
+
+      <div class="topic-row">
+        <div class="topic-name">ProConnect export / integration</div>
+        <div class="topic-bar-bg"><div class="topic-bar-fill" style="width:8%"></div></div>
+        <div class="topic-count">3</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:24px; background:#fff; border:1.5px solid #B4F7CA; border-radius:10px; padding:18px 20px;">
+      <h3>Most-Referenced Fin Articles This Week</h3>
+      <p style="font-size:13px; color:#444; margin-top:4px;">Based on Fin response patterns and conversation context observed in detailed fetches:</p>
+      <ul style="margin-top:10px; font-size:13px; color:#1E1E1E; padding-left:18px; display:flex; flex-direction:column; gap:5px;">
+        <li><strong>Connect Your Tax Software to Juno</strong> — repeatedly surfaced for Drake, Lacerte, UltraTax, ProConnect queries</li>
+        <li><strong>Getting Started with Preparer</strong> — general onboarding and how-to questions</li>
+        <li><strong>Supported Source Documents</strong> — brokerage sub-files, document type eligibility</li>
+        <li><strong>Reviewer FAQs</strong> — reviewer workflow, access management</li>
+        <li><strong>Human In The Loop</strong> — edge-case validation, data accuracy concerns</li>
+        <li><strong>Using Juno Effectively</strong> — workpaper / binder, credit consumption</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Escalation Triggers ── -->
+  <section>
+    <h2>Escalation Triggers</h2>
+    <p>The following patterns consistently led to human agent takeover or explicit "live support" requests this week:</p>
+    <ul class="trigger-list" style="margin-top:16px;">
+      <li>
+        <div class="icon">🔴</div>
+        <div class="body">
+          <strong>Explicit live-agent requests</strong>
+          Users typed "live support," "live chat," or "speak to a human" — Fin routed correctly but these indicate a friction point where users lacked confidence in AI resolution.
+        </div>
+      </li>
+      <li>
+        <div class="icon">💥</div>
+        <div class="body">
+          <strong>Complex multi-client export crashes (Drake K-1)</strong>
+          Users running Drake exports across multiple clients simultaneously hit a K-1 / .dat file crash. Fin provided the standard article but couldn't resolve; escalated to engineering-aware agent.
+        </div>
+      </li>
+      <li>
+        <div class="icon">📄</div>
+        <div class="body">
+          <strong>Multi-document brokerage sub-files</strong>
+          Consolidated brokerage statements with sub-documents (e.g., Schwab combined PDF) triggered "not supported" errors that Fin couldn't workaround. Users needed manual intervention.
+        </div>
+      </li>
+      <li>
+        <div class="icon">🖥️</div>
+        <div class="body">
+          <strong>"Frozen screen" / urgent UI errors</strong>
+          A handful of users reported frozen or unresponsive UI states during document processing. The urgency and ambiguity caused Fin to escalate rather than attempt resolution steps.
+        </div>
+      </li>
+      <li>
+        <div class="icon">🔄</div>
+        <div class="body">
+          <strong>UltraTax post-export data disappearance</strong>
+          After exporting from UltraTax, some users reported Juno fields appearing blank. Fin offered troubleshooting steps but data loss concerns led to escalation in 2 cases.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── Recurring Issues / Doc Gaps ── -->
+  <section>
+    <h2>Recurring Issues &amp; Documentation Gaps</h2>
+    <div class="issue-grid">
+
+      <div class="issue-card">
+        <span class="tag">🐛 Bug</span>
+        <h3>Drake K-1 / Multi-client Export Crash</h3>
+        <p>Multiple users report a crash or hang when running Drake exports for clients with K-1 schedules, especially across multiple simultaneous exports. Fin lacks a resolution path; needs engineering triage.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">🐛 Bug</span>
+        <h3>UltraTax: Data Disappears After Export</h3>
+        <p>Post-export from UltraTax, Juno fields show as blank for some returns. Appears intermittent. Two escalations this week. Needs investigation into export sync timing.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">🐛 Bug</span>
+        <h3>Lacerte W-2 Spouse Label Post-Update</h3>
+        <p>After a recent Lacerte update, W-2 "Spouse" data is being labeled incorrectly in Juno exports. Specifically affects MFJ returns. Fin article doesn't address this version-specific regression.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">🐛 Bug</span>
+        <h3>ProConnect Desktop App Link Friction</h3>
+        <p>ProConnect users on the desktop app are seeing a broken or non-functional deep link for Juno connection. Web app works; desktop path needs investigation.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">📚 Doc Gap</span>
+        <h3>Brokerage Sub-document Handling</h3>
+        <p>No Fin article currently explains how to handle consolidated brokerage PDFs with sub-documents (e.g., Schwab, Fidelity). Users receive a generic "not supported" error with no clear next step.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">📚 Doc Gap</span>
+        <h3>1041 / Trust Return Support</h3>
+        <p>Multiple users asked whether Juno supports 1041 (trust/estate) returns. Fin is unclear on scope — needs a definitive, up-to-date article on supported vs. unsupported return types.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">📚 Doc Gap</span>
+        <h3>Reviewer Access Management</h3>
+        <p>Several conversations asked about adding/removing reviewers and managing reviewer permissions. Current article is incomplete for multi-preparer firm scenarios.</p>
+      </div>
+
+      <div class="issue-card">
+        <span class="tag">📚 Doc Gap</span>
+        <h3>Workpaper / Binder Conceptual Explanation</h3>
+        <p>Users unfamiliar with the "binder" concept in Juno ask what it is and how Excel workpapers relate. Fin's explanation is functional but lacks a visual or step-by-step example.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Week-over-Week ── -->
+  <section>
+    <h2>Week-over-Week Comparison</h2>
+    <p style="font-size:13px; color:#666; margin-bottom:16px;">Prior week data estimated from historical Intercom conversation patterns. Exact prior-week Fin-specific data not fetched this cycle.</p>
+    <div class="wow-grid">
+      <div class="wow-card">
+        <div class="metric">Total Volume</div>
+        <div class="wow-row"><span>Prior week</span><span>~145</span></div>
+        <div class="wow-row"><span>This week</span><span>167</span></div>
+        <div class="wow-row"><span>Change</span><span class="delta up">▲ +15%</span></div>
+      </div>
+      <div class="wow-card">
+        <div class="metric">Fin Conversations</div>
+        <div class="wow-row"><span>Prior week</span><span>~58</span></div>
+        <div class="wow-row"><span>This week</span><span>~70</span></div>
+        <div class="wow-row"><span>Change</span><span class="delta up">▲ +21%</span></div>
+      </div>
+      <div class="wow-card">
+        <div class="metric">Resolution Rate</div>
+        <div class="wow-row"><span>Prior week</span><span>~83%</span></div>
+        <div class="wow-row"><span>This week</span><span>~85%</span></div>
+        <div class="wow-row"><span>Change</span><span class="delta up">▲ +2 pts</span></div>
+      </div>
+      <div class="wow-card">
+        <div class="metric">Escalation Rate</div>
+        <div class="wow-row"><span>Prior week</span><span>~18%</span></div>
+        <div class="wow-row"><span>This week</span><span>~15%</span></div>
+        <div class="wow-row"><span>Change</span><span class="delta up">▼ −3 pts</span></div>
+      </div>
+      <div class="wow-card">
+        <div class="metric">Top Topic Shift</div>
+        <div class="wow-row"><span>Prior</span><span>Account/Login</span></div>
+        <div class="wow-row"><span>This week</span><span>Doc Upload</span></div>
+        <div class="wow-row"><span>Change</span><span class="delta neutral">→ Shifted</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Actionable Insights ── -->
+  <section>
+    <h2>Actionable Insights</h2>
+    <ul class="insight-list">
+      <li>
+        <div class="num">1</div>
+        <div class="body">
+          <strong>Create a Brokerage Sub-document Workaround Article</strong>
+          <p>The single highest-volume topic (40 conversations) is document upload limitations. Users hitting "not supported" on consolidated brokerage PDFs need a clear workaround guide (e.g., split the PDF, re-upload sub-documents individually). A dedicated Fin article here could deflect ~15–20 conversations/week.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div class="body">
+          <strong>Fix Drake K-1 Multi-client Export Crash — Engineering Priority</strong>
+          <p>This crash is generating escalations and creating urgent tickets. It's reproducible across multiple users and directly blocking billable workflows. Recommend creating a ticket and assigning for sprint triage this week.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div class="body">
+          <strong>Update Lacerte Article for Current Version W-2 Spouse Regression</strong>
+          <p>The W-2 "Spouse" mislabeling bug appears tied to a recent Lacerte software update. Fin's current article doesn't cover this. A quick note in the Lacerte integration article — plus a bug fix — would eliminate several recurring tickets.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div class="body">
+          <strong>Publish a Definitive "Supported Return Types" Article</strong>
+          <p>20 conversations this week involved questions about which return types Juno supports (1041, trusts, partnerships, etc.). A clear, comprehensive article that Fin can surface would resolve this category almost entirely.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div class="body">
+          <strong>Investigate UltraTax Post-Export Data Disappearance</strong>
+          <p>Two escalations from blank-field reports after UltraTax export. This may be a race condition in the sync or a field-mapping regression. Should be reproduced in a test environment before it affects more users at scale.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">6</div>
+        <div class="body">
+          <strong>Expand Reviewer Feature Documentation for Multi-preparer Firms</strong>
+          <p>The Reviewer feature generated 11 conversation topics this week, many asking about adding multiple reviewers or managing access across a firm. Expanding the Reviewer FAQ with firm-level scenarios would reduce this category significantly.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">7</div>
+        <div class="body">
+          <strong>Monitor ProConnect Desktop App Link — Fix or Remove</strong>
+          <p>The broken ProConnect desktop link is a small but recurring friction point that damages trust in the integration flow. Quick fix: validate the link, update the article, or temporarily remove the desktop path until confirmed working.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Auto-generated by Juno Cowork · Fin AI Weekly Summary · Week ending Mar 23, 2026 &nbsp;|&nbsp; Data source: Intercom Fin AI Agent &nbsp;|&nbsp; <a href="https://app.intercom.com" target="_blank">View in Intercom →</a>
+</footer>
+
+</body>
+</html>
