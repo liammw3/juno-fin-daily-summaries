@@ -1,527 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="/favicon.ico">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fin AI Agent Daily Summary â March 22, 2026</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fin AI Daily Summary — March 23, 2026</title>
+<style>
+  :root {
+    --bg: #F8F9FA;
+    --primary: #013A2F;
+    --accent: #1CE49B;
+    --mint: #B4F7CA;
+    --body: #1E1E1E;
+    --warning: #e6a817;
+    --danger: #d64045;
+    --card-bg: #ffffff;
+    --border: #e2e8f0;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
 
-    :root {
-      --bg: #F8F9FA;
-      --dark: #013A2F;
-      --accent: #1CE49B;
-      --mint: #B4F7CA;
-      --text: #1E1E1E;
-      --warning: #e6a817;
-      --card-bg: #ffffff;
-      --border: #e0e7e4;
-      --muted: #6c757d;
-    }
+  /* HEADER */
+  .header {
+    background: var(--primary);
+    color: #fff;
+    padding: 36px 48px 28px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span {
+    color: var(--accent);
+  }
+  .header-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+  }
+  .header-badge {
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 0;
-    }
+  /* CONTENT WRAPPER */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
 
-    /* ââ Header ââ */
-    .header {
-      background: var(--dark);
-      color: #fff;
-      padding: 36px 48px 32px;
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-    .header h1 span { color: var(--accent); }
-    .header .subtitle {
-      margin-top: 6px;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.65);
-    }
-    .date-badge {
-      background: var(--accent);
-      color: var(--dark);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 6px 16px;
-      border-radius: 999px;
-      white-space: nowrap;
-      align-self: flex-start;
-    }
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 
-    /* ââ Layout ââ */
-    .content {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 24px 64px;
-    }
+  /* KPI CARDS */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-value.accent { color: var(--accent); }
+  .kpi-value.warning { color: var(--warning); }
+  .kpi-value.danger { color: var(--danger); }
+  .kpi-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
 
-    /* ââ KPI Cards ââ */
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .kpi-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 18px;
-      text-align: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .kpi-card .kpi-value {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--dark);
-      line-height: 1;
-    }
-    .kpi-card .kpi-value.accent { color: #059669; }
-    .kpi-card .kpi-value.warning { color: var(--warning); }
-    .kpi-card .kpi-value.handoff { color: #dc2626; }
-    .kpi-card .kpi-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
+  /* EXECUTIVE SUMMARY */
+  .exec-summary {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--accent);
+  }
+  .exec-summary p {
+    color: #374151;
+    line-height: 1.75;
+    margin-bottom: 8px;
+  }
+  .exec-summary p:last-child { margin-bottom: 0; }
 
-    /* ââ Section headings ââ */
-    .section { margin-bottom: 36px; }
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--dark);
-      border-left: 4px solid var(--accent);
-      padding-left: 12px;
-      margin-bottom: 16px;
-    }
+  /* RESOLUTION BREAKDOWN */
+  .resolution-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .resolution-row {
+    margin-bottom: 16px;
+  }
+  .resolution-row:last-child { margin-bottom: 0; }
+  .resolution-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .resolution-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--body);
+  }
+  .resolution-count {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .bar-track {
+    background: #f1f5f9;
+    border-radius: 6px;
+    height: 10px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+  }
+  .bar-assumed { background: var(--accent); }
+  .bar-confirmed { background: var(--primary); }
+  .bar-escalated { background: var(--danger); }
+  .bar-email { background: #94a3b8; }
 
-    /* ââ Cards / panels ââ */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
+  /* TOPIC TABLE */
+  .topic-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .topic-table thead tr {
+    background: var(--primary);
+    color: #fff;
+  }
+  .topic-table thead th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .topic-table tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .topic-table tbody tr:last-child { border-bottom: none; }
+  .topic-table tbody tr:nth-child(even) { background: #fafafa; }
+  .topic-table td {
+    padding: 13px 16px;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .topic-table td:first-child { font-weight: 600; color: var(--primary); }
+  .count-badge {
+    display: inline-block;
+    background: var(--mint);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
 
-    /* ââ Executive Summary ââ */
-    .exec-summary p { margin-bottom: 14px; color: var(--text); }
-    .exec-summary p:last-child { margin-bottom: 0; }
+  /* FLAGS */
+  .flags-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .flag-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .flag-card.critical { border-left: 4px solid var(--danger); background: #fff8f8; }
+  .flag-card.warning { border-left: 4px solid var(--warning); background: #fffdf5; }
+  .flag-card.positive { border-left: 4px solid var(--accent); background: #f6fef9; }
+  .flag-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .flag-body {}
+  .flag-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .flag-card.critical .flag-title { color: var(--danger); }
+  .flag-card.warning .flag-title { color: #b45309; }
+  .flag-card.positive .flag-title { color: var(--primary); }
+  .flag-desc { font-size: 13px; color: #4b5563; line-height: 1.6; }
+  .flag-meta { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
 
-    /* ââ Resolution Bar Chart ââ */
-    .bar-chart { display: flex; flex-direction: column; gap: 14px; }
-    .bar-row { display: flex; align-items: center; gap: 12px; }
-    .bar-label { width: 160px; font-size: 0.9rem; font-weight: 500; flex-shrink: 0; }
-    .bar-track { flex: 1; background: #f0f4f2; border-radius: 999px; height: 20px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 999px; transition: width 0.3s; }
-    .bar-fill.green { background: var(--accent); }
-    .bar-fill.red   { background: #f87171; }
-    .bar-fill.blue  { background: #60a5fa; }
-    .bar-fill.gray  { background: #94a3b8; }
-    .bar-pct { width: 48px; font-size: 0.88rem; font-weight: 700; color: var(--dark); text-align: right; }
+  /* DOC GAPS TABLE */
+  .gaps-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .gaps-table thead tr {
+    background: #f1f5f9;
+  }
+  .gaps-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .gaps-table tbody tr { border-bottom: 1px solid var(--border); }
+  .gaps-table tbody tr:last-child { border-bottom: none; }
+  .gaps-table td { padding: 13px 16px; font-size: 14px; vertical-align: top; }
+  .priority-high { color: var(--danger); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+  .priority-med { color: var(--warning); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+  .priority-low { color: var(--muted); font-weight: 700; font-size: 12px; text-transform: uppercase; }
 
-    /* ââ Tables ââ */
-    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    th {
-      background: var(--dark);
-      color: #fff;
-      padding: 10px 14px;
-      text-align: left;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.03em;
-    }
-    td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) td { background: #f8faf9; }
+  /* NOTABLE CONVERSATION CARDS */
+  .notable-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .notable-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .notable-card.resolved::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+  .notable-card.escalated::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--danger); }
+  .notable-card.warning::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--warning); }
+  .notable-card.handoff::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #94a3b8; }
+  .notable-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+  .notable-name { font-weight: 700; font-size: 14px; color: var(--primary); }
+  .notable-email { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .notable-status {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .status-resolved { background: var(--mint); color: var(--primary); }
+  .status-escalated { background: #fee2e2; color: var(--danger); }
+  .status-assumed { background: #e0f2fe; color: #0369a1; }
+  .status-handoff { background: #f1f5f9; color: #475569; }
+  .status-warning { background: #fef3c7; color: #92400e; }
+  .notable-topic { font-size: 13px; font-weight: 600; color: var(--body); margin-bottom: 6px; }
+  .notable-desc { font-size: 13px; color: #4b5563; line-height: 1.55; }
+  .notable-time { font-size: 11px; color: var(--muted); margin-top: 10px; }
 
-    /* ââ Pill badge ââ */
-    .pill {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .pill-green  { background: #d1fae5; color: #065f46; }
-    .pill-blue   { background: #dbeafe; color: #1e40af; }
-    .pill-orange { background: #fef3c7; color: #92400e; }
-    .pill-red    { background: #fee2e2; color: #991b1b; }
-    .pill-gray   { background: #f1f5f9; color: #475569; }
-
-    /* ââ Flags list ââ */
-    .flags-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .flags-list li {
-      padding: 14px 16px;
-      border-radius: 8px;
-      border-left: 4px solid transparent;
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-    .flag-critical  { background: #fff1f2; border-color: #ef4444; }
-    .flag-warning   { background: #fffbeb; border-color: var(--warning); }
-    .flag-positive  { background: #f0fdf4; border-color: #22c55e; }
-    .flags-list strong { display: block; margin-bottom: 4px; font-size: 0.95rem; }
-
-    /* ââ Conversation Cards ââ */
-    .convo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-    .convo-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .convo-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-    .convo-tag { font-size: 0.78rem; font-weight: 700; }
-    .convo-title { font-weight: 700; font-size: 0.97rem; color: var(--dark); margin-bottom: 6px; }
-    .convo-summary { font-size: 0.88rem; color: #4b5563; line-height: 1.5; margin-bottom: 10px; }
-    .convo-meta { font-size: 0.8rem; color: var(--muted); }
-    .convo-meta a { color: var(--dark); font-weight: 600; text-decoration: none; }
-
-    /* ââ Doc Gaps Table ââ */
-    .quality-good { color: #059669; font-weight: 600; }
-    .quality-ok   { color: var(--warning); font-weight: 600; }
-    .quality-gap  { color: #dc2626; font-weight: 600; }
-
-    /* ââ Footer ââ */
-    .footer {
-      background: var(--dark);
-      color: rgba(255,255,255,0.5);
-      font-size: 0.8rem;
-      padding: 20px 48px;
-      text-align: center;
-    }
-
-    @media (max-width: 640px) {
-      .header { padding: 24px 20px; }
-      .content { padding: 24px 16px 48px; }
-      .bar-label { width: 110px; }
-    }
-  </style>
+  /* FOOTER */
+  .footer {
+    background: var(--primary);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 20px 24px;
+    font-size: 12px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+</style>
 </head>
 <body>
 
-<!-- ââââââââââââââââââââââââââââââââ HEADER ââââââââââââââââââââââââââââââââ -->
-<header class="header">
-  <div class="header-inner">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
     <div>
-      <h1>Fin AI Agent <span>Daily Summary</span></h1>
-      <p class="subtitle">Intercom support conversations &nbsp;Â·&nbsp; Automated daily report &nbsp;Â·&nbsp; Juno Tax Support</p>
+      <h1><span>Fin AI</span> Daily Support Summary</h1>
+      <div class="header-meta">Monday, March 23, 2026 &nbsp;·&nbsp; 00:00 – 23:59 UTC &nbsp;·&nbsp; Auto-generated by Juno Cowork</div>
     </div>
-    <div class="date-badge">March 22, 2026</div>
+    <div class="header-badge">In-App Chat: 16 Fin Conversations</div>
   </div>
-</header>
+</div>
 
 <div class="content">
 
-  <!-- ââââââââââââââââ KPI CARDS ââââââââââââââââ -->
-  <div class="kpi-row">
+  <!-- KPI CARDS -->
+  <div class="section-label">Performance at a Glance</div>
+  <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-value">7</div>
-      <div class="kpi-label">Total Conversations</div>
+      <div class="kpi-value">31</div>
+      <div class="kpi-label">Total Convos</div>
+      <div class="kpi-sub">All channels</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value accent">4</div>
-      <div class="kpi-label">Fin AI Conversations</div>
+      <div class="kpi-value accent">16</div>
+      <div class="kpi-label">Fin AI Convos</div>
+      <div class="kpi-sub">In-app chat</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value accent">25%</div>
-      <div class="kpi-label">Assumed Resolution Rate</div>
+      <div class="kpi-value">12</div>
+      <div class="kpi-label">Email Convos</div>
+      <div class="kpi-sub">Human-handled</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">0</div>
-      <div class="kpi-label">Active Bug Reports</div>
+      <div class="kpi-value accent">69%</div>
+      <div class="kpi-label">Assumed Resolution</div>
+      <div class="kpi-sub">11 of 16 Fin convos</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value accent">~7 min</div>
-      <div class="kpi-label">Avg Fin Close Time</div>
+      <div class="kpi-value" style="color:var(--primary)">19%</div>
+      <div class="kpi-label">Confirmed Resolution</div>
+      <div class="kpi-sub">3 of 16 Fin convos</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value handoff">1</div>
+      <div class="kpi-value warning">2</div>
       <div class="kpi-label">Human Handoffs</div>
+      <div class="kpi-sub">Escalated by Fin</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">~8.3<span style="font-size:16px">min</span></div>
+      <div class="kpi-label">Avg Fin Session</div>
+      <div class="kpi-sub">Close time</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value danger">2</div>
+      <div class="kpi-label">Bug Reports</div>
+      <div class="kpi-sub">No mass-bug threshold</div>
     </div>
   </div>
 
-  <!-- ââââââââââââââââ EXECUTIVE SUMMARY ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Executive Summary</div>
-    <div class="card exec-summary">
-      <p>March 22 was a moderate-volume support day with <strong>7 conversations</strong> created between 00:00 and 23:59 UTC â 4 via the in-app Fin AI agent, 2 via email, and 1 admin-initiated ticket. The day's themes clustered around document processing behavior, form support questions, and product improvement requests, with no widespread outages or confirmed regressions affecting multiple users simultaneously.</p>
-      <p>Fin handled 4 in-app conversations and achieved <strong>2 confirmed resolutions</strong> (users explicitly confirmed their question was answered), <strong>1 assumed resolution</strong> (user went idle after receiving an answer), and <strong>1 human handoff</strong> for a file-stuck-in-queue issue that required live agent follow-up. The two email conversations were routed directly to the support team without Fin involvement â one concerning a critical-sounding K1-into-Drake crash, and one a detailed feature-request wishlist. No single bug was independently reported by 3 or more users, so no active bug alert is triggered today.</p>
-      <p>Two potential product issues surfaced worth tracking: Sara Laufer (sara@laufercpa.com) reports that K1 import automation into Drake crashes with "invalid field" errors and had to manually enter K1 data â this warrants engineering review. Separately, Vineeth Nalla (browncpagroup.com) reports royalty income being imported into the "# of days rented" field on Schedule E, which is a data-accuracy bug. Neither has been confirmed by engineering yet.</p>
-      <p>Positive signals: Fin delivered clean, fast answers on supported document types (W-2G, page limits, 1041 K-1 support), with confirmed resolution times of under 90 seconds. The Binder + Preparer queue category continues to generate tickets; documentation and in-product guidance for both features may reduce inbound volume in the upcoming weeks.</p>
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section-label">Executive Summary</div>
+  <div class="exec-summary">
+    <p>Fin handled <strong>16 in-app conversations</strong> on March 23, achieving a combined resolution rate of <strong>88%</strong> (assumed + confirmed). The most common topic was <strong>export/integration questions</strong> (7 conversations), spanning CCH Axcess .dat imports, UltraTax/Verito workflows, Drake trial limitations, TaxDome client sync, and ProConnect/Lacerte issues — pointing to a recurring need for clearer export documentation accessible from within the product.</p>
+    <p>The day's most significant issue was a <strong>Reviewer standard deduction analysis bug</strong> flagged by Kelly McDonald (kmcdonald@aboutmycpa.com), already escalated to engineering with a Notion ticket created by Sabrina Chavez. A secondary bug — <strong>Binder PDF bookmarks stopping after W-2 Wages</strong> combined with Adobe error 114 — was reported by Kelly DeRose and should be triaged. A drag-and-drop upload failure in the Clients section also went unresolved.</p>
+    <p>On the positive side, Fin delivered clear, patient explanations to trial users (notably Andrea Dennis, who responded "THANK YOU"), and Brett Efimov had three distinct questions resolved in a single session. <strong>Reviewer usage questions</strong> appeared in 3 separate conversations, suggesting the feature's getting-started documentation is not discoverable enough.</p>
+  </div>
+
+  <!-- RESOLUTION BREAKDOWN -->
+  <div class="section-label">Resolution Breakdown — Fin AI Conversations (16)</div>
+  <div class="resolution-card">
+    <div class="resolution-row">
+      <div class="resolution-header">
+        <span class="resolution-label">✅ Assumed Resolution</span>
+        <span class="resolution-count">11 / 16 &nbsp;(68.75%)</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill bar-assumed" style="width:68.75%"></div></div>
+    </div>
+    <div class="resolution-row">
+      <div class="resolution-header">
+        <span class="resolution-label">✔️ Confirmed Resolution</span>
+        <span class="resolution-count">3 / 16 &nbsp;(18.75%)</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill bar-confirmed" style="width:18.75%"></div></div>
+    </div>
+    <div class="resolution-row">
+      <div class="resolution-header">
+        <span class="resolution-label">🤝 Human Handoff / Escalated</span>
+        <span class="resolution-count">2 / 16 &nbsp;(12.5%)</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill bar-escalated" style="width:12.5%"></div></div>
+    </div>
+    <div class="resolution-row" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border)">
+      <div class="resolution-header">
+        <span class="resolution-label" style="color:var(--muted)">📧 Email Conversations (human-handled, not Fin)</span>
+        <span class="resolution-count">12 total</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill bar-email" style="width:38.7%"></div></div>
     </div>
   </div>
 
-  <!-- ââââââââââââââââ RESOLUTION BREAKDOWN ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Resolution Breakdown</div>
-    <div class="card">
-      <div class="bar-chart">
-        <div class="bar-row">
-          <div class="bar-label">Confirmed Resolution</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:50%"></div></div>
-          <div class="bar-pct">50%</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Assumed Resolution</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:25%; opacity:0.6;"></div></div>
-          <div class="bar-pct">25%</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Human Handoff</div>
-          <div class="bar-track"><div class="bar-fill red" style="width:25%"></div></div>
-          <div class="bar-pct">25%</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Email (no Fin)</div>
-          <div class="bar-track"><div class="bar-fill blue" style="width:28.6%"></div></div>
-          <div class="bar-pct">29%</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Admin-initiated</div>
-          <div class="bar-track"><div class="bar-fill gray" style="width:14.3%"></div></div>
-          <div class="bar-pct">14%</div>
-        </div>
+  <!-- TOPIC CATEGORIES -->
+  <div class="section-label">Topic Categories</div>
+  <table class="topic-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Count</th>
+        <th>Key Examples</th>
+        <th>Fin Outcome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Export / Integration Issues</td>
+        <td><span class="count-badge">7</span></td>
+        <td>CCH Axcess .dat import, UltraTax/Verito, Drake trial export limit, TaxDome client name sync, Joint return taxpayer name, Trust 1041/ProConnect stuck, Lacerte client not appearing</td>
+        <td>Mostly assumed resolution; 1 escalated (ProConnect/stuck export)</td>
+      </tr>
+      <tr>
+        <td>Document Processing / Validation</td>
+        <td><span class="count-badge">4</span></td>
+        <td>Brokerage sub-files "not supported", drag-and-drop upload broken, supported returns question, document count on import screen</td>
+        <td>Mixed — 2 resolved, 1 unresolved (drag-drop bug), 1 assumed</td>
+      </tr>
+      <tr>
+        <td>Reviewer Feature Usage / Bugs</td>
+        <td><span class="count-badge">3</span></td>
+        <td>How to rerun after fixing errors, incorrect standard deduction analysis (escalated), how to use Reviewer</td>
+        <td>1 escalated to engineering; 2 assumed resolution</td>
+      </tr>
+      <tr>
+        <td>Support Acce3s / Escalation Requests</td>
+        <td><span class="count-badge">2</span></td>
+        <td>Binder PDF bookmarks missing + Adobe error 114, live chat / human agent request</td>
+        <td>1 escalated to human; 1 reported as bug, user confusion about ticket submission</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FLAGS -->
+  <div class="section-label">Flags &amp; Escalation Signals</div>
+  <div class="flags-list">
+
+    <div class="flag-card critical">
+      <div class="flag-icon">🔥</div>
+      <div class="flag-body">
+        <div class="flag-title">CRITICAL — Reviewer Standard Deduction Analysis Bug (Escalated to Engineering)</div>
+        <div class="flag-desc">Kelly McDonald (kmcdonald@aboutmycpa.com) reported that Reviewer is producing an incorrect standard deduction analysis for the Honchar client return. Fin correctly escalated the conversation; the ticket is currently "Waiting on Eng." Sabrina Chavez created a Notion ticket to track the engineering investigation.</div>
+        <div class="flag-meta">Assigned to: Sabrina Chavez / Engineering &nbsp;·&nbsp; Status: Waiting on Eng &nbsp;·&nbsp; Notion ticket created</div>
       </div>
-      <p style="margin-top:16px; font-size:0.82rem; color:var(--muted);">Percentages for Fin resolution types are of <em>Fin conversations only</em>. Email &amp; Admin-initiated are of total conversations.</p>
     </div>
+
+    <div class="flag-card warning">
+      <div class="flag-icon">⚠️</div>
+      <div class="flag-body">
+        <div class="flag-title">WARNING — Binder PDF Bookmarks Stop After W-2 Wages + Adobe Error 114</div>
+        <div class="flag-desc">Kelly DeRose (kelly.cpa@outlook.com) reported that when downloading a binder PDF, bookmarks stop after "W-2 Wages" and the file triggers Adobe error 114. This is a potential rendering/export bug in the Binder feature. Needs triage by the product/engineering team.</div>
+        <div class="flag-meta">User: kelly.cpa@outlook.com &nbsp;·&nbsp; No engineering ticket confirmed yet</div>
+      </div>
+    </div>
+
+    <div class="flag-card warning">
+      <div class="flag-icon">⚠️</div>
+      <div class="flag-body">
+        <div class="flag-title">WARNING — Drag-and-Drop Upload Broken in Clients Section</div>
+        <div class="flag-desc">Luke Shoemaker (luke@shoemaker.cpa) reported that dragging files to the Clients section opens the file in the browser instead of uploading it. Fin was unable to fully resolve this and the issue remains open. Likely a browser-handling bug with the drop target.</div>
+        <div class="flag-meta">User: luke@shoemaker.cpa &nbsp;·&nbsp; Status: Unresolved</div>
+      </div>
+    </div>
+
+    <div class="flag-card warning">
+      <div class="flag-icon">🔁</div>
+      <div class="flag-body">
+        <div class="flag-title">FIN LOOP SIGNAL — Ticket Submission Confusion (Kelly DeRose)</div>
+        <div class="flag-desc">Kelly DeRose appeared to believe Fin had submitted a support ticket on her behalf after Fin described the ticket-submission process. Fin had stated "I can't submit a ticket for you," but the phrasing led to confusion. This is a Fin communication pattern worth reviewing — users may misunderstand what Fin can do after a handoff description.</div>
+        <div class="flag-meta">Recommendation: Review Fin's ticket-related messaging for clarity</div>
+      </div>
+    </div>
+
+    <div class="flag-card positive">
+      <div class="flag-icon">🌟</div>
+      <div class="flag-body">
+        <div class="flag-title">POSITIVE — Brett Efimov: 3 Sub-Questions Resolved in One Session</div>
+        <div class="flag-desc">Brett Efimov (help@tinleycpa.com) had three separate Preparer-related questions resolved in a single Fin session, resulting in a Confirmed Resolution. Demonstrates Fin's ability to handle multi-part queries effectively.</div>
+        <div class="flag-meta">User: help@tinleycpa.com &nbsp;·&nbsp; Outcome: Confirmed Resolution</div>
+      </div>
+    </div>
+
+    <div class="flag-card positive">
+      <div class="flag-icon">🌟</div>
+      <div class="flag-body">
+        <div class="flag-title">POSITIVE — Andrea Dennis: Trial User Drake Export Explained Clearly</div>
+        <div class="flag-desc">Andrea Dennis (office@hunterhope.com), a trial user, received a clear and patient explanation of why Drake export is unavailable on the trial plan. She responded "THANK YOU" and the conversation ended with a Confirmed Resolution — a good example of Fin converting a potentially frustrating limitation into a positive support experience.</div>
+        <div class="flag-meta">User: office@hunterhope.com &nbsp;·&nbsp; Outcome: Confirmed Resolution</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- ââââââââââââââââ TOPIC CATEGORIES ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Topic Categories</div>
-    <div class="card" style="padding:0; overflow:hidden; border-radius:12px;">
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Count</th>
-            <th>Channel</th>
-            <th>Key Examples</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Supported Forms / Integration Compatibility</strong></td>
-            <td><span class="pill pill-orange">2</span></td>
-            <td>Email, In-app chat</td>
-            <td>K1 import crashing Drake (Sara Laufer); W-2G not supported â gambling winnings (Syd Highley)</td>
-          </tr>
-          <tr>
-            <td><strong>Document Processing / Queue Issues</strong></td>
-            <td><span class="pill pill-red">1</span></td>
-            <td>In-app chat â Ticket</td>
-            <td>File stuck in "Queued" for 30+ min in Preparer (Bryan Mansfield) â self-resolved by re-upload</td>
-          </tr>
-          <tr>
-            <td><strong>Binder Issues</strong></td>
-            <td><span class="pill pill-orange">1</span></td>
-            <td>Admin-initiated ticket</td>
-            <td>Documents not appearing in Binder after K-1 upload (Georgia Driscoll, via agent)</td>
-          </tr>
-          <tr>
-            <td><strong>Client Account Management</strong></td>
-            <td><span class="pill pill-green">1</span></td>
-            <td>In-app chat</td>
-            <td>Correcting client email in Juno (Brett Efimov) â also asked if 1041 is supported</td>
-          </tr>
-          <tr>
-            <td><strong>Product Limits / Best Practices</strong></td>
-            <td><span class="pill pill-green">1</span></td>
-            <td>In-app chat</td>
-            <td>PDF page limit for documents (Sheila Chaplin) â 200-page 1099-B</td>
-          </tr>
-          <tr>
-            <td><strong>Feature Requests / Feedback</strong></td>
-            <td><span class="pill pill-blue">1</span></td>
-            <td>Email</td>
-            <td>Multiple requests: proforma description override, doc count, Binder highlighting, Lacerte color-coding (Vineeth Nalla)</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- DOC GAPS TABLE -->
+  <div class="section-label">Repeated Questions &amp; Documentation Gaps</div>
+  <table class="gaps-table">
+    <thead>
+      <tr>
+        <th>Question / Topic</th>
+        <th>Occurrences</th>
+        <th>Priority</th>
+        <th>Suggested Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"How do I use Reviewer?" / "How does Reviewer work?"</td>
+        <td>3</td>
+        <td><span class="priority-high">High</span></td>
+        <td>Add a prominent "Getting Started with Reviewer" guide in the in-product help panel and Fin's knowledge base. Consider a first-run tooltip on Reviewer launch.</td>
+      </tr>
+      <tr>
+        <td>"Drake export after validation" / export flow for trial users</td>
+        <td>2</td>
+        <td><span class="priority-med">Medium</span></td>
+        <td>Ensure Fin's knowledge base has a clear article on trial plan export restrictions and which exports require a paid plan.</td>
+      </tr>
+      <tr>
+        <td>"Not supported" documents — what should I do?</td>
+        <td>2+ (within one session)</td>
+        <td><span class="priority-med">Medium</span></td>
+        <td>Create a help article listing document types not supported by Juno, with recommended workarounds or manual entry steps. Link from the "not supported" error state.</td>
+      </tr>
+      <tr>
+        <td>"What returns are supported?" (general scope question)</td>
+        <td>1</td>
+        <td><span class="priority-low">Low</span></td>
+        <td>Fin handled this well. Ensure the supported returns help article stays current and is pinned in Fin's knowledge base.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- NOTABLE CONVERSATIONS -->
+  <div class="section-label">Notable Conversations</div>
+  <div class="notable-grid">
+
+    <div class="notable-card escalated">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Kelly McDonald</div>
+          <div class="notable-email">kmcdonald@aboutmycpa.com</div>
+        </div>
+        <span class="notable-status status-escalated">Escalated</span>
+      </div>
+      <div class="notable-topic">Reviewer Standard Deduction Bug — Honchar Client</div>
+      <div class="notable-desc">Reviewer produced an incorrect standard deduction analysis. Fin escalated to human support; Sabrina Chavez created a Notion engineering ticket. Status: Waiting on Eng.</div>
+      <div class="notable-time">🔥 Critical · Engineering ticket created</div>
     </div>
+
+    <div class="notable-card warning">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Kelly DeRose</div>
+          <div class="notable-email">kelly.cpa@outlook.com</div>
+        </div>
+        <span class="notable-status status-warning">Bug Reported</span>
+      </div>
+      <div class="notable-topic">Binder PDF Bookmarks Stop After W-2 Wages</div>
+      <div class="notable-desc">Downloaded binder PDF shows bookmarks only through "W-2 Wages" then stops. Adobe error 114. Also experienced confusion about whether Fin submitted a ticket on her behalf.</div>
+      <div class="notable-time">⚠️ Needs triage · Fin loop signal noted</div>
+    </div>
+
+    <div class="notable-card warning">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Luke Shoemaker</div>
+          <div class="notable-email">luke@shoemaker.cpa</div>
+        </div>
+        <span class="notable-status status-warning">Unresolved</span>
+      </div>
+      <div class="notable-topic">Drag-and-Drop Upload Opens File in Browser</div>
+      <div class="notable-desc">Dragging files to the Clients section opens the file in the browser tab instead of triggering an upload. Fin could not resolve. Likely a browser event handling bug on the drop target.</div>
+      <div class="notable-time">⚠️ Bug unresolved · Needs engineering look</div>
+    </div>
+
+    <div class="notable-card handoff">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Tricia Sagistano</div>
+          <div class="notable-email">tricia.sagistano@rbergerco.com</div>
+        </div>
+        <span class="notable-status status-handoff">Handed Off</span>
+      </div>
+      <div class="notable-topic">Requested Live Chat / Human Agent</div>
+      <div class="notable-desc">User explicitly requested to speak with a live human agent. Fin correctly handed off to Josh Hunter for follow-up. Clean escalation, no issues with Fin's handling.</div>
+      <div class="notable-time">🤝 Escalated to Josh Hunter</div>
+    </div>
+
+    <div class="notable-card resolved">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Andrea Dennis</div>
+          <div class="notable-email">office@hunterhope.com</div>
+        </div>
+        <span class="notable-status status-resolved">Confirmed ✓</span>
+      </div>
+      <div class="notable-topic">Drake Export Unavailable on Trial Plan</div>
+      <div class="notable-desc">Trial user asking why Drake export wasn't working. Fin clearly explained the trial limitation. User responded "THANK YOU" — a positive handling of a potentially frustrating plan restriction.</div>
+      <div class="notable-time">✅ Confirmed Resolution · Trial user retained positive</div>
+    </div>
+
+    <div class="notable-card resolved">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Brett Efimov</div>
+          <div class="notable-email">help@tinleycpa.com</div>
+        </div>
+        <span class="notable-status status-resolved">Confirmed ✓</span>
+      </div>
+      <div class="notable-topic">Multiple Preparer Questions — Single Session</div>
+      <div class="notable-desc">Three separate Preparer-related sub-questions resolved by Fin in one session. Demonstrates Fin's ability to handle multi-part conversations effectively without escalation.</div>
+      <div class="notable-time">✅ Confirmed Resolution · 3 questions handled</div>
+    </div>
+
+    <div class="notable-card resolved">
+      <div class="notable-header">
+        <div>
+          <div class="notable-name">Lorena Modesto</div>
+          <div class="notable-email">lorena@juno.tax</div>
+        </div>
+        <span class="notable-status status-assumed">Assumed ✓</span>
+      </div>
+      <div class="notable-topic">CCH Axcess .dat File Import Explainer</div>
+      <div class="notable-desc">Internal Juno user asking about the .dat file import process from CCH Axcess. Fin provided a clear explanation. Assumed resolution — no follow-up.</div>
+      <div class="notable-time">✅ Assumed Resolution · Internal user</div>
+    </div>
+
   </div>
 
-  <!-- ââââââââââââââââ FLAGS & ESCALATION SIGNALS ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Flags &amp; Escalation Signals</div>
-    <div class="card">
-      <ul class="flags-list">
-        <li class="flag-warning">
-          <strong>ð¡ Potential Bug â K1 Import Crashes Drake</strong>
-          Sara Laufer (sara@laufercpa.com) reports that attempting to import K1 data into Drake via Juno caused the system to crash with "invalid field" errors â reproducible across two separate K1 documents and two attempts each. She ultimately entered all K1 data manually. This is a fresh email ticket (#215473589958740) that has not yet received a human reply. Engineering should review Drake K1 export paths. Not yet confirmed by other users today.
-        </li>
-        <li class="flag-warning">
-          <strong>ð¡ Potential Bug â Royalty Income Imported to Wrong Schedule E Field</strong>
-          Vineeth Nalla (vineeth@browncpagroup.com, Brown CPA Group) reports that royalty income is being imported into the "# of days rented" field in Schedule E rather than the correct royalty field. This is a data-accuracy issue that may silently produce incorrect returns. Included in a broader feature request email (#215473585606175). Assigned to Lorena but no reply sent yet.
-        </li>
-        <li class="flag-warning">
-          <strong>ð¡ Queue Stuck Issue â Self-Resolved, But Warrants Monitoring</strong>
-          Bryan Mansfield (bryan@mansfield-cpa.com) had a file stuck in "Queued" status in Preparer for 30+ minutes. Fin routed to team; Lorena followed up. Bryan replied that he deleted the file, re-uploaded it, and it worked. This may indicate a transient processing queue issue. No other reports today, but the symptom (indefinitely queued documents) is worth watching in coming days.
-        </li>
-        <li class="flag-warning">
-          <strong>ð¡ Binder Regeneration â Incomplete Data</strong>
-          An admin-initiated ticket exists for a user (Georgia Driscoll) whose Binder shows only the most recent K-1 and is missing all other documents. Ticket is submitted but awaiting human response. This could be a Binder generation bug or a user workflow issue; needs investigation.
-        </li>
-        <li class="flag-positive">
-          <strong>ð¢ Positive â 2 Confirmed Resolutions via Fin (Under 90 Seconds Each)</strong>
-          Syd Highley and Sheila Chaplin both received accurate, well-sourced answers from Fin and explicitly confirmed resolution within 70 and 64 seconds respectively. These are clean signals that Fin is performing well on bounded factual questions about document support and limits.
-        </li>
-        <li class="flag-positive">
-          <strong>ð¢ Positive â Fin Correctly Handled Multi-Turn Conversation (Brett Efimov)</strong>
-          Brett Efimov asked about correcting a client email, went idle, then reopened the conversation to ask if 1041 forms are supported. Fin answered both correctly using appropriate knowledge base articles. Conversation auto-closed via assumed resolution flow both times.
-        </li>
-      </ul>
-    </div>
-  </div>
+</div>
 
-  <!-- ââââââââââââââââ DOCUMENTATION GAPS ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Repeated Questions / Documentation Gaps</div>
-    <div class="card" style="padding:0; overflow:hidden; border-radius:12px;">
-      <table>
-        <thead>
-          <tr>
-            <th>Repeated Question</th>
-            <th>Freq</th>
-            <th>Fin Answer Quality</th>
-            <th>Suggested Doc Improvement</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>"What is the page limit for a document?" / "Can I upload a 200-page 1099-B?"</td>
-            <td><span class="pill pill-orange">1Ã</span></td>
-            <td class="quality-good">â Accurate</td>
-            <td>Add a prominent page limits callout to the "Getting Started" or "Using Juno Effectively" article â limits (250 hard, 75 recommended for basic docs, 10 for schedules) are buried. Consider an in-product tooltip at upload.</td>
-          </tr>
-          <tr>
-            <td>"Do you support [specific form type]?" (W-2G, 1041 K-1)</td>
-            <td><span class="pill pill-orange">2Ã</span></td>
-            <td class="quality-good">â Accurate</td>
-            <td>The "Supported Source Documents" article is being used correctly by Fin, but W-2G is a common misconception (many CPAs confuse gambling income form types). Consider adding a "Not Supported" section with common requests like W-2G, foreign tax forms, etc. to proactively set expectations.</td>
-          </tr>
-          <tr>
-            <td>"How do I correct a client's email address?"</td>
-            <td><span class="pill pill-blue">1Ã</span></td>
-            <td class="quality-good">â Accurate</td>
-            <td>Fin answered correctly (Clients tab â Edit Profile). This is a reasonable onboarding question; a short "Managing Client Profiles" article or FAQ entry would reduce support load early in the season.</td>
-          </tr>
-          <tr>
-            <td>"Why is my file stuck in Queued?" / "How long does Preparer processing take?"</td>
-            <td><span class="pill pill-orange">1Ã</span></td>
-            <td class="quality-ok">~ Partial</td>
-            <td>Fin's response was helpful but didn't clearly articulate what "Queued" means vs. "Awaiting for Review" in Preparer vs. Reviewer. A dedicated status explainer (one clear table: status â what it means â expected duration â what to do if stuck) would reduce escalations for this class of question.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ââââââââââââââââ NOTABLE CONVERSATIONS ââââââââââââââââ -->
-  <div class="section">
-    <div class="section-title">Notable Conversations</div>
-    <div class="convo-grid">
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-red">â ï¸ Bug Report</span>
-          <span class="convo-tag pill pill-blue">âï¸ Email</span>
-        </div>
-        <div class="convo-title">K1s not working with Drake</div>
-        <div class="convo-summary">Sara Laufer reports K1 import into Drake crashes the system with "invalid field" errors â reproducible across two K1 documents, multiple attempts. Entered manually. Asked "Do K1s work yet with Juno and Drake?!" Ticket created, no reply yet.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:sara@laufercpa.com">sara@laufercpa.com</a> &nbsp;Â·&nbsp; #215473589958740 &nbsp;Â·&nbsp; Open</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-orange">ð¤ Handoff</span>
-        </div>
-        <div class="convo-title">File stuck in queue for 30+ minutes (Preparer)</div>
-        <div class="convo-summary">Bryan Mansfield's file stayed in "Queued" status far longer than expected. Fin answered with troubleshooting steps (check status page, refresh, distinguish Reviewer vs Preparer queue). User asked for human. Lorena followed up; user had already resolved by deleting and re-uploading. Self-resolved but warrants monitoring.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:bryan@mansfield-cpa.com">bryan@mansfield-cpa.com</a> &nbsp;Â·&nbsp; #215473588932719 &nbsp;Â·&nbsp; Open</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-blue">âï¸ Email</span>
-          <span class="convo-tag pill pill-orange">â ï¸ Bug + FR</span>
-        </div>
-        <div class="convo-title">Juno wish list &amp; royalty mapping bug</div>
-        <div class="convo-summary">Vineeth Nalla (Brown CPA Group) sent a detailed feature request: preserve proforma'd descriptions, show document upload count, highlight Binder values in PDF, color-code Lacerte imports. Also reports royalty income incorrectly mapped to "# of days rented" on Schedule E â a data accuracy bug requiring engineering review.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:vineeth@browncpagroup.com">vineeth@browncpagroup.com</a> &nbsp;Â·&nbsp; #215473585606175 &nbsp;Â·&nbsp; Open</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-green">â Confirmed</span>
-        </div>
-        <div class="convo-title">W-2G gambling winnings â form not supported</div>
-        <div class="convo-summary">Syd Highley asked whether Juno processes W-2G forms. Fin correctly explained W-2G is not supported; 1099-G is. User confirmed "yes" and conversation closed. Resolved in under 90 seconds.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:syd@dailybalance.com">syd@dailybalance.com</a> &nbsp;Â·&nbsp; #215473586723064 &nbsp;Â·&nbsp; Closed</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-green">â Assumed</span>
-        </div>
-        <div class="convo-title">Client email correction + 1041 K-1 support</div>
-        <div class="convo-summary">Brett Efimov asked how to correct a client email â Fin answered correctly (Clients tab â Edit Profile). After auto-close, user reopened asking if 1041 forms can be processed. Fin confirmed 1041 K-1 support. Both resolved via idle auto-close.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:help@tinleycpa.com">help@tinleycpa.com</a> &nbsp;Â·&nbsp; #215473587426726 &nbsp;Â·&nbsp; Closed</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-green">â Confirmed</span>
-        </div>
-        <div class="convo-title">PDF page limit â 200-page 1099-B</div>
-        <div class="convo-summary">Sheila Chaplin asked about the page limit for documents. Fin correctly answered: 250-page hard limit, 75-page recommendation for basic docs. User confirmed she has a 200-page 1099-B â Fin explained it would work but may have orientation issues over 75 pages. Resolved in 64 seconds.</div>
-        <div class="convo-meta">ð¤ <a href="mailto:screliabletax@gmail.com">screliabletax@gmail.com</a> &nbsp;Â·&nbsp; #215473586519594 &nbsp;Â·&nbsp; Closed</div>
-      </div>
-
-      <div class="convo-card">
-        <div class="convo-header">
-          <span class="convo-tag pill pill-gray">ð Ticket</span>
-        </div>
-        <div class="convo-title">Regenerate Binder â missing documents</div>
-        <div class="convo-summary">Admin-initiated ticket for a user (Georgia Driscoll): most client documents not appearing in Binder, only the most recently uploaded K-1 is visible. Support team assigned, no reply yet. Could be a Binder generation issue or document classification edge case.</div>
-        <div class="convo-meta">ð¤ Agent-submitted &nbsp;Â·&nbsp; #215473587700029 &nbsp;Â·&nbsp; Open</div>
-      </div>
-
-    </div>
-  </div>
-
-</div><!-- /content -->
-
-<!-- ââââââââââââââââââââââââââââââââ FOOTER ââââââââââââââââââââââââââââââââ -->
-<footer class="footer">
-  Generated automatically by Fin AI Daily Summary &nbsp;Â·&nbsp; Juno Tax Support &nbsp;Â·&nbsp; March 23, 2026<br>
-  Data sourced from Intercom â conversations created between March 22, 2026 00:00 UTC and March 23, 2026 00:00 UTC
-</footer>
+<!-- FOOTER -->
+<div class="footer">
+  Generated automatically by <strong>Juno Cowork</strong> on March 24, 2026 &nbsp;·&nbsp;
+  Data source: Intercom Fin AI conversations, March 23, 2026 (UTC) &nbsp;·&nbsp;
+  <a href="https://liammw3.github.io/juno-fin-daily-summaries/">View all summaries</a>
+</div>
 
 </body>
 </html>
