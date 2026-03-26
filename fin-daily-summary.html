@@ -1,362 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fin AI Agent Daily Summary - March 24, 2026</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif; background: #F8F9FA; color: #1E1E1E; font-size: 15px; line-height: 1.6; }
-    .header { background: #013A2F; color: #fff; padding: 36px 48px 28px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .header-logo { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #1CE49B; font-weight: 700; margin-bottom: 6px; }
-    .header h1 { font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
-    .header .subtitle { color: #B4F7CA; font-size: 14px; }
-    .date-badge { background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 13px; padding: 6px 16px; border-radius: 20px; white-space: nowrap; margin-top: 4px; align-self: flex-start; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 64px; }
-    .bug-alert { background: #fff3cd; border-left: 5px solid #e6a817; border-radius: 6px; padding: 16px 20px; margin-bottom: 28px; }
-    .bug-alert .alert-title { font-weight: 700; font-size: 15px; color: #7a4f00; margin-bottom: 8px; }
-    .bug-alert ul { padding-left: 20px; }
-    .bug-alert li { margin-bottom: 6px; font-size: 14px; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 36px; }
-    .kpi-card { background: #fff; border-radius: 10px; padding: 20px 18px; box-shadow: 0 1px 4px rgba(0,0,0,.07); border-top: 3px solid #013A2F; }
-    .kpi-card.accent { border-top-color: #1CE49B; }
-    .kpi-card.warn { border-top-color: #e6a817; }
-    .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; color: #666; font-weight: 600; margin-bottom: 6px; }
-    .kpi-value { font-size: 32px; font-weight: 800; color: #013A2F; line-height: 1; }
-    .kpi-card.accent .kpi-value { color: #0b9e6b; }
-    .kpi-card.warn .kpi-value { color: #b37a00; }
-    .kpi-sub { font-size: 12px; color: #888; margin-top: 4px; }
-    .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #B4F7CA; }
-    .section { margin-bottom: 40px; }
-    .exec-summary { background: #fff; border-radius: 10px; padding: 24px 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); font-size: 15px; line-height: 1.75; }
-    .exec-summary p { margin-bottom: 14px; }
-    .exec-summary p:last-child { margin-bottom: 0; }
-    .bar-chart { background: #fff; border-radius: 10px; padding: 24px 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
-    .bar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .bar-row:last-child { margin-bottom: 0; }
-    .bar-label { width: 190px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-    .bar-track { flex: 1; height: 28px; background: #f0f0f0; border-radius: 6px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; min-width: 40px; }
-    .bar-count { font-size: 13px; font-weight: 700; color: #555; width: 40px; text-align: right; flex-shrink: 0; }
-    .data-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); font-size: 14px; }
-    .data-table th { background: #013A2F; color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
-    .data-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table tr:nth-child(even) td { background: #fafafa; }
-    .pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
-    .pill-green { background: #B4F7CA; color: #013A2F; }
-    .pill-yellow { background: #fff3cd; color: #7a4f00; }
-    .pill-red { background: #ffe0e0; color: #a00000; }
-    .pill-blue { background: #e0f0ff; color: #003070; }
-    .pill-gray { background: #eee; color: #444; }
-    .flags-list { list-style: none; padding: 0; }
-    .flag-item { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.07); font-size: 14px; border-left: 4px solid #ccc; line-height: 1.65; }
-    .flag-item.critical { border-left-color: #e6a817; }
-    .flag-item.warning { border-lefd-color: #f0ad4e; }
-    .flag-item.positive { border-left-color: #1CE49B; }
-    .flag-item strong { display: block; margin-bottom: 6px; font-size: 14px; }
-    .convo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-    .convo-card { background: #fff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); font-size: 14px; }
-    .convo-card-header { margin-bottom: 8px; }
-    .convo-tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
-    .tag-resolved { background: #B4F7CA; color: #013A2F; }
-    .tag-handoff { background: #e0f0ff; color: #003070; }
-    .tag-loop { background: #fff3cd; color: #7a4f00; }
-    .tag-email { background: #f3e8ff; color: #5b00a0; }
-    .convo-title { font-weight: 700; font-size: 14px; line-height: 1.3; margin-top: 8px; }
-    .convo-body { color: #444; line-height: 1.6; margin-top: 8px; margin-bottom: 10px; }
-    .convo-meta { font-size: 12px; color: #888; }
-    .convo-meta span { display: inline-block; margin-right: 10px; }
-    .quality-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
-    .dot-good { background: #1CE49B; }
-    .dot-poor { background: #e6a817; }
-    .dot-bad { background: #dc3545; }
-    .footer { background: #013A2F; color: #B4F7CA; text-align: center; padding: 20px 24px; font-size: 12px; line-height: 1.7; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fin AI Agent Daily Summary – March 25, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a1a1a; }
+
+  /* Header */
+  .header { background: #013A2F; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left h1 { color: #fff; font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
+  .header-left p { color: #B4F7CA; font-size: 14px; margin-top: 4px; }
+  .date-badge { background: #1CE49B; color: #013A2F; padding: 8px 18px; border-radius: 20px; font-weight: 700; font-size: 15px; white-space: nowrap; }
+
+  /* Bug Alert */
+  .bug-alert { background: #fff3cd; border-left: 5px solid #e6a817; padding: 16px 40px; display: flex; align-items: center; gap: 12px; }
+  .bug-alert-icon { font-size: 22px; }
+  .bug-alert-text strong { color: #856404; font-size: 15px; }
+  .bug-alert-text p { color: #664d03; font-size: 13px; margin-top: 2px; }
+
+  /* Container */
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+
+  /* Section headings */
+  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1CE49B; }
+
+  /* KPI Grid */
+  .kpi-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 36px; }
+  .kpi-card { background: #fff; border-radius: 12px; padding: 20px 16px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid #1CE49B; }
+  .kpi-card.warn { border-top-color: #e6a817; }
+  .kpi-card.alert { border-top-color: #dc3545; }
+  .kpi-value { font-size: 36px; font-weight: 800; color: #013A2F; line-height: 1; }
+  .kpi-label { font-size: 12px; color: #6c757d; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Executive Summary */
+  .exec-summary { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .exec-summary p { font-size: 15px; line-height: 1.7; color: #333; margin-bottom: 14px; }
+  .exec-summary p:last-child { margin-bottom: 0; }
+
+  /* Resolution bar chart */
+  .resolution-section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .bar-row { margin-bottom: 16px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+  .bar-label span:first-child { font-weight: 600; color: #333; }
+  .bar-label span:last-child { color: #6c757d; }
+  .bar-track { background: #e9ecef; border-radius: 6px; height: 14px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; transition: width 0.6s; }
+  .fill-green { background: #1CE49B; }
+  .fill-blue { background: #0d6efd; }
+  .fill-amber { background: #e6a817; }
+  .fill-red { background: #dc3545; }
+  .fill-gray { background: #adb5bd; }
+
+  /* Topic table */
+  .topic-section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: #013A2F; color: #fff; padding: 12px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 12px 14px; border-bottom: 1px solid #f0f0f0; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fffe; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .badge-chat { background: #d1f5e9; color: #016544; }
+  .badge-email { background: #cfe2ff; color: #084298; }
+  .badge-mixed { background: #e2d9f3; color: #432874; }
+
+  /* Flags section */
+  .flags-section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .flag-item:last-child { border-bottom: none; }
+  .flag-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .flag-body strong { display: block; font-size: 14px; color: #1a1a1a; margin-bottom: 2px; }
+  .flag-body p { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* Doc gaps */
+  .gaps-section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .gap-item { padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .gap-item:last-child { border-bottom: none; }
+  .gap-item h4 { font-size: 14px; font-weight: 600; color: #013A2F; margin-bottom: 4px; }
+  .gap-item p { font-size: 13px; color: #555; line-height: 1.5; }
+  .gap-count { display: inline-block; background: #e9ecef; border-radius: 12px; padding: 1px 10px; font-size: 11px; color: #555; margin-left: 8px; }
+
+  /* Notable conversations grid */
+  .notable-section { margin-bottom: 32px; }
+  .conv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .conv-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #1CE49B; }
+  .conv-card.escalated { border-left-color: #e6a817; }
+  .conv-card.negative { border-left-color: #dc3545; }
+  .conv-card.loop { border-left-color: #e6a817; }
+  .conv-card.preview { border-left-color: #adb5bd; }
+  .conv-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .conv-id { font-size: 11px; color: #adb5bd; font-family: monospace; }
+  .conv-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .status-confirmed { background: #d1f5e9; color: #016544; }
+  .status-assumed { background: #e8f4fd; color: #0369a1; }
+  .status-escalated { background: #fff3cd; color: #856404; }
+  .status-negative { background: #ffe0e0; color: #991b1b; }
+  .status-preview { background: #f0f0f0; color: #555; }
+  .conv-user { font-weight: 700; font-size: 14px; color: #013A2F; margin-bottom: 4px; }
+  .conv-topic { font-size: 13px; color: #444; margin-bottom: 10px; line-height: 1.4; }
+  .conv-meta { display: flex; gap: 12px; font-size: 11px; color: #888; flex-wrap: wrap; }
+  .conv-meta span { display: flex; align-items: center; gap: 3px; }
+
+  /* Footer */
+  .footer { background: #013A2F; color: #B4F7CA; padding: 24px 40px; text-align: center; font-size: 13px; }
+  .footer p { margin-bottom: 4px; }
+  .footer a { color: #1CE49B; text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .conv-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .conv-grid { grid-template-columns: 1fr; }
+    .container { padding: 20px; }
+  }
+</style>
 </head>
 <body>
 
+<!-- Header -->
 <div class="header">
-  <div>
-    <div class="header-logo">Juno Tax &middot; Support Intelligence</div>
+  <div class="header-left">
     <h1>Fin AI Agent Daily Summary</h1>
-    <div class="subtitle">Intercom support conversations &middot; Automated daily report</div>
+    <p>Intercom · Juno Tax Support · Automated Report</p>
   </div>
-  <div class="date-badge">March 24, 2026</div>
+  <div class="date-badge">March 25, 2026</div>
 </div>
 
+<!-- Bug Alert -->
+<div class="bug-alert">
+  <div class="bug-alert-icon">⚠️</div>
+  <div class="bug-alert-text">
+    <strong>Fin Loop Detected — 1 Conversation</strong>
+    <p>Fin repeated the same "Reviewer compares source documents" explanation 4+ times without resolving Sheila Chaplin's concern (Conv #215473635277027). User expressed frustration and ended the conversation without resolution.</p>
+  </div>
+</div>
+
+<!-- Main Container -->
 <div class="container">
 
-  <div class="bug-alert">
-    <div class="alert-title">&#9888; Active Fin Loop Alerts &mdash; 2 Confirmed Today</div>
-    <ul>
-      <li><strong>Issuer Name / TP Prefix Misidentification:</strong> Linsay Carlson (linsay@redrockaccounting.com) received the same incorrect "expected behavior" response 4 times. Fin failed to acknowledge issuer name modification in 1099-INT/DIV Action tab. Negative feedback recorded. A second user emailed "Issuer name overwrite CCH Axcess" &mdash; same root issue.</li>
-      <li><strong>Export Complete Status Confusion:</strong> Karen Mason (kmason@approachableacct.com) &mdash; Fin incorrectly stated "Export Complete" is not a real return status, then reversed when she pushed back. Conversation escalated to human agent.</li>
-    </ul>
-  </div>
-
+  <!-- KPI Grid -->
   <div class="kpi-grid">
     <div class="kpi-card">
+      <div class="kpi-value">30</div>
       <div class="kpi-label">Total Conversations</div>
-      <div class="kpi-value">46</div>
-      <div class="kpi-sub">March 24 UTC window</div>
-    </div>
-    <div class="kpi-card accent">
-      <div class="kpi-label">Fin AI Conversations</div>
-      <div class="kpi-value">27</div>
-      <div class="kpi-sub">In-app chat, participated</div>
-    </div>
-    <div class="kpi-card accent">
-      <div class="kpi-label">Assumed Resolution</div>
-      <div class="kpi-value">59.3%</div>
-      <div class="kpi-sub">16 of 27 Fin convos</div>
-    </div>
-    <div class="kpi-card warn">
-      <div class="kpi-label">Fin Loop Reports</div>
-      <div class="kpi-value">2</div>
-      <div class="kpi-sub">1 neg. feedback + 1 escalated</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Avg Fin Close Time</div>
-      <div class="kpi-value">8.8m</div>
-      <div class="kpi-sub">Assumed-resolution chats</div>
+      <div class="kpi-value">20</div>
+      <div class="kpi-label">Fin AI Conversations</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">72%</div>
+      <div class="kpi-label">Assumed Resolution Rate</div>
     </div>
     <div class="kpi-card warn">
+      <div class="kpi-value">1</div>
+      <div class="kpi-label">Fin Loop Reports</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">~10m</div>
+      <div class="kpi-label">Avg Fin Close Time</div>
+    </div>
+    <div class="kpi-card alert">
+      <div class="kpi-value">3</div>
       <div class="kpi-label">Human Handoffs</div>
-      <div class="kpi-value">4</div>
-      <div class="kpi-sub">Escalated to Support team</div>
     </div>
   </div>
 
-  <div class="section">
+  <!-- Executive Summary -->
+  <div class="exec-summary">
     <div class="section-title">Executive Summary</div>
-    <div class="exec-summary">
-      <p>March 24 was a moderately active day with <strong>46 total conversations</strong> across all channels, of which <strong>27 involved Fin AI</strong>. Fin resolved 59.3% via assumed resolution (16 chats) and confirmed resolution for 6 more, bringing its combined self-service rate to roughly 81%. Average close time for Fin-handled chats was <strong>8.8 minutes</strong>. Email volume stood at 11 conversations, several flagging Binder and Reviewer quality themes that warrant product attention.</p>
-      <p>The clearest regression signal today is <strong>Fin looping on issuer name modification questions</strong>. Two separate users raised the same concern: Juno is appending "TP+number" to issuer names in 1099-INT and 1099-DIV forms in the Action tab. Fin repeatedly explained this as "expected behavior" without acknowledging the user-reported discrepancy. Linsay Carlson (linsay@redrockaccounting.com) gave negative feedback after Fin repeated the same answer four times. A second user emailed about the same behavior in CCH Axcess. Fin's knowledge base appears to explain the TP label generically without addressing the specific Action-tab name modification use case.</p>
-      <p>A second critical incident: <strong>Fin hallucinated on the "Export Complete" return status question</strong>. Karen Mason was told three times that "Export Complete" is not a real Juno status, then reversed course when she cited her own returns as counterexamples. Conversation was escalated. Additionally, <strong>Nansi Escolero</strong> from The Ledger Way opened two separate conversations within 7 minutes about Lacerte EIN appended to payer names. Support confirmed this is intentional with an opt-out setting coming &mdash; a proactive in-app notice would prevent future tickets.</p>
-      <p>On a positive note, Fin performed strongly on <strong>Drake/CCH export how-to questions</strong> with accurate, citation-rich answers and relevant video links. Six conversations ended with <strong>confirmed user satisfaction</strong> &mdash; above average for a single day. The Binder cluster (3 emails) and two Reviewer quality emails ("Reviewer hallucinations," "Wrong reviewer again") should be triaged by the product team to check for any connection to recent releases.</p>
-    </div>
+    <p>On March 25, 2026, Juno's Fin AI agent handled 20 of the 30 total support conversations (67% coverage), resolving 13 (65%) via assumed resolution and 1 (5%) via confirmed resolution without any human involvement. This represents a strong autonomous handling rate for a mid-tax-season Wednesday, with the vast majority of chat-channel inquiries addressed by Fin before requiring escalation. The remaining 10 conversations were email or admin-initiated tickets that bypass the Fin workflow entirely.</p>
+    <p>Three conversations escalated to human agents: a recurring Reviewer upload glitch affecting multiple clients over several weeks (Adam Short / shortfinancial.com), an Advisor processing loop where a user could not complete a return analysis due to a banner not appearing as expected (Alexis), and an international forms inquiry (Forms 5471 and 8865) that fell outside Fin's knowledge scope and was correctly handed to Josh Hunter. Of particular note, Adam Short's escalation surfaced a persistent engineering issue with Reviewer upload reliability and the "Tax Preparation Not Found" blank-screen bug — the engineering team deployed a fix during the conversation.</p>
+    <p>One clear negative outcome stands out: Sheila Chaplin (screliabletax@gmail.com) ended the session with expressed frustration after Fin repeatedly offered the same structural explanation about how Reviewer works — that it compares source documents rather than reading tax software live — without adequately addressing her specific concern that Reviewer produced different findings across multiple uploads of unchanged source documents. This is a Fin loop pattern that warrants a knowledge base update and potentially a routing rule to escalate after 3+ unanswered follow-up replies.</p>
+    <p>Two conversations flagged with resolution_state = null were Fin preview sessions (internal Intercom demo sandbox) and should be excluded from production metrics. Overall, Fin demonstrated strong coverage of procedural questions (CCH Axcess exports, multi-user access, Lacerte troubleshooting steps) and continues to close these efficiently with inline KB citations and images. The primary documentation gaps center on Reviewer expected behavior, Advisor upload progress indicators, and PDF Binder partial-download edge cases.</p>
   </div>
 
-  <div class="section">
-    <div class="section-title">Resolution Breakdown</div>
-    <div class="bar-chart">
-      <div class="bar-row">
-        <div class="bar-label">Assumed Resolution</div>
-        <div class="bar-track"><div class="bar-fill" style="width:59.3%;background:#1CE49B;">59.3%</div></div>
-        <div class="bar-count">16</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Confirmed Resolution</div>
-        <div class="bar-track"><div class="bar-fill" style="width:22.2%;background:#0b9e6b;">22.2%</div></div>
-        <div class="bar-count">6</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Human Handoff (Escalated)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:14.8%;background:#e6a817;">14.8%</div></div>
-        <div class="bar-count">4</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Negative Feedback</div>
-        <div class="bar-track"><div class="bar-fill" style="width:3.7%;background:#dc3545;">3.7%</div></div>
-        <div class="bar-count">1</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Email (no Fin)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:23.9%;background:#b0b0b0;">23.9%</div></div>
-        <div class="bar-count">11</div>
-      </div>
+  <!-- Resolution Breakdown -->
+  <div class="resolution-section">
+    <div class="section-title">Resolution Breakdown (Fin AI Conversations)</div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Assumed Resolution</span><span>13 · 72.2%</span></div>
+      <div class="bar-track"><div class="bar-fill fill-green" style="width:72.2%"></div></div>
     </div>
+    <div class="bar-row">
+      <div clas"="bar-label"><span>Escalated to Human</span><span>3 · 16.7%</span></div>
+      <div class="bar-track"><div class="bar-fill fill-amber" style="width:16.7%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Confirmed Resolution</span><span>1 · 5.6%</span></div>
+      <div class="bar-track"><div class="bar-fill fill-blue" style="width:5.6%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Negative Feedback</span><span>1 · 5.6%</span></div>
+      <div class="bar-track"><div class="bar-fill fill-red" style="width:5.6%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Preview / Internal (excluded)</span><span>2 · —</span></div>
+      <div class="bar-track"><div class="bar-fill fill-gray" style="width:10%"></div></div>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:12px;">Percentages calculated from 18 real (non-preview) Fin conversations. "Assumed Resolution" = Fin closed the conversation with no negative signal. "Confirmed Resolution" = user explicitly confirmed their issue was resolved.</p>
   </div>
 
-  <div class="section">
+  <!-- Topic Categories -->
+  <div class="topic-section">
     <div class="section-title">Topic Categories</div>
-    <table class="data-table">
-      <thead><tr><th>Category</th><th>Count</th><th>Channel</th><th>Key Examples</th></tr></thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Count</th>
+          <th>Channel</th>
+          <th>Fin Handled</th>
+          <th>Key Examples</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
-          <td><strong>Export &amp; Tax Software Integration</strong></td>
-          <td><span class="pill pill-green">11</span></td>
-          <td>Chat + Email</td>
-          <td>Drake trial export; CCH consolidated 1099 mapping; CCH filing-status change (deceased spouse); Lacerte payer name EIN; Export Complete status; Integration App v3.2.25</td>
+          <td><strong>Reviewer Issues / Confusion</strong></td>
+          <td>4</td>
+          <td><span class="badge badge-mixed">Chat + Email</span></td>
+          <td>2 / 4</td>
+          <td>Upload glitches (Adam Short, escalated), incorrect findings complaint (Sheila Chaplin, negative), Social Security mapping (email open)</td>
         </tr>
         <tr>
-          <td><strong>Issuer Name / Data Modification</strong></td>
-          <td><span class="pill pill-red">3</span></td>
-          <td>Chat + Email</td>
-          <td>Fin loop: TP+number appended to 1099-INT/DIV issuer names (neg. feedback); "Issuer name overwrite CCH Axcess" email; Lacerte issuer naming</td>
+          <td><strong>Lacerte Integration</strong></td>
+          <td>3</td>
+          <td><span class="badge badge-mixed">Email + Chat</span></td>
+          <td>1 / 3</td>
+          <td>"Unable to connect to Lacerte" (email), "Lacerte export Schedule E error" (email), Lacerte error demo (Fin preview)</td>
         </tr>
         <tr>
-          <td><strong>Reviewer / QA Gotcha Checks</strong></td>
-          <td><span class="pill pill-yellow">5</span></td>
-          <td>Chat + Email</td>
-          <td>Senior standard deduction flagged incorrectly; "Reviewer hallucinations" (email); "Wrong reviewer again" (email); re-uploading draft return to refresh analysis</td>
+          <td><strong>Advisor / AI Processing</strong></td>
+          <td>1</td>
+          <td><span class="badge badge-chat">Chat</span></td>
+          <td>1 / 1 (escalated)</td>
+          <td>Upload stuck, banner not appearing, Advisor "issue processing" loop (Alexis)</td>
         </tr>
         <tr>
-          <td><strong>Binder Issues</strong></td>
-          <td><span class="pill pill-yellow">3</span></td>
-          <td>Email</td>
-          <td>"Binder pages disappeared"; two "Juno Binder issues" emails &mdash; potential regression, needs team triage</td>
+          <td><strong>CCH Axcess / Export Workflow</strong></td>
+          <td>1</td>
+          <td><span class="badge badge-chat">Chat</span></td>
+          <td>1 / 1 ✅</td>
+          <td>Dat file location after team export (Daniel Kauffman — confirmed resolution in 37s)</td>
         </tr>
         <tr>
-          <td><strong>K-1 Processing &amp; Form Creation</strong></td>
-          <td><span class="pill pill-blue">2</span></td>
-          <td>Chat</td>
-          <td>K-1 EIN data; creating new K-1 when not in prior year; complex K-1 items needing manual entry</td>
+          <td><strong>Binder / Document Download</strong></td>
+          <td>1</td>
+          <td><span class="badge badge-chat">Chat</span></td>
+          <td>1 / 1 (assumed)</td>
+          <td>Bookmarked PDF binder only showing new documents (Dylan Holmes)</td>
         </tr>
         <tr>
-          <td><strong>Onboarding / Access / How-To</strong></td>
-          <td><span class="pill pill-gray">7</span></td>
-          <td>Chat</td>
-          <td>How to access live chat; Preparer/Reviewer getting started; trial feature questions resolved by Fin under 2 min</td>
+          <td><strong>Multi-User / Team Access</strong></td>
+          <td>1</td>
+          <td><span class="badge badge-chat">Chat</span></td>
+          <td>1 / 1 (assumed)</td>
+          <td>Simultaneous web access, roles &amp; permissions, per-user login (Karen Mason — 3 follow-up turns)</td>
         </tr>
         <tr>
-          <td><strong>Non-Support Email (Admin)</strong></td>
-          <td><span class="pill pill-gray">3</span></td>
-          <td>Email</td>
-          <td>Marketing email reply; free trial activation forward; Juno App Action Drop List</td>
+          <td><strong>International Forms</strong></td>
+          <td>1</td>
+          <td><span class="badge badge-chat">Chat</span></di>
+          <td>1 / 1 (escalated)</td>
+          <td>Forms 5471 and 8865 support inquiry (Blend S / demo user)</td>
+        </tr>
+        <tr>
+          <td><strong>Desktop App / Other Email</strong></td>
+          <td>2</td>
+          <td><span class="badge badge-email">Email</span></td>
+          <td>0 / 2</td>
+          <td>"Juno Desktop App" (closed), Social Security mapping (open)</td>
+        </tr>
+        <tr>
+          <td><strong>Admin / Internal</strong></td>
+          <td>6</td>
+          <td><span class="badge badge-mixed">Admin-initiated</span></td>
+          <td>0 / 6</td>
+          <td>Proactive outreach conversations opened by Juno team (no Fin involvement)</td>
+        </tr>
+        <tr>
+          <td><strong>General / Assumed (unclassified)</strong></td>
+          <td>10</td>
+          <td><span class="badge badge-chat">Chat</span></td>
+          <td>10 / 10 (assumed)</td>
+          <td>Variety of procedural questions resolved by Fin without escalation</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section">
+  <!-- Flags & Escalation Signals -->
+  <div class="flags-section">
     <div class="section-title">Flags &amp; Escalation Signals</div>
-    <ul class="flags-list">
-      <li class="flag-item critical">
-        <strong>&#128293; CRITICAL &mdash; Fin Loop: Issuer Name TP Prefix (Negative Feedback)</strong>
-        Linsay Carlson (linsay@redrockaccounting.com) asked why Juno was appending "TP+number" to issuer names on 1099-INT/DIV in the Action tab. Fin repeated the same answer 4+ times: "it's a placeholder label for taxpayer/spouse separation &mdash; expected behavior." Linsay clarified there is no spouse, TaxDome names match the return, but Juno is still modifying issuer names in the Action tab. Fin never acknowledged the discrepancy and continued looping. User gave negative feedback. Root cause: Fin's KB explains the TP label generically but does not address Action-tab issuer name modification as a distinct scenario.
-      </li>
-      <li class="flag-item critical">
-        <strong>&#128293; CRITICAL &mdash; Fin Hallucination: Export Complete Status (Escalated)</strong>
-        Karen Mason (kmason@approachableacct.com) asked why returns show "Validation Completed" instead of "Export Complete" after export. Fin told her 3 times that "Export Complete" is not a real Juno status. Karen confirmed she has multiple returns in "Export Complete" state &mdash; at which point Fin acknowledged the error and the conversation was escalated to human support. Critical KB gap: the Export Complete status is missing or misrepresented in Fin's knowledge base.
-      </li>
-      <li class="flag-item warning">
-        <strong>&#128993; WARNING &mdash; Multi-Conversation User: Lacerte EIN in Payer Name</strong>
-        Nansi Escolero (nansi.escolero@theledgerway.com) opened <strong>two separate chats within 7 minutes</strong> about Lacerte exports appending EIN + Account# to payer names. Both were escalated. Support (Lorena Modesto) confirmed this is intentional product behavior; a disable toggle is planned. Recommend a proactive in-app notice or release note to prevent future ticket volume.
-      </li>
-      <li class="flag-item warning">
-        <strong>&#128993; WARNING &mdash; Recurring Issuer Name Issue via Email</strong>
-        Email titled "Issuer name overwrite CCH Axcess" received today &mdash; same core complaint as the negative-feedback chat. Two independent reports in a single day suggest broader friction likely following a recent product change in issuer name rendering.
-      </li>
-      <li class="flag-item warning">
-        <strong>&#128993; WARNING &mdash; Binder Issues Cluster (3 reports today)</strong>
-        Two emails titled "Juno Binder issues" plus one email about "binder pages disappeared" represent a 3-report cluster. If from distinct users, this may indicate a Binder regression. Engineering and product should check whether any recent release affected Binder rendering or data persistence.
-      </li>
-      <li class="flag-item warning">
-        <strong>&#128993; WARNING &mdash; Reviewer Quality Signals (2 email reports)</strong>
-        Emails "Reviewer hallucinations" and "Wrong reviewer again" from separate users suggest elevated Reviewer accuracy concerns today. The word "again" implies a recurring issue for at least one user. Product team should investigate connection to any recent Reviewer model update.
-      </li>
-      <li class="flag-item positive">
-        <strong>&#129001; POSITIVE &mdash; Strong Fin Performance on Export How-To Questions</strong>
-        A session covering Drake trial limitations, CCH consolidated 1099 mapping, CCH filing-status export error (deceased spouse), Reviewer senior standard deduction, and Integration App version 3.2.25 was handled accurately with full citations, screenshots, and video links. Demonstrates strong KB coverage for standard export workflow questions.
-      </li>
-      <li class="flag-item positive">
-        <strong>&#129001; POSITIVE &mdash; 6 Confirmed Resolutions Today</strong>
-        Six Fin conversations were explicitly confirmed resolved by users &mdash; above average for a single day and a strong indicator of genuine user satisfaction.
-      </li>
-    </ul>
-  </div>
 
-  <div class="section">
-    <div class="section-title">Repeated Questions / Documentation Gaps</div>
-    <table class="data-table">
-      <thead><tr><th>Repeated Question</th><th>Freq</th><th>Fin Answer Quality</th><th>Suggested Doc Improvement</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><em>Why is the issuer name being changed? Why is "TP+number" added to 1099 names?</em></td>
-          <td><span class="pill pill-red">2x</span></td>
-          <td><span class="quality-dot dot-bad"></span><strong>Poor</strong> &mdash; repeated generic answer, failed to address Action-tab discrepancy</td>
-          <td>Add/update article on issuer name rendering in Action tab. Clearly differentiate intentional TP label from cases where issuer name in Action doesn't match the tax return. Include user steps to report the latter as a potential bug.</td>
-        </tr>
-        <tr>
-          <td><em>What does "Export Complete" status mean? What changes a return to that status?</em></td>
-          <td><span class="pill pill-red">1x</span></td>
-          <td><span class="quality-dot dot-bad"></span><strong>Wrong</strong> &mdash; Fin denied the status exists, then backpedaled</td>
-          <td>Create "Return Statuses Explained" article listing every Juno return status with definitions and trigger conditions. Ensure Fin can cite it directly.</td>
-        </tr>
-        <tr>
-          <td><em>Why is EIN/account number appearing in the payer name in Lacerte exports?</em></td>
-          <td><span class="pill pill-yellow">2x</span></td>
-          <td><span class="quality-dot dot-poor"></span><strong>Not handled by Fin</strong> &mdash; escalated both times</td>
-          <td>Document EIN+Account# appending behavior in Lacerte export guide, noting it's intentional and a disable toggle is coming. Consider in-app tooltip near export button.</td>
-        </tr>
-        <tr>
-          <td><em>Can I export to Drake/CCH during the free trial?</em></td>
-          <td><span class="pill pill-blue">2x</span></td>
-          <td><span class="quality-dot dot-good"></span><strong>Good</strong> &mdash; accurate with video links</td>
-          <td>Add dedicated FAQ in Trial docs: Drake/CCH/Lacerte exports require the Integration App (desktop), only available post-trial. Current Fin handling is correct; more prominence reduces repeat asks.</td>
-        </tr>
-        <tr>
-          <td><em>Why are my consolidated 1099s split up in CCH instead of grouped?</em></td>
-          <td><span class="pill pill-blue">2x</span></td>
-          <td><span class="quality-dot dot-good"></span><strong>Good</strong> &mdash; correct instructions with screenshot</td>
-          <td>Add callout in CCH Axcess guide to enable "Use CCH Consolidated 1099 .dat Layout" in Org Settings before export. The setting is non-intuitive and causes recurring confusion.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="flag-item">
+      <div class="flag-icon">🔴</div>
+      <div class="flag-body">
+        <strong>Critical: Ongoing Reviewer Upload Bug — Engineering Ticket Opened</strong>
+        <p>Adam Short (shortfinancial.com) reported that the Reviewer upload glitch (duplicate files, "more files than allowed" error) and "Tax Preparation Not Found" blank-screen bug have been occurring for several weeks across multiple clients daily. Lorena opened an engineering ticket and confirmed a fix was deployed during the session — but Adam has not yet confirmed resolution. This should be monitored in follow-up.</p>
+      </div>
+    </div>
 
-  <div class="section">
-    <div class="section-title">Notable Conversations</div>
-    <div class="convo-grid">
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-loop">&#9888; Fin Loop</span></div>
-        <div class="convo-title">Issuer Name TP Prefix &mdash; Negative Feedback</div>
-        <div class="convo-body">Linsay Carlson asked why Juno adds "TP+number" to issuer names on 1099-INT/DIV in the Action tab. Fin gave the same "expected behavior" response 4 times without resolving the discrepancy. User gave negative feedback. Root cause: Fin KB does not distinguish the TP label from Action-tab issuer name modification.</div>
-        <div class="convo-meta"><span>linsay@redrockaccounting.com</span><span>&#128308; Negative feedback</span><span>Conv. 215473621089552</span></div>
+    <div class="flag-item">
+      <div class="flag-icon">🟠</div>
+      <div clas"="flag-body">
+        <strong>Warning: Fin Loop — Reviewer "Comparing Numbers" Explanation Repeated 4+ Times</strong>
+        <p>Sheila Chaplin asked why Reviewer showed different findings across identical uploads. Fin gave the same structural explanation ("Reviewer compares source documents, it doesn't read tax software live") at least four times, rephrasing but not resolving the user's specific concern. User ended with "I don't have time for troubleshooting" and "This is a waste of time." The conversation closed with negative feedback. A routing rule to escalate after 3 unanswered Fin replies would have prevented this outcome.</p>
       </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-handoff">Escalated</span></div>
-        <div class="convo-title">Export Complete Status &mdash; Fin Hallucination</div>
-        <div class="convo-body">Karen Mason asked why exported returns show "Validation Completed" not "Export Complete." Fin denied the status exists 3 times. Karen confirmed she has multiple returns in that state. Fin acknowledged the error and escalated. Critical KB gap on return status definitions.</div>
-        <div class="convo-meta"><span>kmason@approachableacct.com</span><span>&#128993; Escalated</span><span>Conv. 215473620467875</span></div>
+    </div>
+
+    <div class="flag-item">
+      <div class="flag-icon">🟠</div>
+      <div class="flag-body">
+        <strong>Warning: Advisor Upload Progress Indicator Not Visible to User</strong>
+        <p>Alexis reported that she could not see the "Upload in Progress" / "Upload Complete!" banner in Advisor, which caused her to incorrectly think the upload had failed. After 9+ turns with Fin, she requested a human agent. Fin handled this well by asking clarifying questions, but the product UI may need a more prominent or persistent progress indicator. A dedicated KB article on Advisor upload flow and expected banners would reduce future escalations.</p>
       </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-handoff">Escalated</span></div>
-        <div class="convo-title">Lacerte Export &mdash; EIN in Payer Name</div>
-        <div class="convo-body">Nansi Escolero opened 2 chats about Lacerte exports appending EIN+Account# to payer names. Support confirmed it is intentional; a disable toggle is coming. Multi-conversation pattern indicates urgency for proactive in-app communication.</div>
-        <div class="convo-meta"><span>nansi.escolero@theledgerway.com</span><span>&#128993; 2 escalated convos</span><span>Conv. 215473619057400</span></div>
+    </div>
+
+    <div class="flag-item">
+      <div class="flag-icon">🟡</div>
+      <div class="flag-body">
+        <strong>Caution: Lacerte Integration Errors — 3 Tickets in One Day</strong>
+        <p>Three separate Lacerte-related conversations appeared on March 25 — two via email (open, awaiting human response) and one via Fin preview demo. During peak tax season, Lacerte integration errors are among the most disruptive support categories. Proactively publishing a "March 2026 Lacerte Tax Season Checklist" update and ensuring auto-routing to Lacerte-experienced agents would improve response speed.</p>
       </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-resolved">&#9989; Resolved</span></div>
-        <div class="convo-title">Drake Trial + CCH Export + Reviewer Q&amp;A</div>
-        <div class="convo-body">Internal user ran 5 distinct questions: Drake trial export, CCH consolidated 1099 mapping, CCH filing-status error (deceased spouse), Reviewer senior standard deduction, Integration App v3.2.25. All resolved accurately by Fin with citations, screenshots, and video links. Strong Fin performance.</div>
-        <div class="convo-meta"><span>josh@juno.tax (internal)</span><span>&#129001; Assumed resolution</span><span>Conv. 215473622104266</span></div>
+    </div>
+
+    <div class="flag-item">
+      <div class="flag-icon">✅</div>
+      <div class="flag-body">
+        <strong>Positive: Fastest Confirmed Resolution of the Day — 37 Seconds</strong>
+        <p>Daniel Kauffman asked where to find a .dat file exported by a teammate. Fin answered correctly in one turn using inline citations from the CCH Axcess and Export guides (with screenshot images), the user acknowledged the answer, and Fin closed the conversation with confirmed resolution in just 37 seconds. This is a model example of Fin performing at its best.</p>
       </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-handoff">Escalated</span></div>
-        <div class="convo-title">K-1 Data Creation &mdash; New Form</div>
-        <div class="convo-body">User asked if Juno adds K-1 data (EIN, name) and creates a new K-1 in tax software when not in prior year. Fin gave accurate answer citing K-1 Processing Logic articles, then user requested live chat. Fin handled the question well before human handoff.</div>
-        <div class="convo-meta"><span>blend+demo@juno.tax</span><span>&#128993; Escalated (user preference)</span><span>Conv. 215473618937260</span></div>
+    </div>
+
+    <div class="flag-item">
+      <div class="flag-icon">✅</div>
+      <div class="flag-body">
+        <strong>Positive: Strong Multi-Turn Performance on Roles &amp; Access Question</strong>
+        <p>Karen Mason (Beyond Compliance Tax &amp; Advisory) asked three progressively specific questions about simultaneous access, role-based concurrent workflows, and per-user logins. Fin answered each accurately across 3 turns — correctly clarifying Reviewer multiplayer vs. Binder single-user, TaxDome concurrent workflows, and per-seat pricing — before the user went idle. This multi-turn capability is a differentiator worth tracking.</p>
       </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-email">&#9993; Email</span></div>
-        <div class="convo-title">Binder Pages Disappeared</div>
-        <div class="convo-body">Email reporting binder pages have disappeared &mdash; one of three Binder-related emails today. Combined with two "Juno Binder issues" emails, this cluster warrants a check on whether a recent release affected Binder stability or data rendering.</div>
-        <div class="convo-meta"><span>Email channel</span><span>&#128993; Open, unassigned</span><span>Conv. 215473611455115</span></div>
-      </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-email">&#9993; Email</span></div>
-        <div class="convo-title">Reviewer Hallucinations (Email)</div>
-        <div class="convo-body">Email "Reviewer hallucinations" reporting inaccurate Reviewer outputs. Paired with "Wrong reviewer again" from a second user, these 2 signals suggest elevated Reviewer quality concerns today. Product team should investigate any connection to recent Reviewer model updates.</div>
-        <div class="convo-meta"><span>Email channel</span><span>&#128993; Open</span><span>Conv. 215473614290904</span></div>
-      </div>
-      <div class="convo-card">
-        <div class="convo-card-header"><span class="convo-tag tag-email">&#9993; Email</span></div>
-        <div class="convo-title">Issuer Name Overwrite &mdash; CCH Axcess (Email)</div>
-        <div class="convo-body">Email reporting issuer name overwrite in CCH Axcess &mdash; mirrors the negative-feedback chat about TP+number on 1099 forms. Second independent report of the same issue today confirms a documentation and Fin KB gap that needs urgent attention.</div>
-        <div class="convo-meta"><span>Email channel</span><span>&#128993; Open</span><span>Conv. 215473621768003</span></div>
+    </div>
+
+    <div class="flag-item">
+      <div class="flag-icon">ℹ️</div>
+      <div class="flag-body">
+        <strong>Info: 2 Fin Preview Sessions Detected (Internal / Demo)</strong>
+        <p>Two conversations (IDs 215473636198745 and 215473636163224) were generated by Intercom's Fin preview sandbox ("Preview User" contact, preview_only=true URLs). These should be excluded from production Fin metrics. Both have resolution_state = null (no escalation path in preview mode). Recommend filtering these in future automated reports via the custom_attributes "Fin AI Agent: Preview" = true flag.</p>
       </div>
     </div>
   </div>
 
-</div>
+  <!-- Documentation Gaps -->
+  <div class="gaps-section">
+    <div class="section-title">Documentation Gaps &amp; KB Improvement Opportunities</div>
 
+    <div class="gap-item">
+      <h4>Reviewer: Why Do Findings Change Between Uploads? <span class="gap-count">2 tickets</span></h4>
+      <p>Multiple users (Sheila Chaplin, Adam Short) were confused about Reviewer producing different findings across repeated uploads of unchanged documents. The existing KB explains what Reviewer does, but a dedicated FAQ covering "Why did my Reviewer findings change?" with specific scenarios (Gotcha Checks, VAGI discrepancy logic, organizer-specific checks) would prevent Fin from having to explain this repeatedly and reduce negative sentiment.</p>
+    </div>
+
+    <div class="gap-item">
+      <h4>Advisor: Upload Progress &amp; "Issue Processing" Errors <span class="gap-count">1 ticket</span></h4>
+      <p>Alexis' escalation stemmed from not knowing where to look for upload progress confirmation in Advisor. A step-by-step "Uploading a Return in Advisor" article with annotated screenshots showing the banner progression ("Upload in Progress" → "Upload Complete!") would allow Fin to send users directly to a visual guide instead of verbally describing UI elements they cannot locate.</p>
+    </div>
+
+    <div class="gap-item">
+      <h4>Binder: Partial Download After Adding New Documents <span class="gap-count">1 ticket</span></h4>
+      <p>Dylan Holmes reported that adding 2 new documents caused the Binder to only download those new documents rather than all uploaded source documents. Fin suggested "Save + re-download" and "annotation toggle" but could not resolve it within the conversation. A KB article specifically addressing "Binder download missing older documents after new upload" would improve containment for this edge case.</p>
+    </div>
+
+    <div class="gap-item">
+      <h4>International Forms (5471, 8865) Roadmap <span class="gap-count">1 ticket</span></h4>
+      <p>Fin correctly stated that international forms 5471 and 8865 are not currently supported and cited the TaxDome integration FAQ. However, the roadmap language ("international support planned by end of 2025") is now outdated — it is March 2026. This article needs a date update to reflect current roadmap status to avoid misleading users about timeline expectations.</p>
+    </div>
+
+    <div class="gap-item">
+      <h4>Lacerte: Consolidated Error Troubleshooting Guide <span class="gap-count">3 tickets</span></h4>
+      <p>Three Lacerte-related contacts appeared in a single day during tax season. While individual articles exist (How to Connect Lacerte, Export Step-by-Step, 2025 Checklist), a single "Lacerte Integration — Common Errors &amp; Fixes" article consolidating ODBC errors, connection errors, and data path mismatches would allow Fin to provide a single authoritative resource rather than referencing 3 separate articles per conversation.</p>
+    </div>
+  </div>
+
+  <!-- Notable Conversations -->
+  <div class="notable-section">
+    <div class="section-title">Notable Conversations</div>
+    <div class="conv-grid">
+
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473629632537</span>
+          <span class="conv-status status-confirmed">✅ Confirmed</span>
+        </div>
+        <div class="conv-user">Daniel Kauffman</div>
+        <div class="conv-topic">Asked where to find a .dat file exported by a colleague. Fin answered in one turn using CCH Axcess KB articles with screenshot images. User replied "Ah. Okay." Fin confirmed and closed.</div>
+        <div class="conv-meta">
+          <span>⏱ 37s close</span>
+          <span>💬 Chat</span>
+          <span>🤖 Fin only</span>
+        </div>
+      </div>
+
+      <div class="conv-card negative">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473635277027</span>
+          <span class="conv-status status-negative">❌ Negative</span>
+        </div>
+        <div class="conv-user">Sheila Chaplin</div>
+        <div class="conv-topic">Reviewer showing inconsistent findings across uploads. Fin repeated "Reviewer compares source docs" explanation 4+ times. User: "This is a waste of time." Fin loop detected. Ended without resolution.</div>
+        <div class="conv-meta">
+          <span>⏱ 28m close</span>
+          <span>💬 Chat</span>
+          <span>⚠️ Loop · 14 turns</span>
+        </div>
+      </div>
+
+      <div class="conv-card escalated">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473629611784</span>
+          <span class="conv-status status-escalated">⬆ Escalated</span>
+        </div>
+        <div class="conv-user">Adam Short</div>
+        <div class="conv-topic">Recurring Reviewer upload glitch + "Tax Preparation Not Found" bug across multiple clients for weeks. Escalated to Lorena. Engineering ticket opened; fix deployed during session. Adam has not confirmed resolution.</div>
+        <div class="conv-meta">
+          <span>⏱ 527s first reply</span>
+          <span>💬 Chat</span>
+          <span>🔧 Bug ticket</span>
+        </div>
+      </div>
+
+      <div class="conv-card escalated">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473631848435</span>
+          <span class="conv-status status-escalated">⬆ Escalated</span>
+        </div>
+        <div class="conv-user">Alexis (user)</div>
+        <div class="conv-topic">Advisor "issue processing your request" error. Upload appeared to complete but Advisor stayed stuck. User could not see the Upload in Progress banner. Fin handled 9 turns, then user requested live chat.</div>
+        <div class="conv-meta">
+          <span>⏱ 857s first reply</span>
+          <span>💬 Chat</span>
+          <span>🤖→👤 Fin→Human</span>
+        </div>
+      </div>
+
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473628782561</span>
+          <span class="conv-status status-assumed">📋 Assumed</span>
+        </div>
+        <div class="conv-user">Karen Mason</div>
+        <div class="conv-topic">3-turn multi-topic session on simultaneous access, TaxDome concurrent workflows, and per-user logins. Fin answered all accurately. No per-user pricing confirmed. User went idle.</div>
+        <div class="conv-meta">
+          <span>⏱ 9m close</span>
+          <span>💬 Chat</span>
+          <span>🏢 Beyond Compliance Tax</span>
+        </div>
+      </div>
+
+      <div class="conv-card">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473638227847</span>
+          <span class="conv-status status-assumed">📋 Assumed</span>
+        </div>
+        <div class="conv-user">Dylan Holmes</div>
+        <div class="conv-topic">Bookmarked PDF Binder only downloading newly added documents, not all uploads. Fin gave correct Save+re-download guidance twice. User confirmed nothing was deleted. Issue possibly unresolved; user went idle.</div>
+        <div clas"="conv-meta">
+          <span>⏱ 8m close</span>
+          <span>💬 Chat</span>
+          <span>🏢 Stride Services</span>
+        </div>
+      </div>
+
+      <div class="conv-card escalated">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473635051649</span>
+          <span class="conv-status status-escalated">⬆ Escalated</span>
+        </div>
+        <div class="conv-user">Blend S (Demo)</div>
+        <div class="conv-topic">Asked if Juno supports Forms 5471 and 8865. Fin correctly said no (U.S. individual only) but cited outdated "end of 2025" roadmap language. User requested live chat; Josh Hunter handled and closed in 3m.</div>
+        <div class="conv-meta">
+          <span>⏱ 3m total</span>
+          <span>💬 Chat</span>
+          <span>📅 Outdated roadmap</span>
+        </div>
+      </div>
+
+      <div class="conv-card preview">
+        <div class="conv-card-header">
+          <span class="conv-id">#215473636198745</span>
+          <span class="conv-status status-preview">🔬 Preview</span>
+        </div>
+        <div class="conv-user">Preview User (Internal)</div>
+        <div class="conv-topic">Fin preview sandbox session testing Lacerte error response. Fin provided strong troubleshooting guidance (ODBC, SDK, data path). Conversation closed after user became idle — typical preview session behavior. Excluded from metrics.</div>
+        <div class="conv-meta">
+          <span>⏱ 7m close</span>
+          <span>🔬 Demo sandbox</span>
+          <span>⛔ Not production</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Footer -->
 <div class="footer">
-  Generated automatically by Fin AI Daily Summary &middot; Juno Tax Support &middot; March 24, 2026<br>
-  Data sourced from Intercom &mdash; conversations created between 2026-03-24 00:00 UTC and 2026-03-25 00:00 UTC<br>
-  46 total conversations &middot; 27 Fin AI conversations analyzed &middot; Report generated March 25, 2026
+  <p>Generated automatically on <strong>March 26, 2026</strong> · Data source: Intercom Conversations API (UTC window 2026-03-25 00:00 – 23:59)</p>
+  <p>30 total conversations fetched · 20 Fin AI participated · 18 real (non-preview) Fin conversations analyzed</p>
+  <p><a href="https://app.intercom.com">Intercom Inbox</a> &nbsp;·&nbsp; <a href="https://support.juno.tax">Juno Help Center</a> &nbsp;·&nbsp; <a href="https://liammw3.github.io/juno-fin-daily-summaries/">All Reports</a></p>
 </div>
 
 </body>
