@@ -3,112 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fin AI Agent Daily Summary – March 28, 2026</title>
+<title>Fin AI Agent Daily Summary – March 29, 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a1a1a; line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #212529; }
 
   /* HEADER */
-  .header { background: #013A2F; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-  .header-left h1 { color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
-  .header-left p { color: #B4F7CA; font-size: 14px; margin-top: 4px; }
-  .date-badge { background: #1CE49B; color: #013A2F; padding: 8px 20px; border-radius: 999px; font-weight: 700; font-size: 15px; white-space: nowrap; }
+  .header { background: #013A2F; color: white; padding: 32px 40px; }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 14px; color: #B4F7CA; margin-top: 4px; }
+  .date-badge { display: inline-block; background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 13px; padding: 4px 14px; border-radius: 20px; margin-top: 12px; }
 
-  /* BUG ALERT BANNER */
-  .bug-banner { background: #fff3cd; border-left: 5px solid #e6a817; padding: 14px 24px; margin: 24px 40px; border-radius: 8px; display: flex; align-items: flex-start; gap: 12px; }
-  .bug-banner .icon { font-size: 22px; flex-shrink: 0; }
-  .bug-banner .title { font-weight: 700; color: #7a5000; font-size: 15px; }
-  .bug-banner .desc { color: #5c3d00; font-size: 14px; margin-top: 3px; }
+  /* CONTAINER */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
 
-  /* MAIN CONTENT */
-  .main { max-width: 1200px; margin: 0 auto; padding: 24px 40px 48px; }
-
-  /* SECTION HEADERS */
-  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #B4F7CA; }
+  /* SECTION HEADINGS */
+  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1CE49B; }
 
   /* KPI GRID */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 16px; margin-bottom: 8px; }
-  .kpi-card { background: #fff; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid #1CE49B; }
-  .kpi-card.warn { border-top-color: #e6a817; }
-  .kpi-card.danger { border-top-color: #dc3545; }
-  .kpi-card.neutral { border-top-color: #6c757d; }
-  .kpi-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: #6c757d; }
-  .kpi-value { font-size: 34px; font-weight: 800; color: #013A2F; margin: 6px 0 2px; }
-  .kpi-sub { font-size: 12px; color: #888; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  @media (max-width: 700px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+  .kpi-card { background: white; border-radius: 10px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid #1CE49B; }
+  .kpi-card.warning { border-top-color: #e6a817; }
+  .kpi-card.neutral { border-top-color: #013A2F; }
+  .kpi-value { font-size: 36px; font-weight: 800; color: #013A2F; line-height: 1; }
+  .kpi-label { font-size: 12px; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; }
 
-  /* EXECUTIVE SUMMARY */
-  .exec-summary { background: #fff; border-radius: 12px; padding: 28px 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .exec-summary p { color: #333; font-size: 15px; margin-bottom: 14px; line-height: 1.7; }
+  /* EXEC SUMMARY */
+  .exec-summary { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .exec-summary p { font-size: 15px; line-height: 1.7; color: #344; margin-bottom: 14px; }
   .exec-summary p:last-child { margin-bottom: 0; }
 
   /* RESOLUTION BAR CHART */
-  .bar-chart-wrap { background: #fff; border-radius: 12px; padding: 24px 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .bar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-  .bar-row:last-child { margin-bottom: 0; }
-  .bar-label { width: 200px; font-size: 13px; font-weight: 600; color: #444; flex-shrink: 0; }
-  .bar-track { flex: 1; background: #eee; border-radius: 999px; height: 22px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 999px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; white-space: nowrap; }
-  .bar-fill.confirmed { background: #1CE49B; color: #013A2F; }
-  .bar-fill.assumed { background: #4CAF98; color: #fff; }
-  .bar-fill.escalated { background: #e6a817; color: #fff; }
-  .bar-fill.no-fin { background: #c9d6d0; color: #555; }
-  .bar-count { font-size: 14px; font-weight: 700; color: #013A2F; width: 40px; text-align: right; flex-shrink: 0; }
+  .resolution-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .bar-row { margin-bottom: 14px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 13px; color: #495057; margin-bottom: 5px; font-weight: 500; }
+  .bar-track { background: #e9ecef; border-radius: 6px; height: 22px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s; }
+  .bar-confirmed { background: #1CE49B; }
+  .bar-assumed { background: #B4F7CA; }
+  .bar-human { background: #e6a817; }
+  .bar-open { background: #ced4da; }
 
   /* TOPIC TABLE */
-  .topic-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .topic-table th { background: #013A2F; color: #1CE49B; text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
-  .topic-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 14px; vertical-align: top; }
-  .topic-table tr:last-child td { border-bottom: none; }
-  .topic-table tr:hover td { background: #f8fffe; }
-  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
-  .badge-chat { background: #d4f5eb; color: #013A2F; }
-  .badge-email { background: #e8e8f0; color: #444; }
-  .badge-mixed { background: #fff3cd; color: #7a5000; }
+  .table-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: #013A2F; color: white; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fff8; }
 
-  /* FLAGS SECTION */
-  .flags-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  @media (max-width: 900px) { .flags-grid { grid-template-columns: 1fr; } }
-  .flag-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .flag-card.critical { border-left: 4px solid #dc3545; }
-  .flag-card.warning { border-left: 4px solid #e6a817; }
-  .flag-card.positive { border-left: 4px solid #1CE49B; }
-  .flag-card .flag-title { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
-  .flag-card.critical .flag-title { color: #dc3545; }
-  .flag-card.warning .flag-title { color: #b07b00; }
-  .flag-card.positive .flag-title { color: #013A2F; }
-  .flag-item { font-size: 13px; color: #444; margin-bottom: 8px; padding-left: 14px; position: relative; }
-  .flag-item::before { content: '•'; position: absolute; left: 0; }
-  .flag-card.critical .flag-item::before { color: #dc3545; }
-  .flag-card.warning .flag-item::before { color: #e6a817; }
-  .flag-card.positive .flag-item::before { color: #1CE49B; }
+  /* FLAGS */
+  .flags-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+  .flag-item:last-child { border-bottom: none; }
+  .flag-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .flag-text strong { display: block; font-size: 14px; color: #212529; margin-bottom: 3px; }
+  .flag-text span { font-size: 13px; color: #6c757d; line-height: 1.5; }
 
   /* DOC GAPS */
-  .gap-card { background: #fff; border-radius: 12px; padding: 22px 26px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 12px; display: flex; gap: 20px; align-items: flex-start; }
-  .gap-card:last-child { margin-bottom: 0; }
-  .gap-freq { background: #013A2F; color: #1CE49B; font-weight: 800; font-size: 18px; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .gap-body .gap-q { font-weight: 700; font-size: 14px; color: #013A2F; margin-bottom: 4px; }
-  .gap-body .gap-rec { font-size: 13px; color: #666; }
-  .gap-body .gap-tag { display: inline-block; background: #fff3cd; color: #7a5000; border-radius: 999px; padding: 2px 10px; font-size: 11px; font-weight: 700; margin-top: 6px; }
+  .doc-gaps-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .gap-item { padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .gap-item:last-child { border-bottom: none; }
+  .gap-question { font-size: 14px; font-weight: 600; color: #212529; margin-bottom: 4px; }
+  .gap-recommendation { font-size: 13px; color: #6c757d; }
+  .gap-tag { display: inline-block; font-size: 11px; background: #e8f5e9; color: #013A2F; border-radius: 4px; padding: 2px 8px; margin-right: 6px; font-weight: 600; }
 
-  /* NOTABLE CONV CARDS */
-  .conv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .conv-card { background: #fff; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .conv-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 8px; }
-  .conv-card-title { font-weight: 700; font-size: 14px; color: #013A2F; }
-  .res-pill { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-  .res-confirmed { background: #d4f5eb; color: #013A2F; }
-  .res-assumed { background: #e0f2ee; color: #1a7a5e; }
-  .res-escalated { background: #fff3cd; color: #7a5000; }
-  .res-open { background: #f0f0f0; color: #555; }
-  .res-loop { background: #fde8e8; color: #b00020; }
-  .conv-user { font-size: 12px; color: #888; margin-bottom: 8px; }
-  .conv-body { font-size: 13px; color: #444; line-height: 1.55; }
-  .conv-meta { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-  .conv-meta span { font-size: 11px; color: #999; }
-  .conv-meta strong { color: #555; }
+  /* NOTABLE CONVS GRID */
+  .conv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
+  @media (max-width: 700px) { .conv-grid { grid-template-columns: 1fr; } }
+  .conv-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #1CE49B; }
+  .conv-card.assumed { border-left-color: #B4F7CA; }
+  .conv-card.escalated { border-left-color: #e6a817; }
+  .conv-card.no-fin { border-left-color: #ced4da; }
+  .conv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .conv-id { font-size: 11px; color: #adb5bd; font-family: monospace; }
+  .conv-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
+  .badge-confirmed { background: #d4f7e7; color: #013A2F; }
+  .badge-assumed { background: #e8f5e9; color: #2e7d32; }
+  .badge-human { background: #fff3cd; color: #856404; }
+  .badge-open { background: #f0f0f0; color: #6c757d; }
+  .conv-title { font-size: 14px; font-weight: 700; color: #212529; margin-bottom: 6px; }
+  .conv-meta { font-size: 12px; color: #6c757d; margin-bottom: 8px; }
+  .conv-body { font-size: 13px; color: #495057; line-height: 1.5; }
+  .conv-sources { font-size: 11px; color: #adb5bd; margin-top: 8px; font-style: italic; }
 
   /* FOOTER */
-  .footer { background: #013A2F; color: #B4F7CA; padding: 24px 40px; text-align: center; font-size: 13px; margin-top: 48px; }
+  .footer { background: #013A2F; color: #B4F7CA; text-align: center; padding: 20px; font-size: 12px; margin-top: 16px; }
   .footer a { color: #1CE49B; }
 </style>
 </head>
@@ -116,222 +97,178 @@
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-left">
-    <h1>Fin AI Agent Daily Summary</h1>
-    <p>Intercom Fin AI Performance Report · Juno Tax Support</p>
-  </div>
-  <div class="date-badge">March 28, 2026</div>
+  <h1>Fin AI Agent Daily Summary</h1>
+  <div class="subtitle">Juno Tax · Intercom Support Intelligence</div>
+  <div class="date-badge">March 29, 2026</div>
 </div>
 
-<!-- BUG ALERT BANNER -->
-<div class="bug-banner">
-  <div class="icon">⚠️</div>
-  <div>
-    <div class="title">Fin Loop Detected — Client Archiving / TaxDome Name Sync</div>
-    <div class="desc">In conversation #215473679502294, Fin repeated the same TaxDome Taxpayer-field explanation 3+ times without resolving the user's actual request to archive a duplicate client. The user explicitly noted: "you are going to keep sending me the same answer regardless." A KB article on client archiving workflows and TaxDome sync edge cases is recommended to break this pattern.</div>
-  </div>
-</div>
-
-<div class="main">
+<div class="container">
 
   <!-- KPI GRID -->
-  <div class="section-title">Key Performance Indicators</div>
+  <div style="margin-bottom: 8px; margin-top: 4px;">
+    <div class="section-title">Key Performance Indicators</div>
+  </div>
   <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Total Conversations</div>
-      <div class="kpi-value">14</div>
-      <div class="kpi-sub">Created March 28, 2026 UTC</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Fin AI Conversations</div>
-      <div class="kpi-value">6</div>
-      <div class="kpi-sub">43% of total volume</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Assumed Resolution %</div>
-      <div class="kpi-value">33%</div>
-      <div class="kpi-sub">2 of 6 Fin conversations</div>
-    </div>
-    <div class="kpi-card warn">
-      <div class="kpi-label">Fin Loop Reports</div>
-      <div class="kpi-value">1</div>
-      <div class="kpi-sub">Client archive/TaxDome sync</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Avg Fin Close Time</div>
-      <div class="kpi-value">9.4<span style="font-size:18px">m</span></div>
-      <div class="kpi-sub">Across 4 closed Fin chats</div>
-    </div>
     <div class="kpi-card neutral">
+      <div class="kpi-value">6</div>
+      <div class="kpi-label">Total Conversations</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">5</div>
+      <div class="kpi-label">Fin AI Conversations</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">60%</div>
+      <div class="kpi-label">Assumed Resolution Rate</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">0</div>
+      <div class="kpi-label">Fin Loop Reports</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">5.9m</div>
+      <div class="kpi-label">Avg Fin Close Time</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="kpi-value">1</div>
       <div class="kpi-label">Human Handoffs</div>
-      <div class="kpi-value">2</div>
-      <div class="kpi-sub">Credentials + Download error</div>
     </div>
   </div>
 
   <!-- EXECUTIVE SUMMARY -->
   <div class="section-title">Executive Summary</div>
   <div class="exec-summary">
-    <p>March 28 saw 14 total conversations, of which 6 were handled by Fin AI (43%). The day's Fin performance was mixed: 2 confirmed resolutions and 2 assumed resolutions reflect solid handling of straightforward how-to questions around Lacerte access setup and adding returns to the Reviewer workflow. However, 2 conversations escalated to human agents, and 1 confirmed Fin loop was observed — a pattern where Fin repeated the same TaxDome Taxpayer field explanation to a user asking specifically about archiving a duplicate client, ultimately failing to resolve her concern.</p>
-    <p>The most volume-significant issue on the day was a binder-related bug: Judy Zschocher's 36-part conversation about disappearing binder documents represented a known product issue (documents going missing after upload) that Fin attempted to troubleshoot over multiple turns. While Fin correctly cited the issue as a known resolved bug and guided her through re-upload steps, the session was long and frustrating. This conversation type indicates continued user confusion about the binder's behavior post-upload.</p>
-    <p>Eight conversations arrived via email and bypassed Fin entirely, covering topics such as Lacerte 2025 login issues, scanned document input for Schedule A, SSA-1099 field population, client data deletion requests, and multi-user access management. These email threads represent documentation and workflow gaps where Fin could provide value if configured to handle inbound email routing or if the underlying KB articles were strengthened. Notably, Kat Ackerman (bhacpaco.com) opened three separate email threads on different issues, suggesting a new or less experienced user who could benefit from proactive onboarding outreach.</p>
-    <p>Overall Fin deflection rate was 43%, with confirmed + assumed resolutions covering 4 of 6 Fin conversations (67% self-service rate). The escalation rate was 33% of Fin conversations — driven by a download API error and an account credentials issue, both of which were appropriately escalated via ticket to the support team. No critical production issues were detected, though the Reviewer Plan download failure for Jennifer Blitzer (Glass &amp; Glass CPA PC) warrants engineering follow-up.</p>
+    <p>On March 29, 2026, Juno's Fin AI agent handled 5 of 6 total support conversations, achieving a 60% assumed resolution rate and 40% confirmed resolution rate. The average time to close for Fin-handled conversations was approximately 5.9 minutes, reflecting efficient triage and self-service guidance. No Fin loop patterns (same answer repeated 3+ times) were detected on this date.</p>
+    <p>The dominant topics were 1099 document handling issues (duplicate detection and accrued market discount reclassification), Lacerte export errors, and user feedback routing for Reviewer plan mistakes. Fin consistently directed users to the appropriate KB articles — particularly the Human In The Loop guide, Preparer step-by-step guides, and the productfeedback@juno.tax channel — demonstrating strong knowledge base coverage for these recurring question types.</p>
+    <p>A notable human escalation occurred late in the day (11:51 PM UTC): a CPA from Tagawa &amp; Ho, LLP submitted an email ticket reporting that the "Statutory Employee" W-2 checkbox was not handled correctly in Reviewer's Plan. This was routed directly to engineering by Josh Hunter and remains open. While Fin did not participate in this ticket, it represents a potential product bug requiring an engineering fix and signals a gap in Reviewer's W-2 handling logic.</p>
+    <p>A second complex conversation involved accrued market discount reclassification on a 1099-B — a nuanced tax scenario that Fin handled well, providing technically accurate guidance about the Human In The Loop review step. However, the user's underlying concern about system accuracy (not just workflow) suggests an opportunity to create a dedicated KB article on 1099-B edge cases like accrued market discount treatment.</p>
   </div>
 
   <!-- RESOLUTION BREAKDOWN -->
   <div class="section-title">Resolution Breakdown</div>
-  <div class="bar-chart-wrap">
+  <div class="resolution-card">
     <div class="bar-row">
-      <div class="bar-label">Confirmed Resolution</div>
-      <div class="bar-track">
-        <div class="bar-fill confirmed" style="width:33%">2 conversations</div>
-      </div>
-      <div class="bar-count">2</div>
+      <div class="bar-label"><span>Confirmed Resolution</span><span>2 conversations (33%)</span></div>
+      <div class="bar-track"><div class="bar-fill bar-confirmed" style="width: 33%"></div></div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Assumed Resolution</div>
-      <div class="bar-track">
-        <div class="bar-fill assumed" style="width:33%">2 conversations</div>
-      </div>
-      <div class="bar-count">2</div>
+      <div class="bar-label"><span>Assumed Resolution</span><span>3 conversations (50%)</span></div>
+      <div class="bar-track"><div class="bar-fill bar-assumed" style="width: 50%"></div></div>
     </div>
     <div class="bar-row">
-      <div class="bar-label">Escalated to Human</div>
-      <div class="bar-track">
-        <div class="bar-fill escalated" style="width:33%">2 conversations</div>
-      </div>
-      <div class="bar-count">2</div>
+      <div class="bar-label"><span>Human Handoff (no Fin)</span><span>1 conversation (17%)</span></div>
+      <div class="bar-track"><div class="bar-fill bar-human" style="width: 17%"></div></div>
     </div>
-    <div class="bar-row">
-      <div class="bar-label">No Fin (Email / Direct)</div>
-      <div class="bar-track">
-        <div class="bar-fill no-fin" style="width:57%">8 conversations</div>
-      </div>
-      <div class="bar-count">8</div>
+    <div class="bar-row" style="margin-bottom:0">
+      <div class="bar-label"><span>Open / Unresolved</span><span>1 conversation (17%)</span></div>
+      <div class="bar-track"><div class="bar-fill bar-open" style="width: 17%"></div></div>
     </div>
   </div>
 
   <!-- TOPIC CATEGORIES -->
   <div class="section-title">Topic Categories</div>
-  <table class="topic-table">
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Count</th>
-        <th>Channel</th>
-        <th>Key Examples</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Client Management &amp; TaxDome Sync</strong></td>
-        <td>1</td>
-        <td><span class="badge badge-chat">Chat</span></td>
-        <td>Archiving/hiding duplicate client; TaxDome name sync mismatch; Fin loop detected</td>
-      </tr>
-      <tr>
-        <td><strong>Binder / Document Issues</strong></td>
-        <td>1</td>
-        <td><span class="badge badge-chat">Chat</span></td>
-        <td>Binder documents disappeared after upload; known bug; re-upload workaround</td>
-      </tr>
-      <tr>
-        <td><strong>Integration Access &amp; Setup</strong></td>
-        <td>3</td>
-        <td><span class="badge badge-mixed">Mixed</span></td>
-        <td>Lacerte access grant (resolved); Reviewer Plan download error (escalated); login credentials invalid (escalated)</td>
-      </tr>
-      <tr>
-        <td><strong>Reviewer Workflow</strong></td>
-        <td>2</td>
-        <td><span class="badge badge-chat">Chat</span></td>
-        <td>How to add self-prepared returns to Reviewer (confirmed); Reviewer Plan PDF download failure</td>
-      </tr>
-      <tr>
-        <td><strong>Lacerte / Desktop App Issues</strong></td>
-        <td>2</td>
-        <td><span class="badge badge-email">Email</span></td>
-        <td>Lacerte 2025 login with Juno credentials; Lacerte export error; no Fin coverage</td>
-      </tr>
-      <tr>
-        <td><strong>Document Input &amp; Tax Fields</strong></td>
-        <td>2</td>
-        <td><span class="badge badge-email">Email</span></td>
-        <td>SSA-1099 field population; scanned doc into Schedule A misc deduction</td>
-      </tr>
-      <tr>
-        <td><strong>Data Management Requests</strong></td>
-        <td>1</td>
-        <td><span class="badge badge-email">Email</span></td>
-        <td>Delete .dat files for client (Anthony &amp; Maria Hicks) due to upload failure</td>
-      </tr>
-      <tr>
-        <td><strong>Multi-User / Access Mgmt</strong></td>
-        <td>2</td>
-        <td><span class="badge badge-email">Email</span></td>
-        <td>Client/return assignment emails; admin-initiated session (bot-originated)</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Count</th>
+          <th>Channel</th>
+          <th>Key Examples</th>
+          <th>Fin Handled</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1099 Document Handling</strong></td>
+          <td>2</td>
+          <td>Chat</td>
+          <td>Duplicate 1099-R (TP/SP), Accrued Market Discount reclassification on 1099-B</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Reviewer Error Reporting</strong></td>
+          <td>2</td>
+          <td>Chat (1), Email (1)</td>
+          <td>User asking how to report tax law mistakes in Review Plan; Statutory Employee W-2 bug</td>
+          <td>Partial (1 Fin, 1 human)</td>
+        </tr>
+        <tr>
+          <td><strong>Lacerte Export Error</strong></td>
+          <td>1</td>
+          <td>Chat</td>
+          <td>General Lacerte export troubleshooting (client ID mismatch, SDK update)</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Reviewer Plan Accuracy</strong></td>
+          <td>1</td>
+          <td>Email</td>
+          <td>W-2 "Statutory Employee" box not flagged in Reviewer's Plan — potential product bug</td>
+          <td>❌ No (ticket routed to eng)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- FLAGS & ESCALATION SIGNALS -->
   <div class="section-title">Flags &amp; Escalation Signals</div>
-  <div class="flags-grid">
-    <div class="flag-card critical">
-      <div class="flag-title">🔴 Critical</div>
-      <div class="flag-item">Fin loop confirmed: Sheila Chaplin (Reliable Tax) asked 3+ times about archiving a duplicate client; Fin kept redirecting to TaxDome Taxpayer field fix which did not address her request</div>
-      <div class="flag-item">Reviewer Plan download API error for Jennifer Blitzer (Glass &amp; Glass CPA) — "Download failed – Unable to download the review plan" — escalated as ticket; root cause unknown, engineering follow-up needed</div>
+  <div class="flags-card">
+    <div class="flag-item">
+      <div class="flag-icon">🔴</div>
+      <div class="flag-text">
+        <strong>W-2 Statutory Employee box not handled in Reviewer's Plan</strong>
+        <span>Maria Tran (Tagawa &amp; Ho, LLP) reported that a client's W-2 "Statutory Employee" box was not checked/recognized in Reviewer's Plan, causing incorrect tax treatment. Ticket escalated to engineering by Josh Hunter. Conversation remains open. Requires engineering investigation and likely a product fix.</span>
+      </div>
     </div>
-    <div class="flag-card warning">
-      <div class="flag-title">🟡 Warning</div>
-      <div class="flag-item">Peter McGraw (Steven W Anderson CPA) locked out of account — escalated; Fin correctly directed to support but user experience of "invalid credentials" with active account requires account-side investigation</div>
-      <div class="flag-item">Kat Ackerman (BHA CPA Co.) opened 3 separate email tickets in one day (Lacerte error, SSA-1099, scanned doc) — likely a new/onboarding user needing targeted outreach</div>
-      <div class="flag-item">Binder disappearing bug (Judy Zschocher) generated 36 messages — long frustrating session; user resolved via reload but experience was poor</div>
+    <div class="flag-item">
+      <div class="flag-icon">⚠️</div>
+      <div class="flag-text">
+        <strong>1099-B Accrued Market Discount reclassification — complex scenario</strong>
+        <span>Brett Efimov (Tinley CPA) flagged that $15,039 in accrued market discount from an LPL Financial 1099-B was left as long-term capital gain instead of being reclassified as ordinary interest income. Fin provided technically sound guidance about the Human In The Loop review, but the user's underlying concern about system accuracy may warrant a specialized KB article on this topic.</span>
+      </div>
     </div>
-    <div class="flag-card positive">
-      <div class="flag-title">🟢 Positive</div>
-      <div class="flag-item">Fin confirmed resolution in under 2 minutes for Lacerte access setup (Becca Jones, Burkart CPA) — textbook self-service success</div>
-      <div class="flag-item">Fin correctly escalated both credential and download issues to human ticket workflow within 2 minutes of detecting the escalation trigger word "AGENT"</div>
-      <div class="flag-item">Jennifer Blitzer (Glass &amp; Glass) had two Fin interactions on the same day — first one resolved (add returns to reviewer), second escalated — demonstrating good workflow routing</div>
+    <div class="flag-item">
+      <div class="flag-icon">⚠️</div>
+      <div class="flag-text">
+        <strong>Duplicate 1099-R detection limitation surface again</strong>
+        <span>Zsofia Alfonso reported that two 1099-Rs (one TP, one SP) were flagged as duplicates by Juno. Fin's initial guidance (set TP/SP in Review Data) was already completed by the user. The workaround offered (re-upload as separate PDFs) indicates a gap in the duplicate-detection logic that surfaces regularly for married filing jointly returns with multiple 1099-Rs from the same issuer.</span>
+      </div>
+    </div>
+    <div class="flag-item">
+      <div class="flag-icon">✅</div>
+      <div class="flag-text">
+        <strong>Two confirmed resolutions — Fin correctly routed feedback</strong>
+        <span>Paul Trainor (asking how to report Reviewer mistakes) and Chris O'Neal (reporting a tax law error in Review Plan) both confirmed resolution. Fin successfully directed both users to productfeedback@juno.tax with context-appropriate instructions. This demonstrates strong KB coverage for the "how to report product issues" use case.</span>
+      </div>
+    </div>
+    <div class="flag-item">
+      <div class="flag-icon">✅</div>
+      <div class="flag-text">
+        <strong>No Fin loops detected</strong>
+        <span>No conversations exhibited the loop pattern (same substantive answer repeated 3+ times without resolution). Fin varied its responses appropriately in multi-turn conversations.</span>
+      </div>
     </div>
   </div>
 
   <!-- DOCUMENTATION GAPS -->
-  <div class="section-title">Documentation Gaps &amp; KB Recommendations</div>
-
-  <div class="gap-card">
-    <div class="gap-freq">3×</div>
-    <div class="gap-body">
-      <div class="gap-q">How do I archive, hide, or delete a client/duplicate in the Juno dashboard?</div>
-      <div class="gap-rec">Fin confirmed "no archive feature exists" but couldn't guide the user to any alternative workflow. KB article needed: "Managing Duplicate or Inactive Clients" covering dashboard filtering, deletion process, and TaxDome resend best practices to prevent duplicate creation.</div>
-      <div class="gap-tag">HIGH PRIORITY</div>
+  <div class="section-title">Documentation Gaps</div>
+  <div class="doc-gaps-card">
+    <div class="gap-item">
+      <div class="gap-question">📄 Accrued Market Discount (AMD) reclassification on 1099-B</div>
+      <div class="gap-recommendation"><span class="gap-tag">NEW ARTICLE</span> Create a dedicated KB article explaining how Juno handles AMD from brokerage 1099-Bs, when/why it may appear as LT capital gain vs. ordinary interest income, and the exact steps to correct it during Human In The Loop review. Include the "Flagged for Review" field identification and the Validate workflow.</div>
     </div>
-  </div>
-
-  <div class="gap-card">
-    <div class="gap-freq">2×</div>
-    <div class="gap-body">
-      <div class="gap-q">Why is the Reviewer Plan PDF download failing with an error?</div>
-      <div class="gap-rec">Fin had no specific troubleshooting steps for this error and fell back to generic browser cache/incognito suggestions. KB article needed: "Troubleshooting Reviewer Plan Download Errors" with specific error codes, known server-side causes, and escalation path if workarounds fail.</div>
-      <div class="gap-tag">MEDIUM PRIORITY</div>
+    <div class="gap-item">
+      <div class="gap-question">📄 Duplicate 1099-R for Taxpayer vs. Spouse (same issuer)</div>
+      <div class="gap-recommendation"><span class="gap-tag">UPDATE ARTICLE</span> Update the Human In The Loop article or create a supplementary FAQ for the specific case where two 1099-Rs from the same issuer (for TP and SP) are flagged as duplicates. Document the TP/SP designation steps more prominently, and add the "upload as separate PDFs" workaround as a known limitation with a note to engineering about the detection logic.</div>
     </div>
-  </div>
-
-  <div class="gap-card">
-    <div class="gap-freq">2×</div>
-    <div class="gap-body">
-      <div class="gap-q">How do I get SSA-1099 / scanned document data into the correct tax fields?</div>
-      <div class="gap-rec">Both questions arrived via email (bypassing Fin). A KB article on "Entering SSA-1099 and Scanned Source Documents in Juno" would enable Fin to handle these in chat and reduce email volume. Should cover manual entry, document upload for scanned items, and field mapping.</div>
-      <div class="gap-tag">MEDIUM PRIORITY</div>
+    <div class="gap-item">
+      <div class="gap-question">📄 W-2 Statutory Employee box handling in Reviewer's Plan</div>
+      <div class="gap-recommendation"><span class="gap-tag">BUG/ARTICLE</span> Once engineering resolves the Statutory Employee bug, create or update Reviewer documentation to clarify how the "Statutory Employee" checkbox on W-2s affects tax treatment in the Reviewer Plan, and confirm whether it is auto-detected or requires manual review. This will preempt future support tickets on the same issue.</div>
     </div>
-  </div>
-
-  <div class="gap-card">
-    <div class="gap-freq">2×</div>
-    <div class="gap-body">
-      <div class="gap-q">Lacerte 2025 login errors and Lacerte export issues with Juno</div>
-      <div class="gap-rec">Two separate Lacerte-related email threads from the same user in the same day. The existing Lacerte integration guides may not cover 2025-specific credential flows or the desktop app Juno login. Update the Lacerte integration KB to cover the 2025 version and common export/login errors.</div>
-      <div class="gap-tag">MEDIUM PRIORITY</div>
+    <div class="gap-item">
+      <div class="gap-question">📄 How to report Reviewer Plan tax law mistakes (repeated use case)</div>
+      <div class="gap-recommendation"><span class="gap-tag">IMPROVE SNIPPET</span> The "How do I report incorrect answer of tax research?" content snippet is working (used in 2 confirmed resolutions), but consider adding a direct in-app link or button within Reviewer to productfeedback@juno.tax to reduce friction and support ticket volume for this category.</div>
     </div>
   </div>
 
@@ -340,122 +277,69 @@
   <div class="conv-grid">
 
     <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">🔁 Client Archive / TaxDome Duplicate</div>
-        <div class="res-pill res-loop">Loop</div>
+      <div class="conv-header">
+        <div class="conv-id">#215473682541787</div>
+        <span class="conv-badge badge-confirmed">✓ Confirmed Resolution</span>
       </div>
-      <div class="conv-user">Sheila Chaplin · Reliable Tax &amp; Business Services</div>
-      <div class="conv-body">User wanted to archive a duplicate client created because TaxDome synced the wife instead of husband. Fin repeated the TaxDome Taxpayer-field explanation 3+ times. User escalated frustration: "you are going to keep sending me the same answer regardless." Conversation reopened twice before idle-close.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473679502294</span>
-        <span><strong>Parts:</strong> 30</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>18:00–19:12 UTC</strong></span>
+      <div class="conv-title">Reporting Reviewer Mistakes</div>
+      <div class="conv-meta">👤 Paul Trainor · 2:03 AM UTC · Chat · Closed in ~3 min</div>
+      <div class="conv-body">User asked if mistakes found in Reviewer should be reported. Fin immediately directed to productfeedback@juno.tax and explained the Notes column for in-return documentation. User replied "yes" confirming the answer was helpful.</div>
+      <div class="conv-sources">Sources: Access to Juno Support · Collaborating in Reviewer</div>
+    </div>
+
+    <div class="conv-card assumed">
+      <div class="conv-header">
+        <div class="conv-id">#215473682987997</div>
+        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
       </div>
+      <div class="conv-title">Lacerte Export Error</div>
+      <div class="conv-meta">👤 Joshua Hunter · 4:01 AM UTC · Chat · Closed in ~7 min</div>
+      <div class="conv-body">User reported a generic "error on lacerte export." Fin provided a comprehensive troubleshooting response covering all common causes: Lacerte open to All Clients, Client ID mismatch, tax year mismatch, and 64-bit SDK update. Included a visual guide. User became idle; assumed resolved.</div>
+      <div class="conv-sources">Sources: Exporting to Lacerte Step-by-Step · Lacerte 2025 Tax Season Checklist</div>
+    </div>
+
+    <div class="conv-card assumed">
+      <div class="conv-header">
+        <div class="conv-id">#215473686658944</div>
+        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
+      </div>
+      <div class="conv-title">Duplicate 1099-R (TP vs SP)</div>
+      <div class="conv-meta">👤 Zsofia Alfonso · 3:04 PM UTC · Chat · Closed in ~7.5 min · 2-turn</div>
+      <div class="conv-body">User had two 1099-Rs (one TP, one SP) being flagged as duplicates. Fin first suggested the TP/SP designation in Review Data. User replied "I already did that." Fin escalated to the re-upload workaround (separate PDFs). User went idle — workaround likely worked but unconfirmed.</div>
+      <div class="conv-sources">Sources: Human In The Loop · Preparer Guide Lacerte · Using Juno Effectively</div>
     </div>
 
     <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">📁 Binder Documents Missing / Duplicating</div>
-        <div class="res-pill res-assumed">Assumed</div>
+      <div class="conv-header">
+        <div class="conv-id">#215473686769871</div>
+        <span class="conv-badge badge-confirmed">✓ Confirmed Resolution</span>
       </div>
-      <div class="conv-user">Judy Zschocher · Sarah Reames CPA</div>
-      <div class="conv-body">Binder lost validated documents after an additional upload. Fin correctly identified it as a known bug and recommended reprocessing / re-uploading. Session spanned 36 messages over ~40 minutes. User eventually resolved via page reload; duplicate detection appeared in binder afterward.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473678391575</span>
-        <span><strong>Parts:</strong> 36</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>15:19–15:53 UTC</strong></span>
-      </div>
+      <div class="conv-title">Review Plan Tax Law Mistake</div>
+      <div class="conv-meta">👤 Chris O'Neal (LedgerWay) · 3:21 PM UTC · Chat · Closed in 19 sec</div>
+      <div class="conv-body">User reported a mistake in tax law within the Review Plan. Fin provided an immediate, precise response directing them to productfeedback@juno.tax with instructions to include the specific section, what's incorrect, and supporting code/guidance. User confirmed "yep" — fastest confirmed resolution of the day.</div>
+      <div class="conv-sources">Sources: How do I report incorrect answer of tax research?</div>
     </div>
 
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">⬇️ Reviewer Plan Download Error</div>
-        <div class="res-pill res-escalated">Escalated</div>
+    <div class="conv-card assumed" style="border-left-color:#e6a817">
+      <div class="conv-header">
+        <div class="conv-id">#215473691086776</div>
+        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
       </div>
-      <div class="conv-user">Jennifer Blitzer · Glass &amp; Glass CPA PC</div>
-      <div class="conv-body">User received "Download failed – Unable to download the review plan" in Chrome. Fin tried generic browser fixes (cache clear, incognito) but had no specific guidance. User typed "AGENT" → ticket created and assigned to support team. Engineering investigation needed for the PDF generation endpoint.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473680363422</span>
-        <span><strong>Parts:</strong> 24</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>19:28–19:30 UTC</strong></span>
-      </div>
+      <div class="conv-title">1099-B Accrued Market Discount Error</div>
+      <div class="conv-meta">👤 Brett Efimov (Tinley CPA) · 11:54 PM UTC · Chat · Closed in ~11 min · Multi-turn</div>
+      <div class="conv-body">Complex multi-turn conversation. User alleged that $15,039 in accrued market discount from LPL Financial was incorrectly left as LT capital gain rather than reclassified as ordinary interest income. Fin acknowledged AI extraction limitations and guided through the Human In The Loop correction steps. User shared a screenshot of the 1099-B. Assumed resolved.</div>
+      <div class="conv-sources">Sources: Human In The Loop · Getting Started with Preparer · Preparer Guide Drake</div>
     </div>
 
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">🔑 Invalid Credentials / Account Lockout</div>
-        <div class="res-pill res-escalated">Escalated</div>
+    <div class="conv-card no-fin escalated">
+      <div class="conv-header">
+        <div class="conv-id">#215473691074836</div>
+        <span class="conv-badge badge-human">⚡ Human Escalation</span>
       </div>
-      <div class="conv-user">Peter McGraw · Steven W Anderson CPA LLC</div>
-      <div class="conv-body">User locked out — "credentials not associated with any active account." Fin correctly suggested email verification and provided support contact. User requested live chat; Fin escalated to ticket and assigned to support within 2 minutes. Account-side investigation by support team pending.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473679278196</span>
-        <span><strong>Parts:</strong> 20</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>17:22–17:24 UTC</strong></span>
-      </div>
-    </div>
-
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">✅ Lacerte Access Grant – Fast Resolution</div>
-        <div class="res-pill res-confirmed">Confirmed</div>
-      </div>
-      <div class="conv-user">Becca Jones · Burkart CPA</div>
-      <div class="conv-body">User asked how to grant Lacerte access to Juno. Fin answered with clear step-by-step guidance. Resolved in under 90 seconds with confirmed resolution — a textbook example of Fin at its best for integration setup questions.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473679749666</span>
-        <span><strong>Parts:</strong> 9</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>18:31 UTC · 1.5 min</strong></span>
-      </div>
-    </div>
-
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">✅ Add Self-Prepared Returns to Reviewer</div>
-        <div class="res-pill res-confirmed">Confirmed</div>
-      </div>
-      <div class="conv-user">Jennifer Blitzer · Glass &amp; Glass CPA PC</div>
-      <div class="conv-body">Earlier in the day, same user asked how to add self-prepared returns to the Reviewer workflow. Fin resolved this clearly and the conversation was confirmed resolved. Notably the same user later had an escalated conversation about the download error — showing a mix of Fin success and failure for the same customer in one day.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473679233454</span>
-        <span><strong>Parts:</strong> 22</span>
-        <span><strong>Channel:</strong> Chat</span>
-        <span><strong>17:15 UTC · 11 min</strong></span>
-      </div>
-    </div>
-
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">📧 Lacerte 2025 Login + Export Errors</div>
-        <div class="res-pill res-open">Email / Open</div>
-      </div>
-      <div class="conv-user">Kat Ackerman · BHA CPA Co.</div>
-      <div class="conv-body">User opened two separate email tickets: (1) Lacerte 2025 opened with Juno desktop app; logged in with "london email credentials" — login process unclear. (2) Error on Lacerte export. Both remain open and were not handled by Fin. Kat also opened a third ticket on SSA-1099 — 3 tickets in one day suggests onboarding friction.</div>
-      <div class="conv-meta">
-        <span><strong>IDs:</strong> 215473678508434, 215473673085987</span>
-        <span><strong>Channel:</strong> Email</span>
-        <span><strong>01:15–15:37 UTC</strong></span>
-      </div>
-    </div>
-
-    <div class="conv-card">
-      <div class="conv-card-header">
-        <div class="conv-card-title">📧 SSA-1099 Field Population Question</div>
-        <div class="res-pill res-open">Email / Open</div>
-      </div>
-      <div class="conv-user">Kat Ackerman · BHA CPA Co.</div>
-      <div class="conv-body">"I am certain this is user error. How do I get the SSA-1099 info to populate in the appropriate fields?" Arrived via email, not handled by Fin. This is a recurring document-mapping question that Fin should be able to answer if a relevant KB article existed. Good candidate for KB creation.</div>
-      <div class="conv-meta">
-        <span><strong>ID:</strong> 215473679177862</span>
-        <span><strong>Parts:</strong> 7</span>
-        <span><strong>Channel:</strong> Email</span>
-        <span><strong>17:09 UTC</strong></span>
-      </div>
+      <div class="conv-title">Reviewer's Plan — W-2 Statutory Employee Bug</div>
+      <div class="conv-meta">👤 Maria Tran (Tagawa &amp; Ho LLP) · 11:51 PM UTC · Email · Open · Escalated to Eng</div>
+      <div class="conv-body">External CPA reported that client Jill Jamgochian's W-2 "Statutory Employee" box was not checked/handled correctly in Reviewer's Plan. Fin did not participate — routed as support ticket. Josh Hunter replied, acknowledged the issue, and escalated to engineering. Notion ticket created. Remains open.</div>
+      <div class="conv-sources">Escalated by: Josh Hunter → Engineering</div>
     </div>
 
   </div>
@@ -464,8 +348,10 @@
 
 <!-- FOOTER -->
 <div class="footer">
-  <p>Generated: March 29, 2026 · Data source: Intercom (Juno Tax workspace) · Date range: March 28, 2026 00:00–23:59 UTC</p>
-  <p style="margin-top:6px">14 total conversations · 6 Fin AI · 4 closed with resolution · 2 escalated · 1 Fin loop detected</p>
+  Generated: March 30, 2026 &nbsp;·&nbsp;
+  Data source: Intercom (Juno Tax workspace) &nbsp;·&nbsp;
+  6 total conversations · 5 Fin AI · 2 confirmed · 3 assumed · 1 human handoff &nbsp;·&nbsp;
+  <a href="https://app.intercom.com" target="_blank">Intercom Dashboard</a>
 </div>
 
 </body>
