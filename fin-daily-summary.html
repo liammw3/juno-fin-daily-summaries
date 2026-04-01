@@ -3,355 +3,500 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fin AI Agent Daily Summary – March 29, 2026</title>
+<title>Fin AI Agent Daily Summary — March 31, 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #212529; }
-
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #2d3748; line-height: 1.6; }
+  
   /* HEADER */
-  .header { background: #013A2F; color: white; padding: 32px 40px; }
-  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
-  .header .subtitle { font-size: 14px; color: #B4F7CA; margin-top: 4px; }
-  .date-badge { display: inline-block; background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 13px; padding: 4px 14px; border-radius: 20px; margin-top: 12px; }
-
-  /* CONTAINER */
-  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-
-  /* SECTION HEADINGS */
-  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #1CE49B; }
-
+  .header { background: #013A2F; color: white; padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .header-left h1 { font-size: 26px; font-weight: 700; color: #1CE49B; margin-bottom: 4px; }
+  .header-left p { color: #B4F7CA; font-size: 14px; opacity: 0.9; }
+  .date-badge { background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 15px; padding: 10px 22px; border-radius: 24px; white-space: nowrap; }
+  
+  /* MAIN CONTAINER */
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+  
+  /* SECTION TITLES */
+  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #B4F7CA; }
+  
   /* KPI GRID */
-  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-  @media (max-width: 700px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
-  .kpi-card { background: white; border-radius: 10px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid #1CE49B; }
-  .kpi-card.warning { border-top-color: #e6a817; }
-  .kpi-card.neutral { border-top-color: #013A2F; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .kpi-card { background: white; border-radius: 12px; padding: 20px 24px; border-left: 4px solid #1CE49B; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .kpi-card.amber { border-left-color: #e6a817; }
+  .kpi-card.green { border-left-color: #1CE49B; }
+  .kpi-card.red { border-left-color: #e53e3e; }
+  .kpi-card.blue { border-left-color: #3182ce; }
+  .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #718096; margin-bottom: 6px; font-weight: 600; }
   .kpi-value { font-size: 36px; font-weight: 800; color: #013A2F; line-height: 1; }
-  .kpi-label { font-size: 12px; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; }
-
+  .kpi-sub { font-size: 12px; color: #718096; margin-top: 4px; }
+  
   /* EXEC SUMMARY */
-  .exec-summary { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .exec-summary p { font-size: 15px; line-height: 1.7; color: #344; margin-bottom: 14px; }
+  .exec-summary { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .exec-summary p { color: #4a5568; font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
   .exec-summary p:last-child { margin-bottom: 0; }
-
+  
   /* RESOLUTION BAR CHART */
-  .resolution-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .bar-row { margin-bottom: 14px; }
-  .bar-label { display: flex; justify-content: space-between; font-size: 13px; color: #495057; margin-bottom: 5px; font-weight: 500; }
-  .bar-track { background: #e9ecef; border-radius: 6px; height: 22px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 6px; transition: width 0.4s; }
-  .bar-confirmed { background: #1CE49B; }
-  .bar-assumed { background: #B4F7CA; }
-  .bar-human { background: #e6a817; }
-  .bar-open { background: #ced4da; }
-
-  /* TOPIC TABLE */
-  .table-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); overflow-x: auto; }
+  .chart-section { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .bar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .bar-label { width: 180px; font-size: 13px; font-weight: 600; color: #4a5568; flex-shrink: 0; }
+  .bar-track { flex: 1; background: #EDF2F7; border-radius: 8px; height: 28px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: white; transition: width 0.3s ease; }
+  .bar-fill.assumed { background: #1CE49B; }
+  .bar-fill.confirmed { background: #013A2F; }
+  .bar-fill.escalated { background: #e6a817; }
+  .bar-fill.negative { background: #e53e3e; }
+  .bar-count { width: 60px; font-size: 14px; font-weight: 700; color: #2d3748; text-align: right; flex-shrink: 0; }
+  
+  /* TOPICS TABLE */
+  .topics-section { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th { background: #013A2F; color: white; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  th { background: #013A2F; color: #1CE49B; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  th:first-child { border-radius: 6px 0 0 6px; }
+  th:last-child { border-radius: 0 6px 6px 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #EDF2F7; vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #f8fff8; }
-
+  tr:hover td { background: #F7FFFE; }
+  .count-badge { background: #B4F7CA; color: #013A2F; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 12px; display: inline-block; }
+  
   /* FLAGS */
-  .flags-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-  .flag-item:last-child { border-bottom: none; }
+  .flags-section { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .flag-list { display: flex; flex-direction: column; gap: 10px; }
+  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: 8px; font-size: 14px; }
+  .flag-item.critical { background: #FFF5F5; border-left: 3px solid #e53e3e; }
+  .flag-item.warning { background: #FFFBEB; border-left: 3px solid #e6a817; }
+  .flag-item.positive { background: #F0FFF4; border-left: 3px solid #1CE49B; }
   .flag-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .flag-text strong { display: block; font-size: 14px; color: #212529; margin-bottom: 3px; }
-  .flag-text span { font-size: 13px; color: #6c757d; line-height: 1.5; }
-
+  .flag-content strong { display: block; font-weight: 700; color: #2d3748; margin-bottom: 2px; }
+  .flag-content span { color: #718096; }
+  
   /* DOC GAPS */
-  .doc-gaps-card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .gap-item { padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
-  .gap-item:last-child { border-bottom: none; }
-  .gap-question { font-size: 14px; font-weight: 600; color: #212529; margin-bottom: 4px; }
-  .gap-recommendation { font-size: 13px; color: #6c757d; }
-  .gap-tag { display: inline-block; font-size: 11px; background: #e8f5e9; color: #013A2F; border-radius: 4px; padding: 2px 8px; margin-right: 6px; font-weight: 600; }
-
-  /* NOTABLE CONVS GRID */
-  .conv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px; }
-  @media (max-width: 700px) { .conv-grid { grid-template-columns: 1fr; } }
-  .conv-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #1CE49B; }
-  .conv-card.assumed { border-left-color: #B4F7CA; }
-  .conv-card.escalated { border-left-color: #e6a817; }
-  .conv-card.no-fin { border-left-color: #ced4da; }
-  .conv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-  .conv-id { font-size: 11px; color: #adb5bd; font-family: monospace; }
-  .conv-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
-  .badge-confirmed { background: #d4f7e7; color: #013A2F; }
-  .badge-assumed { background: #e8f5e9; color: #2e7d32; }
-  .badge-human { background: #fff3cd; color: #856404; }
-  .badge-open { background: #f0f0f0; color: #6c757d; }
-  .conv-title { font-size: 14px; font-weight: 700; color: #212529; margin-bottom: 6px; }
-  .conv-meta { font-size: 12px; color: #6c757d; margin-bottom: 8px; }
-  .conv-body { font-size: 13px; color: #495057; line-height: 1.5; }
-  .conv-sources { font-size: 11px; color: #adb5bd; margin-top: 8px; font-style: italic; }
-
+  .doc-section { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .gap-item { border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .gap-item:last-child { margin-bottom: 0; }
+  .gap-q { font-weight: 700; color: #2d3748; font-size: 14px; margin-bottom: 6px; }
+  .gap-count { font-size: 12px; color: #718096; margin-bottom: 8px; }
+  .gap-suggestion { font-size: 13px; color: #4a5568; background: #F7FFFE; padding: 8px 12px; border-radius: 6px; border-left: 3px solid #1CE49B; }
+  
+  /* NOTABLE CARDS */
+  .notable-section { margin-bottom: 32px; }
+  .notable-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .conv-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid #1CE49B; }
+  .conv-card.escalated-card { border-top-color: #e6a817; }
+  .conv-card.negative-card { border-top-color: #e53e3e; }
+  .conv-card.confirmed-card { border-top-color: #1CE49B; }
+  .conv-card.assumed-card { border-top-color: #3182ce; }
+  .conv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .conv-id { font-size: 11px; color: #a0aec0; font-family: monospace; }
+  .res-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 10px; }
+  .res-badge.confirmed { background: #C6F6D5; color: #22543D; }
+  .res-badge.assumed { background: #BEE3F8; color: #2A4365; }
+  .res-badge.escalated { background: #FEFCBF; color: #744210; }
+  .res-badge.negative { background: #FED7D7; color: #742A2A; }
+  .conv-topic { font-weight: 700; font-size: 14px; color: #2d3748; margin-bottom: 6px; }
+  .conv-user { font-size: 12px; color: #718096; margin-bottom: 8px; }
+  .conv-summary { font-size: 13px; color: #4a5568; line-height: 1.5; }
+  .conv-meta { display: flex; gap: 12px; margin-top: 10px; font-size: 11px; color: #a0aec0; }
+  
   /* FOOTER */
-  .footer { background: #013A2F; color: #B4F7CA; text-align: center; padding: 20px; font-size: 12px; margin-top: 16px; }
-  .footer a { color: #1CE49B; }
+  .footer { background: #013A2F; color: #B4F7CA; padding: 24px 48px; font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer a { color: #1CE49B; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="header">
-  <h1>Fin AI Agent Daily Summary</h1>
-  <div class="subtitle">Juno Tax · Intercom Support Intelligence</div>
-  <div class="date-badge">March 29, 2026</div>
+  <div class="header-left">
+    <h1>Fin AI Agent Daily Summary</h1>
+    <p>Juno Tax · Intercom Support Inbox · Automated Analysis</p>
+  </div>
+  <div class="date-badge">March 31, 2026</div>
 </div>
 
 <div class="container">
 
   <!-- KPI GRID -->
-  <div style="margin-bottom: 8px; margin-top: 4px;">
-    <div class="section-title">Key Performance Indicators</div>
-  </div>
+  <div class="section-title">Key Performance Indicators</div>
   <div class="kpi-grid">
-    <div class="kpi-card neutral">
-      <div class="kpi-value">6</div>
+    <div class="kpi-card">
       <div class="kpi-label">Total Conversations</div>
+      <div class="kpi-value">30</div>
+      <div class="kpi-sub">All channels (chat, email, admin)</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-value">5</div>
+    <div class="kpi-card green">
       <div class="kpi-label">Fin AI Conversations</div>
+      <div class="kpi-value">20</div>
+      <div class="kpi-sub">67% of total volume</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-value">60%</div>
-      <div class="kpi-label">Assumed Resolution Rate</div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Assumed Resolution %</div>
+      <div class="kpi-value">75%</div>
+      <div class="kpi-sub">Confirmed + Assumed (15/20)</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-value">0</div>
+    <div class="kpi-card blue">
       <div class="kpi-label">Fin Loop Reports</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-sub">No repeated-answer loops detected</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-value">5.9m</div>
+    <div class="kpi-card amber">
       <div class="kpi-label">Avg Fin Close Time</div>
+      <div class="kpi-value">7.4<span style="font-size:18px">min</span></div>
+      <div class="kpi-sub">Median (Fin-handled conversations)</div>
     </div>
-    <div class="kpi-card warning">
-      <div class="kpi-value">1</div>
+    <div class="kpi-card amber">
       <div class="kpi-label">Human Handoffs</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-sub">Escalated to support team</div>
     </div>
   </div>
 
   <!-- EXECUTIVE SUMMARY -->
   <div class="section-title">Executive Summary</div>
   <div class="exec-summary">
-    <p>On March 29, 2026, Juno's Fin AI agent handled 5 of 6 total support conversations, achieving a 60% assumed resolution rate and 40% confirmed resolution rate. The average time to close for Fin-handled conversations was approximately 5.9 minutes, reflecting efficient triage and self-service guidance. No Fin loop patterns (same answer repeated 3+ times) were detected on this date.</p>
-    <p>The dominant topics were 1099 document handling issues (duplicate detection and accrued market discount reclassification), Lacerte export errors, and user feedback routing for Reviewer plan mistakes. Fin consistently directed users to the appropriate KB articles — particularly the Human In The Loop guide, Preparer step-by-step guides, and the productfeedback@juno.tax channel — demonstrating strong knowledge base coverage for these recurring question types.</p>
-    <p>A notable human escalation occurred late in the day (11:51 PM UTC): a CPA from Tagawa &amp; Ho, LLP submitted an email ticket reporting that the "Statutory Employee" W-2 checkbox was not handled correctly in Reviewer's Plan. This was routed directly to engineering by Josh Hunter and remains open. While Fin did not participate in this ticket, it represents a potential product bug requiring an engineering fix and signals a gap in Reviewer's W-2 handling logic.</p>
-    <p>A second complex conversation involved accrued market discount reclassification on a 1099-B — a nuanced tax scenario that Fin handled well, providing technically accurate guidance about the Human In The Loop review step. However, the user's underlying concern about system accuracy (not just workflow) suggests an opportunity to create a dedicated KB article on 1099-B edge cases like accrued market discount treatment.</p>
+    <p>On March 31, 2026, Juno Tax's support inbox received <strong>30 total conversations</strong>, of which Fin AI handled <strong>20 (67%)</strong> with a combined assumed + confirmed resolution rate of <strong>75%</strong>. This is a solid performance day during peak tax season — the agent fielded a broad mix of Drake integration, document processing, and third-party integration questions without requiring human escalation in the majority of cases.</p>
+    <p>The dominant topic clusters were Drake-related workflows (export errors, TP label configuration, Drake crashing post-scan) and integration questions (TaxDome sending errors, organizer import from TaxDome). Fin handled both categories well, surfacing specific knowledge base articles with screenshots and step-by-step instructions. Five conversations ended in explicit user confirmation ("Yes," "I'm all good now," "cool"), while 10 were resolved via assumed resolution after Fin answered and the user went idle.</p>
+    <p>Four conversations were escalated to the live support team — primarily complex technical issues (Drake scan loop, Juno Advisor configuration, login auth errors, reviewer feature questions with attachments). One conversation received negative feedback: a login error that Fin could not resolve because it appeared to be an intermittent authentication flow issue requiring account-level investigation. The conversation was auto-closed after user inactivity without a human pick-up, which represents a gap in escalation coverage for auth errors during off-peak hours.</p>
+    <p>No Fin answer loops were detected. Response quality was consistently high: Fin cited relevant KB articles, included contextual screenshots, and correctly disambiguated multi-topic conversations (e.g., the Drake TP label conversation spanned issuer naming, Organization Settings navigation, and toggle behavior — all handled accurately). Documentation gaps exist around CCH Axcess state K-1 import limitations and the Juno Advisor readiness checklist.</p>
   </div>
 
   <!-- RESOLUTION BREAKDOWN -->
   <div class="section-title">Resolution Breakdown</div>
-  <div class="resolution-card">
+  <div class="chart-section">
     <div class="bar-row">
-      <div class="bar-label"><span>Confirmed Resolution</span><span>2 conversations (33%)</span></div>
-      <div class="bar-track"><div class="bar-fill bar-confirmed" style="width: 33%"></div></div>
+      <div class="bar-label">Assumed Resolution</div>
+      <div class="bar-track">
+        <div class="bar-fill assumed" style="width:50%">50%</div>
+      </div>
+      <div class="bar-count">10 / 20</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label"><span>Assumed Resolution</span><span>3 conversations (50%)</span></div>
-      <div class="bar-track"><div class="bar-fill bar-assumed" style="width: 50%"></div></div>
+      <div class="bar-label">Confirmed Resolution</div>
+      <div class="bar-track">
+        <div class="bar-fill confirmed" style="width:25%">25%</div>
+      </div>
+      <div class="bar-count">5 / 20</div>
     </div>
     <div class="bar-row">
-      <div class="bar-label"><span>Human Handoff (no Fin)</span><span>1 conversation (17%)</span></div>
-      <div class="bar-track"><div class="bar-fill bar-human" style="width: 17%"></div></div>
+      <div class="bar-label">Escalated to Human</div>
+      <div class="bar-track">
+        <div class="bar-fill escalated" style="width:20%">20%</div>
+      </div>
+      <div class="bar-count">4 / 20</div>
     </div>
-    <div class="bar-row" style="margin-bottom:0">
-      <div class="bar-label"><span>Open / Unresolved</span><span>1 conversation (17%)</span></div>
-      <div class="bar-track"><div class="bar-fill bar-open" style="width: 17%"></div></div>
+    <div class="bar-row">
+      <div class="bar-label">Negative Feedback</div>
+      <div class="bar-track">
+        <div class="bar-fill negative" style="width:5%">5%</div>
+      </div>
+      <div class="bar-count">1 / 20</div>
     </div>
+    <p style="font-size:13px; color:#718096; margin-top:16px;">
+      <strong style="color:#2d3748;">Combined resolution rate (Assumed + Confirmed): 75%</strong> &nbsp;·&nbsp; 
+      Escalation rate: 20% &nbsp;·&nbsp; Negative feedback rate: 5%
+    </p>
   </div>
 
   <!-- TOPIC CATEGORIES -->
   <div class="section-title">Topic Categories</div>
-  <div class="table-card">
+  <div class="topics-section">
     <table>
       <thead>
         <tr>
           <th>Category</th>
           <th>Count</th>
-          <th>Channel</th>
+          <th>Primary Channel</th>
           <th>Key Examples</th>
-          <th>Fin Handled</th>
+          <th>Fin Outcome</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>1099 Document Handling</strong></td>
-          <td>2</td>
+          <td><strong>Drake Integration & Export</strong></td>
+          <td><span class="count-badge">6</span></td>
           <td>Chat</td>
-          <td>Duplicate 1099-R (TP/SP), Accrued Market Discount reclassification on 1099-B</td>
-          <td>✅ Yes</td>
+          <td>Drake TP label (on/off), Drake closes after scan, Drake integration not showing in settings, 1099-NEC import timing</td>
+          <td>3 assumed, 1 confirmed, 1 escalated, 1 assumed</td>
         </tr>
         <tr>
-          <td><strong>Reviewer Error Reporting</strong></td>
-          <td>2</td>
-          <td>Chat (1), Email (1)</td>
-          <td>User asking how to report tax law mistakes in Review Plan; Statutory Employee W-2 bug</td>
-          <td>Partial (1 Fin, 1 human)</td>
-        </tr>
-        <tr>
-          <td><strong>Lacerte Export Error</strong></td>
-          <td>1</td>
+          <td><strong>Document Processing & Reviewer</strong></td>
+          <td><span class="count-badge">5</span></td>
           <td>Chat</td>
-          <td>General Lacerte export troubleshooting (client ID mismatch, SDK update)</td>
-          <td>✅ Yes</td>
+          <td>Yellow reviewer flag (#2), document stuck "processing," PDF splitting control, unprocessed document handling, reviewer error logging</td>
+          <td>2 escalated, 2 assumed, 1 confirmed</td>
         </tr>
         <tr>
-          <td><strong>Reviewer Plan Accuracy</strong></td>
-          <td>1</td>
-          <td>Email</td>
-          <td>W-2 "Statutory Employee" box not flagged in Reviewer's Plan — potential product bug</td>
-          <td>❌ No (ticket routed to eng)</td>
+          <td><strong>Third-Party Integrations</strong></td>
+          <td><span class="count-badge">4</span></td>
+          <td>Chat / Email</td>
+          <td>TaxDome send error, TaxDome organizer import, Lacerte connection, Taxdome permissions</td>
+          <td>2 confirmed, 1 assumed, 1 assumed</td>
+        </tr>
+        <tr>
+          <td><strong>K-1 Processing & Import</strong></td>
+          <td><span class="count-badge">3</span></td>
+          <td>Chat</td>
+          <td>Colorado K-1 not importing to Axcess, K-1 state items, K1x integration behavior</td>
+          <td>1 confirmed, 2 assumed</td>
+        </tr>
+        <tr>
+          <td><strong>Login & Account Access</strong></td>
+          <td><span class="count-badge">3</span></td>
+          <td>Chat</td>
+          <td>Login error ("An error occurred"), login not working, new account creation as admin</td>
+          <td>1 negative, 1 escalated, 1 email (non-Fin)</td>
+        </tr>
+        <tr>
+          <td><strong>New User Onboarding</strong></td>
+          <td><span class="count-badge">4</span></td>
+          <td>Chat / Email</td>
+          <td>New to Juno questions (Drake timing), reviewer workflow, carry-forward data, Be Tax onboarding</td>
+          <td>2 assumed, 2 email (non-Fin)</td>
+        </tr>
+        <tr>
+          <td><strong>Other / Misc</strong></td>
+          <td><span class="count-badge">5</span></td>
+          <td>Mixed</td>
+          <td>Binder issues (email), YoY document request, review error reporting, Juno Advisor, document room</td>
+          <td>Mixed (admin-initiated, email)</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <!-- FLAGS & ESCALATION SIGNALS -->
-  <div class="section-title">Flags &amp; Escalation Signals</div>
-  <div class="flags-card">
-    <div class="flag-item">
-      <div class="flag-icon">🔴</div>
-      <div class="flag-text">
-        <strong>W-2 Statutory Employee box not handled in Reviewer's Plan</strong>
-        <span>Maria Tran (Tagawa &amp; Ho, LLP) reported that a client's W-2 "Statutory Employee" box was not checked/recognized in Reviewer's Plan, causing incorrect tax treatment. Ticket escalated to engineering by Josh Hunter. Conversation remains open. Requires engineering investigation and likely a product fix.</span>
+  <div class="section-title">Flags & Escalation Signals</div>
+  <div class="flags-section">
+    <div class="flag-list">
+
+      <div class="flag-item critical">
+        <div class="flag-icon">🔴</div>
+        <div class="flag-content">
+          <strong>Login Auth Error — Unresolved &amp; Auto-Closed (Conv 215473723896056)</strong>
+          <span>User Dharma Reddy at Boatswain CPA reported "An error occurred. Please try again." on the login-success redirect page. Fin provided two rounds of troubleshooting (password reset, VPN/firewall check), but the user replied "no" to both. The conversation was auto-closed due to inactivity without human escalation. This is a gap — login auth errors should trigger proactive human routing.</span>
+        </div>
       </div>
-    </div>
-    <div class="flag-item">
-      <div class="flag-icon">⚠️</div>
-      <div class="flag-text">
-        <strong>1099-B Accrued Market Discount reclassification — complex scenario</strong>
-        <span>Brett Efimov (Tinley CPA) flagged that $15,039 in accrued market discount from an LPL Financial 1099-B was left as long-term capital gain instead of being reclassified as ordinary interest income. Fin provided technically sound guidance about the Human In The Loop review, but the user's underlying concern about system accuracy may warrant a specialized KB article on this topic.</span>
+
+      <div class="flag-item warning">
+        <div class="flag-icon">⚠️</div>
+        <div class="flag-content">
+          <strong>Drake Scan Loop — Escalated, Persistent Issue (Conv 215473718041328)</strong>
+          <span>Fred Martinez (fred@fredmartinezllc.com) reported Drake closing immediately after scanning. Fin provided the standard Drake settings checklist. User replied "no" and requested an agent. Lorena Modesto took over, confirmed the issue, and referenced a prior conversation with Sabrina (merged). This suggests a recurring Drake stability issue for this user that may need a Juno app version check.</span>
+        </div>
       </div>
-    </div>
-    <div class="flag-item">
-      <div class="flag-icon">⚠️</div>
-      <div class="flag-text">
-        <strong>Duplicate 1099-R detection limitation surface again</strong>
-        <span>Zsofia Alfonso reported that two 1099-Rs (one TP, one SP) were flagged as duplicates by Juno. Fin's initial guidance (set TP/SP in Review Data) was already completed by the user. The workaround offered (re-upload as separate PDFs) indicates a gap in the duplicate-detection logic that surfaces regularly for married filing jointly returns with multiple 1099-Rs from the same issuer.</span>
+
+      <div class="flag-item warning">
+        <div class="flag-icon">⚠️</div>
+        <div class="flag-content">
+          <strong>Reviewer Yellow Flag Question Still Open (Conv 215473724896593)</strong>
+          <span>Yakubu Gago (Gago Tax) asked about a yellow #2 flag in the reviewer after Drake import. The conversation was escalated and remains open (assigned to Lorena / Support team). The question is specific to reviewer annotation behavior — documentation may be insufficient for this use case.</span>
+        </div>
       </div>
-    </div>
-    <div class="flag-item">
-      <div class="flag-icon">✅</div>
-      <div class="flag-text">
-        <strong>Two confirmed resolutions — Fin correctly routed feedback</strong>
-        <span>Paul Trainor (asking how to report Reviewer mistakes) and Chris O'Neal (reporting a tax law error in Review Plan) both confirmed resolution. Fin successfully directed both users to productfeedback@juno.tax with context-appropriate instructions. This demonstrates strong KB coverage for the "how to report product issues" use case.</span>
+
+      <div class="flag-item warning">
+        <div class="flag-icon">⚠️</div>
+        <div class="flag-content">
+          <strong>CCH Axcess State K-1 Import Gap (Conv 215473723902768)</strong>
+          <span>Kelly McDonald asked why Colorado K-1 state data wasn't importing in CCH Axcess. Fin correctly explained the limitation (state-only items don't import, must be entered manually). User confirmed "Yes" — resolved. However, this question recurs — the KB article title "Juno K-1 Support Details" doesn't make the Axcess-specific limitation discoverable before users hit the issue.</span>
+        </div>
       </div>
-    </div>
-    <div class="flag-item">
-      <div class="flag-icon">✅</div>
-      <div class="flag-text">
-        <strong>No Fin loops detected</strong>
-        <span>No conversations exhibited the loop pattern (same substantive answer repeated 3+ times without resolution). Fin varied its responses appropriately in multi-turn conversations.</span>
+
+      <div class="flag-item positive">
+        <div class="flag-icon">✅</div>
+        <div class="flag-content">
+          <strong>Strong Multi-Turn Handling on Drake TP Label (Conv 215473726554334)</strong>
+          <span>Yakubu Gago asked 4 follow-up questions about the TP label setting. Fin answered each accurately, included screenshots mid-conversation, and explained both the how-to and the rationale for keeping the setting on. User confirmed with "cool" — confirmed resolution in 135 seconds. Excellent contextual reasoning over a multi-step conversation.</span>
+        </div>
       </div>
+
+      <div class="flag-item positive">
+        <div class="flag-icon">✅</div>
+        <div class="flag-content">
+          <strong>TaxDome Integration Error — Clean Confirmed Resolution (Conv 215473710336287)</strong>
+          <span>Pam Montoya (Leron CPA) reported "Something went wrong while sending to Juno" from TaxDome. Fin diagnosed it as a client-specific send flow issue (not a permissions problem since she uses it with other clients), walked through the TaxDome Docs tab and taxpayer/tax year selection. User replied "im all good now" — confirmed resolution in under 5 minutes.</span>
+        </div>
+      </div>
+
+      <div class="flag-item positive">
+        <div class="flag-icon">✅</div>
+        <div class="flag-content">
+          <strong>Zero Fin Answer Loops Detected</strong>
+          <span>No conversation contained the same AI answer repeated 3+ times without resolution. In the one near-loop case (login error), Fin correctly adapted its second answer by asking for the error URL and offering to escalate rather than repeating the same troubleshooting steps.</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- DOCUMENTATION GAPS -->
   <div class="section-title">Documentation Gaps</div>
-  <div class="doc-gaps-card">
+  <div class="doc-section">
+
     <div class="gap-item">
-      <div class="gap-question">📄 Accrued Market Discount (AMD) reclassification on 1099-B</div>
-      <div class="gap-recommendation"><span class="gap-tag">NEW ARTICLE</span> Create a dedicated KB article explaining how Juno handles AMD from brokerage 1099-Bs, when/why it may appear as LT capital gain vs. ordinary interest income, and the exact steps to correct it during Human In The Loop review. Include the "Flagged for Review" field identification and the Validate workflow.</div>
+      <div class="gap-q">Q: Why isn't my state K-1 (Colorado/other) importing into CCH Axcess from Juno?</div>
+      <div class="gap-count">Appeared in 1 conversation · likely recurring given CCH Axcess user base</div>
+      <div class="gap-suggestion">💡 <strong>Suggested improvement:</strong> Add a dedicated "CCH Axcess K-1 Import Limitations" section to the Juno K-1 Support Details article. Explicitly list which state items don't import (state-specific forms), what does import (federal + rollup items), and that manual entry is required for state-only lines. Consider adding an in-app prep checklist tooltip for Axcess users.</div>
     </div>
+
     <div class="gap-item">
-      <div class="gap-question">📄 Duplicate 1099-R for Taxpayer vs. Spouse (same issuer)</div>
-      <div class="gap-recommendation"><span class="gap-tag">UPDATE ARTICLE</span> Update the Human In The Loop article or create a supplementary FAQ for the specific case where two 1099-Rs from the same issuer (for TP and SP) are flagged as duplicates. Document the TP/SP designation steps more prominently, and add the "upload as separate PDFs" workaround as a known limitation with a note to engineering about the detection logic.</div>
+      <div class="gap-q">Q: What does TP/SP mean on payer names in Drake? How do I turn it off?</div>
+      <div class="gap-count">Appeared 2+ times across the week (same user, multi-session) · "Understanding Juno's Additions to Issuer Name" article exists but may not surface proactively</div>
+      <div class="gap-suggestion">💡 <strong>Suggested improvement:</strong> Surface the "Use Simple Issuer/Payer Names" toggle in a more prominent onboarding checklist or Drake export settings screen. Consider an in-app tooltip on the first export that mentions the TP/SP naming behavior and links to the setting.</div>
     </div>
+
     <div class="gap-item">
-      <div class="gap-question">📄 W-2 Statutory Employee box handling in Reviewer's Plan</div>
-      <div class="gap-recommendation"><span class="gap-tag">BUG/ARTICLE</span> Once engineering resolves the Statutory Employee bug, create or update Reviewer documentation to clarify how the "Statutory Employee" checkbox on W-2s affects tax treatment in the Reviewer Plan, and confirm whether it is auto-detected or requires manual review. This will preempt future support tickets on the same issue.</div>
+      <div class="gap-q">Q: Why does Drake keep closing out after the Juno scan/export?</div>
+      <div class="gap-count">Appeared 2 times (this session + merged prior conversation for same user)</div>
+      <div class="gap-suggestion">💡 <strong>Suggested improvement:</strong> The Drake Export Step-by-Step Guide article covers the required settings, but the troubleshooting for "Drake closes after scan" specifically (not just during) should be broken out into a dedicated troubleshooting section or a separate article with version-specific callouts for the Juno desktop app update.</div>
     </div>
+
     <div class="gap-item">
-      <div class="gap-question">📄 How to report Reviewer Plan tax law mistakes (repeated use case)</div>
-      <div class="gap-recommendation"><span class="gap-tag">IMPROVE SNIPPET</span> The "How do I report incorrect answer of tax research?" content snippet is working (used in 2 confirmed resolutions), but consider adding a direct in-app link or button within Reviewer to productfeedback@juno.tax to reduce friction and support ticket volume for this category.</div>
+      <div class="gap-q">Q: What does the yellow #2 badge mean in the Juno reviewer after Drake import?</div>
+      <div class="gap-count">Appeared 1 time · conversation still open</div>
+      <div class="gap-suggestion">💡 <strong>Suggested improvement:</strong> The reviewer feature documentation should include an annotated screenshot guide to all badge types (yellow, red, numeric), what they indicate, and what action is expected. This is a frequent onboarding confusion point for new users of the reviewer tab.</div>
     </div>
+
+    <div class="gap-item">
+      <div class="gap-q">Q: Can I send an organizer directly from TaxDome to Juno?</div>
+      <div class="gap-count">Appeared 1 time · assumed resolution</div>
+      <div class="gap-suggestion">💡 <strong>Suggested improvement:</strong> The TaxDome integration FAQ should explicitly address organizer documents vs. tax documents. If organizers are not supported via "Send to Juno," this limitation should be prominently noted at the top of the TaxDome integration articles.</div>
+    </div>
+
   </div>
 
   <!-- NOTABLE CONVERSATIONS -->
-  <div class="section-title">Notable Conversations</div>
-  <div class="conv-grid">
+  <div class="section-title notable-section">Notable Conversations</div>
+  <div class="notable-grid">
 
-    <div class="conv-card">
+    <div class="conv-card confirmed-card">
       <div class="conv-header">
-        <div class="conv-id">#215473682541787</div>
-        <span class="conv-badge badge-confirmed">✓ Confirmed Resolution</span>
+        <span class="conv-id">#215473726554334</span>
+        <span class="res-badge confirmed">Confirmed ✓</span>
       </div>
-      <div class="conv-title">Reporting Reviewer Mistakes</div>
-      <div class="conv-meta">👤 Paul Trainor · 2:03 AM UTC · Chat · Closed in ~3 min</div>
-      <div class="conv-body">User asked if mistakes found in Reviewer should be reported. Fin immediately directed to productfeedback@juno.tax and explained the Notes column for in-return documentation. User replied "yes" confirming the answer was helpful.</div>
-      <div class="conv-sources">Sources: Access to Juno Support · Collaborating in Reviewer</div>
+      <div class="conv-topic">Drake TP Label — Multi-Turn Resolution</div>
+      <div class="conv-user">Yakubu Gago · jacob@gagotax.com · Gago Tax</div>
+      <div class="conv-summary">User asked what "TP" means on Drake software and whether it could be turned off. Fin answered across 4 exchanges, explained the TP/SP + EIN naming convention, provided Organization Settings navigation, included a screenshot of the toggle, and explained when to keep it on. User said "cool" — closed in 2 minutes 15 seconds.</div>
+      <div class="conv-meta">
+        <span>⏱ 135s to close</span>
+        <span>💬 18 parts</span>
+        <span>📷 Image used</span>
+      </div>
     </div>
 
-    <div class="conv-card assumed">
+    <div class="conv-card confirmed-card">
       <div class="conv-header">
-        <div class="conv-id">#215473682987997</div>
-        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
+        <span class="conv-id">#215473723902768</span>
+        <span class="res-badge confirmed">Confirmed ✓</span>
       </div>
-      <div class="conv-title">Lacerte Export Error</div>
-      <div class="conv-meta">👤 Joshua Hunter · 4:01 AM UTC · Chat · Closed in ~7 min</div>
-      <div class="conv-body">User reported a generic "error on lacerte export." Fin provided a comprehensive troubleshooting response covering all common causes: Lacerte open to All Clients, Client ID mismatch, tax year mismatch, and 64-bit SDK update. Included a visual guide. User became idle; assumed resolved.</div>
-      <div class="conv-sources">Sources: Exporting to Lacerte Step-by-Step · Lacerte 2025 Tax Season Checklist</div>
+      <div class="conv-topic">Colorado K-1 Not Importing (CCH Axcess)</div>
+      <div class="conv-user">Kelly McDonald · kmcdonald@aboutmycpa.com · Cornerstone Professional Accountants</div>
+      <div class="conv-summary">User imported a K-1 with Colorado state data but couldn't see it in CCH Axcess. Fin correctly explained that state-specific K-1 items don't auto-import into Axcess — they appear in the prep checklist and binder but require manual entry. User confirmed "Yes." Resolved in 77 seconds.</div>
+      <div class="conv-meta">
+        <span>⏱ 77s to close</span>
+        <span>💬 10 parts</span>
+        <span>📚 4 KB articles</span>
+      </div>
     </div>
 
-    <div class="conv-card assumed">
+    <div class="conv-card negative-card">
       <div class="conv-header">
-        <div class="conv-id">#215473686658944</div>
-        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
+        <span class="conv-id">#215473723896056</span>
+        <span class="res-badge negative">Negative ✗</span>
       </div>
-      <div class="conv-title">Duplicate 1099-R (TP vs SP)</div>
-      <div class="conv-meta">👤 Zsofia Alfonso · 3:04 PM UTC · Chat · Closed in ~7.5 min · 2-turn</div>
-      <div class="conv-body">User had two 1099-Rs (one TP, one SP) being flagged as duplicates. Fin first suggested the TP/SP designation in Review Data. User replied "I already did that." Fin escalated to the re-upload workaround (separate PDFs). User went idle — workaround likely worked but unconfirmed.</div>
-      <div class="conv-sources">Sources: Human In The Loop · Preparer Guide Lacerte · Using Juno Effectively</div>
+      <div class="conv-topic">Login Auth Error — Unresolved</div>
+      <div class="conv-user">Dharma Reddy · qrteam@boatswaincpa.com · Boatswain CPA, PLLC</div>
+      <div class="conv-summary">User reported "An error occurred. Please try again." on the login-success redirect. Fin provided two troubleshooting rounds (password reset, VPN/firewall/port 443 check). User replied "no" to both. Fin asked for more details but user went idle — auto-closed without human escalation. A potential network/auth issue remains unresolved.</div>
+      <div class="conv-meta">
+        <span>⏱ 697s · auto-closed</span>
+        <span>💬 17 parts</span>
+        <span>⚠️ No escalation</span>
+      </div>
     </div>
 
-    <div class="conv-card">
+    <div class="conv-card escalated-card">
       <div class="conv-header">
-        <div class="conv-id">#215473686769871</div>
-        <span class="conv-badge badge-confirmed">✓ Confirmed Resolution</span>
+        <span class="conv-id">#215473718041328</span>
+        <span class="res-badge escalated">Escalated →</span>
       </div>
-      <div class="conv-title">Review Plan Tax Law Mistake</div>
-      <div class="conv-meta">👤 Chris O'Neal (LedgerWay) · 3:21 PM UTC · Chat · Closed in 19 sec</div>
-      <div class="conv-body">User reported a mistake in tax law within the Review Plan. Fin provided an immediate, precise response directing them to productfeedback@juno.tax with instructions to include the specific section, what's incorrect, and supporting code/guidance. User confirmed "yep" — fastest confirmed resolution of the day.</div>
-      <div class="conv-sources">Sources: How do I report incorrect answer of tax research?</div>
+      <div class="conv-topic">Drake Closes After Scan — Recurring Issue</div>
+      <div class="conv-user">Fred Martinez · fred@fredmartinezllc.com</div>
+      <div class="conv-summary">Drake closes immediately upon completing the scan during Juno export. Fin gave the standard Drake settings checklist. User said "no" and typed "agent." Escalated to Lorena Modesto (Support). Lorena confirmed settings and verified the Juno app version. Conversation was merged with a prior thread about the same issue (Sabrina), indicating a recurring technical problem.</div>
+      <div class="conv-meta">
+        <span>⏱ 3265s to close</span>
+        <span>💬 20 parts</span>
+        <span>👤 Human: Lorena</span>
+      </div>
     </div>
 
-    <div class="conv-card assumed" style="border-left-color:#e6a817">
+    <div class="conv-card confirmed-card">
       <div class="conv-header">
-        <div class="conv-id">#215473691086776</div>
-        <span class="conv-badge badge-assumed">~ Assumed Resolution</span>
+        <span class="conv-id">#215473710336287</span>
+        <span clas="res-badge confirmed">Confirmed ✓</span>
       </div>
-      <div class="conv-title">1099-B Accrued Market Discount Error</div>
-      <div class="conv-meta">👤 Brett Efimov (Tinley CPA) · 11:54 PM UTC · Chat · Closed in ~11 min · Multi-turn</div>
-      <div class="conv-body">Complex multi-turn conversation. User alleged that $15,039 in accrued market discount from LPL Financial was incorrectly left as LT capital gain rather than reclassified as ordinary interest income. Fin acknowledged AI extraction limitations and guided through the Human In The Loop correction steps. User shared a screenshot of the 1099-B. Assumed resolved.</div>
-      <div class="conv-sources">Sources: Human In The Loop · Getting Started with Preparer · Preparer Guide Drake</div>
+      <div class="conv-topic">TaxDome Send Error — "Something went wrong"</div>
+      <div class="conv-user">Pam Montoya · admin@leroncpa.com · Leron CPA</div>
+      <div class="conv-summary">User was sending a client's docs from TaxDome to Juno and got a generic error message. Fin diagnosed it as a client-specific issue (not a general permissions issue, since she uses it with other clients), walked through the TaxDome Docs tab and taxpayer/tax year selection flow. User replied "im all good now." Smooth resolution with 3 KB article references.</div>
+      <div class="conv-meta">
+        <span>⏱ 289s to close</span>
+        <span>💬 21 parts</span>
+        <span>📚 3 KB articles</span>
+      </div>
     </div>
 
-    <div class="conv-card no-fin escalated">
+    <div class="conv-card escalated-card">
       <div class="conv-header">
-        <div class="conv-id">#215473691074836</div>
-        <span class="conv-badge badge-human">⚡ Human Escalation</span>
+        <span class="conv-id">#215473724896593</span>
+        <span class="res-badge escalated">Open / Escalated →</span>
       </div>
-      <div class="conv-title">Reviewer's Plan — W-2 Statutory Employee Bug</div>
-      <div class="conv-meta">👤 Maria Tran (Tagawa &amp; Ho LLP) · 11:51 PM UTC · Email · Open · Escalated to Eng</div>
-      <div class="conv-body">External CPA reported that client Jill Jamgochian's W-2 "Statutory Employee" box was not checked/handled correctly in Reviewer's Plan. Fin did not participate — routed as support ticket. Josh Hunter replied, acknowledged the issue, and escalated to engineering. Notion ticket created. Remains open.</div>
-      <div class="conv-sources">Escalated by: Josh Hunter → Engineering</div>
+      <div class="conv-topic">Reviewer Yellow Flag #2 After Drake Import</div>
+      <div class="conv-user">Yakubu Gago · jacob@gagotax.com · Gago Tax</div>
+      <div class="conv-summary">User asked about a yellow "#2" badge in the Juno reviewer while reviewing notes post-Drake import, saying the info was already populated. Fin could not fully resolve the reviewer annotation question and escalated. The conversation remains open and is assigned to the Support team. This highlights a documentation gap around reviewer badge explanations.</div>
+      <div class="conv-meta">
+        <span>🔓 Still open</span>
+        <span>💬 Escalated</span>
+        <span>👤 Support team</span>
+      </div>
+    </div>
+
+    <div class="conv-card assumed-card">
+      <div class="conv-header">
+        <span class="conv-id">#215473722747414</span>
+        <span class="res-badge assumed">Assumed ~</span>
+      </div>
+      <div class="conv-topic">Processing Status — Real-Time vs. Refresh</div>
+      <div class="conv-user">Yakubu Gago · jacob@gagotax.com · Gago Tax</div>
+      <div class="conv-summary">User asked why a return was showing "processing" and whether Juno updates in real time or bequires a page refresh. Fin explained the processing pipeline behavior and refresh expectations. User went idle after reading the response — assumed resolved. This is a common onboarding question for new-to-Juno workflows.</div>
+      <div class="conv-meta">
+        <span>⏱ 437s to close</span>
+        <span>💬 Assumed</span>
+        <span>🔄 Real-time question</span>
+      </div>
+    </div>
+
+    <div class="conv-card assumed-card">
+      <div class="conv-header">
+        <span class="conv-id">#215473722144225</span>
+        <span class="res-badge assumed">Assumed ~</span>
+      </div>
+      <div class="conv-topic">Drake Timing for 1099-NEC / W-2 Heavy Clients</div>
+      <div class="conv-user">New Juno User · Chat channel</div>
+      <div class="conv-summary">New Juno user asked whether to wait for Drake to be fully open before importing clients with many 1099-NEC and W-2 forms. Fin explained the recommended workflow — Juno can process documents independently of Drake, and the export step is what requires Drake to be open and ready. User went idle after the answer — assumed resolved.</div>
+      <div class="conv-meta">
+        <span>⏱ ~480s to close</span>
+        <span>💬 Assumed</span>
+        <span>🆕 New user</span>
+      </div>
     </div>
 
   </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER
+ -->
 <div class="footer">
-  Generated: March 30, 2026 &nbsp;·&nbsp;
-  Data source: Intercom (Juno Tax workspace) &nbsp;·&nbsp;
-  6 total conversations · 5 Fin AI · 2 confirmed · 3 assumed · 1 human handoff &nbsp;·&nbsp;
-  <a href="https://app.intercom.com" target="_blank">Intercom Dashboard</a>
+  <span>Generated: April 1, 2026 UTC &nbsp;·&nbsp; Data source: Intercom MCP (Juno Tax workspace) &nbsp;·&nbsp; 30 total conversations · 20 Fin AI · March 31, 2026 UTC</span>
+  <span>Published to: <a href="https://liammw3.github.io/juno-fin-daily-summaries/fin-daily-summary.html">GitHub Pages</a></span>
 </div>
 
 </body>
