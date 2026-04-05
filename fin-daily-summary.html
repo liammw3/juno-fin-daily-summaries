@@ -3,118 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fin AI Agent Daily Summary – April 1, 2026</title>
+<title>Fin AI Agent Daily Summary – April 4, 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a1a1a; line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a1a1a; }
 
-  /* Header */
-  .header { background: #013A2F; color: #fff; padding: 36px 40px 28px; }
-  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
-  .header h1 span { color: #1CE49B; }
-  .date-badge { background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 13px; padding: 6px 16px; border-radius: 20px; white-space: nowrap; }
-  .header-sub { color: #B4F7CA; font-size: 14px; margin-top: 4px; }
+  /* HEADER */
+  .header {
+    background: #013A2F;
+    color: #fff;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-left h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.3px; }
+  .header-left p { font-size: 0.95rem; color: #B4F7CA; margin-top: 4px; }
+  .date-badge {
+    background: #1CE49B;
+    color: #013A2F;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    border-radius: 24px;
+    white-space: nowrap;
+  }
 
-  /* Alert Banner */
-  .alert-banner { background: #fff3cd; border-left: 5px solid #e6a817; padding: 14px 40px; }
-  .alert-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
-  .alert-icon { font-size: 20px; }
-  .alert-text { font-size: 14px; color: #664d03; font-weight: 500; }
-  .alert-text strong { color: #533700; }
+  /* BUG ALERT */
+  .bug-alert {
+    background: #fff3cd;
+    border-left: 5px solid #e6a817;
+    margin: 20px 40px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .bug-alert .icon { font-size: 1.4rem; flex-shrink: 0; }
+  .bug-alert strong { color: #92610a; display: block; margin-bottom: 4px; }
+  .bug-alert p { color: #6b4c0d; font-size: 0.9rem; line-height: 1.5; }
 
-  /* Container */
-  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  /* MAIN CONTENT */
+  .content { padding: 24px 40px; max-width: 1300px; margin: 0 auto; }
 
-  /* Section headings */
-  .section-title { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #B4F7CA; }
+  /* KPI GRID */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .kpi-card .kpi-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #013A2F;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-card .kpi-value.accent { color: #059669; }
+  .kpi-card .kpi-value.warn { color: #e6a817; }
+  .kpi-card .kpi-value.danger { color: #dc2626; }
+  .kpi-card .kpi-label { font-size: 0.8rem; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
 
-  /* KPI Grid */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 40px; }
-  .kpi-card { background: #fff; border-radius: 12px; padding: 20px 18px; box-shadow: 0 1px 4px rgba(0,0,0,.07); border-top: 4px solid #1CE49B; }
-  .kpi-card.warn { border-top-color: #e6a817; }
-  .kpi-card.alert { border-top-color: #dc3545; }
-  .kpi-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #6c757d; margin-bottom: 8px; }
-  .kpi-value { font-size: 34px; font-weight: 800; color: #013A2F; line-height: 1; }
-  .kpi-value.amber { color: #e6a817; }
-  .kpi-sub { font-size: 12px; color: #6c757d; margin-top: 4px; }
+  /* SECTIONS */
+  .section { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+  .section h2 { font-size: 1.1rem; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #B4F7CA; }
+  .section p { font-size: 0.92rem; line-height: 1.7; color: #374151; margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
 
-  /* Executive Summary */
-  .exec-summary { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 40px; }
-  .exec-summary p { margin-bottom: 14px; font-size: 15px; color: #333; }
-  .exec-summary p:last-child { margin-bottom: 0; }
+  /* RESOLUTION BAR CHART */
+  .bar-chart { margin-top: 8px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .bar-label { width: 180px; font-size: 0.85rem; color: #374151; font-weight: 500; flex-shrink: 0; }
+  .bar-track { flex: 1; background: #f1f5f9; border-radius: 6px; height: 22px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 0.78rem; font-weight: 600; color: #fff; transition: width 0.3s ease; }
+  .bar-count { width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600; color: #374151; }
+  .bar-assumed { background: #059669; }
+  .bar-confirmed { background: #1CE49B; color: #013A2F; }
+  .bar-negative { background: #dc2626; }
+  .bar-escalated { background: #e6a817; color: #013A2F; }
+  .bar-no-fin { background: #94a3b8; }
 
-  /* Resolution Breakdown */
-  .resolution-section { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 40px; }
-  .bar-row { display: flex; align-items: center; margin-bottom: 14px; gap: 12px; }
-  .bar-label { width: 180px; font-size: 13px; font-weight: 500; color: #444; flex-shrink: 0; }
-  .bar-track { flex: 1; background: #e9ecef; border-radius: 6px; height: 24px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; transition: width .4s; }
-  .bar-fill.green { background: #1CE49B; color: #013A2F; }
-  .bar-fill.light-green { background: #4ade80; color: #013A2F; }
-  .bar-fill.amber { background: #e6a817; }
-  .bar-fill.red { background: #dc3545; }
-  .bar-fill.gray { background: #adb5bd; }
-  .bar-count { width: 40px; text-align: right; font-size: 13px; font-weight: 600; color: #555; }
+  /* TOPICS TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: #013A2F; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8rem; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; color: #374151; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fffe; }
+  .tag { display: inline-block; background: #B4F7CA; color: #013A2F; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
+  .tag-warn { background: #fef3c7; color: #92610a; }
+  .tag-red { background: #fee2e2; color: #991b1b; }
+  .tag-blue { background: #dbeafe; color: #1e40af; }
 
-  /* Topics Table */
-  .topics-section { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 40px; overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th { background: #013A2F; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
-  td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-  tr:hover td { background: #f8fff8; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-  .badge-chat { background: #d1fae5; color: #065f46; }
-  .badge-email { background: #dbeafe; color: #1e40af; }
-  .badge-mixed { background: #ede9fe; color: #5b21b6; }
+  /* FLAGS */
+  .flag-list { list-style: none; }
+  .flag-list li { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
+  .flag-list li:last-child { border-bottom: none; }
+  .flag-icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
+  .flag-body strong { display: block; color: #1a1a1a; margin-bottom: 2px; }
+  .flag-body span { color: #64748b; font-size: 0.85rem; line-height: 1.5; }
 
-  /* Flags */
-  .flags-section { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 40px; }
-  .flag-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
-  .flag-item:last-child { border-bottom: none; }
-  .flag-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-  .flag-icon.critical { background: #fee2e2; }
-  .flag-icon.warning { background: #fef3c7; }
-  .flag-icon.positive { background: #d1fae5; }
-  .flag-text { font-size: 14px; }
-  .flag-text strong { display: block; color: #1a1a1a; margin-bottom: 2px; }
-  .flag-text span { color: #555; font-size: 13px; }
+  /* NOTABLE CONVERSATIONS GRID */
+  .conv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .conv-card {
+    background: #F8F9FA;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 4px solid #013A2F;
+  }
+  .conv-card.confirmed { border-left-color: #1CE49B; }
+  .conv-card.negative { border-left-color: #dc2626; }
+  .conv-card.escalated { border-left-color: #e6a817; }
+  .conv-card.assumed { border-left-color: #059669; }
+  .conv-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
+  .conv-card-header .name { font-weight: 700; font-size: 0.9rem; color: #013A2F; }
+  .conv-card-header .status-badge { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+  .badge-confirmed { background: #B4F7CA; color: #013A2F; }
+  .badge-assumed { background: #d1fae5; color: #065f46; }
+  .badge-negative { background: #fee2e2; color: #991b1b; }
+  .badge-escalated { background: #fef3c7; color: #92610a; }
+  .conv-card .topic { font-size: 0.82rem; color: #64748b; margin-bottom: 6px; }
+  .conv-card .summary { font-size: 0.83rem; color: #374151; line-height: 1.5; }
+  .conv-card .meta { margin-top: 8px; font-size: 0.75rem; color: #94a3b8; }
 
-  /* Doc Gaps */
-  .gaps-section { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 40px; }
-  .gap-item { padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+  /* DOC GAPS */
+  .gap-item { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
   .gap-item:last-child { border-bottom: none; }
-  .gap-question { font-size: 14px; font-weight: 600; color: #013A2F; margin-bottom: 4px; }
-  .gap-count { display: inline-block; background: #fef3c7; color: #92400e; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px; margin-left: 8px; }
-  .gap-suggestion { font-size: 13px; color: #555; margin-top: 4px; }
-  .gap-suggestion::before { content: '→ '; font-weight: 600; color: #1CE49B; }
+  .gap-item strong { font-size: 0.9rem; color: #013A2F; display: block; margin-bottom: 4px; }
+  .gap-item span { font-size: 0.85rem; color: #64748b; line-height: 1.5; }
 
-  /* Notable Conversations */
-  .notables-section { margin-bottom: 40px; }
-  .notables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .notable-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); border-left: 4px solid #1CE49B; }
-  .notable-card.escalated { border-left-color: #e6a817; }
-  .notable-card.negative { border-left-color: #dc3545; }
-  .notable-card.confirmed { border-left-color: #1CE49B; }
-  .notable-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-  .notable-id { font-size: 11px; color: #999; font-family: monospace; }
-  .notable-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
-  .nb-assumed { background: #d1fae5; color: #065f46; }
-  .nb-confirmed { background: #B4F7CA; color: #013A2F; }
-  .nb-escalated { background: #fef3c7; color: #92400e; }
-  .nb-negative { background: #fee2e2; color: #991b1b; }
-  .notable-title { font-size: 14px; font-weight: 700; color: #013A2F; margin-bottom: 6px; }
-  .notable-body { font-size: 13px; color: #555; margin-bottom: 10px; }
-  .notable-stats { display: flex; gap: 12px; font-size: 12px; color: #888; }
+  /* FOOTER */
+  .footer {
+    background: #013A2F;
+    color: #B4F7CA;
+    text-align: center;
+    padding: 20px 40px;
+    font-size: 0.82rem;
+    margin-top: 32px;
+  }
+  .footer p { margin-bottom: 4px; }
 
-  /* Footer */
-  .footer { background: #013A2F; color: #B4F7CA; padding: 20px 40px; text-align: center; font-size: 12px; }
-  .footer a { color: #1CE49B; text-decoration: none; }
-
-  @media (max-width: 600px) {
-    .header-inner { flex-direction: column; align-items: flex-start; }
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .bar-label { width: 130px; }
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { 
+    .two-col { grid-template-columns: 1fr; }
+    .content { padding: 16px 20px; }
+    .header { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -122,374 +168,334 @@
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-inner">
-    <div>
-      <h1>Fin AI Agent <span>Daily Summary</span></h1>
-      <div class="header-sub">Juno Tax · Intercom Support Inbox · April 1, 2026</div>
-    </div>
-    <div class="date-badge">April 1, 2026</div>
+  <div class="header-left">
+    <h1>Fin AI Agent Daily Summary</h1>
+    <p>Juno Tax · Intercom Conversations · Automated Report</p>
+  </div>
+  <div class="date-badge">April 4, 2026</div>
+</div>
+
+<!-- BUG ALERT BANNER (Fin Loop Detected) -->
+<div class="bug-alert" style="margin: 24px 40px 0 40px;">
+  <div class="icon">⚠️</div>
+  <div>
+    <strong>Fin Loop Detected — Drake Status Validation (1 instance)</strong>
+    <p>Fin repeated the same answer about document validation status 4 times in a single session without resolving the underlying issue. User (Sheila Chaplin, Reliable Tax &amp; Business Services) re-opened the conversation explicitly stating "not helpful at all" and disengaged. Recommend reviewing Fin's guidance on post-export document status to break the loop pattern.</p>
   </div>
 </div>
 
-<!-- BUG ALERT BANNER (Fin loop detected) -->
-<div class="alert-banner">
-  <div class="alert-inner">
-    <div class="alert-icon">⚠️</div>
-    <div class="alert-text">
-      <strong>Fin Loop Detected:</strong> 1 conversation where Fin gave near-identical answers 3× without resolving the issue.
-      Conversation #215473742433469 — user unable to delete a stuck driver's license upload. Fin's workaround advice was repeated with minor variation, leading to user frustration ("that sucks what a waste of time"). Review KB article on document deletion UX.
-    </div>
-  </div>
-</div>
-
-<div class="container">
+<div class="content">
 
   <!-- KPI GRID -->
   <div class="kpi-grid">
     <div class="kpi-card">
+      <div class="kpi-value">12</div>
       <div class="kpi-label">Total Conversations</div>
-      <div class="kpi-value">34</div>
-      <div class="kpi-sub">April 1, 2026 (UTC)</div>
     </div>
     <div class="kpi-card">
+      <div class="kpi-value accent">9</div>
       <div class="kpi-label">Fin AI Conversations</div>
-      <div class="kpi-value">20</div>
-      <div class="kpi-sub">59% of all convos</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Assumed Resolution %</div>
-      <div class="kpi-value">65%</div>
-      <div class="kpi-sub">13 of 20 Fin convos</div>
+      <div class="kpi-value accent">55.6%</div>
+      <div class="kpi-label">Assumed Resolution Rate</div>
     </div>
-    <div class="kpi-card warn">
+    <div class="kpi-card">
+      <div class="kpi-value warn">1</div>
       <div class="kpi-label">Fin Loop Reports</div>
-      <div class="kpi-value amber">1</div>
-      <div class="kpi-sub">3+ repeated answers</div>
     </div>
     <div class="kpi-card">
+      <div class="kpi-value">~8 min</div>
       <div class="kpi-label">Avg Fin Close Time</div>
-      <div class="kpi-value">~4.5<span style="font-size:18px">min</span></div>
-      <div class="kpi-sub">Confirmed/assumed</div>
     </div>
-    <div class="kpi-card warn">
+    <div class="kpi-card">
+      <div class="kpi-value warn">1</div>
       <div class="kpi-label">Human Handoffs</div>
-      <div class="kpi-value amber">6</div>
-      <div class="kpi-sub">30% of Fin convos</div>
     </div>
   </div>
 
   <!-- EXECUTIVE SUMMARY -->
-  <div class="exec-summary">
-    <div class="section-title">Executive Summary</div>
-    <p>April 1, 2026 was a moderate-volume support day for Juno Tax with 34 total conversations, 20 of which (59%) were handled at least in part by Fin AI. Fin achieved a 65% assumed or confirmed resolution rate — resolving 12 conversations autonomously through assumed resolution and 1 through explicit user confirmation. This is a solid performance for a tax-season day when users are working through complex multi-step workflows.</p>
-    <p>The most common Fin-handled topics were integration and sync questions (TaxDome, Lacerte), usage and credit inquiries, and feature/how-to questions about document uploads and tax software compatibility. Fin demonstrated particularly strong performance on factual questions — it gave accurate, well-sourced answers about IRS Section 7216 compliance, QuickBooks Schedule C exports, supported document types, and demo day scheduling. The confirmed resolution on the childcare tuition question (conv #215473736744525) is a highlight: Fin handled a multi-turn clarifying conversation spanning 1098-T vs. daycare receipts vs. Drake export and resolved it in under 2 minutes.</p>
-    <p>Six conversations (30% of Fin-handled) escalated to human agents — all via the intended escalation workflow ("Live chat please" / "Support ticket please"). This is within normal range and indicates the escalation flow is working correctly. One notable escalation involved a login lockout (conv #215473743066254) that Fin correctly diagnosed but couldn't resolve unilaterally since it requires backend account access; human agent Sabrina Chavez resolved it within 4 minutes.</p>
-    <p>One issue warrants attention: Fin produced a near-loop on the driver's license deletion question, giving three structurally similar answers with slight variation while failing to surface the key actionable step (delete from the dashboard trash icon) until the third message. The user expressed frustration and the conversation closed on negative feedback. This points to a documentation gap around the stuck-document UX and how clearly the "delete preparation from dashboard" workaround is described in KB content.</p>
+  <div class="section">
+    <h2>Executive Summary</h2>
+    <p>On April 4, 2026, Juno's Fin AI agent handled 9 of 12 total conversations across the chat channel, with the remaining 3 arriving via email and bypassing Fin entirely. Of the 9 Fin-handled conversations, 5 ended in assumed resolution (55.6%), 1 reached a confirmed resolution, 2 received explicit negative feedback, and 1 was escalated to a human agent. No new complaints or system-wide outages were detected.</p>
+    <p>The day's conversations were dominated by export-related questions — particularly around CCH Axcess's "failed to fetch" error when working with 2024 returns, Drake status not updating after export, and how to connect/sync Drake contacts. Fin performed well on multi-turn CCH Axcess conversations, providing accurate step-by-step guidance and correctly identifying that the integration only supports 2025 returns in CCH Axcess. The confirmed resolution from Lori Ream (ReamCPA) was a textbook multi-turn success, with Fin correctly diagnosing the issue and reassuring the user about return credit consumption.</p>
+    <p>The primary concern is the looping pattern with Sheila Chaplin's Drake status question. Fin gave the same answer about "validation-driven status" four times without adapting to the user's repeated signals that the explanation wasn't landing. The conversation ended with the user expressing frustration and disengaging — a signal that Fin's Drake status documentation or escalation logic may need refinement. A second negative feedback conversation (Yakubu Gago) was softer — the user said "No but it's okay" — suggesting the answer was partially useful but incomplete for their specific new-client Drake workflow.</p>
+    <p>One escalation occurred: Rohin Alla (ReddyCPA LLC) immediately requested a human agent to assist with a K-1 spouse name field selection issue — a specific UI-level question that Fin appropriately routed rather than attempting to resolve. ReddyCPA LLC also generated two additional Fin conversations on the same day, suggesting an onboarding-stage account actively exploring platform capabilities.</p>
   </div>
 
   <!-- RESOLUTION BREAKDOWN -->
-  <div class="resolution-section">
-    <div class="section-title">Resolution Breakdown — Fin AI Conversations (n=20)</div>
-    <div class="bar-row">
-      <div class="bar-label">Assumed Resolution</div>
-      <div class="bar-track"><div class="bar-fill green" style="width:60%">60%</div></div>
-      <div class="bar-count">12</div>
+  <div class="section">
+    <h2>Resolution Breakdown</h2>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Assumed Resolution</div>
+        <div class="bar-track"><div class="bar-fill bar-assumed" style="width: 55.6%">55.6%</div></div>
+        <div class="bar-count">5</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Confirmed Resolution</div>
+        <div class="bar-track"><div class="bar-fill bar-confirmed" style="width: 11.1%">11.1%</div></div>
+        <div class="bar-count">1</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Negative Feedback</div>
+        <div class="bar-track"><div class="bar-fill bar-negative" style="width: 22.2%">22.2%</div></div>
+        <div class="bar-count">2</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Escalated to Human</div>
+        <div class="bar-track"><div class="bar-fill bar-escalated" style="width: 11.1%">11.1%</div></div>
+        <div class="bar-count">1</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">No Fin (Email)</div>
+        <div class="bar-track"><div class="bar-fill bar-no-fin" style="width: 25%">25%</div></div>
+        <div class="bar-count">3</div>
+      </div>
     </div>
-    <div class="bar-row">
-      <div class="bar-label">Escalated to Human</div>
-      <div class="bar-track"><div class="bar-fill amber" style="width:30%">30%</div></div>
-      <div class="bar-count">6</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">Confirmed Resolution</div>
-      <div class="bar-track"><div class="bar-fill light-green" style="width:5%">5%</div></div>
-      <div class="bar-count">1</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">Negative Feedback</div>
-      <div class="bar-track"><div class="bar-fill red" style="width:5%">5%</div></div>
-      <div class="bar-count">1</div>
-    </div>
-    <div class="bar-row" style="margin-top:20px; padding-top:12px; border-top:1px solid #eee;">
-      <div class="bar-label" style="color:#888; font-size:12px;">Non-Fin conversations (14)</div>
-      <div class="bar-track"><div class="bar-fill gray" style="width:100%; font-size:11px;">Emails / admin-initiated (no Fin)</div></div>
-      <div class="bar-count">14</div>
-    </div>
+    <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b;">Percentages for Fin resolution states are out of 9 Fin-handled conversations. Email channel conversations (3) are shown separately for context.</p>
   </div>
 
   <!-- TOPIC CATEGORIES -->
-  <div class="topics-section">
-    <div class="section-title">Topic Categories</div>
+  <div class="section">
+    <h2>Topic Categories</h2>
     <table>
       <thead>
         <tr>
           <th>Category</th>
           <th>Count</th>
           <th>Channel</th>
-          <th>Fin Handled</th>
-          <th>Key Examples</th>
+          <th>Key Examples / Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Integration & Sync</strong><br><span style="font-size:12px;color:#888">TaxDome, Lacerte, Drake</span></td>
-          <td>4</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>4 / 4</td>
-          <td>How to sync TaxDome; two Lacerte programs/SKUs; Drake childcare export; Lacerte integration login</td>
+          <td><strong>CCH Axcess Export / Failed to Fetch</strong></td>
+          <td><span class="tag">1</span></td>
+          <td>Chat</td>
+          <td>Lori Ream (ReamCPA): "failed to fetch" on Generate .dat file; Fin correctly diagnosed 2024 returns not supported in CCH Axcess 2025 integration. Confirmed resolution. User noted frustration at not knowing this before doing the work.</td>
         </tr>
         <tr>
-          <td><strong>Usage & Credits</strong><br><span style="font-size:12px;color:#888">Credit tracking, draft counting</span></td>
-          <td>3</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>3 / 3</td>
-          <td>"Where can I check my usage"; "where can I see existing credits"; "how does Juno count drafts"</td>
+          <td><strong>Drake Status Not Updating After Export</strong></td>
+          <td><span class="tag tag-red">1</span></td>
+          <td>Chat</td>
+          <td>Sheila Chaplin (Reliable Tax): Status not changing after Drake export. Fin looped on validation explanation ×4. User explicitly said "not helpful at all." <strong>Negative feedback / loop.</strong></td>
         </tr>
         <tr>
-          <td><strong>Document Upload & Management</strong><br><span style="font-size:12px;color:#888">Upload errors, processing, deletion</span></td>
-          <td>4</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>3 / 4</td>
-          <td>Driver's license stuck (loop); document send error; childcare statement upload; supported doc types</td>
+          <td><strong>Drake Contact Sync &amp; Benefits</strong></td>
+          <td><span class="tag">2</span></td>
+          <td>Chat</td>
+          <td>Two separate conversations from Rohin Alla (ReddyCPA) and Yakubu Gago (GagoTax) about importing Drake client lists into Juno. Assumed resolution and negative feedback respectively.</td>
         </tr>
         <tr>
-          <td><strong>Login & Access</strong><br><span style="font-size:12px;color:#888">Account lockouts, signin errors</span></td>
-          <td>2</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>2 / 2 (both escalated)</td>
-          <td>Account lockout (escalated to Sabrina); Juno integration login issue</td>
+          <td><strong>Drake Per-User Settings (Firm-Wide)</strong></td>
+          <td><span class="tag">1</span></td>
+          <td>Chat</td>
+          <td>Rohin Alla (ReddyCPA): Preventing one user's Drake Setup→Options from affecting whole firm. Fin correctly explained per-user Drake settings. Assumed resolution.</td>
         </tr>
         <tr>
-          <td><strong>Compliance & Legal Questions</strong><br><span style="font-size:12px;color:#888">7216, SDK compliance</span></td>
-          <td>2</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>2 / 2 (1 escalated)</td>
-          <td>Do clients need to sign 7216? (escalated after multi-turn); SDK file install</td>
+          <td><strong>Reviewer: YoY PDF Export</strong></td>
+          <td><span class="tag">1</span></td>
+          <td>Chat</td>
+          <td>Eumar Canoza (BoatswainCPA): Requested PDF export of Year-over-Year Analysis tab. Fin correctly identified the feature gap (only Review Plan PDF available) and suggested screenshot workaround. Assumed resolution.</td>
         </tr>
         <tr>
-          <td><strong>Software Compatibility</strong><br><span style="font-size:12px;color:#888">CCH, 1041, UltraTax</span></td>
-          <td>3</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>3 / 3</td>
-          <td>CCH wash sales code W line 12; 1041 in Reviewer; UltraTax source data entry module</td>
+          <td><strong>Prior Year Tax Return Support</strong></td>
+          <td><span class="tag">1</span></td>
+          <td>Chat</td>
+          <td>Yakubu Gago (GagoTax): Whether Juno supports prior year returns. Fin correctly explained 2024+ for Preparer and prior-year upload for Reviewer YoY analysis. Multi-topic session also covered pricing. Assumed resolution.</td>
         </tr>
         <tr>
-          <td><strong>Product / Feature Questions</strong><br><span style="font-size:12px;color:#888">Demo days, version info</span></td>
-          <td>2</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>2 / 2</td>
-          <td>"How do I see the next demo day?"; "What is the latest integration app version?"</td>
+          <td><strong>App Not Working (Connectivity)</strong></td>
+          <td><span class="tag">1</span></td>
+          <td>Chat</td>
+          <td>Shashank Mune (TheLedgerWay): "Why is Juno not working?" Fin provided connectivity/desktop app/firewall checklist. User did not respond further. Assumed resolution.</td>
         </tr>
         <tr>
-          <td><strong>Email / Reviewer Errors (FYI)</strong><br><span style="font-size:12px;color:#888">Internal error reports via email</span></td>
-          <td>5</td>
-          <td><span class="badge badge-email">Email</span></td>
-          <td>0 / 5</td>
-          <td>3× reviewer errors (FYI only); Wenzel binder crash; Lacerte installation error; 1098-T question; scan fail</td>
+          <td><strong>K-1 Spouse Name Field (Escalated)</strong></td>
+          <td><span class="tag tag-warn">1</span></td>
+          <td>Chat</td>
+          <td>Rohin Alla (ReddyCPA): Requested human agent immediately; follow-up message was about selecting spouse name for a K-1. Escalated via "Support – AI Agent then live chat" workflow. Ticket open.</td>
         </tr>
         <tr>
-          <td><strong>Direct Escalation Requests</strong><br><span style="font-size:12px;color:#888">Users requesting live agent immediately</span></td>
-          <td>2</td>
-          <td><span class="badge badge-chat">Chat</span></td>
-          <td>2 / 2 (escalated)</td>
-          <td>"Live chat"; "support ticket"</td>
-        </tr>
-        <tr>
-          <td><strong>Unclassified / Empty</strong><br><span style="font-size:12px;color:#888">No body or admin-initiated</span></td>
-          <td>7</td>
-          <td><span class="badge badge-mixed">Mixed</span></td>
-          <td>0 / 7</td>
-          <td>Admin-initiated or empty conversations (in progress)</td>
+          <td><strong>Email Conversations (No Fin)</strong></td>
+          <td><span class="tag">3</span></td>
+          <td>Email</td>
+          <td>3 email-channel conversations created on April 4. Fin did not participate. Currently open/pending human review.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <!-- FLAGS & ESCALATION SIGNALS -->
-  <div class="flags-section">
-    <div class="section-title">Flags &amp; Escalation Signals</div>
-
-    <div class="flag-item">
-      <div class="flag-icon critical">🔴</div>
-      <div class="flag-text">
-        <strong>Fin Loop — Driver's License Deletion (Conv #215473742433469)</strong>
-        <span>Fin gave 3 near-identical answers about document deletion without surfacing the correct actionable step (dashboard trash icon) until the third reply. User closed with explicit negative feedback ("that sucks what a waste of time"). Resolution: Add clearer step-by-step deletion path to KB article; consider a Fin guidance rule that escalates after 2 failed clarification attempts on the same question.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon warning">🟡</div>
-      <div class="flag-text">
-        <strong>Login Lockout — No KB Article Covering the 15-Min Lockout Window</strong>
-        <span>Conv #215473743066254 required Sabrina to manually explain the 15-minute lockout period after failed login attempts. Fin's initial guidance did not mention this specific behavior. A dedicated KB article or Fin guidance rule on login lockouts would deflect this class of escalation.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon warning">🟡</div>
-      <div class="flag-text">
-        <strong>Multiple Reviewer Error FYI Emails (3 on same day)</strong>
-        <span>Three separate "FYI Only — Reviewer error" email threads came in on April 1 alongside a scan failure and binder crash. These are informational but suggest potential Reviewer instability. Engineering or QA should check if there's a pattern.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon warning">🟡</div>
-      <div class="flag-text">
-        <strong>7216 Compliance Question Escalated Despite Strong Fin Answer</strong>
-        <span>Conv #215473740030591 — Fin gave an accurate, well-sourced 7216 answer but the conversation escalated anyway (user requested live chat after several follow-up questions about UltraTax source data entry). Fin handled 5 distinct sub-questions well. Consider whether multi-topic conversations should be escalated sooner.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon positive">🟢</div>
-      <div class="flag-text">
-        <strong>Confirmed Resolution on Complex Multi-Turn Query (Conv #215473736744525)</strong>
-        <span>Sarah-Michelle Critchfield asked about childcare tuition statements — Fin navigated a 3-turn conversation covering 1098-T vs. daycare receipts vs. Drake export handling and received explicit "yes thank you" confirmation. Closed in 103 seconds with no human intervention. Strong Fin performance.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon positive">🟢</div>
-      <div class="flag-text">
-        <strong>Escalation Workflow Functioning Correctly</strong>
-        <span>All 6 escalated conversations followed the expected "Live chat please / Support ticket please" workflow, with correct handoff to human agents. No broken escalations or stuck conversations detected.</span>
-      </div>
-    </div>
-
-    <div class="flag-item">
-      <div class="flag-icon positive">🟢</div>
-      <div class="flag-text">
-        <strong>Strong Fin Performance on Usage / Credit Questions</strong>
-        <span>3 separate users asked variants of "where do I see my credits / usage / how are drafts counted" — all resolved by Fin with assumed resolution and no escalation. Consistent, accurate answers across all three.</span>
-      </div>
-    </div>
+  <div class="section">
+    <h2>Flags &amp; Escalation Signals</h2>
+    <ul class="flag-list">
+      <li>
+        <div class="flag-icon">🔴</div>
+        <div class="flag-body">
+          <strong>Fin Loop — Drake Status Validation (Sheila Chaplin, Reliable Tax)</strong>
+          <span>Fin repeated the identical validation explanation 4 times across 25 conversation parts. User closed, re-opened with "not helpful at all," then disengaged. Root cause: Fin's answer is technically correct but fails to address the user's actual experience. KB gap likely around post-export status display behavior. Recommend: add escalation path when same AI answer is given 3+ times in one session.</span>
+        </div>
+      </li>
+      <li>
+        <div class="flag-icon">🟡</div>
+        <div class="flag-body">
+          <strong>Negative Feedback — New Client Drake Import (Yakubu Gago, GagoTax)</strong>
+          <span>User asked about importing new client info; Fin answered TaxDome path first (wrong assumption), then pivoted to Drake CSV import. User said "No but it's okay" — indicating partial help. Documentation on "new client setup in Drake" may need a clearer first-answer path that doesn't default to TaxDome.</span>
+        </div>
+      </li>
+      <li>
+        <div class="flag-icon">🟡</div>
+        <div class="flag-body">
+          <strong>Escalation — K-1 Spouse Name Field (Rohin Alla, ReddyCPA LLC)</strong>
+          <span>User opened with "talk to agent" directly — Fin workflow correctly routed to human support. Follow-up question was specific UI: "this k1 is for spouse, how do i select the name here?" This is a recurring new-customer type of question (ReddyCPA has session_count: 12 and Lifecycle: Lead) that may benefit from an in-app tooltip or guided FAQ article.</span>
+        </div>
+      </li>
+      <li>
+        <div class="flag-icon">🟡</div>
+        <div class="flag-body">
+          <strong>CCH Axcess 2024 vs. 2025 Confusion (Lori Ream, ReamCPA)</strong>
+          <span>Despite eventual confirmed resolution, the user expressed frustration: "I wish I had known that before I did all the work to try to use the documents in Juno first." This indicates the 2025-only CCH integration limitation is a knowledge gap causing wasted effort. Consider a proactive in-app message or prominent KB article at session start when CCH Axcess is detected.</span>
+        </div>
+      </li>
+      <li>
+        <div class="flag-icon">✅</div>
+        <div class="flag-body">
+          <strong>Strong Multi-Turn Resolution — CCH Axcess Return Credit Concern (Lori Ream)</strong>
+          <span>Fin handled a 29-part conversation across two re-opens, accurately and consistently explaining that failed export attempts do not consume return credits. User explicitly confirmed "Yes, thank you for clarifying!" — a demonstration of Fin maintaining context and accuracy across a long, multi-stage session.</span>
+        </div>
+      </li>
+      <li>
+        <div class="flag-icon">✅</div>
+        <div class="flag-body">
+          <strong>ReddyCPA LLC — Active Onboarding Engagement (3 conversations in one day)</strong>
+          <span>Rohin Alla from ReddyCPA (Lifecycle: Lead, 12 sessions) generated 3 chat conversations in one day, covering Drake options, Drake contact sync benefits, and a K-1 escalation. This pattern suggests an actively onboarding account exploring capabilities. Customer Success should be aware and may benefit from proactive outreach.</span>
+        </div>
+      </li>
+    </ul>
   </div>
 
   <!-- DOCUMENTATION GAPS -->
-  <div class="gaps-section">
-    <div class="section-title">Documentation Gaps &amp; KB Improvement Suggestions</div>
-
+  <div class="section">
+    <h2>Documentation Gaps &amp; KB Recommendations</h2>
     <div class="gap-item">
-      <div class="gap-question">How do I delete a stuck document / processing upload in Preparer?<span class="gap-count">3 turns</span></div>
-      <div class="gap-suggestion">Add explicit step-by-step section to "Getting Started with Preparer" specifically covering stuck uploads: (1) cannot delete during active processing, (2) go to dashboard trash icon to delete the whole preparation, (3) re-upload. Include screenshot of dashboard trash icon prominently.</div>
+      <strong>📖 CCH Axcess: 2025-Only Integration — Prominent Onboarding Notice Needed</strong>
+      <span>Two separate touchpoints on April 4 involved confusion about the 2024 vs. 2025 CCH Axcess integration limitation. While KB articles exist (CCH Axcess 2025 Tax Season Checklist, Step By Step Guide), users are discovering the limitation mid-workflow after investing prep time. <em>Recommendation:</em> Add a prominent banner in the Juno UI when a CCH Axcess session is detected on a pre-2025 return, and add a FAQ entry: "Can I export 2024 returns to CCH Axcess?" directly in the CCH Axcess category.</span>
     </div>
-
     <div class="gap-item">
-      <div class="gap-question">What happens when I get locked out of my account?<span class="gap-count">1 escalation</span></div>
-      <div class="gap-suggestion">Add a dedicated article or FAQ entry to "Getting Started - Frequently Asked Questions" explaining the login lockout behavior: account locks after multiple failed attempts, requires waiting 15 minutes before retrying with correct credentials.</div>
+      <strong>📖 Drake: Post-Export Document Status — More Concrete Troubleshooting Steps</strong>
+      <span>Sheila Chaplin's loop conversation indicates that the existing validation explanation ("status is tied to validation, not export") doesn't resolve the user's actual experience. <em>Recommendation:</em> Create a dedicated article "Why hasn't my document status changed after exporting to Drake?" with a step-by-step diagnostic: (1) confirm all source documents individually validated, (2) check for "Possibly Missing" or flagged fields, (3) use "Mark All as Validated" per-document. Include screenshots of each status state.</span>
     </div>
-
     <div class="gap-item">
-      <div class="gap-question">Does Juno support daycare / childcare receipts (not 1098-T)?<span class="gap-count">2 turns</span></div>
-      <div class="gap-suggestion">Clarify in "Supported Source Documents" that daycare receipts are uploaded as general documents (no dedicated form type), and add a note about how they appear in Drake export — shown in Preparation Checklist for manual entry. Fin answered this correctly but the distinction isn't clear in existing docs.</div>
+      <strong>📖 Drake: Adding a New Client (First-Timer Workflow)</strong>
+      <span>Yakubu Gago asked whether Juno imports new client info automatically — Fin's first response assumed TaxDome was in use. <em>Recommendation:</em> Create a "Getting Started: Your First Client in Juno with Drake" quick-start guide that leads with the Drake CSV export/import path for new users, before mentioning TaxDome or other integrations.</span>
     </div>
-
     <div class="gap-item">
-      <div class="gap-question">Where can I check my usage / credits?<span class="gap-count">3 separate convos</span></div>
-      <div class="gap-suggestion">This is a top FAQ — ensure the "Return Usage Details in Juno" article is easily findable via search, and consider adding a tooltip or dashboard callout within the app pointing users to the usage page. Fin answered correctly every time but the frequency suggests in-app discoverability is low.</div>
+      <strong>📖 Reviewer: Year-over-Year Analysis PDF Export — Feature Request + Workaround</strong>
+      <span>Eumar Canoza asked for a PDF of the YoY Analysis tab — a feature that doesn't exist. Fin correctly suggested a screenshot workaround. <em>Recommendation:</em> Log this as a feature request, and add a note to the "Making the Most of Reviewer" article clarifying that only the Review Plan PDF is currently downloadable, with the screenshot workaround documented.</span>
     </div>
-
     <div class="gap-item">
-      <div class="gap-question">Does Juno use UltraTax's Source Data Entry module?<span class="gap-count">1 multi-turn</span></div>
-      <div class="gap-suggestion">Add a "UltraTax Integration" section to "Juno Desktop App vs Juno Web App" or create a dedicated UltraTax FAQ. Fin answered correctly by inference but there is no UltraTax-specific article. This will become more common as UltraTax users onboard.</div>
+      <strong>📖 Pricing: Additional Cost After Plan Limit</strong>
+      <span>Yakubu Gago asked about costs beyond 100 clients. Fin correctly deflected to support/CSM but could not give any guidance. <em>Recommendation:</em> Add a short FAQ article or Fin guidance item: "What happens when I reach my plan limit?" that explains overage billing is governed by the Order Form and instructs users to contact their CSM — so Fin can cite a source rather than deflecting cold.</span>
     </div>
   </div>
 
   <!-- NOTABLE CONVERSATIONS -->
-  <div class="notables-section">
-    <div class="section-title">Notable Conversations</div>
-    <div class="notables-grid">
+  <div class="section">
+    <h2>Notable Conversations</h2>
+    <div class="conv-grid">
 
-      <div class="notable-card confirmed">
-        <div class="notable-meta">
-          <span class="notable-id">#215473736744525</span>
-          <span class="notable-badge nb-confirmed">✓ Confirmed Resolution</span>
+      <div class="conv-card confirmed">
+        <div class="conv-card-header">
+          <div class="name">Lori Ream — ReamCPA</div>
+          <div class="status-badge badge-confirmed">✓ Confirmed Resolution</div>
         </div>
-        <div class="notable-title">Childcare Tuition Statement — Multi-Turn Success</div>
-        <div class="notable-body">Sarah-Michelle Critchfield asked about uploading a childcare tuition statement. Fin correctly distinguished 1098-T (tuition) from daycare receipts, explained Drake export behavior, and received explicit "yes thank you" confirmation. Resolved in 103 seconds with no human involvement.</div>
-        <div class="notable-stats"><span>⏱ 103s</span><span>💬 3 Fin turns</span><span>📎 5 KB sources</span></div>
+        <div class="topic">CCH Axcess "Failed to Fetch" + Return Credit Concern</div>
+        <div class="summary">29-part conversation across two re-opens. Fin correctly diagnosed the CCH Axcess 2025-only limitation and reassured user that failed export attempts don't consume return credits. User confirmed: "Yes, thank you for clarifying!" Best-performing conversation of the day.</div>
+        <div class="meta">ID: 215473771957193 · Chat · ~8 min · Sources: 5 KB articles</div>
       </div>
 
-      <div class="notable-card negative">
-        <div class="notable-meta">
-          <span class="notable-id">#215473742433469</span>
-          <span class="notable-badge nb-negative">⚠ Negative Feedback</span>
+      <div class="conv-card negative">
+        <div class="conv-card-header">
+          <div class="name">Sheila Chaplin — Reliable Tax</div>
+          <div class="status-badge badge-negative">✗ Negative Feedback</div>
         </div>
-        <div class="notable-title">Driver's License Stuck — Fin Loop (3× Repeated Answer)</div>
-        <div class="notable-body">Christopher Klee (George Peter Klee CPA LLC) couldn't delete a stuck driver's license upload. Fin gave 3 progressively more specific but structurally similar answers. User expressed frustration ("that sucks what a waste of time"). The correct workaround (dashboard trash icon) wasn't clear until the third answer.</div>
-        <div class="notable-stats"><span>⏱ 561s</span><span>💬 3 AI answers</span><span>🔴 Loop detected</span></div>
+        <div class="topic">Drake Status Not Updating After Export</div>
+        <div class="summary">25-part session. Fin gave the same validation explanation 4 times without adapting. User said "nevermind", Fin closed — user re-opened with "not helpful at all" and disengaged. Classic Fin loop. Underlying issue (exact status mismatch) was never diagnosed.</div>
+        <div class="meta">ID: 215473776395621 · Chat · ~11 min · ⚠️ Loop detected</div>
       </div>
 
-      <div class="notable-card escalated">
-        <div class="notable-meta">
-          <span class="notable-id">#215473743066254</span>
-          <span class="notable-badge nb-escalated">↑ Escalated</span>
+      <div class="conv-card escalated">
+        <div class="conv-card-header">
+          <div class="name">Rohin Alla — ReddyCPA LLC</div>
+          <div class="status-badge badge-escalated">→ Escalated</div>
         </div>
-        <div class="notable-title">Login Lockout — Escalated, Resolved by Sabrina</div>
-        <div class="notable-body">Reddy CPA couldn't log in ("Credentials not associated with active account"). Fin diagnosed potential lockout correctly but user requested live chat. Sabrina Chavez explained the 15-minute lockout window within 80 seconds of assignment. Conversation still open awaiting confirmation.</div>
-        <div class="notable-stats"><span>⏱ Open</span><span>👤 Sabrina C.</span><span>💬 80s to human reply</span></div>
+        <div class="topic">K-1 Spouse Name Field Selection</div>
+        <div class="summary">User opened with "talk to agent" — correct escalation trigger. Follow-up showed specific UI question about selecting spouse name on a K-1. Fin routed to human via workflow. Ticket open. ReddyCPA is a Lead-stage account with 3 support conversations in one day.</div>
+        <div class="meta">ID: 215473777641911 · Chat · Open · ReddyCPA (Lifecycle: Lead)</div>
       </div>
 
-      <div class="notable-card escalated">
-        <div class="notable-meta">
-          <span class="notable-id">#215473740030591</span>
-          <span class="notable-badge nb-escalated">↑ Escalated</span>
+      <div class="conv-card negative">
+        <div class="conv-card-header">
+          <div class="name">Yakubu Gago — GagoTax</div>
+          <div class="status-badge badge-negative">✗ Negative Feedback</div>
         </div>
-        <div class="notable-title">7216 + UltraTax + QuickBooks — Multi-Topic Demo Query</div>
-        <div class="notable-body">Blend S (demo@juno.tax) asked 4 distinct questions: 7216 compliance, UltraTax SDE module, supported source docs, and QuickBooks P&amp;L for Schedule C. Fin answered all correctly and in detail. User still requested live chat. Lorena Modesto handled handoff. Closed in 1,845s.</div>
-        <div class="notable-stats"><span>⏱ 1,845s</span><span>👤 Lorena M.</span><span>💬 4 sub-questions</span></div>
+        <div class="topic">New Client Drake Import</div>
+        <div class="summary">User asked how to import new client info; Fin led with TaxDome path (wrong). After user clarified "I'm talking about transfer to Drake tax," Fin pivoted to the Drake CSV import workflow. User said "No but it's okay" — soft negative feedback indicating partial relevance.</div>
+        <div class="meta">ID: 215473771333600 · Chat · ~8 min</div>
       </div>
 
-      <div class="notable-card">
-        <div class="notable-meta">
-          <span class="notable-id">#215473739742201</span>
-          <span class="notable-badge nb-assumed">✓ Assumed</span>
+      <div class="conv-card assumed">
+        <div class="conv-card-header">
+          <div class="name">Rohin Alla — ReddyCPA LLC</div>
+          <div class="status-badge badge-assumed">~ Assumed Resolution</div>
         </div>
-        <div class="notable-title">Credit Balance Inquiry — Clean Self-Serve Deflection</div>
-        <div class="notable-body">User asked "where can I see my existing credits." Fin provided a direct, accurate answer pointing to the Return Usage Details section. Assumed resolved with no follow-up. One of three similar credit/usage questions handled identically and correctly on this day.</div>
-        <div class="notable-stats"><span>⏱ ~2min</span><span>💬 1 Fin turn</span><span>✓ No escalation</span></div>
+        <div class="topic">Drake Options Affecting Whole Firm + Contact Sync</div>
+        <div class="summary">Two-topic session (re-opened). Fin correctly explained per-user Drake Setup→Options configuration. After re-open, user asked about Drake contact sync benefits — Fin provided clear explanation with screenshots. User asked "show me an example" and Fin delivered a concrete before/after scenario.</div>
+        <div class="meta">ID: 215473777671831 · Chat · ~196 min total (re-opened)</div>
       </div>
 
-      <div class="notable-card">
-        <div class="notable-meta">
-          <span class="notable-id">#215473735069394</span>
-          <span class="notable-badge nb-assumed">✓ Assumed</span>
+      <div class="conv-card assumed">
+        <div class="conv-card-header">
+          <div class="name">Eumar Canoza — BoatswainCPA</div>
+          <div class="status-badge badge-assumed">~ Assumed Resolution</div>
         </div>
-        <div class="notable-title">CCH Wash Sales Export — Tax-Specific Question Handled</div>
-        <div class="notable-body">User asked whether Juno exports code W, line 12 for wash sales in CCH Axcess. Fin provided a technically specific, accurate answer about CCH export capabilities and the Preparation Checklist fallback. No escalation needed — a strong example of Fin handling non-trivial tax software questions.</div>
-        <div class="notable-stats"><span>⏱ ~3min</span><span>💬 1 Fin turn</span><span>✓ Assumed resolved</span></div>
+        <div class="topic">Year-over-Year Analysis PDF Export</div>
+        <div class="summary">User asked for a PDF copy of the YoY Analysis tab. Fin correctly identified the feature gap — only Review Plan PDF is available — and suggested a screenshot workaround. Conversation closed without re-open. Feature gap should be logged for product team.</div>
+        <div class="meta">ID: 215473777275654 · Chat · ~8 min</div>
       </div>
 
-      <div class="notable-card">
-        <div class="notable-meta">
-          <span class="notable-id">#215473736699562</span>
-          <span class="notable-badge nb-assumed">✓ Assumed</span>
+      <div class="conv-card assumed">
+        <div class="conv-card-header">
+          <div class="name">Shashank Mune — TheLedgerWay</div>
+          <div class="status-badge badge-assumed">~ Assumed Resolution</div>
         </div>
-        <div class="notable-title">Two Lacerte Programs — Multi-Seat License Question</div>
-        <div class="notable-body">User asked how to get Juno working with two different Lacerte programs. Fin correctly addressed multi-seat Lacerte usage and SKU considerations. Assumed resolved without escalation. Demonstrates Fin's ability to handle multi-license scenarios for larger CPA firms.</div>
-        <div class="notable-stats"><span>⏱ ~3min</span><span>💬 1 Fin turn</span><span>✓ Assumed resolved</span></div>
+        <div class="topic">Juno Application Not Working</div>
+        <div class="summary">User opened with "Hi" then asked why Juno wasn't working. Fin provided comprehensive connectivity/version checklist (desktop app v3.2.27, firewall ports 10001-10020, Lacerte SDK). User did not respond — may have self-resolved or abandoned. Clean triage response with no follow-up needed.</div>
+        <div class="meta">ID: 215473777482797 · Chat · ~7 min</div>
       </div>
 
-      <div class="notable-card">
-        <div class="notable-meta">
-          <span class="notable-id">#215473740001190</span>
-          <span class="notable-badge nb-assumed">✓ Assumed</span>
+      <div class="conv-card assumed">
+        <div class="conv-card-header">
+          <div class="name">Yakubu Gago — GagoTax</div>
+          <div class="status-badge badge-assumed">~ Assumed Resolution</div>
         </div>
-        <div class="notable-title">Demo Day Schedule — Feature Discovery Question</div>
-        <div class="notable-body">User asked "I know you guys have demo days, how do I see the next one?" Fin accurately directed the user to Juno's demo day schedule and resources. A light, quick interaction that shows Fin handling non-support product questions appropriately without escalation.</div>
-        <div class="notable-stats"><span>⏱ ~1min</span><span>💬 1 Fin turn</span><span>✓ Assumed resolved</span></div>
+        <div class="topic">Prior Year Return Support + Pricing</div>
+        <div class="summary">Multi-topic session: prior year support (2024+ for Preparer, prior-year upload for Reviewer), then pricing after 100 clients. Fin correctly handled both, including declining to discuss specific pricing and routing to CSM. Session spanned 21 parts over ~8 minutes.</div>
+        <div class="meta">ID: 215473771655117 · Chat · ~8 min · 2 topics</div>
       </div>
 
     </div>
   </div>
 
-</div><!-- end container -->
+</div><!-- /content -->
 
 <!-- FOOTER -->
 <div class="footer">
-  <p>Generated: April 2, 2026 · Data source: Intercom API · Window: April 1, 2026 00:00–23:59 UTC · 34 conversations analyzed · 20 Fin AI interactions</p>
-  <p style="margin-top:6px;"><a href="https://liammw3.github.io/juno-fin-daily-summaries/fin-daily-summary.html">Published at GitHub Pages</a></p>
+  <p>Generated: April 5, 2026 at 17:56 UTC · Data source: Intercom Conversations API</p>
+  <p>Window: 2026-04-04 00:00 UTC → 2026-04-04 23:59 UTC · 12 total conversations · 9 Fin AI · 3 email</p>
+  <p style="margin-top: 8px; color: #1CE49B;">Juno Tax · Fin AI Performance Monitoring</p>
 </div>
 
 </body>
