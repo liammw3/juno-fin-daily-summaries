@@ -3,317 +3,419 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fin AI Agent Daily Summary ‚Äî April 5, 2026</title>
+<title>Fin AI Agent Daily Summary ‚Äì April 6, 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a1a1a; line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F8F9FA; color: #1a2e2a; }
 
   /* HEADER */
-  .header { background: #013A2F; color: #fff; padding: 40px 48px 36px; }
-  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
-  .header p.sub { color: #B4F7CA; font-size: 13px; margin-top: 4px; }
-  .date-badge { background: #1CE49B; color: #013A2F; font-weight: 700; font-size: 14px; padding: 8px 20px; border-radius: 24px; white-space: nowrap; }
-
-  /* BUG ALERT */
-  .bug-alert { background: #fff3cd; border-left: 5px solid #e6a817; padding: 16px 48px; }
-  .bug-alert-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
-  .bug-alert-icon { font-size: 22px; }
-  .bug-alert strong { color: #856404; font-size: 15px; }
-  .bug-alert p { color: #664d03; font-size: 13.5px; margin-top: 2px; }
+  .header { background: #013A2F; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left h1 { color: #fff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+  .header-left p { color: #B4F7CA; font-size: 14px; margin-top: 4px; }
+  .date-badge { background: #1CE49B; color: #013A2F; font-weight: 700; padding: 8px 20px; border-radius: 20px; font-size: 15px; white-space: nowrap; }
 
   /* MAIN */
-  .main { max-width: 1200px; margin: 0 auto; padding: 36px 48px 60px; }
+  .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
 
   /* KPI GRID */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; margin-bottom: 36px; }
-  .kpi-card { background: #fff; border-radius: 12px; padding: 22px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid #1CE49B; }
-  .kpi-card.warn { border-top-color: #e6a817; }
-  .kpi-card.neutral { border-top-color: #013A2F; }
-  .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #6c757d; font-weight: 600; margin-bottom: 8px; }
-  .kpi-value { font-size: 36px; font-weight: 800; color: #013A2F; line-height: 1; }
-  .kpi-sub { font-size: 12px; color: #6c757d; margin-top: 6px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  .kpi-card { background: #fff; border-radius: 12px; padding: 24px 20px; border: 1px solid #e0ece8; box-shadow: 0 1px 4px rgba(1,58,47,0.06); }
+  .kpi-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #6b8c84; margin-bottom: 8px; }
+  .kpi-value { font-size: 38px; font-weight: 800; color: #013A2F; line-height: 1; }
+  .kpi-value.accent { color: #059669; }
+  .kpi-value.warn { color: #d97706; }
+  .kpi-value.good { color: #1CE49B; }
+  .kpi-sub { font-size: 12px; color: #6b8c84; margin-top: 6px; }
 
-  /* SECTION */
-  .section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .section h2 { font-size: 17px; font-weight: 700; color: #013A2F; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-  .section h2 .dot { width: 8px; height: 8px; background: #1CE49B; border-radius: 50%; flex-shrink: 0; }
-
-  /* EXECUTIVE SUMMARY */
-  .exec-summary p { font-size: 14.5px; color: #333; margin-bottom: 14px; }
-  .exec-summary p:last-child { margin-bottom: 0; }
+  /* SECTIONS */
+  .section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 24px; border: 1px solid #e0ece8; box-shadow: 0 1px 4px rgba(1,58,47,0.06); }
+  .section h2 { font-size: 18px; font-weight: 700; color: #013A2F; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #B4F7CA; }
+  .section p { font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
 
   /* BAR CHART */
-  .bar-chart { display: flex; flex-direction: column; gap: 14px; }
-  .bar-row { display: flex; align-items: center; gap: 14px; }
-  .bar-label { font-size: 13px; color: #444; min-width: 160px; font-weight: 500; }
-  .bar-track { flex: 1; background: #F0F0F0; border-radius: 6px; height: 22px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 700; color: #fff; transition: width 0.3s; }
-  .bar-fill.green { background: #1CE49B; color: #013A2F; }
-  .bar-fill.amber { background: #e6a817; }
-  .bar-fill.red { background: #dc3545; }
-  .bar-fill.dark { background: #013A2F; }
-  .bar-count { font-size: 13px; font-weight: 700; color: #444; min-width: 30px; text-align: right; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .bar-label { font-size: 13px; color: #374151; width: 190px; flex-shrink: 0; font-weight: 500; }
+  .bar-track { flex: 1; background: #e9f5f2; border-radius: 6px; height: 24px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; }
+  .bar-fill.assumed { background: #059669; }
+  .bar-fill.confirmed { background: #1CE49B; color: #013A2F; }
+  .bar-fill.escalated { background: #d97706; }
+  .bar-fill.nofinai { background: #94a3b8; }
+  .bar-count { font-size: 13px; font-weight: 700; color: #374151; width: 36px; text-align: right; }
 
-  /* TABLE */
-  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  th { background: #F8F9FA; color: #013A2F; font-weight: 700; padding: 10px 14px; text-align: left; border-bottom: 2px solid #dee2e6; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  td { padding: 11px 14px; border-bottom: 1px solid #F0F0F0; color: #333; vertical-align: top; }
+  /* TOPICS TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #013A2F; color: #B4F7CA; text-align: left; padding: 10px 14px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 11px 14px; border-bottom: 1px solid #edf2f0; color: #374151; vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #f9fffe; }
+  tr:hover td { background: #f0faf6; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .tag-chat { background: #d1fae5; color: #065f46; }
+  .tag-email { background: #dbeafe; color: #1e40af; }
+  .tag-mixed { background: #f3e8ff; color: #6b21a8; }
 
   /* FLAGS */
-  .flag-list { display: flex; flex-direction: column; gap: 12px; }
-  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 8px; }
-  .flag-item.critical { background: #fff2f2; border-left: 4px solid #dc3545; }
-  .flag-item.warning { background: #fff8ec; border-left: 4px solid #e6a817; }
-  .flag-item.positive { background: #f0fff8; border-left: 4px solid #1CE49B; }
-  .flag-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .flag-title { font-weight: 700; font-size: 13.5px; color: #1a1a1a; }
-  .flag-desc { font-size: 13px; color: #555; margin-top: 3px; }
+  .flag { border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+  .flag:last-child { margin-bottom: 0; }
+  .flag.critical { background: #fef2f2; border-left: 4px solid #ef4444; color: #991b1b; }
+  .flag.warning { background: #fffbeb; border-left: 4px solid #f59e0b; color: #92400e; }
+  .flag.positive { background: #f0fdf4; border-left: 4px solid #22c55e; color: #166534; }
+  .flag-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .flag-text strong { display: block; font-weight: 700; margin-bottom: 2px; }
 
   /* DOC GAPS */
-  .gap-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
-  .gap-card:last-child { margin-bottom: 0; }
-  .gap-card h4 { font-size: 14px; font-weight: 700; color: #013A2F; margin-bottom: 6px; }
-  .gap-card p { font-size: 13px; color: #555; margin-bottom: 6px; }
-  .gap-card .suggestion { background: #e8fff5; border-left: 3px solid #1CE49B; padding: 8px 12px; font-size: 12.5px; color: #013A2F; border-radius: 0 4px 4px 0; }
+  .gap-item { border: 1px solid #e0ece8; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+  .gap-item:last-child { margin-bottom: 0; }
+  .gap-question { font-size: 13px; font-weight: 600; color: #013A2F; margin-bottom: 4px; }
+  .gap-freq { font-size: 11px; color: #6b8c84; margin-bottom: 6px; }
+  .gap-suggestion { font-size: 12px; color: #374151; background: #f0faf6; border-radius: 6px; padding: 8px 10px; }
 
   /* NOTABLE CARDS */
-  .conv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-  .conv-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 10px; padding: 18px; }
-  .conv-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 8px; }
-  .conv-id { font-size: 11px; color: #999; font-family: monospace; }
-  .conv-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; }
-  .badge-assumed { background: #d4edda; color: #155724; }
-  .badge-negative { background: #f8d7da; color: #721c24; }
-  .badge-loop { background: #fff3cd; color: #856404; }
-  .badge-open { background: #cce5ff; color: #004085; }
-  .badge-ticket { background: #e2d9f3; color: #4a235a; }
-  .conv-title { font-size: 14px; font-weight: 700; color: #013A2F; margin-bottom: 4px; }
-  .conv-user { font-size: 12px; color: #6c757d; margin-bottom: 10px; }
-  .conv-body { font-size: 13px; color: #444; line-height: 1.5; }
-  .conv-meta { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
-  .conv-meta span { font-size: 11px; color: #888; background: #f0f0f0; padding: 2px 8px; border-radius: 10px; }
+  .notable-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .notable-card { border: 1px solid #e0ece8; border-radius: 10px; padding: 18px; }
+  .notable-card .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .notable-card .card-title { font-size: 14px; font-weight: 700; color: #013A2F; flex: 1; padding-right: 8px; }
+  .res-badge { padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+  .res-badge.assumed { background: #d1fae5; color: #065f46; }
+  .res-badge.confirmed { background: #1CE49B; color: #013A2F; }
+  .res-badge.escalated { background: #fef3c7; color: #92400e; }
+  .notable-card .card-meta { font-size: 11px; color: #6b8c84; margin-bottom: 8px; }
+  .notable-card .card-body { font-size: 12px; color: #374151; line-height: 1.6; }
+  .notable-card .card-id { font-size: 10px; color: #b0c4be; margin-top: 8px; font-family: monospace; }
 
   /* FOOTER */
-  .footer { background: #013A2F; color: #B4F7CA; text-align: center; padding: 24px 48px; font-size: 13px; }
-  .footer a { color: #1CE49B; text-decoration: none; }
+  .footer { background: #013A2F; color: #B4F7CA; text-align: center; padding: 20px 24px; font-size: 12px; }
+  .footer a { color: #1CE49B; }
 
-  /* UTIL */
-  .pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 10px; background: #e8fff5; color: #013A2F; margin-right: 4px; }
-  .pill.amber { background: #fff3cd; color: #856404; }
+  @media (max-width: 700px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .notable-grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 12px; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-inner">
-    <div>
-      <h1>Fin AI Agent Daily Summary</h1>
-      <p class="sub">Juno Tax {
-‹Å%π—ï…çΩ¥É
-‹Å’—ΩµÖ—ïêÅIï¡Ω…–Ω¿¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâëÖ—îµâÖëùîà˘¡…•∞Ä‘∞Ä»¿»ÿΩë•ÿ¯(ÄÄΩë•ÿ¯(Ωë•ÿ¯((Ñ¥¥Å	UÅ1IPÅ	99HÄ¥¥¯(Òë•ÿÅç±ÖÕÃÙââ’úµÖ±ï…–à¯(ÄÄÒë•ÿÅç±ÖÕÃÙââ’úµÖ±ï…–µ•ππï»à¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙââ’úµÖ±ï…–µ•çΩ∏à˚äjÉæ‚<Ωë•ÿ¯(ÄÄÄÄÒë•ÿ¯(ÄÄÄÄÄÄÒÕ—…Ωπú˘•∏Å1ΩΩ¿Åï—ïç—ïêÉäPÄƒÅΩπŸï…ÕÖ—•Ω∏ΩÕ—…Ωπú¯(ÄÄÄÄÄÄÒ¿˘•∏ÅùÖŸîÅ—°îÅÕÖµîÅÖπÕ›ï»ÄÃÅ—•µïÃÅ•∏ÅçΩπŸï…ÕÖ—•Ω∏Äå»ƒ‘–‹Ã‹‹‡‡‡‡‰‹‡Ä°YÄƒ¿‰‰µÅëΩç’µïπ–Å—Â¡îÅÕï±ïç—•Ω∏§Å›•—°Ω’–Å…ïÕΩ±Ÿ•πúÅ—°îÅ’Õï»ùÃÅ’πëï…±Â•πúÅU$ÅπÖŸ•ùÖ—•Ω∏Å≈’ïÕ—•Ω∏∏ÅQ°îÅ’Õï»Å…ï¡±•ïêÄâπºàÅ›°ï∏ÅÖÕ≠ïêÅ•òÅ—°îÅÖπÕ›ï»Å›ÖÃÅ°ï±¡ô’∞∏ÅΩç’µïπ—Ö—•Ω∏ÅùÖ¿Å•ëïπ—•ô•ïê∏Ω¿¯(ÄÄÄÄΩë•ÿ¯(ÄÄΩë•ÿ¯(Ωë•ÿ¯((Ñ¥¥Å5%8Å=9Q9PÄ¥¥¯(Òë•ÿÅç±ÖÕÃÙâµÖ•∏à¯((ÄÄÑ¥¥Å-A$ÅI%Ä¥¥¯(ÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µù…•êà¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êÅπï’—…Ö∞à¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘QΩ—Ö∞ÅΩπŸï…ÕÖ—•ΩπÃΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯–Ωë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà˘¡…•∞Ä‘∞Ä»¿»ÿÅUQΩë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êà¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘•∏Å$ÅΩπŸï…ÕÖ—•ΩπÃΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯»Ωë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà¯‘¿îÅΩòÅ—Ω—Ö∞ÅŸΩ±’µîΩë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êà¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘ÕÕ’µïêÅIïÕΩ±’—•Ω∏ÄîΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯‘¿îΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà¯ƒÅΩòÄ»Å•∏ÅçΩπŸÃΩë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êÅ›Ö…∏à¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘•∏Å1ΩΩ¿ÅIï¡Ω…—ÃΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯ƒΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà˘MÖµîÅÖπÕ›ï»Äœ\Å‹ΩºÅ…ïÕΩ±’—•Ω∏Ωë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êà¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘ŸúÅ•∏Å±ΩÕîÅQ•µîΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯‹∏‰ÒÕ¡Ö∏ÅÕ—Â±îÙâôΩπ–µÕ•ÈîËƒ·¡‡ÌôΩπ–µ›ï•ù°–Ë–¿¿à¯Åµ•∏ΩÕ¡Ö∏¯Ωë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà¯‹∏»Åµ•∏É
-‹Ä‡∏‘Åµ•∏Ωë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µçÖ…êÅπï’—…Ö∞à¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µ±Öâï∞à˘!’µÖ∏Å!ÖπëΩôôÃΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µŸÖ±’îà¯¿Ωë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙâ≠¡§µÕ’àà˘•∏µ—ºµ°’µÖ∏ÅïÕçÖ±Ö—•ΩπÃΩë•ÿ¯(ÄÄÄÄΩë•ÿ¯(ÄÄΩë•ÿ¯((ÄÄÑ¥¥ÅaUQ%YÅMU55IdÄ¥¥¯(ÄÄÒë•ÿÅç±ÖÕÃÙâÕïç—•Ω∏Åï·ïåµÕ’µµÖ…‰à¯(ÄÄÄÄÒ†»¯ÒÕ¡Ö∏Åç±ÖÕÃÙâëΩ–à¯ΩÕ¡Ö∏˘·ïç’—•ŸîÅM’µµÖ…‰Ω†»¯(ÄÄÄÄÒ¿˘¡…•∞Ä‘∞Ä»¿»ÿÅ›ÖÃÅÑÅ±Ω‹µŸΩ±’µîÅëÖ‰ÅôΩ»Å)’πºùÃÅÕ’¡¡Ω…–Åç°Öππï∞∞Å›•—†Ä–Å—Ω—Ö∞ÅçΩπŸï…ÕÖ—•ΩπÃÅ…ïçï•ŸïêÉäPÄ»Å°Öπë±ïêÅâ‰Å•∏Å$ÅÖπêÄ»Å…Ω’—ïêÅë•…ïç—±‰ÅÖÃÅÕ’¡¡Ω…–Å—•ç≠ï—Ã∏ÅQ°îÅÕµÖ±∞ÅÕÖµ¡±îÅÕ•ÈîÅ±•µ•—ÃÅÕ—Ö—•Õ—•çÖ∞ÅçΩπç±’Õ•ΩπÃ∞Åâ’–Å—°îÅëÖ‰ùÃÅëÖ—ÑÅÕ’…ôÖçïÃÅΩπîÅ•µ¡Ω…—Öπ–Å≈’Ö±•—‰ÅÕ•ùπÖ∞ËÅ•∏ùÃÄ‘¿îÅÖÕÕ’µïêÅ…ïÕΩ±’—•Ω∏Å…Ö—îÅ›ÖÃÅ›ï•ù°ïêÅëΩ›∏Åâ‰ÅÑÅçΩπô•…µïêÅπïùÖ—•ŸîÅôïïëâÖç¨ÅΩ’—çΩµîÅ—°Ö–ÅÕ—ïµµïêÅô…Ω¥ÅÑÅëΩç’µïπ—Ö—•Ω∏ÅùÖ¿Å…Ö—°ï»Å—°Ö∏ÅÑÅ•∏Å±Ωù•åÅôÖ•±’…î∏Ω¿¯(ÄÄÄÄÒ¿˘Q°îÅÕ•πù±îÅπïùÖ—•ŸîÅôïïëâÖç¨ÅçΩπŸï…ÕÖ—•Ω∏Ä†å»ƒ‘–‹Ã‹‹‡‡‡‡‰‹‡§Å•πŸΩ±ŸïêÅÑÅ’Õï»ÅÖ–Å9Ö—•ΩπÖ∞ÅÖ¡•—Ö∞ÅΩ…¡Ω…Ö—•Ω∏ÅÖÕ≠•πúÅ°Ω‹Å—ºÅÕï±ïç–Å—°îÅçΩ……ïç–ÅëΩç’µïπ–Å—Â¡îÅôΩ»ÅÑÅY•…ù•π•ÑÄƒ¿‰‰µÅ›•—°•∏Å)’πºùÃÅ’¡±ΩÖêÅU$∏Å•∏ÅçΩ……ïç—±‰ÅçΩπô•…µïêÅ—°Ö–Äƒ¿‰‰µÅ•ÃÅÕ’¡¡Ω…—ïê∞Åâ’–Å±ΩΩ¡ïêÅΩ∏Å—°îÅÕÖµîÅÖπÕ›ï»Å—°…ïîÅ—•µïÃÉäPÅç•—•πúÅ—°îÅM’¡¡Ω…—ïêÅMΩ’…çîÅΩç’µïπ—ÃÅÖ…—•ç±îÉäPÅ›•—°Ω’–ÅÖëë…ïÕÕ•πúÅ—°îÅ’Õï»ùÃÅÖç—’Ö∞Å≈’ïÕ—•Ω∏ÅÖâΩ’–Å)’πºùÃÅ•π—ï…πÖ∞ÅëΩç’µïπ–Å—Â¡îÅçÖ—ïùΩ…•ïÃÄ°	…Ω≠ï…Öùî∞Å,¥ƒ∞ÅMç†Å∞Åï—å∏§∏ÅQ°îÅ’Õï»Å’±—•µÖ—ï±‰Å…ï¡±•ïêÄâπºàÅ›°ï∏ÅÖÕ≠ïêÅ•òÅ—°îÅÖπÕ›ï»Å›ÖÃÅ°ï±¡ô’∞∞ÅÖπêÅ—°îÅçΩπŸï…ÕÖ—•Ω∏Åç±ΩÕïêÅŸ•ÑÅ—•µïΩ’–∏ÅQ°•ÃÅ…ï¡…ïÕïπ—ÃÅÑÅç±ïÖ»ÅëΩç’µïπ—Ö—•Ω∏ÅùÖ¿ËÅ•∏Å°ÖÃÅπºÅ≠πΩ›±ïëùîÅâÖÕîÅçΩπ—ïπ–ÅµÖ¡¡•πúÅ)’πºùÃÅU$ÅëΩç’µïπ–Å—Â¡îÅ¡•ç≠ï»Å—ºÅÕ¡ïç•ô•åÅôΩ…¥Å—Â¡ïÃ∏Ω¿¯(ÄÄÄÄÒ¿˘Q°îÅÖÕÕ’µïêÅ…ïÕΩ±’—•Ω∏ÅçΩπŸï…ÕÖ—•Ω∏Ä†å»ƒ‘–‹Ã‹‹‡ƒƒ»ÿ‰‰§Å•πŸΩ±ŸïêÅÑÅ≈’ïÕ—•Ω∏ÅÖâΩ’–ÅΩ…¥Ä»––ƒÅç°•±êÅçÖ…îÅï·¡ïπÕîÅÕ’¡¡Ω…–∏Å•∏ÅçΩ……ïç—±‰ÅÖç≠πΩ›±ïëùïêÅ’πçï…—Ö•π—‰Ä°Ω…¥Ä»––ƒÅ•Õ∏ù–Åï·¡±•ç•—±‰Åµïπ—•ΩπïêÅ•∏Å•—ÃÅÕΩ’…çïÃ§∞ÅÖÕ≠ïêÅÑÅç±Ö…•ôÂ•πúÅôΩ±±Ω‹µ’¿∞ÅÖπêÅ—°îÅ’Õï»Å›ïπ–Å•ë±îÅ›•—°Ω’–ÅïÕçÖ±Ö—•πúÉäPÅÑÅ…ïÖÕΩπÖâ±îÅΩ’—çΩµîÅù•Ÿï∏Å—°îÅÖµâ•ù’•—‰∏Å!Ω›ïŸï»∞Å—°•ÃÅÖ±ÕºÅô±ÖùÃÅÑÅëΩç’µïπ—Ö—•Ω∏ÅùÖ¿ËÅ)’πºÅ±Öç≠ÃÅÑÅëïô•π•—•ŸîÅ-ÅÖ…—•ç±îÅÕ—Ö—•πúÅ›°ï—°ï»ÅΩ…¥Ä»––ƒÄºÅç°•±êÅÖπêÅëï¡ïπëïπ–ÅçÖ…îÅï·¡ïπÕïÃÅÖ…îÅÕ’¡¡Ω…—ïêÅΩ»ÅπΩ–∏Ω¿¯(ÄÄÄÄÒ¿˘Q°îÅ—›ºÅπΩ∏µ•∏Å—•ç≠ï—ÃÅ…ï¡…ïÕïπ–ÅÕï¡Ö…Ö—îÅ¡…Ωë’ç–ÅçΩπçï…πÃËÅÑÅëï—Ö•±ïêÅµΩëï∞Åï……Ω»Å…ï¡Ω…–Åô…Ω¥ÅeÖ≠’â‘ÅÖùºÄ°ÖùºÅQÖ‡§Åô±Öùù•πúÄ–ÅôÖ±ÕîÅ¡ΩÕ•—•ŸïÃÅ•∏Å)’πºÅIïŸ•ï›ï»ÅôΩ»ÅÑÅÖ±•ôΩ…π•ÑÅ5(Å…ï—’…∏∞ÅÖπêÅÖ∏Å•πôΩ…µÖ—•ΩπÖ∞Å\¥»ÅâΩ‡Åç±Ö…•ô•çÖ—•Ω∏Åô…Ω¥Å-Ö…ï∏Å5ÖÕΩ∏Ä°	ïÂΩπêÅΩµ¡±•ÖπçîÅQÖ‡ÄôÖµ¿ÏÅëŸ•ÕΩ…‰§ÅµÖ…≠ïêÄâe$ÅΩπ±‰∏àÅ	Ω—†ÅÖ…îÅ•∏µ¡…Ωù…ïÕÃÅ›•—†Å—°îÅ°’µÖ∏ÅÕ’¡¡Ω…–Å—ïÖ¥∏ÅQ°îÅIïŸ•ï›ï»ÅµΩëï∞Å—•ç≠ï–Å•ÃÅπΩ—Öâ±îÅÖÃÅ•–Å…ïôï…ïπçïÃÅ—°îÅÕÖµîÅΩ…¥Ä»––ƒÄºÅç°•±ëçÖ…îÅ¡…ΩŸ•ëï»ÅçΩπô’Õ•Ω∏Ä°)’πºÅIïŸ•ï›ï»Åµ•Õ—ΩΩ¨Å-•ëë•îÅçÖëïµ‰ÅôΩ»ÅÑÄƒ¿‰‡µPÅïë’çÖ—•ΩπÖ∞Å•πÕ—•—’—•Ω∏Å…Ö—°ï»Å—°Ö∏ÅÑÄ»––ƒÅç°•±ëçÖ…îÅ¡…ΩŸ•ëï»§∞ÅÕ’ùùïÕ—•πúÅÑÅÕÂÕ—ïµ•åÅùÖ¿Å•∏Å°Ω‹Å)’πºÅ°Öπë±ïÃÅç°•±ëçÖ…îµ…ï±Ö—ïêÅ—Ö‡Å•—ïµÃ∏Ω¿¯(ÄÄΩë•ÿ¯((ÄÄÑ¥¥ÅIM=1UQ%=8Å	I-=]8Ä¥¥¯(ÄÄÒë•ÿÅç±ÖÕÃÙâÕïç—•Ω∏à¯(ÄÄÄÄÒ†»¯ÒÕ¡Ö∏Åç±ÖÕÃÙâëΩ–à¯ΩÕ¡Ö∏˘IïÕΩ±’—•Ω∏Å	…ïÖ≠ëΩ›∏Ω†»¯(ÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µç°Ö…–à¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ…Ω‹à¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ±Öâï∞à˘ÕÕ’µïêÅIïÕΩ±’—•Ω∏Ωë•ÿ¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ—…Öç¨à¯(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µô•±∞Åù…ïï∏àÅÕ—Â±îÙâ›•ë—†Ë‘¿îà¯‘¿îΩë•ÿ¯(ÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µçΩ’π–à¯ƒΩë•ÿ¯(ÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ…Ω‹à¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ±Öâï∞à˘9ïùÖ—•ŸîÅïïëâÖç¨Ωë•ÿ¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ—…Öç¨à¯(ÄÄÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µô•±∞ÅÖµâï»àÅÕ—Â±îÙâ›•ë—†Ë‘¿îà¯‘¿îΩë•ÿ¯(ÄÄÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µçΩ’π–à¯ƒΩë•ÿ¯(ÄÄÄÄÄÄΩë•ÿ¯(ÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ…Ω‹à¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ±Öâï∞à˘Ωπô•…µïêÅIïÕΩ±’—•Ω∏Ωë•ÿ¯(ÄÄÄÄÄÄÄÄÒë•ÿÅç±ÖÕÃÙââÖ»µ—…Öç¨à
-          <div class="bar-fill green" style="width:0%"></div>
-        </div>
-        <div class="bar-count">0</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Escalated to Human</div>
-        <div class="bar-track">
-          <div class="bar-fill dark" style="width:0%"></div>
-        </div>
-        <div class="bar-count">0</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Non-Fin Tickets</div>
-        <div class="bar-track">
-          <div class="bar-fill dark" style="width:50%; opacity:0.6">50%</div>
-        </div>
-        <div class="bar-count">2</div>
-      </div>
+  <div class="header-left">
+    <h1>Fin AI Agent Daily Summary</h1>
+    <p>Juno Tax &mdash; Intercom AI Performance Report</p>
+  </div>
+  <div class="date-badge">April 6, 2026</div>
+</div>
+
+<div class="main">
+
+<!-- KPI GRID -->
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">Total Conversations</div>
+    <div class="kpi-value">22</div>
+    <div class="kpi-sub">14 chat &middot; 5 email &middot; 3 admin-initiated</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Fin AI Conversations</div>
+    <div class="kpi-value accent">13</div>
+    <div class="kpi-sub">59% of all inbound chat conversations</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Assumed Resolution Rate</div>
+    <div class="kpi-value accent">61.5%</div>
+    <div class="kpi-sub">8 of 13 Fin conversations auto-resolved</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Fin Loop Reports</div>
+    <div class="kpi-value good" style="font-size:38px">0</div>
+    <div class="kpi-sub">No repetitive-answer loops detected</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Avg Fin Close Time</div>
+    <div class="kpi-value" style="font-size:32px;">7m 27s</div>
+    <div class="kpi-sub">Across 7 closed Fin conversations (447 sec avg)</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Human Handoffs</div>
+    <div class="kpi-value warn">4</div>
+    <div class="kpi-sub">All via live-chat escalation path</div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section">
+  <h2>Executive Summary</h2>
+  <p>On April 6, 2026, Juno's Fin AI agent handled 13 of 22 total inbound conversations, achieving a 61.5% assumed resolution rate and 1 confirmed resolution ‚Äî for a combined containment rate of 69.2%. No Fin loops were detected, and all AI answers included inline citations from the Juno knowledge base, demonstrating consistent and accurate sourcing behavior. Average close time for Fin-handled conversations stood at 7 minutes 27 seconds, reflecting relatively quick self-service resolutions for straightforward product questions.</p>
+  <p>The day's most significant issue was an active bug related to the TaxDome integration causing document character corruption ‚Äî garbled characters replacing readable text in broker statements and other documents during ingestion. This affected at least one firm (Lynn CPAs) across multiple clients and documents. The user expressed strong frustration, referenced their $4,000 purchase price, and requested a refund timeline. Engineering has been notified and is actively investigating. This thread remains open and unresolved as of end of day.</p>
+  <p>Four conversations escalated to human agents ‚Äî two of which were related to the TaxDome corruption issue (one merged by Josh Hunter). The remaining two escalations were triggered by users who received technically correct Fin AI answers but opted for human confirmation, a pattern that may indicate an opportunity to improve answer confidence signals or add in-app escalation prompts. Agents Josh Hunter and Lorena Modesto handled all live-chat escalations responsively, with first human reply times under 2 minutes in all cases.</p>
+  <p>On the positive side, Fin achieved a standout confirmed resolution in just 46 seconds ‚Äî answering a question about duplicate document handling ‚Äî which demonstrates Fin's capability to close straightforward queries very efficiently. Documentation gaps identified today include the absence of a dedicated troubleshooting article for TaxDome document processing corruption, and limited in-app guidance around the client filing-status update workflow, which generated two separate escalations.</p>
+</div>
+
+<!-- RESOLUTION BREAKDOWN -->
+<div class="section">
+  <h2>Resolution Breakdown</h2>
+  <div class="bar-row">
+    <div class="bar-label">Assumed Resolution</div>
+    <div class="bar-track"><div class="bar-fill assumed" style="width:61.5%">8 conversations</div></div>
+    <div class="bar-count">61.5%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Escalated to Human</div>
+    <div class="bar-track"><div class="bar-fill escalated" style="width:30.8%">4 conversations</div></div>
+    <div class="bar-count">30.8%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Confirmed Resolution</div>
+    <div class="bar-track"><div class="bar-fill confirmed" style="width:7.7%">1</div></div>
+    <div class="bar-count">7.7%</div>
+  </div>
+  <div class="bar-row" style="margin-top:16px;">
+    <div class="bar-label">Non-Fin (Email / Admin)</div>
+    <div class="bar-track"><div class="bar-fill nofinai" style="width:40.9%">9 conversations</div></div>
+    <div class="bar-count">41%</div>
+  </div>
+  <p style="margin-top:16px; font-size:12px; color:#6b8c84;">Note: Percentages for resolution states are calculated against 13 Fin AI conversations. Non-Fin percentage is of all 22 daily conversations.</p>
+</div>
+
+<!-- TOPIC CATEGORIES -->
+<div class="section">
+  <h2>Topic Categories</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Count</th>
+        <th>Channel</th>
+        <th>Key Examples</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Document Processing &amp; Supported Formats</strong></td>
+        <td>4</td>
+        <td><span class="tag tag-chat">Chat</span></td>
+        <td>Garbled characters on TaxDome documents; what formats Juno can't process (HEIC, Schedule E); SSA-1099 Drake mapping; duplicate document re-upload behavior</td>
+      </tr>
+      <tr>
+        <td><strong>CCH Axcess / Tax Software Export</strong></td>
+        <td>3</td>
+        <td><span class="tag tag-chat">Chat</span></td>
+        <td>Exporting after filing-status change (single ‚Üí MFJ); Re-Sync option navigation; prior-year return upload for YoY analysis</td>
+      </tr>
+      <tr>
+        <td><strong>Client Sync &amp; Tax Software Integration</strong></td>
+        <td>3</td>
+        <td><span class="tag tag-chat">Chat</span></td>
+        <td>ProConnect client names missing, Sync Clients via Desktop App; TaxDome reconnect troubleshooting; CCH connection setup</td>
+      </tr>
+      <tr>
+        <td><strong>General Support / Ticket Requests</strong></td>
+        <td>5</td>
+        <td><span class="tag tag-mixed">Mixed</span></td>
+        <td>Admin-initiated outreach; ticket merge requests; follow-up on open issues; user requesting escalation without providing details</td>
+      </tr>
+      <tr>
+        <td><strong>Email Inbound (Non-Fin)</strong></td>
+        <td>5</td>
+        <td><span class="tag tag-email">Email</span></td>
+        <td>Various inbound emails; Fin AI not activated on email channel; handled by human agents</td>
+      </tr>
+      <tr>
+        <td><strong>Early AM / Off-Hours Queries</strong></td>
+        <td>2</td>
+        <td><span class="tag tag-chat">Chat</span></td>
+        <td>Assumed resolutions at 1:45 AM and 2:11 AM UTC ‚Äî Fin handled autonomously with no escalation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FLAGS & ESCALATION SIGNALS -->
+<div class="section">
+  <h2>Flags &amp; Escalation Signals</h2>
+
+  <div class="flag critical">
+    <div class="flag-icon">üö®</div>
+    <div class="flag-text">
+      <strong>Active Bug: TaxDome Integration Causing Document Corruption</strong>
+      Conversation #215473796013166 (open): Steven Lynn (Lynn CPAs) reported that documents pulled from TaxDome are rendering as garbled/unreadable characters during data validation. Affects broker statements and 1099Rs across multiple clients. User re-uploaded from TaxDome manually and still saw corruption; non-TaxDome documents uploaded separately were clean. Issue escalated to engineering. Customer referenced $4,000 purchase price and is requesting a refund or timeline for resolution.
     </div>
   </div>
 
-  <!-- TOPIC CATEGORIES -->
-  <div class="section">
-    <h2><span class="dot"></span>Topic Categories</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Count</th>
-          <th>Channel</th>
-          <th>Resolution</th>
-          <th>Key Examples</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Document Type / Supported Forms</strong></td>
-          <td>2</td>
-          <td>Chat (Fin)</td>
-          <td><span class="pill amber">1 Negative</span><span class="pill">1 Assumed</span></td>
-          <td>VA 1099-G document type selection; Form 2441 child care expense support inquiry</td>
-        </tr>
-        <tr>
-          <td><strong>Reviewer Model Errors</strong></td>
-          <td>1</td>
-          <td>Ticket (Human)</td>
-          <td><span class="pill" style="background:#cce5ff;color:#004085;">In Progress</span></td>
-          <td>4 false positives on MFJ California return (SSN mismatch, Form 8867 due diligence, HOH/AOTC flags, 1098-T vs 2441 confusion)</td>
-        </tr>
-        <tr>
-          <td><strong>W-2 Data Entry Clarification</strong></td>
-          <td>1</td>
-          <td>Email (Ticket)</td>
-          <td><span class="pill" style="background:#e2d9f3;color:#4a235a;">FYI / No Action</span></td>
-          <td>Box 10 vs Box 14 on DHS W-2 ‚Äî employer-provided dependent care benefit vs NT health</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- FLAGS & ESCALATION SIGNALS -->
-  <div class="section">
-    <h2><span class="dot"></span>Flags &amp; Escalation Signals</h2>
-    <div class="flag-list">
-      <div class="flag-item critical">
-        <div class="flag-icon">üî¥</div>
-        <div>
-          <div class="flag-title">Fin Loop ‚Äî VA 1099-G Document Type (Conv #215473778888978)</div>
-          <div class="flag-desc">Fin repeated the same response ("Select 1099-G as the document type") three times when the user was actually asking which of Juno's internal UI categories to use (Brokerage, Source, K-1, Sch A, Sch C, etc.). Fin's KB sources don't include a UI navigation guide for Juno's document type picker. Resulted in explicit negative feedback.</div>
-        </div>
-      </div>
-      <div class="flag-item critical">
-        <div class="flag-icon">üî¥</div>
-        <div>
-          <div class="flag-title">Juno Reviewer ‚Äî 4 False Positives on MFJ California Return (Ticket #215473778517464)</div>
-          <div class="flag-desc">Customer Yakubu Gago (Gago Tax) submitted a detailed bug report identifying four incorrect flags: (1) false SSN mismatch for dependents, (2) false Form 8867 due diligence incompleteness, (3) false HOH/AOTC checkbox flags on an MFJ return, and (4) Kiddie Academy daycare misclassified as a 1098-T educational institution rather than a 2441 childcare provider. Josh Hunter (Juno) is following up. Client-provided prep: Edward and Blessing Philips.</div>
-        </div>
-      </div>
-      <div class="flag-item warning">
-        <div class="flag-icon">üü°</div>
-        <div>
-          <div class="flag-title">Form 2441 ‚Äî Unclear Juno Support Status (Conv #215473778112699)</div>
-          <div class="flag-desc">User asked if Juno files the 2441 children's expense form. Fin correctly noted that Form 2441 isn't explicitly mentioned in its sources, but couldn't give a clear yes/no. The conversation closed via user going idle (assumed resolution) but the question was not definitively answered. An FAQ or KB article explicitly addressing Form 2441 / child and dependent care expenses would close this gap.</div>
-        </div>
-      </div>
-      <div class="flag-item warning">
-        <div class="flag-icon">üü°</div>
-        <div>
-          <div class="flag-title">W-2 Box 10 vs Box 14 ‚Äî Childcare Benefits Misread (Ticket #215473784824985)</div>
-          <div class="flag-desc">Karen Mason (Beyond Compliance Tax &amp; Advisory) flagged that a client's DHS W-2 showed $2,682.86 in Box 10 (employer-provided dependent care benefits) but the amount was actually in Box 14 (NT health). Marked "FYI only ‚Äî no response needed," but suggests a pattern of W-2 box confusion around dependent care that may recur.</div>
-        </div>
-      </div>
-      <div class="flag-item positive">
-        <div class="flag-icon">üü¢</div>
-        <div>
-          <div class="flag-title">Zero Human Escalations from Fin AI</div>
-          <div class="flag-desc">Neither Fin conversation was escalated to a human agent. The negative feedback conversation closed via idle timeout rather than a live handoff request, suggesting users are not actively demanding human support even when Fin falls short.</div>
-        </div>
-      </div>
-      <div class="flag-item positive">
-        <div class="flag-icon">üü¢</div>
-        <div>
-          <div class="flag-title">Fin Average Close Time Under 9 Minutes</div>
-          <div class="flag-desc">Both Fin conversations closed quickly: 7.2 minutes and 8.5 minutes respectively. Even the negative feedback conversation resolved within the session window without extended back-and-forth delays, keeping response times tight.</div>
-        </div>
-      </div>
+  <div class="flag critical">
+    <div class="flag-icon">‚ö†Ô∏è</div>
+    <div class="flag-text">
+      <strong>High-Value Customer Churn Risk</strong>
+      The above TaxDome bug customer (Lynn CPAs) sent multiple "what's the refund policy" messages and expressed urgency given tax season (April 6). No firm resolution timeline was provided. Escalation owner is Josh Hunter. Recommend proactive follow-up within 24 hours with engineering status update.
     </div>
   </div>
 
-  <!-- DOCUMENTATION GAPS -->
-  <div class="section">
-    <h2><span class="dot"></span>Documentation Gaps</h2>
-
-    <div class="gap-card">
-      <h4>1. Juno Document Type UI Navigation (1099-G and Other Forms)</h4>
-      <p>Fin can confirm which forms are <em>supported</em> by Juno but has no content explaining how to select the correct document type within Juno's UI picker (Brokerage, Source, Form K-1, Sch A, Sch C, 1099-G, etc.). Users who are onboarding or unfamiliar with Juno's taxonomy get stuck at the UI step even after Fin confirms support.</p>
-      <div class="suggestion">üí° Suggested KB article: "How to Select the Right Document Type When Uploading in Juno" ‚Äî include a table mapping common tax forms (W-2, 1099-G, 1099-R, K-1, etc.) to their exact Juno document type picker labels with screenshots.</div>
-    </div>
-
-    <div class="gap-card">
-      <h4>2. Form 2441 / Child and Dependent Care Expense Support</h4>
-      <p>Two separate touchpoints on April 5 involved Form 2441 or child care expenses (one Fin conversation, one Reviewer ticket). Fin's current KB does not include a clear article on whether and how Juno handles Form 2441 (child and dependent care expenses). This ambiguity leaves users without a direct answer and creates both support burden and potential Reviewer model errors.</p>
-      <div class="suggestion">üí° Suggested KB article: "Does Juno Support Form 2441 (Child and Dependent Care Expenses)?" ‚Äî clarify whether dependent care benefits from W-2 Box 10/12 are extracted, whether Form 2441 is exported to supported tax software, and how daycare providers appear in the Binder vs how educational institutions (1098-T) appear.</div>
-    </div>
-
-    <div class="gap-card">
-      <h4>3. Juno Reviewer ‚Äî Childcare vs Education Provider Differentiation</h4>
-      <p>The Reviewer false positive (Kiddie Academy flagged as 1098-T / educational institution rather than Form 2441 / childcare provider) suggests the model lacks sufficient training on distinguishing daycare/childcare providers from educational institutions. This overlap affects both Reviewer accuracy and Fin's ability to explain Reviewer flags to users.</p>
-      <div class="suggestion">üí° Suggested action: Add Reviewer model training examples distinguishing childcare providers (appear in Form 2441 Box 1‚Äì3, not 1098-T) from educational institutions (appear in Form 1098-T Box 1‚Äì2). Consider a Reviewer FAQ entry in the KB: "Why did Reviewer flag a daycare as a 1098-T issue?"</div>
+  <div class="flag warning">
+    <div class="flag-icon">‚ö†Ô∏è</div>
+    <div class="flag-text">
+      <strong>Fin Answered Correctly but User Still Escalated (2 occurrences)</strong>
+      In conversations #215473793014211 and #215473792166200, Fin provided accurate, well-cited answers but users immediately chose "Live Chat" rather than confirming resolution. This may indicate users want human confirmation on nuanced workflows (filing status changes, document type restrictions), or that Fin's "Is that what you were looking for?" prompt is insufficient in these contexts.
     </div>
   </div>
 
-  <!-- NOTABLE CONVERSATIONS -->
-  <div class="section">
-    <h2><span class="dot"></span>Notable Conversations</h2>
-    <div class="conv-grid">
-
-      <div class="conv-card">
-        <div class="conv-card-header">
-          <div class="conv-id">#215473778888978</div>
-          <div class="conv-badge badge-loop">‚ö†Ô∏è Loop + Negative</div>
-        </div>
-        <div class="conv-title">VA 1099-G Document Type Selection</div>
-        <div class="conv-user">Erica Garcia Junco ¬∑ National Capital Corporation ¬∑ erica@nccorp.biz</div>
-        <div class="conv-body">User asked if Juno supports VA 1099-G. Fin confirmed support and cited the Supported Source Documents article. User followed up asking which document type to select in Juno's UI (Brokerage, K-1, Sch A, etc.). Fin repeated "Select 1099-G" three times without addressing UI navigation. User replied "no" when asked if helpful.</div>
-        <div class="conv-meta">
-          <span>Chat</span><span>Closed</span><span>~8.5 min</span><span>Fin AI</span><span>Loop detected</span>
-        </div>
-      </div>
-
-      <div class="conv-card">
-        <div class="conv-card-header">
-          <div class="conv-id">#215473778112699</div>
-          <div class="conv-badge badge-assumed">‚úÖ Assumed</div>
-        </div>
-        <div class="conv-title">Form 2441 ‚Äî Child Care Expense Support</div>
-        <div class="conv-user">Yakubu Gago ¬∑ Gago Tax ¬∑ jacob@gagotax.com</div>
-        <div class="conv-body">User asked whether Juno files the Form 2441 (child and dependent care expenses). Fin correctly noted it's not explicitly in its sources, referenced Supported Source Documents, and asked whether the user was trying to upload child care documentation or process a 2441. User went idle without replying ‚Äî assumed resolved.</div>
-        <div class="conv-meta">
-          <span>Chat</span><span>Closed</span><span>~7.2 min</span><span>Fin AI</span>
-        </div>
-      </div>
-
-      <div class="conv-card">
-        <div class="conv-card-header">
-          <div class="conv-id">#215473778517464</div>
-          <div class="conv-badge badge-ticket">üéü Ticket</div>
-        </div>
-        <div class="conv-title">Reviewer Model Error ‚Äî 4 False Positives</div>
-        <div class="conv-user">Yakubu Gago ¬∑ Gago Tax ¬∑ jacob@gagotax.com</div>
-        <div class="conv-body">Detailed bug report: (1) False SSN mismatch for dependents Ethan &amp; Pearl, (2) False Form 8867 incomplete flag when all boxes are checked, (3) False HOH/AOTC flags on MFJ return, (4) Kiddie Academy (daycare) misclassified as 1098-T educational institution. Josh Hunter following up. Prep: Edward and Blessing Philips.</div>
-        <div class="conv-meta">
-          <span>Ticket</span><span>In Progress</span><span>Human assigned</span><span>No Fin</span>
-        </div>
-      </div>
-
-      <div class="conv-card">
-        <div class="conv-card-header">
-          <div class="conv-id">#215473784824985</div>
-          <div class="conv-badge badge-open">‚ÑπÔ∏è FYI</div>
-        </div>
-        <div class="conv-title">W-2 Box 10 vs Box 14 Clarification</div>
-        <div class="conv-user">Karen Mason ¬∑ Beyond Compliance Tax &amp; Advisory ¬∑ kmason@bctaxadvisory.com</div>
-        <div class="conv-body">Informational email noting that Kevin's DHS W-2 showed $2,682.86 in Box 10 (employer-provided dependent care benefits) but the amount was actually in Box 14 as NT health. Customer explicitly noted "FYI Only ‚Äî no response needed." Ticket assigned to support team. No Fin participation.</div>
-        <div class="conv-meta">
-          <span>Email</span><span>Open</span><span>Submitted</span><span>No Fin</span>
-        </div>
-      </div>
-
+  <div class="flag warning">
+    <div class="flag-icon">üîî</div>
+    <div class="flag-text">
+      <strong>Merged Ticket Pattern ‚Äî Duplicate Outreach</strong>
+      Conversation #215473798310180 was merged into another existing ticket by Josh Hunter. The user (Steven Lynn) opened a second chat to reference their existing ticket (#89837302) rather than following up on the original thread. Suggests users may benefit from clearer ticket-tracking UX or reply-to-ticket guidance.
     </div>
+  </div>
+
+  <div class="flag positive">
+    <div class="flag-icon">‚úÖ</div>
+    <div class="flag-text">
+      <strong>Fastest Confirmed Resolution: 46 Seconds</strong>
+      Conversation #215473792184909 ‚Äî Karli Bilskie asked about duplicate document handling; Fin answered with inline citations and a screenshot, user replied "yes, thank you!" and the conversation closed in 46 seconds. A strong example of Fin operating at peak efficiency.
+    </div>
+  </div>
+
+  <div class="flag positive">
+    <div class="flag-icon">‚úÖ</div>
+    <div class="flag-text">
+      <strong>Zero Fin Loops Detected</strong>
+      No conversations showed Fin repeating the same answer three or more times without resolution. All Fin sessions progressed naturally through a single answer ‚Üí clarification ‚Üí escalation or close flow.
+    </div>
+  </div>
+
+  <div class="flag positive">
+    <div class="flag-icon">‚úÖ</div>
+    <div class="flag-text">
+      <strong>Off-Hours Coverage Working</strong>
+      Two conversations at 1:45 AM and 2:11 AM UTC were handled entirely by Fin with assumed resolutions, demonstrating effective off-hours coverage with no human intervention required.
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENTATION GAPS -->
+<div class="section">
+  <h2>Documentation Gaps</h2>
+
+  <div class="gap-item">
+    <div class="gap-question">What should I do if documents from TaxDome appear corrupted or unreadable in Juno?</div>
+    <div class="gap-freq">Appeared in 2 conversations today ‚Äî active bug, but no KB article exists for this troubleshooting path</div>
+    <div class="gap-suggestion">üí° Suggested action: Create a troubleshooting article "Documents showing garbled characters after TaxDome import" with workaround steps (disconnect/reconnect TaxDome, manual upload). Pin to top of support queue during engineering investigation.</div>
+  </div>
+
+  <div class="gap-item">
+    <div class="gap-question">How do I update a client's filing status in Juno after adding a spouse in CCH?</div>
+    <div class="gap-freq">1 escalation today (Nikki Balasis, Mansfield CPA) ‚Äî Fin gave the correct Re-Sync answer but user was unsatisfied; needed step-by-step walkthrough of Re-Sync button location</div>
+    <div class="gap-suggestion">üí° Suggested action: Add an annotated screenshot of the Re-Sync button location directly to the "Exporting to CCH Axcess When Filing Status Changes" article. Fin referenced this article but the visual guidance was missing from its answer.</div>
+  </div>
+
+  <div class="gap-item">
+    <div class="gap-question">Can I upload two prior-year returns for a client who filed separately last year?</div>
+    <div class="gap-freq">1 occurrence today as a follow-up question in the Nikki Balasis escalation ‚Äî not in KB</div>
+    <div class="gap-suggestion">üí° Suggested action: Add an FAQ to the Reviewer / YoY analysis documentation: "Uploading multiple prior-year returns for a client who changed filing status." Note that both can be uploaded as Prior Year 1040 and Juno will use both for analysis.</div>
+  </div>
+
+  <div class="gap-item">
+    <div class="gap-question">Who can perform client sync? / Why can't I see the Sync Clients option?</div>
+    <div class="gap-freq">Surfaced in client resync conversation ‚Äî Fin correctly noted Admin/Org Admin restriction, but this permissions note is buried in integration articles</div>
+    <div clas="gap-suggestion">üí° Suggested action: Add a permissions callout box to all "How to Connect [Software] to Juno" articles. Create a standalone "Role Permissions in Juno" article listing what each role can and cannot do (Client Sync, Export, etc.).</div>
   </div>
 
 </div>
 
+<!-- NOTABLE CONVERSATIONS -->
+<div class="section">
+  <h2>Notable Conversations</h2>
+  <div class="notable-grid">
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üö® TaxDome Document Corruption Bug</div>
+        <span class="res-badge escalated">Escalated</span>
+      </div>
+      <div class="card-meta">Steven Lynn &middot; Lynn CPAs LLC &middot; 7:38 PM UTC &middot; Open</div>
+      <div class="card-body">User reported broker statements and 1099Rs from TaxDome rendering as unreadable garbled characters. Fin offered file-format troubleshooting suggestions; user confirmed documents are already separate, high-quality, and reprocessing didn't help. Escalated to live chat. Admin (Josh Hunter) confirmed engineering is investigating. Issue spread to multiple clients and documents throughout the day. Customer expressed serious frustration and inquired about refund policy. Ticket remains open.</div>
+      <div class="card-id">#215473796013166</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üîÄ Duplicate Ticket Merge Request</div>
+        <span class="res-badge escalated">Escalated</span>
+      </div>
+      <div class="card-meta">Steven Lynn &middot; Lynn CPAs LLC &middot; 10:34 PM UTAmiddot; Resolved (Merged)</div>
+      <div class="card-body">Same user opened a second chat saying "I need a person to speak with about a ticket." After routing to live chat, user shared ticket #89837302 and sent a screenshot of unreadable numbers. Josh Hunter identified the duplicate, noted he'd follow up on the existing ticket, and merged both conversations. The screenshot showed the same document corruption issue as the primary open thread. Closed within 5 minutes of admin response.</div>
+      <div class="card-id">#215473798310180</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üìÑ Unsupported Documents Query</div>
+        <span class="res-badge escalated">Escalated</span>
+      </div>
+      <div class="card-meta">Blend S (demo@juno.tax) &middot; 4:07 PM UTC &middot; Closed</div>
+      <div class="card-body">User asked "What documents can't Juno process?" Fin answered correctly ‚Äî citing HEIC image files, gain/loss statements lacking summary info, and Schedule E form matching limitations ‚Äî with supporting article links. User then replied "Live Chat" rather than confirming the answer. After becoming idle for 5 minutes, the conversation was auto-assigned to Josh Hunter, who closed it. Suggests in-house demo users may be testing Fin behavior rather than seeking genuine resolution.</div>
+      <div class="card-id">#215473793014211</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üíç Filing Status Change: Single ‚Üí MFJ</div>
+        <span class="res-badge escalated">Escalated</span>
+      </div>
+      <div class="card-meta">Nikki Balasis &middot; Mansfield CPA &middot; 2:58 PM UTC &middot; Open (Waiting on Customer)</div>
+      <div class="card-body">User asked how to update a client in Juno after adding a spouse in CCH Axcess following a filing status change. Fin explained the Re-Sync option and linked to the CCH export guide with a screenshot. User said "no" to Fin's resolution check and immediately requested a human. Lorena Modesto took over, gave step-by-step Re-Sync guidance with a screenshot of the button location. Follow-up question: how to upload two separate prior-year returns for the spouse. Lorena advised uploading both as Prior Year 1040 documents. Ticket marked "Waiting on Customer."</div>
+      <div class="card-id">#215473792166200</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">‚úÖ Duplicate Document Handling ‚Äî Fastest Close</div>
+        <span class="res-badge confirmed">Confirmed</span>
+      </div>
+      <div class="card-meta">Karli Bilskie &middot; Balancing Bils &middot; 2:59 PM UTC &middot; Closed (46 sec)</div>
+      <div class="card-body">User asked: "If I upload the same document again, does Juno duplicate the information or recognize it's already there?" Fin explained that re-uploading can create duplicates if not mapped during export, and advised using "Scan for existing documents" then choosing "Update." Cited Form Matching article and included a screenshot. User replied "yes, thank you!" ‚Äî confirmed resolution in under a minute. The fastest Fin resolution of the day and a model example of Fin performance on clear, product-specific questions.</div>
+      <div class="card-id">#215473792184909</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üîÑ Client Names Missing ‚Äî ProConnect Resync</div>
+        <span class="res-badge assumed">Assumed</span>
+      </div>
+      <div class="card-meta">Brett Tester &middot; Dark Horse CPA &middot; 8:33 PM UTC &middot; Closed (9m 27s)</div>
+      <div class="card-body">User couldn't see client names in Juno. Fin provided a comprehensive answer covering ProConnect, Drake, and CCH Axcess sync workflows, plus a TaxDome-specific note and Admin-role restriction. User clarified they use ProConnect; Fin immediately followed up with ProConnect-specific instructions (Desktop App ‚Üí ProConnect ‚Üí Sync Clients). Fin also noted Chrome is required for the ProConnect integration. User didn't confirm but became idle; conversation closed by Fin after inactivity timeout.</div>
+      <div class="card-id">#215473796880432</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üìã SSA-1099 Drake Form Mapping</div>
+        <span class="res-badge assumed">Assumed</span>
+      </div>
+      <div class="card-meta">Lorena Modesto (lorena@juno.tax) &middot; 6:21 PM UTC &middot; Closed (7m 9s)</div>
+      <div class="card-body">Internal Juno team member queried whether SSA-1099 is supported in Drake. Fin confirmed it is, noting it's in the supported source documents list and is included in Drake's form-matching column. Fin also explained the workflow: upload ‚Üí extract ‚Üí map to existing SSA-1099 in Drake during export. No user reply after Fin's response; assumed resolved after inactivity timeout. Clean, efficient knowledge lookup.</div>
+      <div class="card-id">#215473794686429</div>
+    </div>
+
+    <div class="notable-card">
+      <div class="card-header">
+        <div class="card-title">üåô Off-Hours: Early AM Assumed Resolutions</div>
+        <span class="res-badge assumed">Assumed</span>
+      </div>
+      <div class="card-meta">Anonymous users &middot; 1:45 AM &amp; 2:11 AM UTC &middot; Closed</div>
+      <div class="card-body">Two chat conversations initiated in the early morning hours (1:45 AM and 2:11 AM UTC) were handled entirely by Fin with no human involvement. Both closed with assumed resolution status, demonstrating Fin's effectiveness as an overnight support layer. While conversation content for these sessions was not fully retrieved, both closed cleanly ‚Äî no escalation triggers, no negative feedback. These sessions underscore the value of Fin for off-hours coverage, especially during peak tax season.</div>
+      <div class="card-id">#215473785938924 &middot; #215473786100462</div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main -->
+
 <!-- FOOTER -->
 <div class="footer">
-  <p>Generated <strong>April 6, 2026</strong> ¬∑ Data source: Intercom (Juno Tax workspace) ¬∑ 4 total conversations ¬∑ 2 Fin AI ¬∑ 2 support tickets ¬∑ Window: April 5, 2026 00:00‚Äì23:59 UTC</p>
-  <p style="margin-top:6px;">Automated by <a href="https://liammw3.github.io/juno-fin-daily-summaries/fin-daily-summary.html">Fin AI Daily Summary</a></p>
+  Generated on April 7, 2026 &middot; Data source: Intercom Conversations API &middot; 
+  Window: April 6, 2026 00:00 ‚Äì 23:59 UTC &middot; 
+  22 total conversations &middot; 13 Fin AI &middot; 8 assumed &middot; 1 confirmed &middot; 4 escalated
 </div>
 
 </body>
