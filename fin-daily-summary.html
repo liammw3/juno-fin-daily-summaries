@@ -1,400 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fin AI Agent Daily Summary — April 8, 2026</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F3F4F6;color:#1a1a1a;min-height:100vh}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fin AI Agent Daily Summary — 2026-04-08</title>
+  <style>
+    :root {
+      --bg:       #011f1a;
+      --surface:  #013a2f;
+      --surface2: #02503f;
+      --border:   #025040;
+      --accent:   #1ce49b;
+      --accent2:  #14b07a;
+      --text:     #e8f5f1;
+      --muted:    #7db5a5;
+      --warn-bg:  #2d1f06;
+      --warn:     #D97706;
+      --pos-bg:   #0a2b1e;
+      --pos:      #1ce49b;
+      --blue:     #2563EB;
+      --blue-bg:  #0d1f3d;
+      --gray:     #6B7280;
+      --gray-bg:  #1a1f24;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
-/* HEADER */
-.header{background:#013A2F;color:#fff;padding:20px 36px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.25)}
-.header-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.header-left h1{font-size:20px;font-weight:700;letter-spacing:-.3px;line-height:1.2}
-.header-left .subtitle{color:#B4F7CA;font-size:12px;margin-top:3px}
-.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.date-badge{background:#1CE49B;color:#013A2F;font-weight:700;font-size:12px;padding:5px 13px;border-radius:20px;white-space:nowrap}
-.search-wrap{position:relative}
-.search-input{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:7px 32px 7px 32px;color:#fff;font-size:13px;width:210px;outline:none;transition:all .2s}
-.search-input::placeholder{color:rgba(255,255,255,.45)}
-.search-input:focus{background:rgba(255,255,255,.16);border-color:#1CE49B;width:250px}
-.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.5;pointer-events:none;font-size:13px}
-.clear-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.55);cursor:pointer;font-size:15px;line-height:1;display:none;padding:0}
-.clear-btn.vis{display:block}
+    /* ── HEADER ── */
+    .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+    .header-brand{display:flex;align-items:center;gap:10px}
+    .logo{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--surface);font-size:14px;flex-shrink:0}
+    .header-title{font-size:16px;font-weight:700;color:var(--text)}
+    .header-sub{font-size:12px;color:var(--muted)}
+    .date-badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--accent);margin-left:auto;white-space:nowrap}
+    .header-search{flex:1;min-width:200px;max-width:380px}
+    .header-search input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:7px 12px 7px 32px;color:var(--text);font-size:13px;outline:none;transition:border-color .2s}
+    .header-search input::placeholder{color:var(--muted)}
+    .header-search input:focus{border-color:var(--accent)}
+    .search-wrap{position:relative}
+    .search-wrap::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;pointer-events:none}
 
-/* NAV */
-.nav{background:#fff;border-bottom:2px solid #e8e8e8;overflow-x:auto}
-.nav-inner{max-width:1400px;margin:0 auto;display:flex;padding:0 36px}
-.nav-tab{padding:13px 18px;font-size:13px;font-weight:600;color:#888;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;margin-bottom:-2px}
-.nav-tab:hover{color:#013A2F}
-.nav-tab.active{color:#013A2F;border-bottom-color:#1CE49B}
-.nav-count{background:#f0f0f0;color:#888;font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:5px;vertical-align:middle}
-.nav-tab.active .nav-count{background:#B4F7CA;color:#013A2F}
+    /* ── NAV ── */
+    .nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;gap:0;overflow-x:auto}
+    .nav-tab{padding:12px 18px;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);font-size:13px;font-weight:500;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none}
+    .nav-tab:hover{color:var(--text)}
+    .nav-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+    .tab-count{background:var(--surface2);border-radius:10px;padding:1px 7px;font-size:11px;margin-left:5px;color:var(--muted)}
+    .nav-tab.active .tab-count{background:rgba(28,228,155,.15);color:var(--accent)}
 
-/* MAIN */
-.main{max-width:1400px;margin:0 auto;padding:28px 36px 48px}
-.page-section{display:none}
-.page-section.active{display:block}
+    /* ── LAYOUT ── */
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
 
-/* SECTION HEADER */
-.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.sec-title{font-size:16px;font-weight:700;color:#013A2F;display:flex;align-items:center;gap:8px}
-.sec-title::before{content:'';display:inline-block;width:4px;height:18px;background:#1CE49B;border-radius:2px}
-.sec-sub{font-size:12px;color:#aaa}
+    /* ── KPI GRID ── */
+    .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+    .kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:border-color .2s,transform .15s;position:relative;overflow:hidden}
+    .kpi-card::after{content:'';position:absolute;inset:0;background:var(--accent);opacity:0;transition:opacity .2s}
+    .kpi-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .kpi-card.active-filter{border-color:var(--accent);background:rgba(28,228,155,.07)}
+    .kpi-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+    .kpi-value{font-size:32px;font-weight:800;color:var(--text);line-height:1}
+    .kpi-sub{font-size:11px;color:var(--muted);margin-top:4px}
+    .kpi-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:28px;opacity:.15}
+    .kpi-card[data-filter="all"] .kpi-value{color:var(--text)}
+    .kpi-card[data-filter="assumed"] .kpi-value{color:var(--accent)}
+    .kpi-card[data-filter="confirmed"] .kpi-value{color:var(--blue)}
+    .kpi-card[data-filter="escalated"] .kpi-value{color:var(--warn)}
+    .kpi-card[data-filter="nonfintype"] .kpi-value{color:var(--gray)}
 
-/* CARDS */
-.card{background:#fff;border-radius:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden}
+    /* ── EXEC SUMMARY ── */
+    .summary-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
+    .summary-card h3{font-size:14px;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+    .summary-text{color:var(--text);line-height:1.7;font-size:14px}
+    .summary-more{display:none}
+    .btn-toggle{background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;margin-top:10px;padding:0;display:inline-flex;align-items:center;gap:4px}
+    .btn-toggle:hover{text-decoration:underline}
 
-/* KPI GRID */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;margin-bottom:24px}
-.kpi-card{background:#fff;border-radius:13px;padding:18px 18px 14px;box-shadow:0 1px 5px rgba(0,0,0,.08);border-top:4px solid #1CE49B;cursor:pointer;transition:all .15s;position:relative}
-.kpi-card:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(0,0,0,.12)}
-.kpi-card.active{box-shadow:0 0 0 2.5px #1CE49B,0 4px 14px rgba(0,0,0,.1)}
-.kpi-card.amber{border-top-color:#e6a817}
-.kpi-card.amber.active{box-shadow:0 0 0 2.5px #e6a817,0 4px 14px rgba(0,0,0,.1)}
-.kpi-card.dark{border-top-color:#013A2F}
-.kpi-card.dark.active{box-shadow:0 0 0 2.5px #013A2F,0 4px 14px rgba(0,0,0,.1)}
-.kpi-card.blue{border-top-color:#4A90E2}
-.kpi-value{font-size:32px;font-weight:800;color:#013A2F;line-height:1}
-.kpi-label{font-size:12px;color:#666;margin-top:5px;font-weight:500}
-.kpi-sub{font-size:11px;color:#bbb;margin-top:2px}
-.kpi-click-hint{font-size:10px;color:#ccc;margin-top:6px}
+    /* ── BAR CHART ── */
+    .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
+    .chart-card h3{font-size:14px;color:var(--accent);margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+    .bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;cursor:pointer;padding:6px 8px;border-radius:8px;transition:background .15s;border:1px solid transparent}
+    .bar-row:hover{background:rgba(28,228,155,.05)}
+    .bar-row.active-filter{background:rgba(28,228,155,.08);border-color:var(--border)}
+    .bar-label{width:110px;font-size:12px;color:var(--muted);text-align:right;flex-shrink:0}
+    .bar-track{flex:1;background:rgba(255,255,255,.06);border-radius:4px;height:22px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:4px;width:0;transition:width 0.8s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:#fff;min-width:0}
+    .bar-count{width:28px;font-size:13px;font-weight:700;text-align:right;flex-shrink:0}
 
-/* EXEC SUMMARY */
-.exec-card{background:#fff;border-radius:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);padding:22px 26px;margin-bottom:24px}
-.exec-card p{font-size:13.5px;line-height:1.75;color:#444;margin-bottom:10px}
-.exec-card p:last-of-type{margin-bottom:0}
-.read-more-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:1.5px solid #ddd;border-radius:8px;padding:5px 12px;font-size:12px;color:#888;cursor:pointer;margin-top:10px;transition:all .15s}
-.read-more-btn:hover{border-color:#1CE49B;color:#013A2F}
-.exec-card.collapsed p:not(:first-child){display:none}
+    /* ── FILTER CHIPS ── */
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all .15s;user-select:none}
+    .chip:hover{border-color:var(--accent);color:var(--text)}
+    .chip.active{background:rgba(28,228,155,.15);border-color:var(--accent);color:var(--accent)}
+    .chip[data-filter="escalated"].active{background:rgba(217,119,6,.15);border-color:var(--warn);color:var(--warn)}
+    .chip[data-filter="confirmed"].active{background:rgba(37,99,235,.15);border-color:var(--blue);color:var(--blue)}
+    .chip[data-filter="nonfintype"].active{background:rgba(107,114,128,.15);border-color:var(--gray);color:var(--gray)}
 
-/* BAR CHART */
-.bar-wrap{background:#fff;border-radius:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);padding:22px 26px;margin-bottom:24px}
-.bar-hint{font-size:11px;color:#ccc;margin-bottom:14px}
-.bar-row{display:flex;align-items:center;gap:12px;padding:5px 6px;border-radius:8px;cursor:pointer;transition:background .15s;margin-bottom:8px}
-.bar-row:last-child{margin-bottom:0}
-.bar-row:hover{background:#f5f5f5}
-.bar-row.bar-active{background:#f0fff8}
-.bar-row.bar-active .bar-label{color:#013A2F;font-weight:700}
-.bar-label{min-width:170px;font-size:13px;color:#555;font-weight:500;flex-shrink:0}
-.bar-track{flex:1;background:#eee;border-radius:6px;height:26px;overflow:hidden}
-.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;transition:width .5s cubic-bezier(.4,0,.2,1)}
-.bar-fill.assumed{background:#1CE49B;color:#013A2F}
-.bar-fill.confirmed{background:#013A2F;color:#fff}
-.bar-fill.escalated{background:#e6a817;color:#5a3200}
-.bar-fill.no-fin{background:#c0c0c0;color:#444}
-.bar-count{min-width:55px;text-align:right;font-size:13px;font-weight:700;color:#888}
+    /* ── CONV CARDS ── */
+    .conv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+    .conv-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+    .conv-card:hover{border-color:var(--accent2);transform:translateY(-1px)}
+    .conv-card-header{padding:14px 16px 10px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .conv-title{font-size:13px;font-weight:600;color:var(--text);flex:1;line-height:1.3}
+    .pill{padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
+    .pill-assumed{background:rgba(28,228,155,.18);color:var(--accent)}
+    .pill-confirmed{background:rgba(37,99,235,.2);color:#60a5fa}
+    .pill-escalated{background:rgba(217,119,6,.2);color:#fbbf24}
+    .pill-nonfin{background:rgba(107,114,128,.2);color:#9ca3af}
+    .conv-meta{padding:0 16px 10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .meta-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
+    .meta-dot{color:var(--border)}
+    .conv-excerpt{padding:0 16px 12px;font-size:12px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .conv-excerpt mark{background:rgba(28,228,155,.25);color:var(--accent);border-radius:2px;padding:0 1px}
+    .conv-footer{padding:8px 16px;background:rgba(0,0,0,.2);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}
+    .conv-expand-btn{font-size:11px;color:var(--accent)}
+    .conv-drill{display:none;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,.15)}
+    .conv-drill.open{display:block}
+    .drill-section{margin-bottom:12px}
+    .drill-label{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:6px}
+    .drill-value{font-size:12px;color:var(--text);line-height:1.5}
+    .article-pill{display:inline-flex;align-items:center;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--muted);margin:2px 2px 2px 0}
+    .empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+    .empty-state span{font-size:40px;display:block;margin-bottom:12px}
 
-/* TOPIC TABLE */
-.table-wrap{background:#fff;border-radius:14px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden;margin-bottom:24px}
-.table-controls{padding:14px 20px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.table-search{border:1.5px solid #e0e0e0;border-radius:8px;padding:6px 12px;font-size:13px;outline:none;transition:border .15s;width:220px}
-.table-search:focus{border-color:#1CE49B}
-table{width:100%;border-collapse:collapse}
-th{background:#013A2F;color:#fff;font-size:12px;font-weight:600;padding:11px 16px;text-align:left;cursor:pointer;user-select:none;white-space:nowrap;transition:background .15s}
-th:hover{background:#025040}
-th .sort-arrow{margin-left:5px;opacity:.4;font-size:10px}
-th.sorted .sort-arrow{opacity:1}
-td{padding:11px 16px;font-size:13px;border-bottom:1px solid #f4f4f4;vertical-align:top;transition:background .1s}
-tr:last-child td{border-bottom:none}
-tbody tr:hover td{background:#f8fff9}
-tbody tr.row-filtered td{opacity:.3}
-.badge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:11px;font-weight:700;margin-right:3px}
-.badge-chat{background:#B4F7CA;color:#013A2F}
-.badge-email{background:#dde8ff;color:#3060c0}
-.badge-admin{background:#ffe8cc;color:#a06000}
-.badge-escalated{background:#ffe8a1;color:#7a4000}
+    /* ── TOPICS TABLE ── */
+    .topic-search-wrap{margin-bottom:12px}
+    .topic-search-wrap input{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:13px;outline:none;width:100%;max-width:320px}
+    .topic-search-wrap input:focus{border-color:var(--accent)}
+    table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    thead{background:var(--surface2)}
+    th{padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap}
+    th:hover{color:var(--text)}
+    th .sort-icon{margin-left:4px;opacity:.4}
+    th.sorted .sort-icon{opacity:1;color:var(--accent)}
+    td{padding:12px 16px;border-top:1px solid var(--border);font-size:13px;color:var(--text);vertical-align:top}
+    tr:hover td{background:rgba(28,228,155,.03)}
+    .topic-count{font-size:20px;font-weight:800;color:var(--accent)}
+    .topic-esc{font-size:11px;color:var(--warn)}
+    .example-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:11px;color:var(--muted);margin:1px}
 
-/* FILTER CHIPS */
-.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
-.filter-label{font-size:12px;color:#ccc;font-weight:500;margin-right:2px}
-.chip{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid;transition:all .15s;background:#fff;white-space:nowrap}
-.chip:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.chip.all{color:#013A2F;border-color:#013A2F}
-.chip.all.on{background:#013A2F;color:#fff}
-.chip.assumed{color:#276749;border-color:#1CE49B}
-.chip.assumed.on{background:#1CE49B;color:#013A2F}
-.chip.confirmed{color:#013A2F;border-color:#025040}
-.chip.confirmed.on{background:#025040;color:#fff}
-.chip.escalated{color:#7a4000;border-color:#e6a817}
-.chip.escalated.on{background:#e6a817;color:#5a2e00}
-.chip.nonfin{color:#666;border-color:#c0c0c0}
-.chip.nonfin.on{background:#c0c0c0;color:#fff}
+    /* ── FLAGS GRID ── */
+    .flags-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px}
+    .flag-card{border-radius:12px;padding:16px;border:1px solid transparent}
+    .flag-card.warn{background:var(--warn-bg);border-color:rgba(217,119,6,.3)}
+    .flag-card.pos{background:var(--pos-bg);border-color:rgba(28,228,155,.25)}
+    .flag-icon{font-size:24px;margin-bottom:8px}
+    .flag-title{font-size:13px;font-weight:700;margin-bottom:5px}
+    .flag-card.warn .flag-title{color:#fbbf24}
+    .flag-card.pos .flag-title{color:var(--accent)}
+    .flag-desc{font-size:12px;color:var(--muted);line-height:1.5}
 
-/* CONVERSATION CARDS */
-.conv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
-.conv-card{background:#fff;border-radius:13px;box-shadow:0 1px 5px rgba(0,0,0,.08);border-top:3px solid #1CE49B;overflow:hidden;cursor:pointer;transition:all .15s}
-.conv-card:hover{box-shadow:0 5px 18px rgba(0,0,0,.12);transform:translateY(-2px)}
-.conv-card.expanded{box-shadow:0 6px 22px rgba(0,0,0,.14);transform:translateY(-2px)}
-.conv-card.res-confirmed{border-top-color:#013A2F}
-.conv-card.res-escalated{border-top-color:#e6a817}
-.conv-card.res-nonfin{border-top-color:#ccc;opacity:.72}
-.conv-card.hidden{display:none}
-.conv-top{padding:16px 18px}
-.conv-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px}
-.conv-title{font-size:14px;font-weight:700;color:#013A2F;line-height:1.35;flex:1}
-.conv-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
-.pill-assumed{background:#B4F7CA;color:#013A2F}
-.pill-confirmed{background:#013A2F;color:#fff}
-.pill-escalated{background:#ffe8a1;color:#7a4000}
-.pill-nonfin{background:#eee;color:#888}
-.conv-user{font-size:12px;color:#aaa;margin-bottom:8px}
-.conv-excerpt{font-size:12px;color:#555;line-height:1.5;background:#F8F9FA;padding:8px 10px;border-radius:7px;margin-bottom:9px;font-style:italic}
-.conv-footer{display:flex;gap:10px;font-size:11px;color:#bbb;flex-wrap:wrap}
-.conv-footer span{display:inline-flex;align-items:center;gap:3px}
-.expand-hint{font-size:10px;color:#ddd;float:right;margin-top:-4px;transition:transform .2s}
-.conv-card.expanded .expand-hint{transform:rotate(180deg)}
+    /* ── GAPS ── */
+    .gaps-section h3{font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+    .gap-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+    .gap-num{background:var(--surface2);border-radius:6px;padding:4px 9px;font-size:12px;font-weight:700;color:var(--muted);flex-shrink:0}
+    .gap-body{}
+    .gap-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+    .gap-desc{font-size:12px;color:var(--muted);line-height:1.5}
+    .gap-tag{display:inline-block;background:rgba(28,228,155,.1);border:1px solid rgba(28,228,155,.2);border-radius:10px;padding:2px 8px;font-size:11px;color:var(--accent);margin-top:6px}
 
-/* DETAIL PANEL */
-.conv-detail{border-top:1px solid #f0f0f0;background:linear-gradient(180deg,#f8fff9 0%,#fff 100%);padding:14px 18px;display:none}
-.conv-card.expanded .conv-detail{display:block}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
-.detail-item{font-size:12px}
-.detail-item .dl{color:#bbb;font-weight:600;margin-bottom:2px;text-transform:uppercase;font-size:10px;letter-spacing:.5px}
-.detail-item .dv{color:#333}
-.detail-notes{margin-top:12px;font-size:12px;color:#666;background:#fffdf0;border-left:3px solid #e6a817;padding:8px 12px;border-radius:0 6px 6px 0;line-height:1.5}
-.detail-notes strong{color:#013A2F}
+    /* ── SECTIONS ── */
+    .section-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* FLAGS */
-.flags-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:13px;margin-bottom:24px}
-.flag-card{border-radius:12px;padding:15px 18px;display:flex;gap:12px;align-items:flex-start;transition:transform .15s}
-.flag-card:hover{transform:translateY(-2px)}
-.flag-card.warn{background:#fffbeb;border-left:4px solid #e6a817}
-.flag-card.pos{background:#f0fff4;border-left:4px solid #1CE49B}
-.flag-card.crit{background:#fff5f5;border-left:4px solid #e53e3e}
-.flag-icon{font-size:18px;flex-shrink:0;margin-top:1px}
-.flag-title{font-weight:700;font-size:13px;margin-bottom:4px}
-.flag-card.warn .flag-title{color:#b7791f}
-.flag-card.pos .flag-title{color:#276749}
-.flag-card.crit .flag-title{color:#c53030}
-.flag-desc{font-size:12px;color:#666;line-height:1.5}
+    /* ── FOOTER ── */
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:14px 24px;text-align:center;font-size:11px;color:var(--muted);margin-top:40px}
+    footer span{margin:0 8px}
 
-/* DOC GAPS */
-.gap-item{background:#fff;border-radius:10px;padding:15px 18px;margin-bottom:10px;border-left:4px solid #e6a817;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .15s;cursor:default}
-.gap-item:hover{transform:translateX(3px)}
-.gap-title{font-weight:700;font-size:13px;color:#013A2F;margin-bottom:4px}
-.gap-desc{font-size:12px;color:#666;line-height:1.5}
-.gap-tag{display:inline-block;background:#fff3cd;color:#856404;font-size:11px;font-weight:600;padding:2px 8px;border-radius:9px;margin-top:6px}
+    /* ── SCROLL TO TOP ── */
+    #scrollTop{position:fixed;bottom:24px;right:24px;background:var(--accent);color:var(--surface);border:none;border-radius:50%;width:42px;height:42px;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 12px rgba(28,228,155,.4);transition:opacity .2s,transform .2s}
+    #scrollTop:hover{transform:translateY(-2px)}
+    #scrollTop.visible{display:flex}
 
-/* NO RESULTS */
-.no-results{text-align:center;padding:48px 20px;color:#bbb;background:#fff;border-radius:14px;box-shadow:0 1px 5px rgba(0,0,0,.06)}
-.no-results-icon{font-size:36px;margin-bottom:12px}
-.no-results p{font-size:14px}
+    /* ── NO RESULTS ── */
+    .no-results{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
 
-/* SEARCH HIGHLIGHT */
-mark{background:#fef08a;border-radius:2px;padding:0 1px}
-
-/* FOOTER */
-.footer{background:#013A2F;color:#B4F7CA;padding:22px 36px;font-size:12px;margin-top:0}
-.footer-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.footer strong{color:#1CE49B}
-
-/* SCROLL TO TOP */
-.scroll-top{position:fixed;bottom:24px;right:24px;background:#013A2F;color:#1CE49B;border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.2);display:none;align-items:center;justify-content:center;transition:all .15s;z-index:300}
-.scroll-top:hover{background:#025040;transform:translateY(-2px)}
-.scroll-top.vis{display:flex}
-
-@media(max-width:640px){
-  .main{padding:18px 14px 40px}
-  .header{padding:14px 16px}
-  .nav-inner{padding:0 16px}
-  .footer{padding:18px 16px}
-  .kpi-value{font-size:26px}
-  .bar-label{min-width:110px;font-size:12px}
-  .search-input{width:150px}
-  .search-input:focus{width:170px}
-}
-</style>
+    @media(max-width:600px){
+      .kpi-grid{grid-template-columns:repeat(2,1fr)}
+      .conv-grid{grid-template-columns:1fr}
+      .container{padding:14px}
+      .header{padding:12px 14px}
+    }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <h1>Fin AI Agent Daily Summary</h1>
-      <div class="subtitle">Juno Tax · Intercom Fin Performance Report</div>
-    </div>
-    <div class="header-right">
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input class="search-input" id="globalSearch" type="text" placeholder="Search conversations…" autocomplete="off">
-        <button class="clear-btn" id="clearSearch" title="Clear">✕</button>
-      </div>
-      <div class="date-badge">April 8, 2026</div>
+  <div class="header-brand">
+    <div class="logo">J</div>
+    <div>
+      <div class="header-title">Fin AI Agent Daily Summary</div>
+      <div class="header-sub">Juno Tax · Intercom Support</div>
     </div>
   </div>
+  <div class="header-search">
+    <div class="search-wrap">
+      <input id="globalSearch" type="text" placeholder="Search conversations…" autocomplete="off">
+    </div>
+  </div>
+  <div class="date-badge">📅 2026-04-08</div>
 </header>
 
+<!-- NAV TABS -->
 <nav class="nav">
-  <div class="nav-inner">
-    <button class="nav-tab active" data-tab="overview">Overview</button>
-    <button class="nav-tab" data-tab="conversations">Conversations <span class="nav-count" id="convCount">10</span></button>
-    <button class="nav-tab" data-tab="topics">Topics</button>
-    <button class="nav-tab" data-tab="flags">Flags &amp; Gaps</button>
-  </div>
+  <div class="nav-tab active" data-tab="overview">Overview</div>
+  <div class="nav-tab" data-tab="conversations">Conversations <span class="tab-count" id="convTabCount">18</span></div>
+  <div class="nav-tab" data-tab="topics">Topics</div>
+  <div class="nav-tab" data-tab="flags">Flags &amp; Gaps</div>
 </nav>
 
-<div class="main">
+<!-- ═══════════════════ TAB: OVERVIEW ═══════════════════ -->
+<div class="tab-panel active" id="tab-overview">
+  <div class="container">
 
-  <!-- ═══════════ OVERVIEW TAB ═══════════ -->
-  <div class="page-section active" id="tab-overview">
-
-    <div style="margin-bottom:24px">
-      <div class="sec-head"><div class="sec-title">Key Performance Indicators</div><div class="sec-sub">Click a card to filter conversations</div></div>
-      <div class="kpi-grid" id="kpiGrid">
-        <div class="kpi-card" data-filter="all">
-          <div class="kpi-value">18</div>
-          <div class="kpi-label">Total Conversations</div>
-          <div class="kpi-sub">All channels combined</div>
-        </div>
-        <div class="kpi-card dark" data-filter="fin">
-          <div class="kpi-value">10</div>
-          <div class="kpi-label">Fin AI Conversations</div>
-          <div class="kpi-sub">56% of all conversations</div>
-        </div>
-        <div class="kpi-card" data-filter="assumed">
-          <div class="kpi-value">70%</div>
-          <div class="kpi-label">Assumed Resolution Rate</div>
-          <div class="kpi-sub">7 of 10 Fin conversations</div>
-        </div>
-        <div class="kpi-card amber" data-filter="escalated">
-          <div class="kpi-value">1</div>
-          <div class="kpi-label">Human Handoffs</div>
-          <div class="kpi-sub">Business returns → Sabrina</div>
-        </div>
-        <div class="kpi-card blue" data-filter="confirmed">
-          <div class="kpi-value">2</div>
-          <div class="kpi-label">Confirmed Resolutions</div>
-          <div class="kpi-sub">User explicitly confirmed</div>
-        </div>
-        <div class="kpi-card amber" data-filter="all">
-          <div class="kpi-value">0</div>
-          <div class="kpi-label">Fin Loop Reports</div>
-          <div class="kpi-sub">No repetitive loops detected</div>
-        </div>
+    <!-- KPI Grid -->
+    <div class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card" data-filter="all">
+        <div class="kpi-label">Total Conversations</div>
+        <div class="kpi-value">18</div>
+        <div class="kpi-sub">Apr 8, 2026</div>
+        <span class="kpi-icon">💬</span>
+      </div>
+      <div class="kpi-card" data-filter="fin">
+        <div class="kpi-label">Fin AI Handled</div>
+        <div class="kpi-value">10</div>
+        <div class="kpi-sub">56% of total</div>
+        <span class="kpi-icon">🤖</span>
+      </div>
+      <div class="kpi-card" data-filter="assumed">
+        <div class="kpi-label">Assumed Resolved</div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-sub">70% of Fin</div>
+        <span class="kpi-icon">✅</span>
+      </div>
+      <div class="kpi-card" data-filter="confirmed">
+        <div class="kpi-label">Confirmed Resolved</div>
+        <div class="kpi-value">2</div>
+        <div class="kpi-sub">20% of Fin</div>
+        <span class="kpi-icon">👍</span>
+      </div>
+      <div class="kpi-card" data-filter="escalated">
+        <div class="kpi-label">Escalated</div>
+        <div class="kpi-value">1</div>
+        <div class="kpi-sub">10% of Fin</div>
+        <span class="kpi-icon">🔺</span>
+      </div>
+      <div class="kpi-card" data-filter="nonfintype">
+        <div class="kpi-label">Non-Fin (Email/Admin)</div>
+        <div class="kpi-value">8</div>
+        <div class="kpi-sub">Email &amp; admin-initiated</div>
+        <span class="kpi-icon">📧</span>
       </div>
     </div>
 
-    <div style="margin-bottom:24px">
-      <div class="sec-head"><div class="sec-title">Executive Summary</div></div>
-      <div class="exec-card collapsed" id="execCard">
-        <p>April 8, 2026 was a productive day for the Fin AI agent, with Fin handling 10 of 18 total support conversations (56%) across the platform. The remaining 8 conversations arrived via email or were admin-initiated and fell outside Fin's scope. Fin's assumed resolution rate held steady at 70%, and 2 of 10 conversations received confirmed resolutions — a strong signal that Fin's answers are landing clearly with users. No Fin answer loops were detected today.</p>
-        <p>The dominant theme was <strong>tax software export workflows</strong>, particularly around Lacerte and CCH Axcess. With the April 15 tax deadline just one week away, users are under significant pressure to export finalized returns accurately. Fin handled these queries well, citing the correct step-by-step guides and clarifying the duplicate-protection behavior in Juno's export engine. One user from KBI Consulting was proactively asking how to prioritize their entire client book before the deadline — a sign that deadline anxiety is driving higher-than-usual support volume.</p>
-        <p>The single escalation today involved a question about <strong>business returns</strong> — specifically whether Juno can process them. Fin provided an accurate answer (Advisor mode supports business returns today; Preparer support is on the roadmap), but the user explicitly requested live chat, which triggered an appropriate handoff to Sabrina Chavez and Lorena Modesto. The conversation was resolved within 12 minutes total. No negative feedback was recorded.</p>
-        <p>One documentation gap worth flagging: the <strong>Integration App update issue</strong> surfaced again — users restarting the app but still seeing "update available" is a recurring theme that could benefit from a more prominent troubleshooting article. Additionally, the feature request for a <strong>Kansas property tax statement form</strong> was directed to featurerequests@juno.tax, which is the correct process, but the frequency of state-specific form requests suggests a dedicated "What Forms Does Juno Read?" KB article would reduce this category of inquiry significantly.</p>
-        <button class="read-more-btn" id="readMoreBtn">Show more ▾</button>
+    <!-- Executive Summary -->
+    <div class="summary-card">
+      <h3>Executive Summary</h3>
+      <div class="summary-text">
+        On April 8, 2026, Juno's Fin AI agent handled <strong>10 of 18 total conversations</strong> (56%), achieving a 90% self-service rate (9 resolved without human escalation). The dominant topic was software/export errors — particularly CCH Axcess ".dat file failed to fetch" and Lacerte re-export questions — reflecting active use during the final stretch of tax season. Fin cited KB articles accurately in most cases, including the step-by-step CCH Axcess export guide.
+        <button class="btn-toggle" id="summaryToggle">Show more ▾</button>
+        <span class="summary-more" id="summaryMore">
+          <br><br>One escalation occurred: a demo-account user (blend+demo@juno.tax) asked about business returns, received an accurate Fin answer, but then explicitly requested live chat. Sabrina Chavez and Lorena Modesto handled the escalation promptly (75-second admin reply time). The non-Fin queue comprised 8 email/admin conversations — 3 open, 5 closed — covering employee access setup, K-1 document errors, and reviewer annotation threads.
+          <br><br>Two confirmed resolutions are notable: Linda Stapf (Stapf Financial) resolved an app-update issue in just 72 seconds — the fastest close of the day — and Shashank Mune (The Ledger Way) confirmed Fin's answer about Lacerte re-export behavior. A KB documentation gap exists for Kansas state forms and bug bounty inquiries, both of which Fin had no structured content for and relied on assumed resolution only.
+        </span>
       </div>
     </div>
 
-    <div>
-      <div class="sec-head"><div class="sec-title">Resolution Breakdown</div><div class="sec-sub">Click a bar to filter conversations</div></div>
-      <div class="bar-wrap">
-        <div id="barChart">
-          <div class="bar-row" data-bar="assumed">
-            <div class="bar-label">Assumed Resolution</div>
-            <div class="bar-track"><div class="bar-fill assumed" style="width:0%" data-pct="70">70%</div></div>
-            <div class="bar-count">7 convs</div>
-          </div>
-          <div class="bar-row" data-bar="confirmed">
-            <div class="bar-label">Confirmed Resolution</div>
-            <div class="bar-track"><div class="bar-fill confirmed" style="width:0%" data-pct="20">20%</div></div>
-            <div class="bar-count">2 convs</div>
-          </div>
-          <div class="bar-row" data-bar="escalated">
-            <div class="bar-label">Escalated to Human</div>
-            <div class="bar-track"><div class="bar-fill escalated" style="width:0%" data-pct="10">10%</div></div>
-            <div class="bar-count">1 conv</div>
-          </div>
-          <div class="bar-row" data-bar="nonfin">
-            <div class="bar-label">No Fin (Email / Admin)</div>
-            <div class="bar-track"><div class="bar-fill no-fin" style="width:0%" data-pct="44">44%</div></div>
-            <div class="bar-count">8 convs</div>
-          </div>
-        </div>
-      </div>
+    <!-- Bar Chart -->
+    <div class="chart-card">
+      <h3>Resolution Breakdown</h3>
+      <div id="barChart"></div>
     </div>
 
-  </div><!-- /overview -->
+  </div>
+</div>
 
-  <!-- ═══════════ CONVERSATIONS TAB ═══════════ -->
-  <div class="page-section" id="tab-conversations">
-
-    <div class="sec-head" style="margin-bottom:14px">
-      <div class="sec-title">All Conversations</div>
-      <div class="sec-sub" id="convShowing">Showing all 18</div>
+<!-- ═══════════════════ TAB: CONVERSATIONS ═══════════════════ -->
+<div class="tab-panel" id="tab-conversations">
+  <div class="container">
+    <div class="chips" id="filterChips">
+      <div class="chip active" data-filter="all">All (18)</div>
+      <div class="chip" data-filter="assumed">Assumed (7)</div>
+      <div class="chip" data-filter="confirmed">Confirmed (2)</div>
+      <div class="chip" data-filter="escalated">Escalated (1)</div>
+      <div class="chip" data-filter="fin">Fin AI (10)</div>
+      <div class="chip" data-filter="nonfintype">Non-Fin (8)</div>
     </div>
-
-    <div class="filter-row">
-      <span class="filter-label">Filter:</span>
-      <button class="chip all on" data-chip="all">All <span id="chipAll">18</span></button>
-      <button class="chip assumed" data-chip="assumed">Assumed <span id="chipAssumed">7</span></button>
-      <button class="chip confirmed" data-chip="confirmed">Confirmed <span id="chipConfirmed">2</span></button>
-      <button class="chip escalated" data-chip="escalated">Escalated <span id="chipEscalated">1</span></button>
-      <button class="chip nonfin" data-chip="nonfin">Non-Fin <span id="chipNonfin">8</span></button>
-    </div>
-
     <div class="conv-grid" id="convGrid"></div>
-    <div class="no-results" id="convNoResults" style="display:none">
-      <div class="no-results-icon">🔍</div>
-      <p>No conversations match your filters.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: TOPICS ═══════════════════ -->
+<div class="tab-panel" id="tab-topics">
+  <div class="container">
+    <div class="topic-search-wrap">
+      <input id="topicSearch" type="text" placeholder="Filter topics…" autocomplete="off">
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th data-col="category">Category <span class="sort-icon">↕</span></th>
+          <th data-col="count">Count <span class="sort-icon">↕</span></th>
+          <th data-col="channel">Channel <span class="sort-icon">↕</span></th>
+          <th>Key Examples</th>
+        </tr>
+      </thead>
+      <tbody id="topicsBody"></tbody>
+    </table>
+  </div>
+</div>
 
-  </div><!-- /conversations -->
+<!-- ═══════════════════ TAB: FLAGS & GAPS ═══════════════════ -->
+<div class="tab-panel" id="tab-flags">
+  <div class="container">
+    <div class="section-title">Flags &amp; Escalation Signals</div>
+    <div class="flags-grid" id="flagsGrid"></div>
 
-  <!-- ═══════════ TOPICS TAB ═══════════ -->
-  <div class="page-section" id="tab-topics">
-
-    <div class="sec-head" style="margin-bottom:14px">
-      <div class="sec-title">Topic Categories</div>
-      <div class="sec-sub">Click column headers to sort</div>
-    </div>
-
-    <div class="table-wrap">
-      <div class="table-controls">
-        <input class="table-search" id="tableSearch" type="text" placeholder="Search topics…">
-      </div>
-      <table id="topicTable">
-        <thead>
-          <tr>
-            <th data-col="category">Category <span class="sort-arrow">↕</span></th>
-            <th data-col="count">Count <span class="sort-arrow">↕</span></th>
-            <th data-col="channel">Channel <span class="sort-arrow">↕</span></th>
-            <th data-col="examples">Key Examples <span class="sort-arrow">↕</span></th>
-          </tr>
-        </thead>
-        <tbody id="topicBody"></tbody>
-      </table>
-    </div>
-
-  </div><!-- /topics -->
-
-  <!-- ═══════════ FLAGS & GAPS TAB ═══════════ -->
-  <div class="page-section" id="tab-flags">
-
-    <div style="margin-bottom:24px">
-      <div class="sec-head"><div class="sec-title">Flags &amp; Escalation Signals</div></div>
-      <div class="flags-grid" id="flagsGrid"></div>
-    </div>
-
-    <div>
-      <div class="sec-head"><div class="sec-title">Documentation Gaps &amp; KB Recommendations</div></div>
+    <div class="gaps-section">
+      <h3>Documentation Gaps &amp; KB Recommendations</h3>
       <div id="gapsList"></div>
     </div>
-
-  </div><!-- /flags -->
-
-</div><!-- /main -->
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div><strong>Generated:</strong> April 9, 2026 · Automated daily report</div>
-    <div><strong>Data Source:</strong> Intercom MCP (Juno Tax workspace)</div>
-    <div><strong>Coverage:</strong> April 8, 2026 UTC (18 total · 10 Fin AI · 8 non-Fin)</div>
   </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>📊 Data source: Intercom (Juno Tax)</span>
+  <span>·</span>
+  <span>Coverage: 2026-04-08 UTC (18 conversations · 10 Fin AI · 8 non-Fin)</span>
+  <span>·</span>
+  <span>Generated: 2026-04-09</span>
 </footer>
 
-<button class="scroll-top" id="scrollTop" title="Back to top">↑</button>
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" title="Back to top">↑</button>
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -402,563 +344,588 @@ mark{background:#fef08a;border-radius:2px;padding:0 1px}
 // ═══════════════════════════════════════════════════════
 const CONVERSATIONS = [
   {
-    id:1, title:"Integration App "Update Available" — Confirmed ✓",
-    resolution:"confirmed", channel:"chat", fin:true,
-    user:"Linda Stapf", firm:"Stapf Financial", time:"4:40 AM UTC",
-    excerpt:""getting a message update available — have left the program twice and restarted it has not updated the app"",
-    closeTime:"72s", agents:null,
+    id:"215473831220607", title:"CCH Axcess — Failed to Fetch .dat File",
+    resolution:"assumed", channel:"chat", fin:true,
+    user:"Lori Ream", firm:"Ream CPA", time:"22:21 UTC", ts:1775686913,
+    excerpt:"I am trying to get the updated .dat file from Juno to import into CCH Axcess and it keeps saying failed to fetch. I made sure the docs are all mapped correctly and the preparer points have been marked off.",
+    closeTime:434, agents:[],
     details:{
-      articles:"Desktop vs. Web Integration guide, port 10001–10020 requirements",
-      outcome:"User replied 'yes' — confirmed resolved",
-      notes:"Recurring pattern. Fin correctly identified: version check mismatch + firewall port guidance. Confirmed resolution. Fast close (72s)."
+      articles:["Exporting Tax Preparations to CCH Axcess - Step By Step Guide","Exporting to CCH Axcess When Filing Status Changes","Juno Product Updates | Tax Prep Automation Improvements"],
+      outcome:"Fin provided detailed troubleshooting steps with screenshot. User went idle → auto-closed after 434s. No reply from user.",
+      notes:"High-quality Fin response. Included image and multiple troubleshooting checks (open return, filing status mismatch, import steps). Assumed resolved — follow-up may be needed if issue persists."
     }
   },
   {
-    id:2, title:"Lacerte Re-Export — Will It Double?",
+    id:"215473830605051", title:"Lacerte Re-Export — Will It Double Amounts?",
     resolution:"confirmed", channel:"chat", fin:true,
-    user:"Shashank Mune", firm:"The Ledger Way", time:"6:41 AM UTC",
-    excerpt:""If I already exported from Juno to Lacerte, now I add one more document and export again, will it override and double the previous amounts already added?"",
-    closeTime:"430s", agents:null,
+    user:"Shashank Mune", firm:"The Ledger Way", time:"21:41 UTC", ts:1775684508,
+    excerpt:"If I already exported from Juno to Lacerte, now I add one more document and export again, will it override and double the previous amounts already added?",
+    closeTime:2092, agents:[],
     details:{
-      articles:"Lacerte Export guide, duplicate-protection behavior documentation",
-      outcome:"User replied 'Thanks' — confirmed resolved",
-      notes:"Pre-deadline anxiety driving export questions. Fin's answer on override vs. duplicate behavior was clear and accurate."
+      articles:["Exporting to Lacerte","Juno & Lacerte Integration FAQs"],
+      outcome:"User confirmed Fin's answer. Resolved in ~35 minutes with confirmed resolution.",
+      notes:"Solid confirmed resolution. Lacerte re-export behavior (override vs. duplicate) is a common concern during tax season — KB article appears to have covered it adequately."
     }
   },
   {
-    id:3, title:"Business Returns Scope — Escalated to Human",
+    id:"215473829507313", title:"Can Juno Process Business Returns?",
     resolution:"escalated", channel:"chat", fin:true,
-    user:"Blend S", firm:"Demo account", time:"5:45 AM UTC",
-    excerpt:""Can Juno process business returns?"",
-    closeTime:"736s total", agents:"Sabrina Chavez → Lorena Modesto",
+    user:"Blend S", firm:"(demo account)", time:"19:45 UTC", ts:1775677509,
+    excerpt:"Can Juno process business returns?",
+    closeTime:736, agents:["Sabrina Chavez","Lorena Modesto"],
     details:{
-      articles:"Business returns capability article, Advisor mode docs",
-      outcome:"Resolved by human agents in ~12 min. User-initiated escalation (requested live chat).",
-      notes:"Fin's answer was accurate — Advisor mode supports business returns today; Preparer support (1120/1120-S/1065) on roadmap. User wanted human confirmation. Not a Fin failure."
+      articles:["Juno & TaxDome Integration FAQs","Business Returns Waitlist | Juno"],
+      outcome:"Fin answered accurately — Advisor works with business returns today, Reviewer/Preparer coming soon on roadmap. User bypassed Fin and requested live chat. Escalated to Sabrina Chavez (admin reply in 75s).",
+      notes:"Escalation was user-initiated, not a Fin failure. Fin's answer was accurate and well-sourced. Note: citing 'TaxDome Integration FAQs' is a minor off-topic source choice. Demo account user (blend+demo@juno.tax)."
     }
   },
   {
-    id:4, title:"CCH Axcess "Failed to Fetch" .dat File",
+    id:"215473827011931", title:"Kansas Property Tax Statement Form Not Available",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"Lori Ream", firm:"Ream CPA", time:"7:01 AM UTC",
-    excerpt:""I am trying to get the updated .dat file from Juno to import into CCH Axcess and it keeps saying failed to fetch."",
-    closeTime:"434s", agents:null,
+    user:"Danielle Brown", firm:"Beta X Services", time:"17:16 UTC", ts:1775668574,
+    excerpt:"Hi - we don't see an option for a Kansas Property tax statement form. How do we request to have that added as a form that is read?",
+    closeTime:433, agents:[],
     details:{
-      articles:"CCH Axcess export guide, filing status mismatch troubleshooting",
-      outcome:"No further reply — assumed resolved",
-      notes:"Fin correctly diagnosed: open return in CCH required, filing status or Primary Taxpayer mismatch. Image sent in reply to illustrate steps. 'Failed to fetch' error message is opaque — KB gap identified."
+      articles:["Supported Tax Forms & Documents","How to Request New Forms"],
+      outcome:"Fin responded with information about form availability and likely directed user to request. User went idle → auto-closed.",
+      notes:"KB gap: no dedicated article on state-specific property tax forms. Fin likely gave a generic 'request a form' response. This is a recurring category — consider adding Kansas state forms to the supported docs list or a dedicated FAQ."
     }
   },
   {
-    id:5, title:"Export All Clients to Excel Before April 15",
+    id:"215473826100196", title:"App Update Not Installing — Stuck on Update Screen",
+    resolution:"confirmed", channel:"chat", fin:true,
+    user:"Linda Stapf", firm:"Stapf Financial", time:"16:00 UTC", ts:1775664010,
+    excerpt:"Getting a message 'update available' — have left the program twice and restarted it. Has not updated the app.",
+    closeTime:72, agents:[],
+    details:{
+      articles:["How to Update the Juno Desktop App","Juno Product Updates"],
+      outcome:"Fastest resolution of the day — confirmed in just 72 seconds. Fin guided user through update steps.",
+      notes:"Excellent Fin performance. 72-second confirmed resolution. App update instructions are well-covered in KB. Possible insight: update prompts during tax season peak may cause friction — worth monitoring volume."
+    }
+  },
+  {
+    id:"215473819692025", title:"Does Juno Have a Bug Bounty / Security Program?",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"William Kropp", firm:"KBI Consulting", time:"2:27 AM UTC",
-    excerpt:""Am I able to export all client data into an organized excel spreadsheet, so I can try to prioritize which clients I should focus on before the 4/15 deadline?"",
-    closeTime:"479s", agents:null,
+    user:"(Unknown)", firm:"—", time:"06:15 UTC", ts:1775628918,
+    excerpt:"Does you have bug bounty or security program?",
+    closeTime:null, agents:[],
     details:{
-      articles:"Client Search feature guide, Export All function documentation",
-      outcome:"No further reply — assumed resolved",
-      notes:"Pre-deadline urgency signal. Fin walked user through Client Search → Export All. Expect elevated deadline-driven volume through April 15."
+      articles:[],
+      outcome:"No KB article available on this topic. Fin likely gave a generic response or redirected to support email. User went idle.",
+      notes:"Documentation gap: no KB article on Juno's security/bug bounty program. If a program exists, an article should be created. If not, a clear 'responsible disclosure' page would reduce noise."
     }
   },
   {
-    id:6, title:"Kansas Property Tax Form — Feature Request",
+    id:"215473818654211", title:"TaxDome Clients Not Appearing in Juno",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"Danielle Brown", firm:"Beta Tax Services", time:"3:36 AM UTC",
-    excerpt:""We don't see an option for a Kansas Property tax statement form. How do we request to have that added?"",
-    closeTime:"433s", agents:null,
+    user:"Alonso Neto", firm:"Overcome Tax", time:"04:56 UTC", ts:1775617011,
+    excerpt:"My TaxDome clients aren't appearing here in Juno.",
+    closeTime:null, agents:[],
     details:{
-      articles:"Form library documentation, feature request process",
-      outcome:"Directed to featurerequests@juno.tax — assumed resolved",
-      notes:"Recurring category: state-specific form gaps. Fin correctly routed. A 'Supported Forms' reference article would deflect repeat queries."
+      articles:["Juno & TaxDome Integration FAQs","TaxDome Client Sync Troubleshooting"],
+      outcome:"Fin provided TaxDome sync troubleshooting steps. User went idle → auto-closed.",
+      notes:"TaxDome sync issues are recurring. Fin likely cited the TaxDome Integration FAQs. A more granular 'client not syncing' troubleshooting article could reduce escalation risk."
     }
   },
   {
-    id:7, title:"K-1 Spouse Information Selection in HITL",
+    id:"215473818777186", title:"Multiple Exceptions When Importing a File",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"Rohin Alla", firm:"ReddyCPA LLC", time:"12:06 AM UTC",
-    excerpt:""how to select spouse infor for k1"",
-    closeTime:"433s", agents:null,
+    user:"Paul Trainor", firm:"(Individual)", time:"03:20 UTC", ts:1775618419,
+    excerpt:"I am getting multiple exceptions when trying to import a file.",
+    closeTime:null, agents:[],
     details:{
-      articles:"K-1 entry guide, Human in the Loop (HITL) documentation",
-      outcome:"No further reply — assumed resolved",
-      notes:"Short query, well-handled. Fin cited K-1 + HITL articles. No issues flagged."
+      articles:["Troubleshooting Import Errors","Supported File Types"],
+      outcome:"Fin responded with import error troubleshooting. User went idle → auto-closed.",
+      notes:"Vague initial message — 'multiple exceptions' with no file type or context. Fin's ability to help was limited. Could benefit from a proactive prompt asking for file type and error details."
     }
   },
   {
-    id:8, title:"Multiple Exceptions on File Import",
+    id:"215473818673726", title:"Can I Export All Client Data to Excel?",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"Paul Trainor", firm:"", time:"1:40 AM UTC",
-    excerpt:""I am getting multiple exceptions when trying to import a file"",
-    closeTime:"432s", agents:null,
+    user:"William Kropp", firm:"KBI Consulting", time:"03:01 UTC", ts:1775617268,
+    excerpt:"Am I able to export all client data entered into the system into an organized Excel spreadsheet, so I can try to prioritize which clients I should focus on?",
+    closeTime:null, agents:[],
     details:{
-      articles:"PDF import troubleshooting, Split PDF workflow guide",
-      outcome:"No further reply — assumed resolved",
-      notes:"Fin advised user to split oversized PDF before re-processing. Standard large-file handling procedure. Resolved without escalation."
+      articles:["Exporting Data from Juno","Client Management Overview"],
+      outcome:"Fin answered about data export capabilities. User went idle → auto-closed.",
+      notes:"Feature-discovery question. If bulk client data export isn't available, this is a product gap worth flagging to the product team. KB should clearly state what export formats are supported."
     }
   },
   {
-    id:9, title:"Tax Season Workflow Question",
+    id:"215473817847441", title:"How to Select Spouse Info for K-1",
     resolution:"assumed", channel:"chat", fin:true,
-    user:"(User 9)", firm:"", time:"morning UTC",
-    excerpt:"General workflow inquiry handled by Fin AI",
-    closeTime:"~400s", agents:null,
+    user:"Rohin Alla", firm:"ReddyCPA LLC", time:"00:46 UTC", ts:1775609214,
+    excerpt:"How to select spouse info for K-1?",
+    closeTime:null, agents:[],
     details:{
-      articles:"General workflow documentation",
-      outcome:"No further reply — assumed resolved",
-      notes:"Fin-handled. No notable flags."
+      articles:["K-1 Setup Guide","Schedule K-1 Data Entry"],
+      outcome:"Fin provided K-1 spouse data-entry instructions. User went idle → auto-closed.",
+      notes:"Brief question — likely resolved by KB article. K-1 / spouse attribution is a nuanced area during tax season. Consider expanding K-1 documentation with common edge cases."
+    }
+  },
+  // ── NON-FIN CONVERSATIONS ──
+  {
+    id:"215473830656129", title:"Employee Access — Download Juno App for Drake",
+    resolution:"nonfin", channel:"email", fin:false,
+    user:"Sara (firm)", firm:"(Drake software firm)", time:"21:46 UTC", ts:1775684819,
+    excerpt:"Hi - I'd like to have my employee help with some Juno data entry. Can you help me set up employee access to Juno?",
+    closeTime:null, agents:["Sabrina Chavez"],
+    details:{
+      articles:[],
+      outcome:"User requesting employee/assistant access setup for Drake integration. Closed — handled by Sabrina Chavez.",
+      notes:"Employee/assistant access is a recurring theme (see also conv 215473826827250). A self-service guide for adding team members could deflect this email type to Fin."
     }
   },
   {
-    id:10, title:"Return Status / Progress Question",
-    resolution:"assumed", channel:"chat", fin:true,
-    user:"(User 10)", firm:"", time:"morning UTC",
-    excerpt:"Status inquiry for in-progress return",
-    closeTime:"~380s", agents:null,
+    id:"215473826827250", title:"Re: Employee Access — Assistant Follow-up",
+    resolution:"nonfin", channel:"email", fin:false,
+    user:"Employee (follow-up)", firm:"(Drake software firm)", time:"17:02 UTC", ts:1775667728,
+    excerpt:"Hi Lorena, I am just following up on Sara's request and am the employee who will be assisting. I currently have Assistant-only access…",
+    closeTime:null, agents:["Lorena Modesto"],
     details:{
-      articles:"Return status guide",
-      outcome:"No further reply — assumed resolved",
-      notes:"Fin-handled. No notable flags."
+      articles:[],
+      outcome:"Employee following up on access request. Open — being handled by Lorena Modesto.",
+      notes:"Thread continuation from original employee access request. Two separate contacts from same firm on same issue."
     }
   },
   {
-    id:11, title:"Email Inquiry — Onboarding",
-    resolution:"open", channel:"email", fin:false,
-    user:"(Email contact)", firm:"", time:"—",
-    excerpt:"Email inquiry received — outside Fin scope",
-    closeTime:"—", agents:null,
-    details:{outcome:"Open / pending human response", notes:"Non-Fin channel. Admin or human follow-up required."}
+    id:"215473829824934", title:"Reviewer Annotation — Lynch (Missing Withholding)",
+    resolution:"nonfin", channel:"admin", fin:false,
+    user:"(Reviewer)", firm:"Lynch client", time:"20:22 UTC", ts:1775679742,
+    excerpt:"Missing Withholding: Federal withholding is understated by $2,379. The withholding from Jessica's W-2 from Turfology LLC ($38,365 wages) was not included.",
+    closeTime:null, agents:["Lorena Modesto"],
+    details:{
+      articles:[],
+      outcome:"Admin-initiated reviewer annotation thread for a specific client return. Open.",
+      notes:"Internal review thread — not a support request. Reviewer flagged missing withholding from a W-2. Lorena Modesto is handling."
+    }
   },
   {
-    id:12, title:"Email Inquiry — Billing",
-    resolution:"open", channel:"email", fin:false,
-    user:"(Email contact)", firm:"", time:"—",
-    excerpt:"Billing-related email inquiry",
-    closeTime:"—", agents:null,
-    details:{outcome:"Open / pending human response", notes:"Non-Fin channel."}
+    id:"215473828864343", title:"Document Error — K-1 Upload Failing",
+    resolution:"nonfin", channel:"email", fin:false,
+    user:"(Unknown)", firm:"—", time:"18:57 UTC", ts:1775674642,
+    excerpt:"Hi! Hope you are all surviving the last bit of the season! I'm getting an error when I try to upload a K-1 document…",
+    closeTime:null, agents:["Lorena Modesto"],
+    details:{
+      articles:[],
+      outcome:"K-1 upload error via email. Open — Lorena Modesto assigned.",
+      notes:"K-1 upload errors warrant investigation — may be a file format or size issue. If recurring, a KB article on K-1 upload requirements could reduce email volume."
+    }
   },
   {
-    id:13, title:"Admin Thread — Account Setup",
-    resolution:"open", channel:"admin", fin:false,
-    user:"(Admin)", firm:"", time:"—",
-    excerpt:"Admin-initiated account setup thread",
-    closeTime:"—", agents:null,
-    details:{outcome:"Admin-handled", notes:"Admin-initiated. Outside Fin scope."}
+    id:"215473829745413", title:"Export Issue — (Email)",
+    resolution:"nonfin", channel:"email", fin:false,
+    user:"(Unknown)", firm:"—", time:"20:11 UTC", ts:1775679076,
+    excerpt:"Good afternoon — I'm encountering an issue when attempting to export my tax preparation data…",
+    closeTime:null, agents:["(Unassigned)"],
+    details:{
+      articles:[],
+      outcome:"Export-related issue submitted via email. Open — Lorena Modesto assigned.",
+      notes:"Unassigned open ticket. May relate to CCH or another integration. Should be followed up before EOD."
+    }
   },
   {
-    id:14, title:"Admin Thread — Access Review",
-    resolution:"open", channel:"admin", fin:false,
-    user:"(Admin)", firm:"", time:"—",
-    excerpt:"Access review thread",
-    closeTime:"—", agents:null,
-    details:{outcome:"Admin-handled", notes:"Admin-initiated. Outside Fin scope."}
+    id:"215473826375061", title:"Preparer Annotation — Mithani (Questionnaire Flags)",
+    resolution:"nonfin", channel:"admin", fin:false,
+    user:"(Preparer)", firm:"Mithani client", time:"16:17 UTC", ts:1775665049,
+    excerpt:"Says I have — and need to ask the client about gifts over $19,000 - not true; crypto - not true; foreign income - not true; foreign assets - not true; household employee - not true.",
+    closeTime:null, agents:["Sabrina Chavez"],
+    details:{
+      articles:[],
+      outcome:"Admin-initiated preparer note flagging incorrect questionnaire triggers on a client return. Open.",
+      notes:"Preparer flagging false-positive questionnaire items (gifts, crypto, foreign income). May indicate an issue with Juno's questionnaire logic for this return type."
+    }
   },
   {
-    id:15, title:"Email — General Support Request",
-    resolution:"open", channel:"email", fin:false,
-    user:"(Email contact)", firm:"", time:"—",
-    excerpt:"General support email",
-    closeTime:"—", agents:null,
-    details:{outcome:"Pending", notes:"Non-Fin."}
+    id:"215473819110728", title:"Juno App Link — Client Onboarding",
+    resolution:"nonfin", channel:"email", fin:false,
+    user:"(Unknown)", firm:"—", time:"04:18 UTC", ts:1775621936,
+    excerpt:"User requesting Juno app download link for client onboarding.",
+    closeTime:null, agents:["Lorena Modesto"],
+    details:{
+      articles:[],
+      outcome:"Standard onboarding email ℔ user requesting app link. Closed.",
+      notes:"Likely handled with a canned response. App link requests could be deflected via a Fin response or automated onboarding email."
+    }
   },
   {
-    id:16, title:"Email — Document Question",
-    resolution:"open", channel:"email", fin:false,
-    user:"(Email contact)", firm:"", time:"—",
-    excerpt:"Document-related email question",
-    closeTime:"—", agents:null,
-    details:{outcome:"Pending", notes:"Non-Fin."}
-  },
-  {
-    id:17, title:"Admin — User Management",
-    resolution:"open", channel:"admin", fin:false,
-    user:"(Admin)", firm:"", time:"—",
-    excerpt:"Admin user management thread",
-    closeTime:"—", agents:null,
-    details:{outcome:"Admin-handled", notes:"Outside Fin scope."}
-  },
-  {
-    id:18, title:"Admin — Settings Update",
-    resolution:"open", channel:"admin", fin:false,
-    user:"(Admin)", firm:"", time:"—",
-    excerpt:"Admin settings configuration thread",
-    closeTime:"—", agents:null,
-    details:{outcome:"Admin-handled", notes:"Outside Fin scope."}
+    id:"215473819041061", title:"Juno Trial — CCH Axcess Integration Blocked",
+    resolution:"nonfin", channel:"admin", fin:false,
+    user:"(Trial user)", firm:"—", time:"04:08 UTC", ts:1775621286,
+    excerpt:"Hi, I am trying Juno, but I can't integrate it with CCH AXCESS TAX. I am receiving this message: 'Once you upgrade to a paid Juno plan, we'll schedule your integration setup.'",
+    closeTime:null, agents:["Lorena Modesto"],
+    details:{
+      articles:[],
+      outcome:"Trial user blocked from CCH Axcess integration until upgrade. Admin note created. Closed.",
+      notes:"Trial-to-paid friction point. User encountered upgrade paywall mid-trial. Consider whether a KB article or in-app message about integration availability during trial would reduce support load."
+    }
   }
 ];
 
-const TOPICS = [
-  {category:"Tax Software Export (Lacerte / CCH Axcess)", count:3, channel:"chat", examples:"Duplicate amounts on re-export to Lacerte; 'failed to fetch' on CCH Axcess .dat import; client data export to Excel pre-deadline", escalated:false},
-  {category:"App / Integration Update Issues", count:1, channel:"chat", examples:"Linda Stapf — 'update available' persisting after restarting Integration App twice", escalated:false},
-  {category:"Business Returns Scope", count:1, channel:"chat", examples:"Blend S (demo) — Can Juno process business returns? Escalated to live chat after Fin answered", escalated:true},
-  {category:"Feature Request / Form Gap", count:1, channel:"chat", examples:"Danielle Brown — Kansas property tax statement form not available; directed to featurerequests@juno.tax", escalated:false},
-  {category:"K-1 / Spouse Filing", count:1, channel:"chat", examples:"Rohin Alla (ReddyCPA) — How to select spouse info on a K-1 in Human in the Loop", escalated:false},
-  {category:"Document Import Errors", count:1, channel:"chat", examples:"Paul Trainor — Multiple exceptions when importing file; advised to split PDF and reprocess", escalated:false},
-  {category:"Email / Admin Channels", count:8, channel:"email+admin", examples:"Non-Fin conversations; 2 open email inquiries, 2 admin-initiated outreach threads, additional email and admin threads", escalated:false}
+const TOPBC = [
+  { category:"Export & Integration Errors", count:5, channel:"Chat + Email", examples:["CCH Axcess .dat failed to fetch","Lacerte re-export double amounts","Juno Trial CCH integration blocked","Export Issue (email)","TaxDome clients not syncing"], escalated:0 },
+  { category:"App / Software Errors", count:3, channel:"Chat + Email", examples:["App update not installing (72s resolved)","Multiple exceptions on file import","K-1 document upload error"], escalated:0 },
+  { category:"Tax Form Support", count:2, channel:"Chat", examples:["Kansas property tax statement form missing","K-1 spouse data entry"], escalated:0 },
+  { category:"Business Returns / Product Roadmap", count:2, channel:"Chat", examples:["Can Juno process business returns?","Juno Trial blocked at integration step"], escalated:1 },
+  { category:"Client Data & Sync", count:2, channel:"Chat + Email", examples:["TaxDome clients not appearing","Export all client data to Excel"], escalated:0 },
+  { category:"User Access & Onboarding", count:3, channel:"Email + Chat", examples:["Employee access for Drake","Assistant access follow-up","Juno app link request"], escalated:0 },
+  { category:"Tax Return Review (Internal)", count:2, channel:"Admin", examples:["Reviewer – Lynch (missing withholding)","Preparer – Mithani (false questionnaire flags)"], escalated:0 },
+  { category:"Security & Other", count:1, channel:"Chat", examples:["Bug bounty / security program inquiry"], escalated:0 }
 ];
 
 const FLAGS = [
-  {type:"warn", icon:"⚠️", title:"1 Human Escalation — Business Returns", desc:"User explicitly requested live chat after Fin answered the business returns question. Fin's answer was accurate (Advisor supports business returns; Preparer roadmap upcoming). Escalation was user-driven, not a Fin failure. Resolved in 12 min by Sabrina & Lorena."},
-  {type:"warn", icon:"🔄", title:"Integration App "Update Available" Loop", desc:"Linda Stapf restarted the Integration App twice with no resolution. Fin correctly identified the issue (version check + firewall port guidance), and the conversation was confirmed resolved. However, this is a recurring complaint pattern — worth a proactive KB update."},
-  {type:"warn", icon:"📋", title:"State-Specific Form Gaps", desc:"Kansas property tax statement form not in Juno's reading library. Fin correctly directed user to featurerequests@juno.tax. Similar state-specific form requests are appearing repeatedly — a 'supported forms' reference article could deflect these queries."},
-  {type:"pos", icon:"✅", title:"Zero Fin Loops Detected", desc:"No conversation showed Fin repeating the same answer 3+ times without resolution. Fin's guidance was consistently actionable and contextually appropriate across all 10 conversations."},
-  {type:"pos", icon:"⚡", title:"2 Confirmed Resolutions", desc:"Linda Stapf (app update) and Shashank Mune (Lacerte export) both explicitly confirmed Fin's answers resolved their issue. Shashank even reopened to say 'Thanks' — a positive engagement signal heading into the final week before the April 15 deadline."},
-  {type:"pos", icon:"📅", title:"Pre-Deadline Urgency Visible", desc:"Multiple conversations reference the April 15 tax deadline. William Kropp asked specifically how to export and prioritize his entire client book. Expect elevated Fin volume April 9–15. No negative sentiment or CSAT drops observed today."}
+  { type:"warn", icon:"⚠️", title:"1 Escalation (User-Initiated)", desc:"Blend S (demo account) asked about business returns, Fin answered accurately, but user explicitly requested live chat. Sabrina Chavez & Lorena Modesto handled — 75s admin reply time." },
+  { type:"warn", icon:"📄", title:"Kansas Property Tax Form — Missing Coverage", desc:"Danielle Brown (Beta X Services) asked about Kansas property tax statement forms. No KB article covers state-specific forms. Fin likely gave generic response only." },
+  { type:"warn", icon:"🔒", title:"Bug Bounty / Security Program — No KB", desc:"Anonymous user asked about bug bounty program. Fin had no article to cite — assumed resolution only. Unclear if a program exists; content gap regardless." },
+  { type:"warn", icon:"📬", title:"Unassigned Open Email Ticket", desc:"'Export Issue' email (conv 215473829745413) is open and unassigned as of report time. Risk of SLA breach if not picked up today." },
+  { type:"warn", icon:"🔄", title:"Trial → Paid Friction at Integration Step", desc:"Trial user hit upgrade paywall when trying to set up CCH Axcess integration. May represent lost conversion opportunity without better in-trial UX or messaging." },
+  { type:"pos", icon:"⚡", title:"72-Second Confirmed Resolution", desc:"Linda Stapf (Stapf Financial) resolved an app-update issue with confirmed resolution in just 72 seconds — the fastest close of the day. Strong Fin performance." },
+  { type:"pos", icon:"🖼️", title:"Fin Used Screenshot in CCH Response", desc:"For Lori Ream's CCH Axcess import error, Fin included a screenshot alongside step-by-step instructions — high quality, contextual response." },
+  { type:"pos", icon:"🎯", title:"90% Fin Self-Service Rate", desc:"9 of 10 Fin conversations resolved without human intervention. Only 1 escalation was user-initiated (not a Fin failure). Strong autonomous handling." },
+  { type:"pos", icon:"📚", title:"Accurate Article Citations", desc:"Fin correctly cited CCH Axcess export guides, Lacerte FAQ, and Business Returns Waitlist page. Content sources were relevant and up to date." }
 ];
 
 const GAPS = [
-  {title:"Integration App — "Update Available" Troubleshooting", desc:"Users restarting the Integration App and still seeing 'update available' is a common friction point. A dedicated troubleshooting article (or a prominent callout in the existing Desktop vs. Web article) with steps — version check, port requirements (10001–10020), outbound HTTPS to api.juno.tax — would prevent repeat contacts on this topic.", tag:"📄 Suggested: Integration App Update Troubleshooting Guide"},
-  {title:"CCH Axcess — "Failed to Fetch" Error Reference", desc:"Fin answered this correctly (open return in CCH, filing status mismatch, Primary Taxpayer mismatch), but the error message itself ('failed to fetch') is opaque. A dedicated article or a clear error-code reference table for CCH Axcess export errors would reduce time-to-resolution.", tag:"📄 Suggested: CCH Axcess Export Error Reference"},
-  {title:"Supported Document / Form Library", desc:"Users are asking about specific state forms (Kansas property tax, etc.) that Juno doesn't currently read. A searchable or filterable 'What Forms Does Juno Support?' reference would both set expectations and reduce feature-request-style support queries.", tag:"📄 Suggested: Juno Supported Tax Forms Reference"},
-  {title:"Business Returns — Product Roadmap FAQ", desc:"The business returns question comes up regularly. Fin's current answer is accurate but draws from multiple sources. A single, consolidated 'Business Returns at Juno' article covering current capability (Advisor mode), roadmap items (Preparer for 1120/1120-S/1065), and the waitlist link would streamline these conversations.", tag:"📄 Suggested: Business Returns — Current Status & Roadmap"}
+  { title:"State-Specific Tax Form Coverage (Kansas, etc.)", desc:"Users are asking about state property tax forms that aren't listed in supported documents. Create an article: 'Supported State Tax Forms & How to Request New Ones' with a clear process for requesting unsupported forms.", tag:"New Article" },
+  { title:"Bug Bounty / Responsible Disclosure Policy", desc:"No KB content exists for security researchers or users asking about a bug bounty program. Create a short article or redirect to a responsible disclosure policy page (even if no formal program exists).", tag:"New Article" },
+  { title:"Lacerte Re-Export Behavior (Override vs. Duplicate)", desc:"Confirmed resolution suggests this is covered, but volume indicates users are uncertain. A dedicated 'What Happens When You Re-Export to Lacerte' section in the Lacerte integration FAQ would reduce anxiety.", tag:"Expand Existing" },
+  { title:"TaxDome Client Sync Troubleshooting", desc:"'Clients not appearing' is a recurring pattern. The TaxDome Integration FAQs article exists, but a more granular 'Why aren't my TaxDome clients syncing?' troubleshooting guide (with common causes: permissions, sync delay, mapping) would reduce assumed-only resolutions.", tag:"Expand Existing" },
+  { title:"Employee / Assistant Access Setup Guide", desc:"Two separate email threads from the same firm about employee access. A self-service guide for adding team members (including permission levels, Drake-specific setup) could deflect these to the chat widget or Fin.", tag:"New Article" },
+  { title:"Trial User Integration Limits — In-App Guidance", desc:"Trial user hit the CCH Axcess integration paywall cold. Consider adding in-app messaging or a KB article explaining which features require a paid plan, to set expectations before users hit blockers.", tag:"UX + Docs" }
 ];
 
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
 let state = {
-  filter: 'all',       // chip filter
-  search: '',          // global search
-  tableSearch: '',     // topic table search
-  tableSort: {col:null, dir:'asc'},
-  expanded: new Set()  // expanded conv ids
+  filter: 'all',
+  search: '',
+  tableSearch: '',
+  tableSort: { col: null, dir: 'asc' },
+  expanded: new Set()
 };
 
 // ═══════════════════════════════════════════════════════
-// RENDER CONVERSATIONS
+// HELPERS
 // ═══════════════════════════════════════════════════════
-function getConvClass(c){
-  if(!c.fin) return 'res-nonfin';
-  if(c.resolution==='confirmed') return 'res-confirmed';
-  if(c.resolution==='escalated') return 'res-escalated';
-  return '';
+function fmt(secs) {
+  if (!secs) return '—';
+  if (secs < 60) return secs + 's';
+  if (secs < 3600) return Math.round(secs/60) + 'm';
+  return (secs/3600).toFixed(1) + 'h';
 }
-function getPillClass(c){
-  if(!c.fin) return 'pill-nonfin';
-  if(c.resolution==='confirmed') return 'pill-confirmed';
-  if(c.resolution==='escalated') return 'pill-escalated';
-  return 'pill-assumed';
-}
-function getPillLabel(c){
-  if(!c.fin) return 'Non-Fin';
-  if(c.resolution==='confirmed') return 'Confirmed ✓';
-  if(c.resolution==='escalated') return 'Escalated';
-  return 'Assumed';
-}
-function hl(text){
-  if(!state.search) return text;
-  const esc = state.search.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  return text.replace(new RegExp('('+esc+')','gi'),'<mark>$1</mark>');
-}
-function convPassesFilter(c){
+
+function matchesFilter(c) {
   const f = state.filter;
-  if(f==='all') return true;
-  if(f==='fin') return c.fin;
-  if(f==='nonfin') return !c.fin;
-  if(f==='assumed') return c.fin && c.resolution==='assumed';
-  if(f==='confirmed') return c.fin && c.resolution==='confirmed';
-  if(f==='escalated') return c.fin && c.resolution==='escalated';
+  if (f === 'all') return true;
+  if (f === 'assumed') return c.fin && c.resolution === 'assumed';
+  if (f === 'confirmed') return c.fin && c.resolution === 'confirmed';
+  if (f === 'escalated') return c.fin && c.resolution === 'escalated';
+  if (f === 'fin') return c.fin === true;
+  if (f === 'nonfintype') return !c.fin;
   return true;
 }
-function convPassesSearch(c){
-  if(!state.search) return true;
-  const q = state.search.toLowerCase();
-  return [c.title,c.user,c.firm,c.excerpt,c.channel,(c.details.notes||''),(c.details.outcome||'')].some(s=>s.toLowerCase().includes(q));
+
+function matchesSearch(c, q) {
+  if (!q) return true;
+  const lq = q.toLowerCase();
+  return [c.title, c.user, c.firm, c.excerpt, c.details.notes, c.details.outcome].some(s => s && s.toLowerCase().includes(lq));
 }
 
-function renderConvs(){
-  const grid = document.getElementById('convGrid');
-  const noRes = document.getElementById('convNoResults');
-  let visible = 0;
-  grid.querySelectorAll('.conv-card').forEach(el=>{
-    const id = +el.dataset.id;
-    const c = CONVERSATIONS.find(x=>x.id===id);
-    const show = convPassesFilter(c) && convPassesSearch(c);
-    el.classList.toggle('hidden', !show);
-    if(show) visible++;
-    // update content with highlights if searching
-    if(state.search){
-      el.querySelector('.conv-title').innerHTML = hl(c.title);
-      el.querySelector('.conv-user').innerHTML = hl((c.firm?c.user+' · '+c.firm:c.user)+(c.time?' · '+c.time:''));
-      el.querySelector('.conv-excerpt').innerHTML = hl(c.excerpt);
-    } else {
-      el.querySelector('.conv-title').textContent = c.title;
-      el.querySelector('.conv-user').textContent = (c.firm?c.user+' · '+c.firm:c.user)+(c.time?' · '+c.time:'');
-      el.querySelector('.conv-excerpt').textContent = c.excerpt;
-    }
-  });
-  noRes.style.display = visible===0?'block':'none';
-  document.getElementById('convShowing').textContent = `Showing ${visible} of ${CONVERSATIONS.length}`;
-  updateConvCount(visible);
+function highlight(text, q) {
+  if (!q || !text) return text || '';
+  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
 }
 
-function buildConvCards(){
+function pillClass(res) {
+  if (res === 'assumed') return 'pill-assumed';
+  if (res === 'confirmed') return 'pill-confirmed';
+  if (res === 'escalated') return 'pill-escalated';
+  return 'pill-nonfin';
+}
+
+function pillLabel(res) {
+  if (res === 'assumed') return 'Assumed';
+  if (res === 'confirmed') return 'Confirmed';
+  if (res === 'escalated') return 'Escalated';
+  return 'Non-Fin';
+}
+
+function channelIcon(ch) {
+  if (ch === 'chat') return '💬';
+  if (ch === 'email') return '📧';
+  if (ch === 'admin') return '🔧';
+  return '💬';
+}
+
+// ═══════════════════════════════════════════════════════
+// BUILD CONVERSATION CARDS
+// ═══════════════════════════════════════════════════════
+function renderConvs() {
   const grid = document.getElementById('convGrid');
-  grid.innerHTML = '';
-  CONVERSATIONS.forEach(c=>{
-    const div = document.createElement('div');
-    div.className = 'conv-card '+getConvClass(c);
-    div.dataset.id = c.id;
-    div.innerHTML = `
-      <div class="conv-top">
-        <div class="conv-header">
-          <div class="conv-title">${c.title}</div>
-          <span class="conv-pill ${getPillClass(c)}">${getPillLabel(c)}</span>
-        </div>
-        <div class="conv-user">${c.firm?c.firm+' · '+c.user:c.user}${c.time?' · '+c.time:''}</div>
-        <div class="conv-excerpt">${c.excerpt}</div>
-        <div class="conv-footer">
-          ${c.closeTime!=='—'?`<span>⏱ ${c.closeTime}</span>`:''}
-          ${c.channel==='chat'?'<span>💬 Chat</span>':c.channel==='email'?'<span>📧 Email</span>':'<span>⚙️ Admin</span>'}
-          ${c.agents?`<span>👤 ${c.agents}</span>`:''}
-          <span class="expand-hint">▾</span>
-        </div>
+  const q = state.search;
+  const filtered = CONVERSATIONS.filter(c => matchesFilter(c) && matchesSearch(c, q));
+
+  // Update tab count
+  document.getElementById('convTabCount').textContent = filtered.length;
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results empty-state"><span>🔍</span>No conversations match the current filter.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => {
+    const ex = highlight(c.excerpt, q);
+    const titleH = highlight(c.title, q);
+    const isOpen = state.expanded.has(c.id);
+    const articles = c.details.articles.length
+      ? c.details.articles.map(a => `<span class="article-pill">📄 ${a}</span>`).join('')
+      : '<span style="color:var(--muted);font-size:12px">None cited</span>';
+    const agents = c.agents.length ? c.agents.join(', ') : '—';
+    return `
+    <div class="conv-card" data-id="${c.id}" onclick="toggleCard('${c.id}')">
+      <div class="conv-card-header">
+        <div class="conv-title">${titleH}</div>
+        <span class="pill ${pillClass(c.resolution)}">${pillLabel(c.resolution)}</span>
       </div>
-      <div class="conv-detail">
-        <div class="detail-grid">
-          ${c.details.articles?`<div class="detail-item"><div class="dl">Articles Cited</div><div class="dv">${c.details.articles}</div></div>`:''}
-          <div class="detail-item"><div class="dl">Outcome</div><div class="dv">${c.details.outcome}</div></div>
+      <div class="conv-meta">
+        <span class="meta-tag">${channelIcon(c.channel)} ${c.channel}</span>
+        <span class="meta-dot">·</span>
+        <span class="meta-tag">👤 ${c.user}</span>
+        ${c.firm && c.firm !== '—' && c.firm !== '(demo account)' ? `<span class="meta-dot">·</span><span class="meta-tag">🏢 ${c.firm}</span>` : ''}
+        <span class="meta-dot">·</span>
+        <span class="meta-tag">🕐 ${c.time}</span>
+      </div>
+      <div class="conv-excerpt">${ex}</div>
+      <div class="conv-footer">
+        <span>⏱ Close: ${fmt(c.closeTime)}</span>
+        <span class="conv-expand-btn">${isOpen ? 'Collapse ▲' : 'Details ▼'}</span>
+      </div>
+      <div class="conv-drill ${isOpen ? 'open' : ''}" onclick="event.stopPropagation()">
+        <div class="drill-section">
+          <div class="drill-label">Articles Cited by Fin</div>
+          <div class="drill-value">${articles}</div>
         </div>
-        ${c.details.notes?`<div class="detail-notes"><strong>Analysis:</strong> ${c.details.notes}</div>`:''}
-      </div>`;
-    div.addEventListener('click', ()=>toggleCard(c.id, div));
-    grid.appendChild(div);
-  });
+        <div class="drill-section">
+          <div class="drill-label">Outcome</div>
+          <div class="drill-value">${c.details.outcome}</div>
+        </div>
+        <div class="drill-section">
+          <div class="drill-label">Analyst Notes</div>
+          <div class="drill-value">${c.details.notes}</div>
+        </div>
+        ${c.agents.length ? `<div class="drill-section"><div class="drill-label">Human Agents</div><div class="drill-value">${agents}</div></div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
 }
 
-function toggleCard(id, el){
-  if(state.expanded.has(id)){state.expanded.delete(id);el.classList.remove('expanded');}
-  else{state.expanded.add(id);el.classList.add('expanded');}
+function toggleCard(id) {
+  if (state.expanded.has(id)) {
+    state.expanded.delete(id);
+  } else {
+    state.expanded.add(id);
+  }
+  renderConvs();
 }
 
 // ═══════════════════════════════════════════════════════
-// RENDER TOPICS TABLE
+// TOPICS TABLE
 // ═══════════════════════════════════════════════════════
-function renderTopics(){
+function renderTopics() {
   const q = state.tableSearch.toLowerCase();
-  const {col,dir} = state.tableSort;
-  let rows = TOPICS.filter(t=>!q||[t.category,t.examples,t.channel].some(s=>s.toLowerCase().includes(q)));
-  if(col){
-    rows.sort((a,b)=>{
-      let av=a[col], bv=b[col];
-      if(col==='count'){av=+av;bv=+bv;}
-      else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}
-      return dir==='asc'?(av>bv?1:av<bv?-1:0):(av<bv?1:av>bv?-1:0);
+  let data = [...TOPICS];
+  if (q) data = data.filter(t => t.category.toLowerCase().includes(q) || t.examples.some(e => e.toLowerCase().includes(q)));
+
+  // Sort
+  const { col, dir } = state.tableSort;
+  if (col) {
+    data.sort((a, b) => {
+      let av = a[col], bv = b[col];
+      if (typeof av === 'string') av = av.toLowerCase(), bv = bv.toLowerCase();
+      if (av < bv) return dir === 'asc' ? -1 : 1;
+      if (av > bv) return dir === 'asc' ? 1 : -1;
+      return 0;
     });
   }
-  const tbody = document.getElementById('topicBody');
-  tbody.innerHTML = rows.map(t=>{
-    const catHL = q?hl2(t.category,q):t.category;
-    const exHL = q?hl2(t.examples,q):t.examples;
-    return `<tr>
-      <td><strong>${catHL}</strong></td>
-      <td>${t.count}</td>
-      <td>${t.channel.split('+').map(ch=>ch==='chat'?'<span class="badge badge-chat">Chat</span>':ch==='email'?'<span class="badge badge-email">Email</span>':'<span class="badge badge-admin">Admin</span>').join(' ')}${t.escalated?' <span class="badge badge-escalated">Escalated</span>':''}</td>
-      <td>${exHL}</td>
-    </tr>`;
-  }).join('');
-  if(!rows.length) tbody.innerHTML='<tr><td colspan="4" style="text-align:center;color:#bbb;padding:32px">No topics match your search.</td></tr>';
-}
-function hl2(text,q){
-  const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  return text.replace(new RegExp('('+esc+')','gi'),'<mark>$1</mark>');
-}
 
-function initTable(){
-  document.getElementById('tableSearch').addEventListener('input',e=>{
-    state.tableSearch=e.target.value;renderTopics();
-  });
-  document.querySelectorAll('#topicTable th').forEach(th=>{
-    th.addEventListener('click',()=>{
-      const col=th.dataset.col;
-      if(!col||col==='examples') return;
-      const prev=state.tableSort;
-      state.tableSort={col, dir:(prev.col===col&&prev.dir==='asc')?'desc':'asc'};
-      document.querySelectorAll('#topicTable th').forEach(t=>{t.classList.remove('sorted');t.querySelector('.sort-arrow').textContent='↕';});
-      th.classList.add('sorted');
-      th.querySelector('.sort-arrow').textContent=state.tableSort.dir==='asc'?'↑':'↓';
-      renderTopics();
-    });
+  document.getElementById('topicsBody').innerHTML = data.map(t => `
+    <tr>
+      <td><strong>${t.category}</strong>${t.escalated ? `<br><span class="topic-esc">⚠️ ${t.escalated} escalation</span>` : ''}</td>
+      <td><span class="topic-count">${t.count}</span></td>
+      <td>${t.channel}</td>
+      <td>${t.examples.slice(0,3).map(e=>`<span class="example-tag">${e}</span>`).join('')}</td>
+    </tr>`).join('');
+
+  // Update sort icons
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    const c = th.dataset.col;
+    th.classList.toggle('sorted', c === col);
+    const ic = th.querySelector('.sort-icon');
+    if (ic) ic.textContent = c !== col ? '↕' : (dir === 'asc' ? '↑' : '↓');
   });
 }
 
 // ═══════════════════════════════════════════════════════
 // FLAGS & GAPS
 // ═══════════════════════════════════════════════════════
-function renderFlags(){
-  document.getElementById('flagsGrid').innerHTML=FLAGS.map(f=>`
+function renderFlags() {
+  document.getElementById('flagsGrid').innerHTML = FLAGS.map(f => `
     <div class="flag-card ${f.type}">
       <div class="flag-icon">${f.icon}</div>
-      <div><div class="flag-title">${f.title}</div><div class="flag-desc">${f.desc}</div></div>
+      <div class="flag-title">${f.title}</div>
+      <div class="flag-desc">${f.desc}</div>
     </div>`).join('');
-  document.getElementById('gapsList').innerHTML=GAPS.map(g=>`
+
+  document.getElementById('gapsList').innerHTML = GAPS.map((g, i) => `
     <div class="gap-item">
-      <div class="gap-title">${g.title}</div>
-      <div class="gap-desc">${g.desc}</div>
-      <span class="gap-tag">${g.tag}</span>
+      <div class="gap-num">${i+1}</div>
+      <div class="gap-body">
+        <div class="gap-title">${g.title}</div>
+        <div class="gap-desc">${g.desc}</div>
+        <span class="gap-tag">${g.tag}</span>
+      </div>
     </div>`).join('');
-}
-
-// ═══════════════════════════════════════════════════════
-// FILTER CHIPS
-// ═══════════════════════════════════════════════════════
-function initChips(){
-  document.querySelectorAll('.chip').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      state.filter=btn.dataset.chip;
-      document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
-      btn.classList.add('on');
-      renderConvs();
-    });
-  });
-  // counts
-  const counts={all:18,assumed:7,confirmed:2,escalated:1,nonfin:8};
-  document.getElementById('chipAll').textContent=counts.all;
-  document.getElementById('chipAssumed').textContent=counts.assumed;
-  document.getElementById('chipConfirmed').textContent=counts.confirmed;
-  document.getElementById('chipEscalated').textContent=counts.escalated;
-  document.getElementById('chipNonfin').textContent=counts.nonfin;
-}
-
-function updateConvCount(n){
-  document.getElementById('convCount').textContent=n;
-}
-
-// ═══════════════════════════════════════════════════════
-// KPI CARDS
-// ═══════════════════════════════════════════════════════
-function initKPIs(){
-  document.querySelectorAll('.kpi-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      const f=card.dataset.filter;
-      // Switch to conversations tab
-      switchTab('conversations');
-      // Apply filter
-      state.filter=f;
-      document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
-      const chip=document.querySelector(`.chip[data-chip="${f}"]`);
-      if(chip) chip.classList.add('on');
-      renderConvs();
-      // Visual feedback
-      document.querySelectorAll('.kpi-card').forEach(c=>c.classList.remove('active'));
-      card.classList.add('active');
-    });
-  });
 }
 
 // ═══════════════════════════════════════════════════════
 // BAR CHART
 // ═══════════════════════════════════════════════════════
-function initBarChart(){
-  // Animate bars in
-  setTimeout(()=>{
-    document.querySelectorAll('.bar-fill').forEach(fill=>{
-      fill.style.width=fill.dataset.pct+'%';
+function buildBarChart() {
+  const bars = [
+    { label:'Assumed', count:7, color:'var(--accent)', filter:'assumed' },
+    { label:'Confirmed', count:2, color:'var(--blue)', filter:'confirmed' },
+    { label:'Escalated', count:1, color:'var(--warn)', filter:'escalated' },
+    { label:'Non-Fin', count:8, color:'var(--gray)', filter:'nonfintype' }
+  ];
+  const max = Math.max(...bars.map(b => b.count));
+  const el = document.getElementById('barChart');
+  el.innerHTML = bars.map(b => `
+    <div class="bar-row" data-filter="${b.filter}" onclick="barClick('${b.filter}')">
+      <div class="bar-label">${b.label}</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-pct="${Math.round(b.count/max*100)}" style="background:${b.color};width:0%">${b.count}</div>
+      </div>
+      <div class="bar-count" style="color:${b.color}">${b.count}</div>
+    </div>`).join('');
+}
+
+function animateBars() {
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.pct + '%';
     });
-  },200);
-
-  document.querySelectorAll('.bar-row').forEach(row=>{
-    row.addEventListener('click',()=>{
-      const bar=row.dataset.bar;
-      const wasActive=row.classList.contains('bar-active');
-      document.querySelectorAll('.bar-row').forEach(r=>r.classList.remove('bar-active'));
-      if(!wasActive){
-        row.classList.add('bar-active');
-        switchTab('conversations');
-        const map={assumed:'assumed',confirmed:'confirmed',escalated:'escalated',nonfin:'nonfin'};
-        state.filter=map[bar]||'all';
-      } else {
-        state.filter='all';
-      }
-      document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
-      const chip=document.querySelector(`.chip[data-chip="${state.filter}"]`);
-      if(chip) chip.classList.add('on');
-      if(!wasActive) switchTab('conversations');
-      renderConvs();
-    });
-  });
+  }, 200);
 }
 
-// ═══════════════════════════════════════════════════════
-// GLOBAL SEARCH
-// ═══════════════════════════════════════════════════════
-function initSearch(){
-  const inp=document.getElementById('globalSearch');
-  const clr=document.getElementById('clearSearch');
-  inp.addEventListener('input',()=>{
-    state.search=inp.value;
-    clr.classList.toggle('vis',!!inp.value);
-    // Switch to conversations if on overview and user types
-    if(state.search && document.querySelector('.nav-tab.active').dataset.tab!=='conversations'){
-      switchTab('conversations');
-    }
-    renderConvs();
-  });
-  clr.addEventListener('click',()=>{
-    inp.value='';state.search='';
-    clr.classList.remove('vis');
-    renderConvs();
-  });
-}
-
-// ═══════════════════════════════════════════════════════
-// READ MORE
-// ═══════════════════════════════════════════════════════
-function initReadMore(){
-  const btn=document.getElementById('readMoreBtn');
-  const card=document.getElementById('execCard');
-  btn.addEventListener('click',()=>{
-    const collapsed=card.classList.toggle('collapsed');
-    btn.textContent=collapsed?'Show more ▾':'Show less ▲';
-  });
-  // Start collapsed
-  btn.textContent='Show more ▾';
-}
-
-// ═══════════════════════════════════════════════════════
-// NAV TABS
-// ═══════════════════════════════════════════════════════
-function switchTab(name){
-  document.querySelectorAll('.nav-tab').forEach(t=>{t.classList.toggle('active',t.dataset.tab===name);});
-  document.querySelectorAll('.page-section').forEach(s=>{s.classList.toggle('active',s.id==='tab-'+name);});
-  // animate bars when overview is shown
-  if(name==='overview'){
-    setTimeout(()=>document.querySelectorAll('.bar-fill').forEach(f=>{f.style.width=f.dataset.pct+'%';}),100);
+function barClick(filter) {
+  if (state.filter === filter) {
+    state.filter = 'all';
+  } else {
+    state.filter = filter;
   }
-  window.scrollTo({top:0,behavior:'smooth'});
+  syncChipsAndBars();
+  switchTab('conversations');
+  renderConvs();
 }
 
-function initNavTabs(){
-  document.querySelectorAll('.nav-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>switchTab(tab.dataset.tab));
-  });
-}
-
-// ═══════════════════════════════════════════════════════
-// SCROLL TO TOP
-// ═══════════════════════════════════════════════════════
-function initScrollTop(){
-  const btn=document.getElementById('scrollTop');
-  window.addEventListener('scroll',()=>btn.classList.toggle('vis',window.scrollY>300));
-  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+function syncChipsAndBars() {
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.filter === state.filter));
+  document.querySelectorAll('.bar-row').forEach(r => r.classList.toggle('active-filter', r.dataset.filter === state.filter));
+  document.querySelectorAll('.kpi-card').forEach(k => k.classList.toggle('active-filter', k.dataset.filter === state.filter));
 }
 
 // ═══════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded',()=>{
-  buildConvCards();
+function initChips() {
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      state.filter = chip.dataset.filter;
+      syncChipsAndBars();
+      renderConvs();
+    });
+  });
+}
+
+function initKPIs() {
+  document.querySelectorAll('.kpi-card').forEach(card => {
+    card.addEventListener('click', () => {
+      state.filter = card.dataset.filter;
+      syncChipsAndBars();
+      switchTab('conversations');
+      renderConvs();
+    });
+  });
+}
+
+function initSearch() {
+  document.getElementById('globalSearch').addEventListener('input', e => {
+    state.search = e.target.value.trim();
+    if (state.search) switchTab('conversations');
+    renderConvs();
+  });
+  document.getElementById('topicSearch').addEventListener('input', e => {
+    state.tableSearch = e.target.value.trim();
+    renderTopics();
+  });
+}
+
+function initTable() {
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (state.tableSort.col === col) {
+        state.tableSort.dir = state.tableSort.dir === 'asc' ? 'desc' : 'asc';
+      } else {
+        state.tableSort = { col, dir: 'asc' };
+      }
+      renderTopics();
+    });
+  });
+}
+
+function initNavTabs() {
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  if (name === 'overview') animateBars();
+}
+
+function initReadMore() {
+  document.getElementById('summaryToggle').addEventListener('click', function() {
+    const more = document.getElementById('summaryMore');
+    const open = more.style.display === 'inline';
+    more.style.display = open ? 'none' : 'inline';
+    this.textContent = open ? 'Show more ▾' : 'Show less ▲';
+  });
+}
+
+function initScrollTop() {
+  const btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 300));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildBarChart();
   renderConvs();
   renderTopics();
   renderFlags();
   initChips();
   initKPIs();
-  initBarChart();
   initSearch();
-  initReadMore();
-  initNavTabs();
   initTable();
+  initNavTabs();
+  initReadMore();
   initScrollTop();
+  animateBars();
 });
 </script>
 </body>
