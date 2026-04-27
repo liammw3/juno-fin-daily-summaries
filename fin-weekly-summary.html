@@ -2,787 +2,826 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juno Fin AI Weekly Summary — Apr 13–20, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fin AI Weekly Summary — Week of April 20, 2026</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #F8F9FA;
       color: #1E1E1E;
       line-height: 1.6;
+      padding: 0 0 60px 0;
     }
 
-    header {
+    /* Header */
+    .header {
       background: #013A2F;
-      color: #F8F9FA;
-      padding: 36px 48px 28px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
+      color: #fff;
+      padding: 40px 48px 32px;
     }
-
-    header .logo-area h1 {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    header .logo-area span.badge {
-      display: inline-block;
-      background: #1CE49B;
-      color: #013A2F;
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 2px 10px;
-      border-radius: 20px;
-      margin-left: 10px;
-      vertical-align: middle;
-    }
-
-    header .meta {
-      text-align: right;
-      font-size: 13px;
-      opacity: 0.75;
-    }
-
-    header .meta strong {
-      display: block;
-      font-size: 15px;
-      opacity: 1;
-      color: #B4F7CA;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    /* ── KPI cards ── */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .kpi-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px 20px 20px;
-      border-top: 4px solid #1CE49B;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-
-    .kpi-card .label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #013A2F;
-      opacity: 0.65;
-      margin-bottom: 8px;
-    }
-
-    .kpi-card .value {
-      font-size: 40px;
-      font-weight: 800;
-      color: #1CE49B;
-      line-height: 1;
-    }
-
-    .kpi-card .value.dark {
-      color: #013A2F;
-    }
-
-    .kpi-card .value.warn {
-      color: #E05C2A;
-    }
-
-    .kpi-card .sub {
-      font-size: 12px;
-      color: #1E1E1E;
-      opacity: 0.55;
-      margin-top: 6px;
-    }
-
-    /* ── Section titles ── */
-    h2 {
-      font-size: 19px;
-      font-weight: 700;
-      color: #013A2F;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #B4F7CA;
-    }
-
-    section { margin-bottom: 44px; }
-
-    /* ── Day-by-day table ── */
-    .table-wrap { overflow-x: auto; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-
-    thead th {
-      background: #013A2F;
-      color: #F8F9FA;
-      text-align: left;
-      padding: 12px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    tbody tr:nth-child(even) { background: #B4F7CA22; }
-    tbody tr:hover { background: #B4F7CA44; }
-
-    tbody td {
-      padding: 11px 16px;
-      border-bottom: 1px solid #f0f0f0;
-      vertical-align: top;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    .pill.resolved { background: #B4F7CA; color: #013A2F; }
-    .pill.escalated { background: #FFE0D0; color: #8B2500; }
-    .pill.confirmed { background: #1CE49B; color: #013A2F; }
-    .pill.open { background: #EEE; color: #555; }
-
-    /* ── Bar chart ── */
-    .bar-chart {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-
-    .bar-row {
+    .header .logo-line {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
     }
-
-    .bar-row:last-child { margin-bottom: 0; }
-
-    .bar-label {
-      width: 160px;
-      flex-shrink: 0;
-      font-size: 13px;
-      font-weight: 500;
-      color: #013A2F;
-    }
-
-    .bar-track {
-      flex: 1;
-      background: #F0F0F0;
-      border-radius: 6px;
-      height: 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      border-radius: 6px;
+    .header .dot {
+      width: 14px; height: 14px;
       background: #1CE49B;
-      transition: width 0.4s ease;
+      border-radius: 50%;
     }
-
-    .bar-fill.accent2 { background: #013A2F; }
-    .bar-fill.accent3 { background: #B4F7CA; }
-
-    .bar-count {
-      width: 32px;
-      flex-shrink: 0;
+    .header .brand {
       font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B4F7CA;
+    }
+    .header h1 {
+      font-size: 32px;
       font-weight: 700;
-      color: #013A2F;
-      text-align: right;
+      line-height: 1.2;
+      color: #fff;
     }
-
-    /* ── Resolution donut ── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+    .header .subtitle {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #B4F7CA;
     }
-
-    @media (max-width: 640px) {
-      .two-col { grid-template-columns: 1fr; }
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-
-    .donut-wrap {
+    .header .meta {
       display: flex;
-      align-items: center;
       gap: 24px;
+      margin-top: 24px;
       flex-wrap: wrap;
     }
+    .header .meta-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: #B4F7CA;
+    }
+    .header .meta-item strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1CE49B;
+      line-height: 1.1;
+    }
 
-    .donut-wrap svg { flex-shrink: 0; }
+    /* Main layout */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+    }
 
-    .donut-legend { font-size: 13px; }
-
-    .donut-legend .legend-item {
+    /* Section */
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #013A2F;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #B4F7CA;
     }
 
-    .legend-swatch {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-      flex-shrink: 0;
+    /* KPI row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
     }
-
-    .legend-item .pct {
-      font-weight: 700;
+    .kpi-card {
+      background: #F8F9FA;
+      border-radius: 10px;
+      padding: 20px 18px;
+      border-left: 4px solid #1CE49B;
+    }
+    .kpi-card .kpi-value {
+      font-size: 36px;
+      font-weight: 800;
+      color: #013A2F;
+      line-height: 1;
+    }
+    .kpi-card .kpi-label {
+      font-size: 12px;
+      color: #666;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .kpi-card .kpi-delta {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+    .kpi-card .kpi-delta.up {
+      background: #B4F7CA;
       color: #013A2F;
     }
+    .kpi-card .kpi-delta.neutral {
+      background: #eee;
+      color: #555;
+    }
+    .kpi-card .kpi-delta.good {
+      background: #B4F7CA;
+      color: #013A2F;
+    }
+    .kpi-card .kpi-delta.warn {
+      background: #FFF3CD;
+      color: #856404;
+    }
 
-    /* ── Insights list ── */
-    .insights-list {
-      list-style: none;
+    /* Bar chart - daily volume */
+    .chart-area {
+      margin-top: 4px;
+    }
+    .day-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      height: 100px;
+    }
+    .day-col {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      gap: 6px;
     }
-
-    .insights-list li {
-      background: #fff;
-      border-left: 4px solid #1CE49B;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 18px;
-      font-size: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      line-height: 1.6;
-    }
-
-    .insights-list li .insight-title {
+    .day-count {
+      font-size: 13px;
       font-weight: 700;
       color: #013A2F;
-      margin-bottom: 4px;
-      font-size: 14px;
+    }
+    .day-bar-wrap {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      height: 70px;
+    }
+    .day-bar {
+      width: 100%;
+      background: #1CE49B;
+      border-radius: 4px 4px 0 0;
+      transition: opacity 0.2s;
+      min-height: 4px;
+    }
+    .day-bar.zero {
+      background: #e0e0e0;
+      min-height: 4px;
+    }
+    .day-label {
+      font-size: 11px;
+      color: #888;
+      font-weight: 500;
     }
 
-    .insights-list li.warn { border-left-color: #E05C2A; }
-    .insights-list li.info { border-left-color: #013A2F; }
+    /* Resolution donut-style row */
+    .resolution-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      .resolution-row { grid-template-columns: 1fr; }
+    }
+    .resolution-bars { }
+    .res-item {
+      margin-bottom: 14px;
+    }
+    .res-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .res-label { font-weight: 500; color: #1E1E1E; }
+    .res-pct { font-weight: 700; color: #013A2F; }
+    .res-bar-bg {
+      background: #F0F0F0;
+      border-radius: 100px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .res-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+    }
+    .res-bar-fill.green { background: #1CE49B; }
+    .res-bar-fill.light { background: #B4F7CA; }
+    .res-bar-fill.orange { background: #FF8C42; }
 
-    /* ── Conversation log ── */
-    .conv-table tbody td.topic-col { max-width: 340px; }
+    .resolution-insight {
+      background: #F8F9FA;
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 4px solid #013A2F;
+    }
+    .resolution-insight .insight-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: #013A2F;
+      margin-bottom: 8px;
+    }
+    .resolution-insight p {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .resolution-insight .wow {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #B4F7CA;
+      color: #013A2F;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
 
-    /* ── Footer ── */
-    footer {
+    /* Topic table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table thead th {
       background: #013A2F;
       color: #B4F7CA;
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      letter-spacing: 0.3px;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    table thead th:first-child { border-radius: 6px 0 0 6px; }
+    table thead th:last-child { border-radius: 0 6px 6px 0; }
+    table tbody tr:nth-child(even) {
+      background: #B4F7CA22;
+    }
+    table tbody tr:hover {
+      background: #B4F7CA44;
+    }
+    table tbody td {
+      padding: 10px 14px;
+      color: #1E1E1E;
+      vertical-align: middle;
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: #1CE49B;
+      color: #013A2F;
+      font-weight: 800;
+      font-size: 11px;
+      border-radius: 50%;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag.resolved { background: #B4F7CA; color: #013A2F; }
+    .tag.escalated { background: #FFE0CC; color: #8B3A00; }
+    .tag.mixed { background: #E8E8E8; color: #444; }
+
+    /* Escalation / insights list */
+    .insight-list {
+      list-style: none;
+      padding: 0;
+    }
+    .insight-list li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #F0F0F0;
+      align-items: flex-start;
+    }
+    .insight-list li:last-child { border-bottom: none; }
+    .insight-icon {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .icon-red { background: #FFE0CC; }
+    .icon-yellow { background: #FFF3CD; }
+    .icon-green { background: #B4F7CA; }
+    .icon-blue { background: #D0E8FF; }
+    .insight-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #013A2F;
+      margin-bottom: 3px;
+    }
+    .insight-text p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
     }
 
-    footer a { color: #1CE49B; text-decoration: none; }
+    /* Actions */
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .action-card {
+      border-radius: 10px;
+      padding: 18px 20px;
+      border: 1.5px solid #B4F7CA;
+      background: #F8F9FA;
+    }
+    .action-card .ac-priority {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1CE49B;
+      margin-bottom: 8px;
+    }
+    .action-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #013A2F;
+      margin-bottom: 6px;
+    }
+    .action-card p {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .action-card .ac-owner {
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .action-card .ac-owner::before {
+      content: '→';
+      color: #1CE49B;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 40px;
+      padding: 0 24px;
+    }
+    .footer strong { color: #013A2F; }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo-area">
-    <h1>Juno Tax <span class="badge">Fin AI</span> Weekly Summary</h1>
-    <p style="margin-top:6px;font-size:14px;opacity:0.75;">AI Agent Performance Report</p>
+<!-- Header -->
+<div class="header">
+  <div class="logo-line">
+    <div class="dot"></div>
+    <span class="brand">Juno Tax · Fin AI Agent Weekly Report</span>
   </div>
+  <h1>Weekly Fin Summary</h1>
+  <p class="subtitle">April 20 – April 26, 2026 &nbsp;·&nbsp; Auto-generated Monday, April 27, 2026</p>
+
   <div class="meta">
-    <strong>Apr 13 – Apr 20, 2026</strong>
-    Generated automatically · Monday morning run
+    <div class="meta-item">
+      <strong>26</strong>
+      Total Fin Conversations
+    </div>
+    <div class="meta-item">
+      <strong>69.2%</strong>
+      Resolution Rate (AI)
+    </div>
+    <div class="meta-item">
+      <strong>30.8%</strong>
+      Escalation Rate
+    </div>
+    <div class="meta-item">
+      <strong>+13%</strong>
+      Week-over-Week Volume
+    </div>
   </div>
-</header>
+</div>
 
 <div class="container">
 
-  <!-- KPI Row -->
-  <section>
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="label">Total Fin Conversations</div>
-        <div class="value dark">24</div>
-        <div class="sub">Apr 13 – Apr 20, 2026</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Resolved by Fin</div>
-        <div class="value">10</div>
-        <div class="sub">8 assumed + 2 confirmed (41.7%)</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Escalated to Human</div>
-        <div class="value warn">13</div>
-        <div class="sub">54.2% of all conversations</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Confirmed Resolutions</div>
-        <div class="value">2</div>
-        <div class="sub">8.3% — user-confirmed solved</div>
-      </div>
-      <div class="kpi-card">
-        <div class="label">Peak Day</div>
-        <div class="value dark">8</div>
-        <div class="sub">Apr 14 & Apr 16 tied</div>
-      </div>
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">26</div>
+      <div class="kpi-label">Fin Conversations This Week</div>
+      <span class="kpi-delta up">↑ +3 vs prior week (23)</span>
     </div>
-  </section>
-
-  <!-- Day-by-Day Volume -->
-  <section>
-    <h2>📅 Day-by-Day Volume</h2>
-    <div class="bar-chart">
-      <div class="bar-row">
-        <div class="bar-label">Apr 13 (Sun)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
-        <div class="bar-count">4</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 14 (Mon)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
-        <div class="bar-count">8</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 15 (Tue)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:37.5%"></div></div>
-        <div class="bar-count">3</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 16 (Wed)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
-        <div class="bar-count">8</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 17 (Thu)</div>
-        <div class="bar-track"><div class="bar-fill accent3" style="width:0%"></div></div>
-        <div class="bar-count">0</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 18 (Fri)</div>
-        <div class="bar-track"><div class="bar-fill accent3" style="width:0%"></div></div>
-        <div class="bar-count">0</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 19 (Sat)</div>
-        <div class="bar-track"><div class="bar-fill accent3" style="width:0%"></div></div>
-        <div class="bar-count">0</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Apr 20 (Sun)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:12.5%"></div></div>
-        <div class="bar-count">1</div>
-      </div>
+    <div class="kpi-card">
+      <div class="kpi-value">18</div>
+      <div class="kpi-label">Resolved by Fin (no human needed)</div>
+      <span class="kpi-delta good">69.2% resolution rate</span>
     </div>
-    <p style="font-size:12px;color:#555;margin-top:10px;">
-      ⚠️ Zero conversations on Apr 17–19 (Thu–Sat). Verify whether this reflects a true volume drop or a data/routing gap.
-    </p>
-  </section>
-
-  <!-- Topic Breakdown + Resolution -->
-  <div class="two-col" style="margin-bottom:44px;">
-
-    <!-- Topics -->
-    <div>
-      <h2>🏷️ Top Topics (by Frequency)</h2>
-      <div class="bar-chart">
-        <div class="bar-row">
-          <div class="bar-label">Human escalation requests</div>
-          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
-          <div class="bar-count">9</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Product capability Q&amp;A</div>
-          <div class="bar-track"><div class="bar-fill accent2" style="width:44%"></div></div>
-          <div class="bar-count">4</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Account access / auth</div>
-          <div class="bar-track"><div class="bar-fill accent2" style="width:33%"></div></div>
-          <div class="bar-count">3</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Software integrations</div>
-          <div class="bar-track"><div class="bar-fill accent2" style="width:33%"></div></div>
-          <div class="bar-count">3</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Desktop app issues</div>
-          <div class="bar-track"><div class="bar-fill accent3" style="width:22%"></div></div>
-          <div class="bar-count">2</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Pricing / quote requests</div>
-          <div class="bar-track"><div class="bar-fill accent3" style="width:11%"></div></div>
-          <div class="bar-count">1</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Billing / credit usage</div>
-          <div class="bar-track"><div class="bar-fill accent3" style="width:11%"></div></div>
-          <div class="bar-count">1</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Account management</div>
-          <div class="bar-track"><div class="bar-fill accent3" style="width:11%"></div></div>
-          <div class="bar-count">1</div>
-        </div>
-      </div>
+    <div class="kpi-card">
+      <div class="kpi-value">8</div>
+      <div class="kpi-label">Escalated to Human Support</div>
+      <span class="kpi-delta warn">30.8% escalation rate</span>
     </div>
+    <div class="kpi-card">
+      <div class="kpi-value">1</div>
+      <div class="kpi-label">Open / Still Active</div>
+      <span class="kpi-delta neutral">Advisor latency ticket</span>
+    </div>
+  </div>
 
-    <!-- Resolution Breakdown -->
-    <div>
-      <h2>✅ Resolution Breakdown</h2>
-      <div class="card">
-        <div class="donut-wrap">
-          <svg width="140" height="140" viewBox="0 0 36 36">
-            <!-- Escalated: 54.2% = 195° -->
-            <circle r="15.9" cx="18" cy="18" fill="transparent"
-              stroke="#FFB49A" stroke-width="3.5"
-              stroke-dasharray="100 0"
-              transform="rotate(-90 18 18)" />
-            <!-- Using conic-gradient via SVG segments -->
-            <!-- Escalated: 13/24 = 54.2% -->
-            <circle r="15.9" cx="18" cy="18" fill="transparent"
-              stroke="#E05C2A" stroke-width="3.5"
-              stroke-dasharray="54.2 45.8"
-              transform="rotate(-90 18 18)" />
-            <!-- Assumed resolution: 8/24 = 33.3% -->
-            <circle r="15.9" cx="18" cy="18" fill="transparent"
-              stroke="#1CE49B" stroke-width="3.5"
-              stroke-dasharray="33.3 66.7"
-              transform="rotate(105.1 18 18)" />
-            <!-- Confirmed: 2/24 = 8.3% -->
-            <circle r="15.9" cx="18" cy="18" fill="transparent"
-              stroke="#013A2F" stroke-width="3.5"
-              stroke-dasharray="8.3 91.7"
-              transform="rotate(225.5 18 18)" />
-            <!-- Open/null: 1/24 = 4.2% -->
-            <circle r="15.9" cx="18" cy="18" fill="transparent"
-              stroke="#CCC" stroke-width="3.5"
-              stroke-dasharray="4.2 95.8"
-              transform="rotate(255.4 18 18)" />
-            <text x="18" y="20" text-anchor="middle" font-size="5.5" font-weight="bold" fill="#013A2F">24 total</text>
-          </svg>
-          <div class="donut-legend">
-            <div class="legend-item">
-              <div class="legend-swatch" style="background:#E05C2A"></div>
-              <span><span class="pct">13</span> Escalated to human <span style="opacity:0.6">(54.2%)</span></span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-swatch" style="background:#1CE49B"></div>
-              <span><span class="pct">8</span> Assumed resolved <span style="opacity:0.6">(33.3%)</span></span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-swatch" style="background:#013A2F"></div>
-              <span><span class="pct">2</span> Confirmed resolved <span style="opacity:0.6">(8.3%)</span></span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-swatch" style="background:#CCC"></div>
-              <span><span class="pct">1</span> Open / pending <span style="opacity:0.6">(4.2%)</span></span>
-            </div>
+  <!-- Daily Volume -->
+  <div class="section">
+    <div class="section-title">Day-by-Day Volume (Apr 20–26)</div>
+    <div class="chart-area">
+      <div class="day-bars">
+        <!-- Mon Apr 20: 3, max=8 -->
+        <div class="day-col">
+          <div class="day-count">3</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 26px;"></div>
           </div>
+          <div class="day-label">Mon 4/20</div>
         </div>
+        <!-- Tue Apr 21: 6 -->
+        <div class="day-col">
+          <div class="day-count">6</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 53px;"></div>
+          </div>
+          <div class="day-label">Tue 4/21</div>
+        </div>
+        <!-- Wed Apr 22: 8 -->
+        <div class="day-col">
+          <div class="day-count">8</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 70px;"></div>
+          </div>
+          <div class="day-label">Wed 4/22</div>
+        </div>
+        <!-- Thu Apr 23: 4 -->
+        <div class="day-col">
+          <div class="day-count">4</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 35px;"></div>
+          </div>
+          <div class="day-label">Thu 4/23</div>
+        </div>
+        <!-- Fri Apr 24: 3 -->
+        <div class="day-col">
+          <div class="day-count">3</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 26px;"></div>
+          </div>
+          <div class="day-label">Fri 4/24</div>
+        </div>
+        <!-- Sat Apr 25: 2 -->
+        <div class="day-col">
+          <div class="day-count">2</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar" style="height: 18px;"></div>
+          </div>
+          <div class="day-label">Sat 4/25</div>
+        </div>
+        <!-- Sun Apr 26: 0 -->
+        <div class="day-col">
+          <div class="day-count" style="color:#ccc;">0</div>
+          <div class="day-bar-wrap">
+            <div class="day-bar zero" style="height: 4px;"></div>
+          </div>
+          <div class="day-label">Sun 4/26</div>
+        </div>
+      </div>
+      <p style="margin-top:12px; font-size:12px; color:#888;">Peak day: Wednesday April 22 (8 conversations). Volume tapers over the weekend as expected.</p>
+    </div>
+  </div>
 
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #F0F0F0;">
-          <div style="font-size:13px;color:#013A2F;font-weight:700;margin-bottom:6px;">Most Common Escalation Triggers</div>
-          <ul style="font-size:13px;padding-left:16px;line-height:1.9;color:#1E1E1E;">
-            <li>Explicit human request ("live chat", "real person")</li>
-            <li>Account access / password reset issues</li>
-            <li>Unsupported tax form questions (K-1s, state returns)</li>
-            <li>Complex product capability questions (1040 source docs)</li>
-          </ul>
+  <!-- Resolution Rates -->
+  <div class="section">
+    <div class="section-title">Fin Resolution Breakdown</div>
+    <div class="resolution-row">
+      <div class="resolution-bars">
+        <div class="res-item">
+          <div class="res-header">
+            <span class="res-label">Assumed Resolution</span>
+            <span class="res-pct">65.4% (17)</span>
+          </div>
+          <div class="res-bar-bg"><div class="res-bar-fill green" style="width:65.4%"></div></div>
         </div>
+        <div class="res-item">
+          <div class="res-header">
+            <span class="res-label">Confirmed Resolution</span>
+            <span class="res-pct">3.8% (1)</span>
+          </div>
+          <div class="res-bar-bg"><div class="res-bar-fill light" style="width:3.8%"></div></div>
+        </div>
+        <div class="res-item">
+          <div class="res-header">
+            <span class="res-label">Escalated to Human</span>
+            <span class="res-pct">30.8% (8)</span>
+          </div>
+          <div class="res-bar-bg"><div class="res-bar-fill orange" style="width:30.8%"></div></div>
+        </div>
+      </div>
+      <div class="resolution-insight">
+        <div class="insight-heading">Week-over-Week Context</div>
+        <p>Prior week (Apr 13–19): <strong>23 conversations</strong>, with an estimated escalation rate of ~48%. This week's escalation rate of 30.8% is a significant improvement, suggesting Fin's knowledge base is better covering current user questions.</p>
+        <span class="wow">↓ ~17 pt improvement in escalation rate WoW</span>
       </div>
     </div>
   </div>
 
-  <!-- Actionable Insights -->
-  <section>
-    <h2>💡 Actionable Insights</h2>
-    <ul class="insights-list">
-      <li class="warn">
-        <div class="insight-title">🚨 37.5% of conversations are immediate human handoff requests</div>
-        Nine contacts opened conversations with phrases like "live chat," "real person," or "speak to a person" — not product questions. These users are bypassing Fin entirely. Consider adding a clearly visible human support link or chat button in the product UI to reduce this noise and protect Fin's resolution metrics.
-      </li>
-      <li class="warn">
-        <div class="insight-title">🔐 Account access & login issues are a recurring friction point</div>
-        Three users in the same week (password reset, account can't be accessed, desktop app sign-on validation failure) hit authentication walls with no self-serve resolution. A self-serve password reset flow and clearer login troubleshooting docs would deflect these escalations.
+  <!-- Top Topics -->
+  <div class="section">
+    <div class="section-title">Top Topics & Question Categories</div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Category</th>
+          <th>Volume</th>
+          <th>Fin Outcome</th>
+          <th>Example Questions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-badge">1</span></td>
+          <td><strong>Advisor Feature & Performance</strong></td>
+          <td>7</td>
+          <td><span class="tag mixed">Mixed</span></td>
+          <td style="color:#666;">"Advisor taking long time", "Won't generate slides", "15+ mins to process"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">2</span></td>
+          <td><strong>Tax Form & Compliance Questions</strong></td>
+          <td>6</td>
+          <td><span class="tag resolved">Mostly Resolved</span></td>
+          <td style="color:#666;">"What is a 7216 document?", "Does Juno handle due diligence?", "1099-K not working"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">3</span></td>
+          <td><strong>Product Capabilities (Scope)</strong></td>
+          <td>5</td>
+          <td><span class="tag escalated">Often Escalated</span></td>
+          <td style="color:#666;">"Does Juno do 1065?", "Can Juno handle international 8865?", "Business return support?"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">4</span></td>
+          <td><strong>Getting Started / Trial & Access</strong></td>
+          <td>4</td>
+          <td><span class="tag resolved">Resolved</span></td>
+          <td style="color:#666;">"How do I access full site after paying?", "Access to Modern Tax Pros community"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">5</span></td>
+          <td><strong>Document Handling & Workflow</strong></td>
+          <td>2</td>
+          <td><span class="tag resolved">Resolved</span></td>
+          <td style="color:#666;">"Duplicate files during prep", "Re-upload docs for Advisor?", "SSN redaction + UltraTax"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">6</span></td>
+          <td><strong>Live Chat / Direct Human Requests</strong></td>
+          <td>2</td>
+          <td><span class="tag escalated">Escalated</span></td>
+          <td style="color:#666;">Users explicitly requesting live chat instead of AI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Escalation Triggers -->
+  <div class="section">
+    <div class="section-title">Escalation Triggers & Patterns</div>
+    <ul class="insight-list">
+      <li>
+        <div class="insight-icon icon-red">⚠️</div>
+        <div class="insight-text">
+          <strong>Advisor Performance / Speed Complaints</strong>
+          <p>Multiple users reporting Advisor taking 15+ minutes to respond or process files. One ticket remains open (Jonathan Raj, associatedtaxes.com). Fin attempted to handle with SLA articles but the issue required human follow-up. Escalation reason logged: "Guidance applied."</p>
+        </div>
       </li>
       <li>
-        <div class="insight-title">📋 Tax form support gaps: K-1s, state returns, 1040 source docs</div>
-        Users are asking whether Juno supports K-1s, state returns, and specific source documents for 1040 prep. Fin escalated all three. Creating a clear, indexed "Supported Tax Forms &amp; Documents" help article would allow Fin to answer these confidently and reduce escalations during peak filing season.
+        <div class="insight-icon icon-red">🌐</div>
+        <div class="insight-text">
+          <strong>International & Complex Tax Form Scope</strong>
+          <p>Questions about 8865 (foreign partnership), international activity, and K-1 with multiple activities all escalated. Fin appears to lack confident answers about Juno's exact coverage of international tax scenarios. These are recurring escalation drivers.</p>
+        </div>
       </li>
       <li>
-        <div class="insight-title">🔗 Software integration questions are increasing</div>
-        Drake, Lacerte, and ProConnect all appeared this week. These are critical integrations for tax professionals choosing or evaluating Juno. Better integration-specific help content (setup guides, FAQs) would help Fin resolve these rather than escalate.
-      </li>
-      <li class="info">
-        <div class="insight-title">📥 Desktop app discoverability issue</div>
-        Two users couldn't find or access the desktop app ("where do I download it?" / sign-on validation failure). The download link or onboarding flow may not be prominent enough — consider surfacing it in onboarding emails and the help center homepage.
-      </li>
-      <li class="info">
-        <div class="insight-title">📊 Zero conversations Thu–Sat (Apr 17–19) — investigate</div>
-        Volume completely dropped to zero for three consecutive days. This is statistically unusual during tax season. Confirm whether this is real reduced demand, a routing issue, or a data pipeline problem before drawing WoW comparisons.
+        <div class="insight-icon icon-yellow">📋</div>
+        <div class="insight-text">
+          <strong>Business Returns (1065 / B-Returns)</strong>
+          <p>Two users asked separately about 1065 support and business return capabilities. Both appear to have been escalated or required detailed clarification. Unclear if Fin's answer matched actual product availability.</p>
+        </div>
       </li>
       <li>
-        <div class="insight-title">💬 "Assumed resolution" dominates Fin's wins — aim for confirmed</div>
-        Of Fin's 10 "resolved" conversations, only 2 were user-confirmed. The remaining 8 are assumed (user went silent). Improving follow-up messages or adding a simple "Did this help? 👍👎" prompt could improve confirmed resolution rates and give better signal on Fin quality.
+        <div class="insight-icon icon-yellow">🔒</div>
+        <div class="insight-text">
+          <strong>SSN Redaction Handling with UltraTax</strong>
+          <p>A nuanced question about redacted SSNs in uploaded docs vs. UltraTax retaining the full SSN required human guidance. This is likely a security/privacy clarification that should be documented.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-blue">💬</div>
+        <div class="insight-text">
+          <strong>Direct Live Chat Bypasses</strong>
+          <p>2 users initiated conversations with the intent of reaching a human immediately (typing "live chat"). These will always escalate. Consider whether the entry point UX can better set AI-first expectations.</p>
+        </div>
       </li>
     </ul>
-  </section>
+  </div>
 
-  <!-- Full Conversation Log -->
-  <section>
-    <h2>📋 Full Conversation Log (Apr 13–20)</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Conversation ID</th>
-            <th>Opening Message / Topic</th>
-            <th>Resolution State</th>
-            <th>Parts</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Apr 13</td>
-            <td style="font-family:monospace;font-size:12px;">…987830</td>
-            <td class="topic-col">How to import a Schedule C into Juno</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>12</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 13</td>
-            <td style="font-family:monospace;font-size:12px;">…076067</td>
-            <td class="topic-col">Does uploading a client's prior year return use one of my 100 return instances?</td>
-            <td><span class="pill confirmed">Confirmed</span></td>
-            <td>10</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 13</td>
-            <td style="font-family:monospace;font-size:12px;">…636477</td>
-            <td class="topic-col">live chat</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>13</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 13</td>
-            <td style="font-family:monospace;font-size:12px;">…689363</td>
-            <td class="topic-col">Do you process K-1s?</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>25</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…679472</td>
-            <td class="topic-col">Drake crashed in the middle of export — do I repeat the export?</td>
-            <td><span class="pill confirmed">Confirmed</span></td>
-            <td>12</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…137680</td>
-            <td class="topic-col">Desktop app not working — won't validate my sign-on</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>16</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…000267</td>
-            <td class="topic-col">What source documents can't Juno process for a 1040?</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>31</td>
-            <td>Open</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…833145</td>
-            <td class="topic-col">real person</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>10</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…972621</td>
-            <td class="topic-col">real person</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>11</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…974161</td>
-            <td class="topic-col">speak to a person</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>26</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…991038</td>
-            <td class="topic-col">real person</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>10</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 14</td>
-            <td style="font-family:monospace;font-size:12px;">…993793</td>
-            <td class="topic-col">live chat</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>13</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 15</td>
-            <td style="font-family:monospace;font-size:12px;">…689871</td>
-            <td class="topic-col">Can I change a client's name?</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>13</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 15</td>
-            <td style="font-family:monospace;font-size:12px;">…042209</td>
-            <td class="topic-col">I can't seem to access my Juno account</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>40</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 15</td>
-            <td style="font-family:monospace;font-size:12px;">…264140</td>
-            <td class="topic-col">I need help resetting my password</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>55</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…684502</td>
-            <td class="topic-col">Send me a quote please</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>14</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…389101</td>
-            <td class="topic-col">"Stop paying attention to my questions Josh" (frustrated user)</td>
-            <td><span class="pill open">No state</span></td>
-            <td>9</td>
-            <td>Open</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…543564</td>
-            <td class="topic-col">How do I link Lacerte with the trial version?</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>19</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…002565</td>
-            <td class="topic-col">Can Juno process state returns?</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>15</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…032340</td>
-            <td class="topic-col">Connect me to live support</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>20</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…141751</td>
-            <td class="topic-col">Live chat</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>16</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…154576</td>
-            <td class="topic-col">Direct me to live chat</td>
-            <td><span class="pill escalated">Escalated</span></td>
-            <td>25</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 16</td>
-            <td style="font-family:monospace;font-size:12px;">…664975</td>
-            <td class="topic-col">Moving to another software — how does Juno integrate with ProConnect?</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>13</td>
-            <td>Closed</td>
-          </tr>
-          <tr>
-            <td>Apr 20</td>
-            <td style="font-family:monospace;font-size:12px;">…220525</td>
-            <td class="topic-col">Where do I download the desktop app?</td>
-            <td><span class="pill resolved">Assumed</span></td>
-            <td>15</td>
-            <td>Closed</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Recurring Issues / Documentation Gaps -->
+  <div class="section">
+    <div class="section-title">Recurring Issues & Documentation Gaps</div>
+    <ul class="insight-list">
+      <li>
+        <div class="insight-icon icon-red">📉</div>
+        <div class="insight-text">
+          <strong>Axcess Tax Integration — Donations Import Bug</strong>
+          <p>One user reported "donations import into Axcess Tax isn't importing correctly." This is a potential product bug affecting users of the Axcess Tax integration. Engineering should investigate whether this is a known issue.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-yellow">📝</div>
+        <div class="insight-text">
+          <strong>Advisor Performance Expectations — Underdocumented</strong>
+          <p>Fin referenced the "Making the Most of Advisor" article and the SLA article multiple times for speed-related complaints, but users remain unsatisfied. A dedicated help article on "Why Advisor may take longer with large files" with specific expectations could reduce escalations.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-yellow">🌍</div>
+        <div class="insight-text">
+          <strong>International Tax Coverage — No Clear Article</strong>
+          <p>Questions about foreign income, 8865 forms, and international activity are a consistent escalation driver. A clearly scoped help article stating what Juno does and doesn't support for international returns would help Fin deflect these.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-yellow">🏢</div>
+        <div class="insight-text">
+          <strong>Business Returns Scope — FAQ Needed</strong>
+          <p>Multiple users asking whether Juno supports business returns (1065, entity returns). A prominent "What return types does Juno support?" article or in-app callout would reduce this question category significantly.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-blue">🔁</div>
+        <div class="insight-text">
+          <strong>Trial-to-Paid Transition Friction</strong>
+          <p>Users completing a trial and paying are unsure how to access the full site. The onboarding flow post-payment may need a clearer next-step prompt or email. Fin handled this, but the question appearing at all suggests a UX gap.</p>
+        </div>
+      </li>
+      <li>
+        <div class="insight-icon icon-blue">🔐</div>
+        <div class="insight-text">
+          <strong>Google Workspace Trial Signup Issue</strong>
+          <p>At least one user reported difficulty signing up for a trial using a Google Workspace account. This may be an authentication edge case worth investigating.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Actionable Recommendations -->
+  <div class="section">
+    <div class="section-title">Actionable Recommendations</div>
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="ac-priority">🔴 High Priority · Product</div>
+        <h4>Investigate Axcess Tax Donations Import Bug</h4>
+        <p>User reported donations not importing correctly from Axcess Tax. Verify if this is a known or new defect and create a bug ticket if needed.</p>
+        <div class="ac-owner">Engineering / Product</div>
+      </div>
+      <div class="action-card">
+        <div class="ac-priority">🔴 High Priority · Support Docs</div>
+        <h4>Write "Advisor Performance Guide" Article</h4>
+        <p>Document expected response times for different file sizes and query types. Reduces recurring performance complaints and helps Fin give more specific answers.</p>
+        <div class="ac-owner">Support / Product Marketing</div>
+      </div>
+      <div class="action-card">
+        <div class="ac-priority">🟡 Medium Priority · Support Docs</div>
+        <h4>Create "Return Types Supported" Reference Article</h4>
+        <p>Clearly document what return types Juno supports (individual, business, 1065, international). Fin is currently escalating these questions — a clear article would deflect them.</p>
+        <div class="ac-owner">Support / Product</div>
+      </div>
+      <div class="action-card">
+        <div class="ac-priority">🟡 Medium Priority · Support Docs</div>
+        <h4>Add International Activity & 8865 Coverage FAQ</h4>
+        <p>Multiple questions about 8865, foreign income, and international K-1s. Write a scoped FAQ so Fin can confidently answer what Juno handles vs. what requires manual prep.</p>
+        <div class="ac-owner">Support / Tax Product</div>
+      </div>
+      <div class="action-card">
+        <div class="ac-priority">🟡 Medium Priority · Engineering</div>
+        <h4>Fix Google Workspace Trial Signup Auth Issue</h4>
+        <p>At least one user couldn't complete trial signup with a Google Workspace account. Investigate OAuth flow for Workspace domains.</p>
+        <div class="ac-owner">Engineering</div>
+      </div>
+      <div class="action-card">
+        <div class="ac-priority">🟢 Low Priority · Product / Onboarding</div>
+        <h4>Improve Post-Payment Onboarding CTA</h4>
+        <p>Users who completed trial and paid are confused about how to access the full site. Add a clear "You're all set — start here" redirect or email post-payment.</p>
+        <div class="ac-owner">Product / Growth</div>
+      </div>
     </div>
-  </section>
+  </div>
 
-</div><!-- /.container -->
+  <!-- Most Referenced Articles -->
+  <div class="section">
+    <div class="section-title">Most Referenced Knowledge Sources (by Fin)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Article Title</th>
+          <th>Type</th>
+          <th>Times Referenced</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Making the Most of Advisor</td>
+          <td>Help Article</td>
+          <td>3+</td>
+        </tr>
+        <tr>
+          <td>Juno Desktop App vs Juno Web App</td>
+          <td>Help Article</td>
+          <td>2+</td>
+        </tr>
+        <tr>
+          <td>Access to Juno Support</td>
+          <td>Help Article</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>SLA (Service Level Agreement)</td>
+          <td>Help Article</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Getting Started with Reviewer</td>
+          <td>Help Article</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Security for Tax Automation Software | Juno</td>
+          <td>External / Website</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Clients, Search, Documents</td>
+          <td>Help Article</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Leaving feedback within Advisor and Assistant</td>
+          <td>Help Article</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<footer>
-  Auto-generated by Juno's Fin AI Weekly Summary job &nbsp;·&nbsp; Week of Apr 13–20, 2026 &nbsp;·&nbsp;
-  <a href="https://liammw3.github.io/juno-fin-daily-summaries/fin-weekly-summary.html">View live on GitHub Pages</a>
-</footer>
+</div><!-- /container -->
+
+<div class="footer">
+  <p>Generated automatically by Juno Cowork · <strong>Fin AI Weekly Report</strong> · April 27, 2026</p>
+  <p style="margin-top:4px;">Source: Intercom Fin AI Agent (ai_agent_participated = true) · Apr 20–26, 2026 · 26 conversations</p>
+</div>
 
 </body>
 </html>
