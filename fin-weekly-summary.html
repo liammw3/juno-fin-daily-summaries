@@ -2,825 +2,642 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fin AI Weekly Summary — Week of April 20, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juno Fin AI — Weekly Summary | Apr 27 – May 4, 2026</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #F8F9FA;
-      color: #1E1E1E;
-      line-height: 1.6;
-      padding: 0 0 60px 0;
+    /* ── Juno Brand Tokens ── */
+    :root {
+      --juno-off-white:    #F8F9FA;
+      --juno-dark-green:   #013A2F;
+      --juno-green:        #1CE49B;
+      --juno-light-green:  #B4F7CA;
+      --juno-black:        #1E1E1E;
     }
 
-    /* Header */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--juno-off-white);
+      color: var(--juno-black);
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
     .header {
-      background: #013A2F;
+      background: var(--juno-dark-green);
       color: #fff;
       padding: 40px 48px 32px;
+      border-bottom: 4px solid var(--juno-green);
     }
-    .header .logo-line {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .header .dot {
-      width: 14px; height: 14px;
-      background: #1CE49B;
-      border-radius: 50%;
-    }
-    .header .brand {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #B4F7CA;
-    }
-    .header h1 {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #fff;
-    }
-    .header .subtitle {
-      margin-top: 8px;
-      font-size: 15px;
-      color: #B4F7CA;
-    }
-    .header .meta {
-      display: flex;
-      gap: 24px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-    }
-    .header .meta-item {
-      background: rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 13px;
-      color: #B4F7CA;
-    }
-    .header .meta-item strong {
-      display: block;
-      font-size: 22px;
-      font-weight: 700;
-      color: #1CE49B;
-      line-height: 1.1;
-    }
-
-    /* Main layout */
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 24px 0;
-    }
-
-    /* Section */
-    .section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 28px 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    }
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #013A2F;
-      margin-bottom: 20px;
+    .header-logo {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 20px;
     }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #B4F7CA;
+    .header-logo .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--juno-green);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: var(--juno-dark-green);
+    }
+    .header-logo .logo-text {
+      font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px;
+    }
+    .header h1 {
+      font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+      color: #fff; margin-bottom: 6px;
+    }
+    .header .subtitle {
+      font-size: 15px; color: rgba(255,255,255,0.65);
+    }
+    .header .subtitle span {
+      color: var(--juno-green); font-weight: 600;
     }
 
-    /* KPI row */
-    .kpi-row {
+    /* ── Layout ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 32px 64px; }
+
+    /* ── Section heading ── */
+    .section-title {
+      font-size: 13px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--juno-dark-green); margin-bottom: 18px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--juno-light-green);
+    }
+
+    /* ── KPI Cards row ── */
+    .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 40px;
     }
     .kpi-card {
-      background: #F8F9FA;
-      border-radius: 10px;
-      padding: 20px 18px;
-      border-left: 4px solid #1CE49B;
-    }
-    .kpi-card .kpi-value {
-      font-size: 36px;
-      font-weight: 800;
-      color: #013A2F;
-      line-height: 1;
-    }
-    .kpi-card .kpi-label {
-      font-size: 12px;
-      color: #666;
-      margin-top: 6px;
-      font-weight: 500;
-    }
-    .kpi-card .kpi-delta {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 100px;
-    }
-    .kpi-card .kpi-delta.up {
-      background: #B4F7CA;
-      color: #013A2F;
-    }
-    .kpi-card .kpi-delta.neutral {
-      background: #eee;
-      color: #555;
-    }
-    .kpi-card .kpi-delta.good {
-      background: #B4F7CA;
-      color: #013A2F;
-    }
-    .kpi-card .kpi-delta.warn {
-      background: #FFF3CD;
-      color: #856404;
-    }
-
-    /* Bar chart - daily volume */
-    .chart-area {
-      margin-top: 4px;
-    }
-    .day-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 12px;
-      height: 100px;
-    }
-    .day-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .day-count {
-      font-size: 13px;
-      font-weight: 700;
-      color: #013A2F;
-    }
-    .day-bar-wrap {
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      height: 70px;
-    }
-    .day-bar {
-      width: 100%;
-      background: #1CE49B;
-      border-radius: 4px 4px 0 0;
-      transition: opacity 0.2s;
-      min-height: 4px;
-    }
-    .day-bar.zero {
-      background: #e0e0e0;
-      min-height: 4px;
-    }
-    .day-label {
-      font-size: 11px;
-      color: #888;
-      font-weight: 500;
-    }
-
-    /* Resolution donut-style row */
-    .resolution-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
-    }
-    @media (max-width: 600px) {
-      .resolution-row { grid-template-columns: 1fr; }
-    }
-    .resolution-bars { }
-    .res-item {
-      margin-bottom: 14px;
-    }
-    .res-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-    .res-label { font-weight: 500; color: #1E1E1E; }
-    .res-pct { font-weight: 700; color: #013A2F; }
-    .res-bar-bg {
-      background: #F0F0F0;
-      border-radius: 100px;
-      height: 8px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px 20px;
+      border: 1px solid #e3ede8;
+      position: relative;
       overflow: hidden;
     }
-    .res-bar-fill {
-      height: 100%;
-      border-radius: 100px;
+    .kpi-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--juno-green);
     }
-    .res-bar-fill.green { background: #1CE49B; }
-    .res-bar-fill.light { background: #B4F7CA; }
-    .res-bar-fill.orange { background: #FF8C42; }
-
-    .resolution-insight {
-      background: #F8F9FA;
-      border-radius: 10px;
-      padding: 20px;
-      border-left: 4px solid #013A2F;
+    .kpi-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase;
+      color: #6b8278; margin-bottom: 8px;
     }
-    .resolution-insight .insight-heading {
-      font-size: 13px;
-      font-weight: 700;
-      color: #013A2F;
-      margin-bottom: 8px;
+    .kpi-value {
+      font-size: 38px; font-weight: 800; color: var(--juno-dark-green);
+      line-height: 1; letter-spacing: -1px;
     }
-    .resolution-insight p {
-      font-size: 13px;
-      color: #444;
-      line-height: 1.5;
-    }
-    .resolution-insight .wow {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      background: #B4F7CA;
-      color: #013A2F;
-      padding: 3px 10px;
-      border-radius: 100px;
+    .kpi-value.accent { color: var(--juno-green); }
+    .kpi-sub {
+      font-size: 13px; color: #6b8278; margin-top: 6px;
     }
 
-    /* Topic table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
+    /* ── Two-column layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #e3ede8;
     }
-    table thead th {
-      background: #013A2F;
-      color: #B4F7CA;
-      text-align: left;
-      padding: 10px 14px;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+
+    /* ── Bar chart (CSS-only) ── */
+    .bar-chart { margin-top: 6px; }
+    .bar-row {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 12px;
     }
-    table thead th:first-child { border-radius: 6px 0 0 6px; }
-    table thead th:last-child { border-radius: 0 6px 6px 0; }
-    table tbody tr:nth-child(even) {
-      background: #B4F7CA22;
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-label {
+      font-size: 13px; color: var(--juno-black); width: 110px; flex-shrink: 0; text-align: right;
     }
-    table tbody tr:hover {
-      background: #B4F7CA44;
+    .bar-track {
+      flex: 1; height: 22px; background: var(--juno-off-white);
+      border-radius: 4px; overflow: hidden;
     }
-    table tbody td {
-      padding: 10px 14px;
-      color: #1E1E1E;
-      vertical-align: middle;
+    .bar-fill {
+      height: 100%; background: var(--juno-green);
+      border-radius: 4px; transition: width 0.3s ease;
+      display: flex; align-items: center; padding-right: 8px; justify-content: flex-end;
     }
+    .bar-fill.dim { background: var(--juno-light-green); }
+    .bar-count {
+      font-size: 12px; font-weight: 700; color: var(--juno-dark-green);
+    }
+
+    /* ── Donut chart ── */
+    .donut-wrap {
+      display: flex; align-items: center; gap: 28px; margin-top: 8px;
+    }
+    .donut-svg { flex-shrink: 0; }
+    .donut-legend { flex: 1; }
+    .legend-item {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+      font-size: 13px; color: var(--juno-black);
+    }
+    .legend-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    }
+    .legend-val { font-weight: 700; margin-left: auto; color: var(--juno-dark-green); }
+
+    /* ── Topic table ── */
+    .topic-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .topic-table th {
+      text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: #6b8278; padding: 8px 12px;
+      border-bottom: 2px solid var(--juno-light-green);
+    }
+    .topic-table td {
+      padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #f0f4f2;
+    }
+    .topic-table tr:nth-child(even) td { background: var(--juno-off-white); }
+    .topic-table tr:last-child td { border-bottom: none; }
     .rank-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px; height: 24px;
-      background: #1CE49B;
-      color: #013A2F;
-      font-weight: 800;
-      font-size: 11px;
-      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--juno-light-green); color: var(--juno-dark-green);
+      font-size: 11px; font-weight: 700;
     }
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
+    .count-pill {
+      background: var(--juno-dark-green); color: #fff;
+      border-radius: 20px; padding: 2px 10px; font-size: 12px; font-weight: 700;
     }
-    .tag.resolved { background: #B4F7CA; color: #013A2F; }
-    .tag.escalated { background: #FFE0CC; color: #8B3A00; }
-    .tag.mixed { background: #E8E8E8; color: #444; }
 
-    /* Escalation / insights list */
-    .insight-list {
-      list-style: none;
-      padding: 0;
+    /* ── Full-width card ── */
+    .full-card {
+      background: #fff; border-radius: 12px; padding: 28px 28px;
+      border: 1px solid #e3ede8; margin-bottom: 40px;
     }
-    .insight-list li {
-      display: flex;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid #F0F0F0;
-      align-items: flex-start;
+
+    /* ── Insights list ── */
+    .insights-list { list-style: none; margin-top: 8px; }
+    .insight-item {
+      display: flex; gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid #f0f4f2;
     }
-    .insight-list li:last-child { border-bottom: none; }
+    .insight-item:last-child { border-bottom: none; }
     .insight-icon {
-      flex-shrink: 0;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px;
+      background: var(--juno-light-green);
+      display: flex; align-items: center; justify-content: center;
       font-size: 15px;
     }
-    .icon-red { background: #FFE0CC; }
-    .icon-yellow { background: #FFF3CD; }
-    .icon-green { background: #B4F7CA; }
-    .icon-blue { background: #D0E8FF; }
-    .insight-text strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      color: #013A2F;
-      margin-bottom: 3px;
-    }
-    .insight-text p {
-      font-size: 13px;
-      color: #555;
-      line-height: 1.5;
-    }
+    .insight-body {}
+    .insight-title { font-size: 14px; font-weight: 700; color: var(--juno-dark-green); margin-bottom: 2px; }
+    .insight-desc { font-size: 13px; color: #4a5e56; }
 
-    /* Actions */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+    /* ── Escalation table ── */
+    .esc-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .esc-table th {
+      text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: #6b8278; padding: 8px 12px;
+      border-bottom: 2px solid var(--juno-light-green);
     }
-    .action-card {
-      border-radius: 10px;
-      padding: 18px 20px;
-      border: 1.5px solid #B4F7CA;
-      background: #F8F9FA;
+    .esc-table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #f0f4f2; }
+    .esc-table tr:last-child td { border-bottom: none; }
+    .tag {
+      display: inline-block; border-radius: 4px; padding: 2px 8px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;
     }
-    .action-card .ac-priority {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #1CE49B;
-      margin-bottom: 8px;
-    }
-    .action-card h4 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #013A2F;
-      margin-bottom: 6px;
-    }
-    .action-card p {
-      font-size: 12px;
-      color: #666;
-      line-height: 1.5;
-    }
-    .action-card .ac-owner {
-      margin-top: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #888;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .action-card .ac-owner::before {
-      content: '→';
-      color: #1CE49B;
-    }
+    .tag-bug { background: #fff0f0; color: #b91c1c; }
+    .tag-ops { background: #fff7ed; color: #c2410c; }
+    .tag-gap { background: #f0fdf4; color: #166534; }
+    .tag-human { background: #eff6ff; color: #1d4ed8; }
 
-    /* Footer */
+    /* ── Footer ── */
     .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 40px;
-      padding: 0 24px;
+      text-align: center; padding: 32px 24px;
+      font-size: 12px; color: #8fa89e;
+      border-top: 1px solid #e3ede8;
     }
-    .footer strong { color: #013A2F; }
+    .footer strong { color: var(--juno-dark-green); }
   </style>
 </head>
 <body>
 
 <!-- Header -->
 <div class="header">
-  <div class="logo-line">
-    <div class="dot"></div>
-    <span class="brand">Juno Tax · Fin AI Agent Weekly Report</span>
+  <div class="header-logo">
+    <div class="logo-mark">J</div>
+    <span class="logo-text">Juno Tax</span>
   </div>
-  <h1>Weekly Fin Summary</h1>
-  <p class="subtitle">April 20 – April 26, 2026 &nbsp;·&nbsp; Auto-generated Monday, April 27, 2026</p>
-
-  <div class="meta">
-    <div class="meta-item">
-      <strong>26</strong>
-      Total Fin Conversations
-    </div>
-    <div class="meta-item">
-      <strong>69.2%</strong>
-      Resolution Rate (AI)
-    </div>
-    <div class="meta-item">
-      <strong>30.8%</strong>
-      Escalation Rate
-    </div>
-    <div class="meta-item">
-      <strong>+13%</strong>
-      Week-over-Week Volume
-    </div>
+  <h1>Fin AI Agent — Weekly Summary</h1>
+  <div class="subtitle">
+    Report period: <span>Monday, April 27 – Monday, May 4, 2026</span> &nbsp;·&nbsp;
+    Generated: <span>May 4, 2026</span>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- KPIs -->
-  <div class="kpi-row">
+  <!-- ── KPI Row ── -->
+  <div class="section-title">At a Glance</div>
+  <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="kpi-value">26</div>
-      <div class="kpi-label">Fin Conversations This Week</div>
-      <span class="kpi-delta up">↑ +3 vs prior week (23)</span>
+      <div class="kpi-label">Total Conversations</div>
+      <div class="kpi-value">30</div>
+      <div class="kpi-sub">Fin AI participated in all</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">18</div>
-      <div class="kpi-label">Resolved by Fin (no human needed)</div>
-      <span class="kpi-delta good">69.2% resolution rate</span>
+      <div class="kpi-label">Fin Resolution Rate</div>
+      <div class="kpi-value accent">76.7%</div>
+      <div class="kpi-sub">Assumed + confirmed</div>
     </div>
     <div class="kpi-card">
+      <div class="kpi-label">Confirmed Resolved</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-sub">User explicitly confirmed</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Escalated to Human</div>
+      <div class="kpi-value">6</div>
+      <div class="kpi-sub">20% escalation rate</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Peak Day</div>
       <div class="kpi-value">8</div>
-      <div class="kpi-label">Escalated to Human Support</div>
-      <span class="kpi-delta warn">30.8% escalation rate</span>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-value">1</div>
-      <div class="kpi-label">Open / Still Active</div>
-      <span class="kpi-delta neutral">Advisor latency ticket</span>
+      <div class="kpi-sub">Tuesday, April 28</div>
     </div>
   </div>
 
-  <!-- Daily Volume -->
-  <div class="section">
-    <div class="section-title">Day-by-Day Volume (Apr 20–26)</div>
-    <div class="chart-area">
-      <div class="day-bars">
-        <!-- Mon Apr 20: 3, max=8 -->
-        <div class="day-col">
-          <div class="day-count">3</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 26px;"></div>
-          </div>
-          <div class="day-label">Mon 4/20</div>
-        </div>
-        <!-- Tue Apr 21: 6 -->
-        <div class="day-col">
-          <div class="day-count">6</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 53px;"></div>
-          </div>
-          <div class="day-label">Tue 4/21</div>
-        </div>
-        <!-- Wed Apr 22: 8 -->
-        <div class="day-col">
-          <div class="day-count">8</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 70px;"></div>
-          </div>
-          <div class="day-label">Wed 4/22</div>
-        </div>
-        <!-- Thu Apr 23: 4 -->
-        <div class="day-col">
-          <div class="day-count">4</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 35px;"></div>
-          </div>
-          <div class="day-label">Thu 4/23</div>
-        </div>
-        <!-- Fri Apr 24: 3 -->
-        <div class="day-col">
-          <div class="day-count">3</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 26px;"></div>
-          </div>
-          <div class="day-label">Fri 4/24</div>
-        </div>
-        <!-- Sat Apr 25: 2 -->
-        <div class="day-col">
-          <div class="day-count">2</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar" style="height: 18px;"></div>
-          </div>
-          <div class="day-label">Sat 4/25</div>
-        </div>
-        <!-- Sun Apr 26: 0 -->
-        <div class="day-col">
-          <div class="day-count" style="color:#ccc;">0</div>
-          <div class="day-bar-wrap">
-            <div class="day-bar zero" style="height: 4px;"></div>
-          </div>
-          <div class="day-label">Sun 4/26</div>
-        </div>
-      </div>
-      <p style="margin-top:12px; font-size:12px; color:#888;">Peak day: Wednesday April 22 (8 conversations). Volume tapers over the weekend as expected.</p>
-    </div>
-  </div>
+  <!-- ── Volume & Resolution side-by-side ── -->
+  <div class="two-col">
 
-  <!-- Resolution Rates -->
-  <div class="section">
-    <div class="section-title">Fin Resolution Breakdown</div>
-    <div class="resolution-row">
-      <div class="resolution-bars">
-        <div class="res-item">
-          <div class="res-header">
-            <span class="res-label">Assumed Resolution</span>
-            <span class="res-pct">65.4% (17)</span>
+    <!-- Day-by-day volume -->
+    <div class="card">
+      <div class="section-title">Day-by-Day Volume</div>
+      <div class="bar-chart">
+
+        <div class="bar-row">
+          <div class="bar-label">Mon Apr 27</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:50%"><span class="bar-count">4</span></div>
           </div>
-          <div class="res-bar-bg"><div class="res-bar-fill green" style="width:65.4%"></div></div>
         </div>
-        <div class="res-item">
-          <div class="res-header">
-            <span class="res-label">Confirmed Resolution</span>
-            <span class="res-pct">3.8% (1)</span>
+
+        <div class="bar-row">
+          <div class="bar-label">Tue Apr 28</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:100%"><span class="bar-count">8</span></div>
           </div>
-          <div class="res-bar-bg"><div class="res-bar-fill light" style="width:3.8%"></div></div>
         </div>
-        <div class="res-item">
-          <div class="res-header">
-            <span class="res-label">Escalated to Human</span>
-            <span class="res-pct">30.8% (8)</span>
+
+        <div class="bar-row">
+          <div class="bar-label">Wed Apr 29</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:87.5%"><span class="bar-count">7</span></div>
           </div>
-          <div class="res-bar-bg"><div class="res-bar-fill orange" style="width:30.8%"></div></div>
         </div>
-      </div>
-      <div class="resolution-insight">
-        <div class="insight-heading">Week-over-Week Context</div>
-        <p>Prior week (Apr 13–19): <strong>23 conversations</strong>, with an estimated escalation rate of ~48%. This week's escalation rate of 30.8% is a significant improvement, suggesting Fin's knowledge base is better covering current user questions.</p>
-        <span class="wow">↓ ~17 pt improvement in escalation rate WoW</span>
+
+        <div class="bar-row">
+          <div class="bar-label">Thu Apr 30</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:62.5%"><span class="bar-count">5</span></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Fri May 01</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:62.5%"><span class="bar-count">5</span></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Sat May 02</div>
+          <div class="bar-track">
+            <div class="bar-fill dim" style="width:2%"><span class="bar-count"></span></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Sun May 03</div>
+          <div class="bar-track">
+            <div class="bar-fill dim" style="width:2%"><span class="bar-count"></span></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Mon May 04</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:12.5%"><span class="bar-count">1</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
 
-  <!-- Top Topics -->
-  <div class="section">
-    <div class="section-title">Top Topics & Question Categories</div>
-    <table>
+    <!-- Resolution breakdown donut -->
+    <div class="card">
+      <div class="section-title">Resolution Breakdown</div>
+      <div class="donut-wrap">
+        <!-- SVG donut: 30 total
+             assumed: 19 → 63.3% → 228°
+             escalated: 6 → 20% → 72°
+             confirmed: 4 → 13.3% → 48°
+             no interaction: 1 → 3.3% → 12°
+             Circumference of r=54: 2π*54 ≈ 339.3
+             assumed: 63.3% * 339.3 = 214.8, offset 0
+             escalated: 20% * 339.3 = 67.9, offset 214.8
+             confirmed: 13.3% * 339.3 = 45.1, offset 282.7
+             no interaction: 3.4% * 339.3 = 11.5, offset 327.8
+        -->
+        <svg class="donut-svg" width="130" height="130" viewBox="0 0 130 130">
+          <circle cx="65" cy="65" r="54" fill="none" stroke="#e8f5ee" stroke-width="20"/>
+          <!-- assumed_resolution: green -->
+          <circle cx="65" cy="65" r="54" fill="none" stroke="#1CE49B" stroke-width="20"
+            stroke-dasharray="214.8 339.3"
+            stroke-dashoffset="0"
+            transform="rotate(-90 65 65)"/>
+          <!-- escalated: dark green -->
+          <circle cx="65" cy="65" r="54" fill="none" stroke="#013A2F" stroke-width="20"
+            stroke-dasharray="67.9 339.3"
+            stroke-dashoffset="-214.8"
+            transform="rotate(-90 65 65)"/>
+          <!-- confirmed: light green -->
+          <circle cx="65" cy="65" r="54" fill="none" stroke="#B4F7CA" stroke-width="20"
+            stroke-dasharray="45.1 339.3"
+            stroke-dashoffset="-282.7"
+            transform="rotate(-90 65 65)"/>
+          <!-- no interaction: grey -->
+          <circle cx="65" cy="65" r="54" fill="none" stroke="#d0ddd8" stroke-width="20"
+            stroke-dasharray="11.5 339.3"
+            stroke-dashoffset="-327.8"
+            transform="rotate(-90 65 65)"/>
+          <text x="65" y="60" text-anchor="middle" fill="#013A2F" font-size="18" font-weight="800">76.7%</text>
+          <text x="65" y="76" text-anchor="middle" fill="#6b8278" font-size="9">Handled by Fin</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#1CE49B;"></div>
+            Assumed resolved
+            <span class="legend-val">19</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#013A2F;"></div>
+            Escalated to human
+            <span class="legend-val">6</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#B4F7CA;"></div>
+            Confirmed resolved
+            <span class="legend-val">4</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#d0ddd8;"></div>
+            No interaction
+            <span class="legend-val">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.two-col -->
+
+  <!-- ── Topic Breakdown ── -->
+  <div class="full-card">
+    <div class="section-title">Top Topics — Ranked by Frequency</div>
+    <table class="topic-table">
       <thead>
         <tr>
           <th>#</th>
-          <th>Category</th>
+          <th>Topic Category</th>
           <th>Volume</th>
-          <th>Fin Outcome</th>
           <th>Example Questions</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><span class="rank-badge">1</span></td>
-          <td><strong>Advisor Feature & Performance</strong></td>
-          <td>7</td>
-          <td><span class="tag mixed">Mixed</span></td>
-          <td style="color:#666;">"Advisor taking long time", "Won't generate slides", "15+ mins to process"</td>
+          <td><strong>Product capabilities &amp; schedule support</strong></td>
+          <td><span class="count-pill">5</span></td>
+          <td style="color:#4a5e56;">"Does Juno support Sch E?" · "Can Juno process Schedule D's?" · "When will business returns be available?"</td>
         </tr>
         <tr>
           <td><span class="rank-badge">2</span></td>
-          <td><strong>Tax Form & Compliance Questions</strong></td>
-          <td>6</td>
-          <td><span class="tag resolved">Mostly Resolved</span></td>
-          <td style="color:#666;">"What is a 7216 document?", "Does Juno handle due diligence?", "1099-K not working"</td>
+          <td><strong>Technical bugs &amp; performance issues</strong></td>
+          <td><span class="count-pill">5</span></td>
+          <td style="color:#4a5e56;">"Tax Strategy Deep Analysis keeps freezing" · "EIN mismatch on Schedule E" · "Delay entering text, figures show zero"</td>
         </tr>
         <tr>
           <td><span class="rank-badge">3</span></td>
-          <td><strong>Product Capabilities (Scope)</strong></td>
-          <td>5</td>
-          <td><span class="tag escalated">Often Escalated</span></td>
-          <td style="color:#666;">"Does Juno do 1065?", "Can Juno handle international 8865?", "Business return support?"</td>
+          <td><strong>Document management &amp; uploads</strong></td>
+          <td><span class="count-pill">5</span></td>
+          <td style="color:#4a5e56;">"How many documents can I upload in trial?" · "How to add docs without TaxDome?" · "Download validation documents"</td>
         </tr>
         <tr>
           <td><span class="rank-badge">4</span></td>
-          <td><strong>Getting Started / Trial & Access</strong></td>
-          <td>4</td>
-          <td><span class="tag resolved">Resolved</span></td>
-          <td style="color:#666;">"How do I access full site after paying?", "Access to Modern Tax Pros community"</td>
+          <td><strong>Workflow &amp; how-to questions</strong></td>
+          <td><span class="count-pill">5</span></td>
+          <td style="color:#4a5e56;">"How to set up joint return client?" · "How to know when review is complete?" · "What is a 7216 document?"</td>
         </tr>
         <tr>
           <td><span class="rank-badge">5</span></td>
-          <td><strong>Document Handling & Workflow</strong></td>
-          <td>2</td>
-          <td><span class="tag resolved">Resolved</span></td>
-          <td style="color:#666;">"Duplicate files during prep", "Re-upload docs for Advisor?", "SSN redaction + UltraTax"</td>
+          <td><strong>Account &amp; seat management</strong></td>
+          <td><span class="count-pill">3</span></td>
+          <td style="color:#4a5e56;">"How many seats do I have left?" · "How do I delete a user?" · "Purchased 100 seats but lost access"</td>
         </tr>
         <tr>
           <td><span class="rank-badge">6</span></td>
-          <td><strong>Live Chat / Direct Human Requests</strong></td>
-          <td>2</td>
-          <td><span class="tag escalated">Escalated</span></td>
-          <td style="color:#666;">Users explicitly requesting live chat instead of AI</td>
+          <td><strong>TaxDome &amp; integrations</strong></td>
+          <td><span class="count-pill">2</span></td>
+          <td style="color:#4a5e56;">"Limit on pushing documents from TaxDome?" · Backend adjustment request</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">7</span></td>
+          <td><strong>AI accuracy / tax classification</strong></td>
+          <td><span class="count-pill">2</span></td>
+          <td style="color:#4a5e56;">"AI misclassified Sec 199A as federal withholding" · "NYC withholding maps to wrong line"</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge">8</span></td>
+          <td><strong>Other / off-topic</strong></td>
+          <td><span class="count-pill">3</span></td>
+          <td style="color:#4a5e56;">Bug bounty inquiry �� Emoji-only message · Direct live chat</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Escalation Triggers -->
-  <div class="section">
-    <div class="section-title">Escalation Triggers & Patterns</div>
-    <ul class="insight-list">
-      <li>
-        <div class="insight-icon icon-red">⚠️</div>
-        <div class="insight-text">
-          <strong>Advisor Performance / Speed Complaints</strong>
-          <p>Multiple users reporting Advisor taking 15+ minutes to respond or process files. One ticket remains open (Jonathan Raj, associatedtaxes.com). Fin attempted to handle with SLA articles but the issue required human follow-up. Escalation reason logged: "Guidance applied."</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-red">🌐</div>
-        <div class="insight-text">
-          <strong>International & Complex Tax Form Scope</strong>
-          <p>Questions about 8865 (foreign partnership), international activity, and K-1 with multiple activities all escalated. Fin appears to lack confident answers about Juno's exact coverage of international tax scenarios. These are recurring escalation drivers.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-yellow">📋</div>
-        <div class="insight-text">
-          <strong>Business Returns (1065 / B-Returns)</strong>
-          <p>Two users asked separately about 1065 support and business return capabilities. Both appear to have been escalated or required detailed clarification. Unclear if Fin's answer matched actual product availability.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-yellow">🔒</div>
-        <div class="insight-text">
-          <strong>SSN Redaction Handling with UltraTax</strong>
-          <p>A nuanced question about redacted SSNs in uploaded docs vs. UltraTax retaining the full SSN required human guidance. This is likely a security/privacy clarification that should be documented.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-blue">💬</div>
-        <div class="insight-text">
-          <strong>Direct Live Chat Bypasses</strong>
-          <p>2 users initiated conversations with the intent of reaching a human immediately (typing "live chat"). These will always escalate. Consider whether the entry point UX can better set AI-first expectations.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Recurring Issues / Documentation Gaps -->
-  <div class="section">
-    <div class="section-title">Recurring Issues & Documentation Gaps</div>
-    <ul class="insight-list">
-      <li>
-        <div class="insight-icon icon-red">📉</div>
-        <div class="insight-text">
-          <strong>Axcess Tax Integration — Donations Import Bug</strong>
-          <p>One user reported "donations import into Axcess Tax isn't importing correctly." This is a potential product bug affecting users of the Axcess Tax integration. Engineering should investigate whether this is a known issue.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-yellow">📝</div>
-        <div class="insight-text">
-          <strong>Advisor Performance Expectations — Underdocumented</strong>
-          <p>Fin referenced the "Making the Most of Advisor" article and the SLA article multiple times for speed-related complaints, but users remain unsatisfied. A dedicated help article on "Why Advisor may take longer with large files" with specific expectations could reduce escalations.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-yellow">🌍</div>
-        <div class="insight-text">
-          <strong>International Tax Coverage — No Clear Article</strong>
-          <p>Questions about foreign income, 8865 forms, and international activity are a consistent escalation driver. A clearly scoped help article stating what Juno does and doesn't support for international returns would help Fin deflect these.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-yellow">🏢</div>
-        <div class="insight-text">
-          <strong>Business Returns Scope — FAQ Needed</strong>
-          <p>Multiple users asking whether Juno supports business returns (1065, entity returns). A prominent "What return types does Juno support?" article or in-app callout would reduce this question category significantly.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-blue">🔁</div>
-        <div class="insight-text">
-          <strong>Trial-to-Paid Transition Friction</strong>
-          <p>Users completing a trial and paying are unsure how to access the full site. The onboarding flow post-payment may need a clearer next-step prompt or email. Fin handled this, but the question appearing at all suggests a UX gap.</p>
-        </div>
-      </li>
-      <li>
-        <div class="insight-icon icon-blue">🔐</div>
-        <div class="insight-text">
-          <strong>Google Workspace Trial Signup Issue</strong>
-          <p>At least one user reported difficulty signing up for a trial using a Google Workspace account. This may be an authentication edge case worth investigating.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Actionable Recommendations -->
-  <div class="section">
-    <div class="section-title">Actionable Recommendations</div>
-    <div class="action-grid">
-      <div class="action-card">
-        <div class="ac-priority">🔴 High Priority · Product</div>
-        <h4>Investigate Axcess Tax Donations Import Bug</h4>
-        <p>User reported donations not importing correctly from Axcess Tax. Verify if this is a known or new defect and create a bug ticket if needed.</p>
-        <div class="ac-owner">Engineering / Product</div>
-      </div>
-      <div class="action-card">
-        <div class="ac-priority">🔴 High Priority · Support Docs</div>
-        <h4>Write "Advisor Performance Guide" Article</h4>
-        <p>Document expected response times for different file sizes and query types. Reduces recurring performance complaints and helps Fin give more specific answers.</p>
-        <div class="ac-owner">Support / Product Marketing</div>
-      </div>
-      <div class="action-card">
-        <div class="ac-priority">🟡 Medium Priority · Support Docs</div>
-        <h4>Create "Return Types Supported" Reference Article</h4>
-        <p>Clearly document what return types Juno supports (individual, business, 1065, international). Fin is currently escalating these questions — a clear article would deflect them.</p>
-        <div class="ac-owner">Support / Product</div>
-      </div>
-      <div class="action-card">
-        <div class="ac-priority">🟡 Medium Priority · Support Docs</div>
-        <h4>Add International Activity & 8865 Coverage FAQ</h4>
-        <p>Multiple questions about 8865, foreign income, and international K-1s. Write a scoped FAQ so Fin can confidently answer what Juno handles vs. what requires manual prep.</p>
-        <div class="ac-owner">Support / Tax Product</div>
-      </div>
-      <div class="action-card">
-        <div class="ac-priority">🟡 Medium Priority · Engineering</div>
-        <h4>Fix Google Workspace Trial Signup Auth Issue</h4>
-        <p>At least one user couldn't complete trial signup with a Google Workspace account. Investigate OAuth flow for Workspace domains.</p>
-        <div class="ac-owner">Engineering</div>
-      </div>
-      <div class="action-card">
-        <div class="ac-priority">🟢 Low Priority · Product / Onboarding</div>
-        <h4>Improve Post-Payment Onboarding CTA</h4>
-        <p>Users who completed trial and paid are confused about how to access the full site. Add a clear "You're all set — start here" redirect or email post-payment.</p>
-        <div class="ac-owner">Product / Growth</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Most Referenced Articles -->
-  <div class="section">
-    <div class="section-title">Most Referenced Knowledge Sources (by Fin)</div>
-    <table>
+  <!-- ── Escalation Triggers ── -->
+  <div class="full-card">
+    <div class="section-title">Escalation &amp; Hand-off Triggers (6 conversations)</div>
+    <table class="esc-table">
       <thead>
         <tr>
-          <th>Article Title</th>
+          <th>Trigger</th>
           <th>Type</th>
-          <th>Times Referenced</th>
+          <th>Details</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Making the Most of Advisor</td>
-          <td>Help Article</td>
-          <td>3+</td>
+          <td><strong>Platform freezing during Tax Strategy Deep Analysis</strong></td>
+          <td><span class="tag tag-bug">Bug</span></td>
+          <td style="color:#4a5e56;">User was mid-analysis and the tool froze. Fin couldn't resolve — needed engineering escalation.</td>
         </tr>
         <tr>
-          <td>Juno Desktop App vs Juno Web App</td>
-          <td>Help Article</td>
-          <td>2+</td>
+          <td><strong>AI misclassified Sec 199A as federal withholding</strong></td>
+          <td><span class="tag tag-bug">AI Error</span></td>
+          <td style="color:#4a5e56;">Reviewer noticed a tax classification mistake on a completed return. Escalated for correction and root cause review.</td>
         </tr>
         <tr>
-          <td>Access to Juno Support</td>
-          <td>Help Article</td>
-          <td>2</td>
+          <td><strong>Direct live chat (no prior AI message)</strong></td>
+          <td><span class="tag tag-human">Human Pref</span></td>
+          <td style="color:#4a5e56;">User opened a live chat conversation without a query — Fin had no context to act on.</td>
         </tr>
         <tr>
-          <td>SLA (Service Level Agreement)</td>
-          <td>Help Article</td>
-          <td>1</td>
+          <td><strong>Unable to add documents outside TaxDome workflow</strong></td>
+          <td><span class="tag tag-gap">Doc Gap</span></td>
+          <td style="color:#4a5e56;">User needed to manually add documents for a one-off client (no TaxDome). Fin lacked a help article for this path.</td>
         </tr>
         <tr>
-          <td>Getting Started with Reviewer</td>
-          <td>Help Article</td>
-          <td>1</td>
+          <td><strong>Backend integration / account adjustment</strong></td>
+          <td><span class="tag tag-ops">Ops</span></td>
+          <td style="color:#4a5e56;">Prior promise from team member to configure a backend integration. Required a human to follow through.</td>
         </tr>
         <tr>
-          <td>Security for Tax Automation Software | Juno</td>
-          <td>External / Website</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>Clients, Search, Documents</td>
-          <td>Help Article</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>Leaving feedback within Advisor and Assistant</td>
-          <td>Help Article</td>
-          <td>1</td>
+          <td><strong>Purchased 100 seats but lost account access</strong></td>
+          <td><span class="tag tag-ops">Billing / Ops</span></td>
+          <td style="color:#4a5e56;">Post-purchase access issue — billing or provisioning failure requiring human ops intervention.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-</div><!-- /container -->
+  <!-- ── Recurring Themes & Documentation Gaps ── -->
+  <div class="full-card">
+    <div class="section-title">Recurring Issues &amp; Documentation Gaps</div>
+    <table class="esc-table">
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Signal</th>
+          <th>Implication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Trial document upload limits unclear</strong></td>
+          <td>2 identical questions asked within minutes of each other</td>
+          <td style="color:#4a5e56;">FAQ or in-app tooltip needed on the trial limits page. High confusion signal.</td>
+        </tr>
+        <tr>
+          <td><strong>Supported schedules &amp; return types unclear</strong></td>
+          <td>5 separate conversations asking about Sch C, D, E, business returns</td>
+          <td style="color:#4a5e56;">Feature scope page or "What Juno covers" article could deflect these at scale.</td>
+        </tr>
+        <tr>
+          <td><strong>No visual "review complete" indicator</strong></td>
+          <td>"How do I know if a return has been completely reviewed?" — no good answer</td>
+          <td style="color:#4a5e56;">Product gap. Consider a progress indicator or checklist on the review dashboard.</td>
+        </tr>
+        <tr>
+          <td><strong>Joint return client setup not documented</strong></td>
+          <td>User unsure whether to enter taxpayer and spouse separately</td>
+          <td style="color:#4a5e56;">Add a help article covering joint return setup flow.</td>
+        </tr>
+        <tr>
+          <td><strong>NYC / state-local tax mapping bug</strong></td>
+          <td>NYC withholding mapping to wrong NY line item</td>
+          <td style="color:#4a5e56;">Potential data accuracy bug. Needs engineering review — could affect all NYC filers.</td>
+        </tr>
+        <tr>
+          <td><strong>Adding documents without TaxDome not documented</strong></td>
+          <td>Escalation triggered because Fin had no answer for this workflow</td>
+          <td style="color:#4a5e56;">Document the manual upload flow for non-TaxDome clients. High value deflection opportunity.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Actionable Insights ── -->
+  <div class="full-card" style="margin-bottom:0;">
+    <div class="section-title">Actionable Insights</div>
+    <ul class="insights-list">
+
+      <li class="insight-item">
+        <div class="insight-icon">🐛</div>
+        <div class="insight-body">
+          <div class="insight-title">Fix: NYC withholding tax mapping bug</div>
+          <div class="insight-desc">NYC withholding is incorrectly mapped to the New York local income tax line. This is a data accuracy issue affecting NYC filers — engineering should investigate and hotfix.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">🤖</div>
+        <div class="insight-body">
+          <div class="insight-title">Fix: AI misclassifying Sec 199A deductions</div>
+          <div class="insight-desc">The AI reviewer classified a Sec 199A (QBI) deduction as federal withholding on a live return. Root cause analysis and model/rule correction needed before this affects additional returns.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">📄</div>
+        <div class="insight-body">
+          <div class="insight-title">Docs: Create "Supported Schedules &amp; Return Types" article</div>
+          <div class="insight-desc">Five separate conversations asked about Schedule D/E support and business return availability. A single well-linked article on scope + roadmap would deflect all of these.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">📤</div>
+        <div class="insight-body">
+          <div class="insight-title">Docs: Add manual document upload guide (non-TaxDome clients)</div>
+          <div class="insight-desc">Users with one-off clients outside TaxDome don't know how to add documents. This caused an escalation. A short how-to article would prevent future hand-offs on this topic.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">✅</div>
+        <div class="insight-body">
+          <div class="insight-title">Product: Add review-completion visual indicator</div>
+          <div class="insight-desc">Multiple users asked "how do I know when a return is fully reviewed?" — Fin had no actionable answer. A progress indicator or completion checklist on the review dashboard would improve UX and reduce support volume.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">👥</div>
+        <div class="insight-body">
+          <div class="insight-title">Docs: Add joint return client setup guide</div>
+          <div class="insight-desc">New users are unsure whether taxpayer and spouse should be entered as separate contacts. A setup guide covering this common scenario would reduce onboarding friction.</div>
+        </div>
+      </li>
+
+      <li class="insight-item">
+        <div class="insight-icon">⚡</div>
+        <div class="insight-body">
+          <div class="insight-title">Fix: Tax Strategy Deep Analysis freezing</div>
+          <div class="insight-desc">At least one escalation was triggered by the tool freezing mid-analysis. Engineering should investigate performance under load for this feature.</div>
+        </div>
+      </li>
+
+      <li class="insight-item" style="border-bottom:none;">
+        <div class="insight-icon">💺</div>
+        <div class="insight-body">
+          <div class="insight-title">Ops: Resolve post-purchase access provisioning gap</div>
+          <div class="insight-desc">A user who purchased 100 seats lost access a week later. This points to a provisioning or billing sync issue that could damage trust with newly converted customers.</div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+</div><!-- /.container -->
 
 <div class="footer">
-  <p>Generated automatically by Juno Cowork · <strong>Fin AI Weekly Report</strong> · April 27, 2026</p>
-  <p style="margin-top:4px;">Source: Intercom Fin AI Agent (ai_agent_participated = true) · Apr 20–26, 2026 · 26 conversations</p>
+  <strong>Juno Tax</strong> · Fin AI Weekly Report · Generated automatically on May 4, 2026 · Data source: Intercom (Apr 27 – May 4, 2026)
 </div>
 
 </body>
